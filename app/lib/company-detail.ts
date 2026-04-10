@@ -1,4 +1,6 @@
-import type { Job, JobsData } from "../types"
+import type { Job, JobsData, VerticalBreakdown, SocialImpactData } from "../types"
+
+const VERTICALS = ["health_rd", "health_delivery", "agriculture", "education"] as const
 
 // ── Sub-area canonicalization ─────────────────────────────────────────────────
 // The Haiku classifier produces 159 unique sub_area strings with inconsistent
@@ -129,10 +131,17 @@ export type CompanyDetailData = {
   company: string
   total: number
   categoryBreakdown: Record<string, number>
-  llmSummary?: { building: string[]; selling: string[] }
+  llmSummary?: {
+    building: string[]
+    selling: string[]
+    vertical_bullets?: Record<string, string[]>
+    social_impact_bullets?: string[]
+  }
   buildingAreas: SubAreaDetail[]
   sellingAreas: SubAreaDetail[]
   geoBreakdown: GeoRow[]
+  verticalBreakdown: VerticalBreakdown
+  socialImpactData: SocialImpactData
   allJobs: Job[]
 }
 
@@ -234,6 +243,22 @@ export function computeCompanyDetail(
   )
   const sellingJobs = jobs.filter((j) => j.category === "sales_gtm")
 
+  const verticalBreakdown: VerticalBreakdown = Object.fromEntries(
+    VERTICALS.map((v) => [v, jobs.filter((j) => j.vertical === v).length])
+  )
+
+  const siJobs = jobs.filter((j) => j.social_impact === true)
+  const siByCategory: Record<string, number> = {}
+  siJobs.forEach((j) => {
+    const cat = j.category ?? "unclassified"
+    siByCategory[cat] = (siByCategory[cat] ?? 0) + 1
+  })
+  const socialImpactData: SocialImpactData = {
+    count: siJobs.length,
+    pct: total > 0 ? Math.round((siJobs.length / total) * 100) : 0,
+    byCategory: siByCategory,
+  }
+
   return {
     company,
     total,
@@ -242,6 +267,8 @@ export function computeCompanyDetail(
     buildingAreas: computeSubAreas(buildingJobs, buildingJobs.length),
     sellingAreas: computeSubAreas(sellingJobs, sellingJobs.length),
     geoBreakdown: computeGeo(jobs, total),
+    verticalBreakdown,
+    socialImpactData,
     allJobs: jobs,
   }
 }

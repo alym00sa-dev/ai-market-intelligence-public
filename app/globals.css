@@ -18,3 +18,14 @@ body {
   font-family: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
   -webkit-font-smoothing: antialiased;
 }
+
+/* MapLibre popup overrides */
+.maplibregl-popup-content {
+  border-radius: 12px !important;
+  box-shadow: 0 4px 24px rgba(0,0,0,0.12) !important;
+  border: 1px solid #e2e8f0 !important;
+  padding: 12px 14px !important;
+}
+.maplibregl-popup-tip {
+  display: none !important;
+}

@@ -4,7 +4,7 @@ import type { JobsData } from "./types"
 import JobsTable from "./components/JobsTable"
 import StatsBar from "./components/StatsBar"
 import Navbar from "./components/Navbar"
-import CompanyProfiles from "./components/CompanyProfiles"
+import ProfilesSection from "./components/ProfilesSection"
 import ChatPanel from "./components/ChatPanel"
 import { computeCompanyProfiles } from "./lib/profiles"
 
@@ -66,8 +66,8 @@ export default function Page() {
             />
           )}
 
-          {/* Company dimension profiles */}
-          {data.total_jobs > 0 && <CompanyProfiles profiles={profiles} />}
+          {/* Company profiles + hiring map */}
+          {data.total_jobs > 0 && <ProfilesSection profiles={profiles} jobs={data.jobs} />}
 
           {/* Jobs table */}
           {data.total_jobs > 0 && (

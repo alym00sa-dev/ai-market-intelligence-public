@@ -233,10 +233,21 @@ function Section({
 
 // ── Main detail view ──────────────────────────────────────────────────────────
 
+const VERTICAL_ORDER = ["health_rd", "health_delivery", "agriculture", "education"] as const
+const VERTICAL_LABELS: Record<string, string> = {
+  health_rd: "Health R&D", health_delivery: "Health Delivery",
+  agriculture: "Agriculture", education: "Education",
+}
+const CAT_LABEL_MAP: Record<string, string> = {
+  engineering: "Engineering", research: "Research", sales_gtm: "Sales / GTM",
+  operations: "Operations", other: "Other", unclassified: "Other",
+}
+
 export default function CompanyDetailView({ detail }: { detail: CompanyDetailData }) {
   const {
     company, total, categoryBreakdown,
     llmSummary, buildingAreas, sellingAreas, geoBreakdown,
+    verticalBreakdown, socialImpactData,
   } = detail
 
   const buildingTotal = buildingAreas.reduce((s, a) => s + a.count, 0)
@@ -313,6 +324,111 @@ export default function CompanyDetailView({ detail }: { detail: CompanyDetailDat
           </div>
         </div>
       </div>
+
+      {/* Vertical Focus card */}
+      {(() => {
+        const totalVertical = VERTICAL_ORDER.reduce((s, v) => s + (verticalBreakdown[v] ?? 0), 0)
+        const verticalBullets = llmSummary?.vertical_bullets ?? {}
+        return (
+          <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-6 py-5">
+            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-violet-600 mb-4">
+              Vertical Focus
+            </h2>
+            {totalVertical === 0 ? (
+              <p className="text-[13px] text-slate-400 italic">Vertical hiring signals unclear from current data</p>
+            ) : (
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+                {VERTICAL_ORDER.map((v) => {
+                  const count   = verticalBreakdown[v] ?? 0
+                  const bullets = verticalBullets[v] ?? []
+                  return (
+                    <div key={v} className="border-l-2 border-violet-100 pl-3">
+                      <div className="flex items-center gap-1.5 mb-2">
+                        <span className="text-[11px] font-semibold text-slate-600">{VERTICAL_LABELS[v]}</span>
+                        {count > 0 && (
+                          <span className="text-[10px] bg-violet-50 text-violet-600 px-1.5 py-0.5 rounded-full font-medium tabular-nums">
+                            {count} roles
+                          </span>
+                        )}
+                      </div>
+                      {count === 0 ? (
+                        <p className="text-[11.5px] text-slate-300 italic">No current hiring data for this vertical</p>
+                      ) : bullets.length > 0 ? (
+                        <ul className="space-y-1.5">
+                          {bullets.map((b, i) => (
+                            <li key={i} className="flex gap-2 items-start">
+                              <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-violet-400 shrink-0" />
+                              <span className="text-[12px] text-slate-500 leading-relaxed">{b}</span>
+                            </li>
+                          ))}
+                        </ul>
+                      ) : (
+                        <p className="text-[11.5px] text-slate-400 italic">Roles present; analysis pending</p>
+                      )}
+                    </div>
+                  )
+                })}
+              </div>
+            )}
+          </div>
+        )
+      })()}
+
+      {/* Social Impact card */}
+      {(() => {
+        const { count, pct, byCategory } = socialImpactData
+        const socialBullets = llmSummary?.social_impact_bullets ?? []
+        const topCat = Object.entries(byCategory).sort((a, b) => b[1] - a[1])[0]?.[0]
+        const catLabel = topCat ? (CAT_LABEL_MAP[topCat] ?? topCat) : null
+        return (
+          <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-6 py-5">
+            <h2 className="text-[11px] font-semibold uppercase tracking-widest text-teal-700 mb-1">
+              Social Impact Roles
+            </h2>
+            <p className="text-[10.5px] text-slate-400 italic mb-4">
+              Defined as: roles whose primary purpose directly serves the public — AI policy, civic tech, humanitarian work, public health or education access
+            </p>
+            {count === 0 ? (
+              <p className="text-[13px] text-slate-400 italic">No social impact roles identified in current hiring data</p>
+            ) : (
+              <div className="flex flex-col sm:flex-row gap-6">
+                {/* Stats */}
+                <div className="shrink-0">
+                  <p className="text-3xl font-semibold text-slate-800 tabular-nums">{pct > 0 ? `${pct}%` : count}</p>
+                  <p className="text-[11px] text-slate-400 mt-0.5">of all roles</p>
+                  {catLabel && (
+                    <p className="text-[11px] text-slate-500 mt-2">
+                      Concentrated in<br />
+                      <span className="font-semibold text-slate-700">{catLabel}</span>
+                    </p>
+                  )}
+                  {/* byCategory breakdown */}
+                  <div className="mt-3 space-y-1">
+                    {Object.entries(byCategory).sort((a, b) => b[1] - a[1]).map(([cat, n]) => (
+                      <div key={cat} className="flex items-center gap-2">
+                        <span className="text-[10px] text-slate-500 w-20 shrink-0">{CAT_LABEL_MAP[cat] ?? cat}</span>
+                        <span className="text-[10px] text-teal-600 font-medium tabular-nums">{n}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
+                <div className="hidden sm:block w-px bg-slate-100 self-stretch" />
+                {/* Bullets */}
+                {socialBullets.length > 0 && (
+                  <ul className="space-y-2 flex-1">
+                    {socialBullets.map((b, i) => (
+                      <li key={i} className="flex gap-2 items-start">
+                        <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0" />
+                        <span className="text-[13px] text-slate-600 leading-relaxed">{b}</span>
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </div>
+            )}
+          </div>
+        )
+      })()}
 
       {/* Three-column deep-dive */}
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-4 items-start">

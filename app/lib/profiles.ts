@@ -1,4 +1,6 @@
-import type { Job, JobsData, CompanyProfile, SubAreaInsight } from "../types"
+import type { Job, JobsData, CompanyProfile, SubAreaInsight, VerticalBreakdown, SocialImpactData } from "../types"
+
+const VERTICALS = ["health_rd", "health_delivery", "agriculture", "education"] as const
 
 const PINNED = ["OpenAI", "Anthropic", "Google DeepMind", "NVIDIA"]
 
@@ -53,6 +55,22 @@ export function computeCompanyProfiles(data: JobsData): CompanyProfile[] {
     )
     const sellingJobs = companyJobs.filter((j) => j.category === "sales_gtm")
 
+    const verticalBreakdown: VerticalBreakdown = Object.fromEntries(
+      VERTICALS.map((v) => [v, companyJobs.filter((j) => j.vertical === v).length])
+    )
+
+    const siJobs = companyJobs.filter((j) => j.social_impact === true)
+    const siByCategory: Record<string, number> = {}
+    siJobs.forEach((j) => {
+      const cat = j.category ?? "unclassified"
+      siByCategory[cat] = (siByCategory[cat] ?? 0) + 1
+    })
+    const socialImpactData: SocialImpactData = {
+      count: siJobs.length,
+      pct: total > 0 ? Math.round((siJobs.length / total) * 100) : 0,
+      byCategory: siByCategory,
+    }
+
     return {
       company,
       total,
@@ -60,6 +78,8 @@ export function computeCompanyProfiles(data: JobsData): CompanyProfile[] {
       buildingInsights: insightsFor(buildingJobs, 5),
       sellingInsights: insightsFor(sellingJobs, 4),
       llmSummary: company_summaries?.[company],
+      verticalBreakdown,
+      socialImpactData,
     }
   })
 

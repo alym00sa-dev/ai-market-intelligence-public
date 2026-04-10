@@ -1,5 +1,7 @@
 export type JobCategory = "engineering" | "sales_gtm" | "research" | "operations" | "other" | "unclassified"
 
+export type JobVertical = "health_rd" | "health_delivery" | "agriculture" | "education"
+
 export type Job = {
   id: string
   company: string
@@ -12,6 +14,8 @@ export type Job = {
   sub_area: string | null
   what: string | null
   tags: string[]
+  vertical?: JobVertical | null
+  social_impact?: boolean
 }
 
 export type CompanySummary = {
@@ -23,7 +27,12 @@ export type JobsData = {
   scraped_at: string | null
   total_jobs: number
   companies: Record<string, CompanySummary>
-  company_summaries?: Record<string, { building: string[]; selling: string[] }>
+  company_summaries?: Record<string, {
+    building: string[]
+    selling: string[]
+    vertical_bullets?: Record<string, string[]>
+    social_impact_bullets?: string[]
+  }>
   jobs: Job[]
 }
 
@@ -37,6 +46,16 @@ export type SubAreaInsight = {
 export type CompanySummary_LLM = {
   building: string[]
   selling: string[]
+  vertical_bullets?: Record<string, string[]>
+  social_impact_bullets?: string[]
+}
+
+export type VerticalBreakdown = Record<string, number>
+
+export type SocialImpactData = {
+  count: number
+  pct: number
+  byCategory: Record<string, number>
 }
 
 export type CompanyProfile = {
@@ -45,6 +64,7 @@ export type CompanyProfile = {
   categoryBreakdown: Record<string, number>
   buildingInsights: SubAreaInsight[]
   sellingInsights: SubAreaInsight[]
-  // LLM-generated summaries (present after running scraper with summarizer)
   llmSummary?: CompanySummary_LLM
+  verticalBreakdown: VerticalBreakdown
+  socialImpactData: SocialImpactData
 }
