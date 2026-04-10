@@ -110,162 +110,162 @@
   "company_summaries": {
     "Anthropic": {
       "building": [
-        "Frontier model pretraining and scaling-laws research with 10+ dedicated roles spanning tokenization, data pipelines, and compute-optimal training recipes across London and US offices.",
-        "Post-training alignment pipeline encompassing RLHF, reward model platforms, performance RL, honesty research, and constitutional-AI-style safeguards staffed by a large cross-functional safety team.",
-        "Agentic product surface including Claude Code, virtual collaborator (Cowork/Universes), and agent prompt-and-eval infrastructure with dedicated prompt engineers, product managers, and model-quality engineers.",
-        "GPU kernel optimization, inference routing, cloud serving on AWS and Google multi-cloud, and data center mechanical/resource-efficiency engineering indicating heavy investment in low-latency, high-throughput inference at scale.",
-        "Multimodal expansion into vision and audio modalities, interpretability/mechanistic-transparency research, and frontier red-teaming for autonomy, cyber, and emerging societal risks across dedicated research scientist tracks."
+        "Heavy investment in pretraining scaling research across multiple offices (including London), with dedicated teams for scaling laws, tokenization, and training insights for frontier models.",
+        "Multi-stage post-training pipeline encompassing RLHF, reinforcement learning reward model platforms, performance RL, and production model post-training staffed across multiple duplicate roles.",
+        "Multimodal expansion of Claude into vision, audio, and virtual collaborator agents (Cowork, Universes), with dedicated research scientist roles for each new modality.",
+        "Agentic product surface including Claude Code with its own prompt engineers, product managers, and model quality engineers, plus a broader agent prompts and evals team building evaluation infrastructure.",
+        "AI safety apparatus spanning interpretability, alignment science, frontier red teaming (cyber, autonomy, emerging risks), honesty research, privacy safeguards, and ML safeguards infrastructure \u2014 representing one of the largest research concentrations across postings."
       ],
       "selling": [
-        "Claude API and enterprise products sold to Fortune 500 accounts across financial services, CPG, life sciences, and insurance verticals via direct field account executives.",
-        "Federal and public sector sales motion targeting Department of Defense, Intelligence Community, civilian agencies, and Veterans Affairs through dedicated government account executives.",
-        "Active EMEA and emerging-market geographic expansion with French-, Spanish-, and Portuguese-speaking account executives plus India-specific public sector roles signaling multilingual go-to-market buildout.",
-        "Claude Marketplace ecosystem and developer community investment alongside applied AI engineers embedded per segment\u2014startups, digital natives, beneficial deployments\u2014indicating a solutions engineering-led land-and-expand motion."
+        "Claude API and products sold to large enterprises across financial services, CPG, life sciences, and insurance verticals via direct field account executives and applied AI engineers.",
+        "Claude API and products sold to U.S. federal government segments including DOD/IC, federal civilian agencies, Veterans Affairs, and public sector India through dedicated public sector account executives.",
+        "Claude Marketplace ecosystem and developer education driving platform adoption among startups and digital native businesses through PLG, community evangelism, and scaled customer success motions.",
+        "Active EMEA and multilingual geographic expansion with French-, Spanish-, and Portuguese-speaking account executives targeting beneficial deployment organizations and Southern Europe customers."
       ]
     },
     "Google DeepMind": {
       "building": [
-        "Gemini product ecosystem spanning diffusion modeling, personalized intelligence, information retrieval tasks, and safety\u2014with at least seven dedicated research roles signaling dominant investment in Gemini's multimodal capabilities.",
-        "Agentic AI security and red-teaming infrastructure staffed across engineering and research, including dedicated agentic safety alignment researchers and offensive security engineers probing autonomous agent attack surfaces.",
-        "Multimodal generative AI for image, video, and audio synthesis, alongside Gemini Diffusion research, indicating active development of diffusion-based architectures integrated into Gemini's generative pipeline.",
-        "AI-for-science research across agriculture (AnthroKrishi), materials science, chemistry, and general scientific discovery, with generative modeling applied specifically to molecular and materials design problems.",
-        "Custom ML silicon and hardware-software co-design led by dual technical lead managers optimizing GenAI workloads at the chip architecture and numerical computation level, paired with dedicated numerics software engineering."
+        "Gemini product ecosystem spanning diffusion models, information retrieval, personal intelligence, safety, and app-layer data science across strategic user segments and cross-product features\u2014representing a significant share of listed roles.",
+        "Agentic AI security infrastructure with a dedicated red team comprising security leads and senior engineers focused on adversarial testing and safety evaluation of agentic systems.",
+        "AI safety and alignment research across five distinct vectors: agentic safety, frontier risk assessment, Gemini safety, multimodal alignment/fairness, and humanoid robotics safety\u2014signaling heavy investment.",
+        "Multimodal generative AI for image, video, and audio generation, paired with generative modeling applied to materials science and chemistry for AI-powered scientific discovery.",
+        "Custom ML silicon and hardware-software co-design led by dual tech lead managers optimizing GenAI workloads at the chip architecture and numerical computation levels."
       ],
       "selling": [
-        "Gemini Code capabilities sold to developers and engineering teams via product-led growth, positioning AI-assisted coding tools likely through Cloud API and IDE integrations.",
-        "Kaggle platform managed as a developer and data-science community product in North America, driving PLG adoption among individual developers, researchers, and SMBs through competitions and datasets.",
-        "Geographic focus on North America explicitly visible in the Kaggle role, indicating prioritized regional expansion or monetization efforts targeting the North American developer and data-science segment.",
-        "GTM motion is product-led rather than direct enterprise sales, with product managers driving strategy for platform adoption among developer communities rather than field-sales-led Fortune 500 engagement."
+        "Google DeepMind is productizing Gemini's Code capabilities, likely targeting developers and engineering teams, with product strategy managed by a Senior Product Manager.",
+        "Kaggle platform strategy is being driven commercially in North America, likely serving data science and developer communities through a community-oriented go-to-market approach.",
+        "Geographic focus is explicitly on North America for the Kaggle product manager role, suggesting possible regional prioritization, though the specific strategic rationale is not stated in the posting.",
+        "Customer segments center on developers and data science practitioners, with Gemini Code and Kaggle serving as platform-level products rather than direct enterprise sales offerings."
       ]
     },
     "xAI": {
       "building": [
-        "Massive multilingual training data collection spanning 12+ languages including Arabic, Bengali, Chinese, Danish, Dutch, and Finnish, signaling heavy investment in Grok's polyglot capabilities.",
-        "Grok main model and specialized modality models\u2014Imagine (image generation), Voice (speech synthesis/recognition), and multimodal understanding\u2014each with dedicated model and product engineering teams.",
-        "Supercompute infrastructure at extraordinary scale with four distinct teams (Hardcore Supercompute, Infrastructure Supercompute, Compute Infrastructure, Infrastructure Reliability) building and commissioning custom data center electrical, mechanical, and fiber optic systems.",
-        "Reasoning, mid-training optimization, reinforcement learning infrastructure, and epistemic rigor tuning pipelines focused on improving Grok's chain-of-thought capabilities and truthfulness through dedicated RL and evaluation teams.",
-        "X platform product integration across ads recommendation systems, X Money financial services, media products, and mobile apps (iOS and Android), embedding Grok deeply into X's consumer ecosystem."
+        "Grok main model and product development spans training, mid-training optimization, reasoning research, multimodal understanding, and reinforcement learning infrastructure, representing the dominant technical bet across dozens of roles.",
+        "Massive multilingual and domain-specific training data collection pipeline employing 20+ AI Tutor roles covering Arabic, Bengali, Chinese, Danish, Dutch, Finnish, French, German, and specialized fields like medicine and accounting.",
+        "Voice and Imagine model research with dedicated model-development and product-integration teams building voice synthesis/recognition and image generation capabilities as distinct Grok modalities.",
+        "Supercompute and data center infrastructure at scale, with multiple Hardcore Supercompute, Infrastructure Supercompute, electrical/mechanical commissioning, and fiber optic engineering teams building and operating proprietary compute clusters.",
+        "X platform product integration including X Money financial systems, recommendation algorithms, ads ML systems, real-time storage, observability, and mobile apps on both iOS and Android."
       ],
       "selling": [
-        "Grok API, enterprise platform, and \"Systems & Agents\" solutions sold to Fortune 500 and large enterprise clients via direct field sales with dedicated Client Partners.",
-        "Grok for Government vertical solution targeting international government agencies through specialized technical staff managing sector-specific deployment and partnerships.",
-        "Active EMEA and Southern Europe expansion with Madrid-based Client Partners and Account Managers targeting enterprise and regional clients in Spanish-speaking markets.",
-        "PLG and lifecycle-driven growth motion for consumer and self-serve AI products, complemented by dedicated ecommerce and digital-native vertical sales to DTC and platform-native companies."
+        "Grok API, Enterprise plans, and Grok for Government sold to enterprise clients, digital-native companies, and government agencies via direct field sales and partnerships.",
+        "Systems and Agents vertical solution led by a dedicated Head of GTM, targeting enterprise customers through a solutions-oriented direct sales motion.",
+        "Active EMEA geographic expansion into Madrid with dedicated Client Partners and Client Account Managers targeting regional enterprise clients in Spain.",
+        "Product-led growth motion complementing direct sales, with lifecycle marketing driving user acquisition and retention across consumer-facing AI products like Grok."
       ]
     },
     "Inflection AI": {
       "building": [
-        "Large-scale language model pre-training and fine-tuning infrastructure, indicating a core technical bet on foundational model development rather than solely relying on third-party APIs.",
-        "Native Android mobile application for consumer-facing AI interaction, signaling a direct-to-user distribution strategy extending their conversational AI product beyond web interfaces.",
-        "Growth analytics and experimentation pipeline focused on user acquisition, retention, and engagement metrics for their AI-powered personal assistant product, Pi.",
-        "Consumer product-led growth motion supported by dedicated data science headcount measuring funnel conversion, activation loops, and product-market fit signals at scale.",
-        "End-to-end vertical integration from model training compute through mobile client delivery, suggesting tight coupling between model iteration cycles and user-facing product experience."
+        "Large language model pre-training and optimization pipeline, signaling a core technical bet on foundation model development with dedicated training infrastructure engineering.",
+        "Android-native mobile application for consumer-facing AI interaction, indicating active expansion of their conversational AI product onto mobile platforms.",
+        "Growth analytics and experimentation pipelines built around AI product engagement metrics, suggesting a data-driven user acquisition and retention operation for a launched consumer product.",
+        "A senior Android engineering hire suggests investment in a platform-specific native mobile experience, indicating mobile as one channel for consumer product delivery beyond web-only approaches.",
+        "Cross-functional integration of foundation model training with product-level growth measurement, suggesting the organization may be building connections between model iteration and user-facing engagement optimization."
       ],
       "selling": []
     },
     "Stability AI": {
       "building": [
-        "Multimodal generative AI pre-training research combining vision and language modalities, with dedicated roles for both VLM generalist systems and cross-modal generation capabilities.",
-        "Controlled 3D asset generation using generative AI techniques, indicating an active research bet on geometry-aware diffusion or reconstruction models beyond 2D image synthesis.",
-        "High-throughput inference serving infrastructure purpose-built for generative model deployment, focused on optimizing latency and scalability for large diffusion and transformer workloads.",
-        "Backend platform engineering for a productized generative AI service layer, suggesting buildout of API, orchestration, and data pipelines to serve external developers at scale.",
-        "Concentrated investment in generative AI across the full stack\u2014from foundational multimodal research through 3D generation to production inference\u2014signaling a dominant technical bet on owned generative model deployment rather than wrapper products."
+        "Multimodal generative AI model research spanning vision and language modalities, with dedicated researchers training and evaluating vision-language model (VLM) generalist architectures.",
+        "Controlled 3D generation research using generative AI techniques, indicating an active bet on geometry-aware synthesis beyond conventional 2D image and video generation.",
+        "High-performance inference systems purpose-built for generative AI models, suggesting investment in optimized serving pipelines for efficient and scalable model deployment.",
+        "Backend platform infrastructure supporting a generative AI product surface, suggesting investment in the service architecture underpinning model delivery, potentially including APIs or layers serving end users.",
+        "Concentrated technical focus on multimodal generative models across at least three distinct research tracks\u2014VLM, 3D generation, and general multimodal research\u2014signaling a notable emphasis on multi-modality."
       ],
       "selling": [
-        "Stability AI's generative AI API and developer tools sold to enterprise customers via a direct sales motion led by dedicated Enterprise Account Executives and a Global Director of Sales.",
+        "Generative AI API and developer tools sold to enterprise customers via a direct field sales motion led by a Global Director of Sales and dedicated Enterprise Account Executives.",
         "Geographic expansion into the APAC region with a dedicated Enterprise Account Executive targeting enterprise buyers across Asia-Pacific markets.",
-        "Channel and ecosystem growth driven by a Global Director of Partnerships building strategic cloud and platform partnerships to extend the generative AI platform's distribution.",
-        "Top-of-funnel pipeline generation through Sales Development Representatives prospecting enterprise accounts, supported by creative technology marketing to drive platform awareness and inbound demand."
+        "Strategic partnerships driven by a Global Director of Partnerships to extend the generative AI platform's reach through potential alliance and co-sell motions.",
+        "Top-of-funnel pipeline generation handled by a Sales Development Representative prospecting enterprise accounts, supported by creative technology marketing for the generative AI platform."
       ]
     },
     "Mistral AI": {
       "building": [
-        "Frontier multimodal and audio foundation model research with a geographically distributed science team spanning Palo Alto, Paris, London, Zurich, Warsaw, and Singapore, signaling heavy investment in pre-training across modalities.",
-        "Enterprise agentic product layer including dedicated agent systems, knowledge-and-search retrieval pipelines, and web crawling infrastructure to power grounded, tool-using AI deployments for business customers.",
-        "Forward-deployed ML engineering organization with dominant concentration across EMEA, Singapore, Montreal, and Morocco, building custom customer-facing inference and integration pipelines with dedicated technical leads per region.",
-        "HPC datacenter buildout encompassing custom network engineering, field and rack-level hardware engineering, and on-site operations management in the Paris region, indicating sovereign GPU infrastructure for large-scale training runs.",
-        "Model behavior, safety alignment, and systematic evaluation pipeline staffed by a dedicated Model Behavior Architect and Evaluation Engineer, alongside data-quality curation specialists feeding curated training datasets."
+        "Forward-deployed ML engineering is the dominant go-to-market investment, with 10+ roles across EMEA, Singapore, Montreal, and Morocco embedding custom model solutions directly at customer sites.",
+        "Frontier multimodal and audio research with dedicated AI Scientist roles spanning Palo Alto, Paris, London, Zurich, and Warsaw, plus a Singapore-based multimodal applied scientist track.",
+        "HPC datacenter buildout including datacenter operations management, field and design hardware engineers, and high-performance computing network engineering concentrated in the Paris region.",
+        "Enterprise AI agent systems and knowledge-and-search product development staffed alongside web crawling infrastructure, suggesting these roles may collectively support retrieval-augmented agentic workflows on the Mistral platform.",
+        "Model behavior architecture and evaluation engineering as distinct dedicated roles, indicating a structured alignment and safety pipeline governing model personality, guardrails, and systematic benchmark-driven quality assurance."
       ],
       "selling": [
-        "Mistral AI platform API and enterprise deployment services sold to large enterprises via direct field sales with dedicated account executives across US, UK, France, DACH, Netherlands, and Spain.",
-        "AI Deployment Strategist roles drive solutions engineering-led post-sale implementation for enterprise customers across EMEA, MENA, Morocco, Australia, South Korea, and Singapore, signaling aggressive geographic expansion.",
-        "Channel and partnership motion targeting system integrators, OEM/neocloud providers, and strategic platforms like SAP, with dedicated partner managers and partner solution architects focused on EMEA.",
-        "Developer ecosystem growth via PLG motion with Mistral Studio platform, developer advocacy, developer relations engineering, and developer education driving adoption among digital-native companies and individual developers."
+        "Mistral AI models and services sold to enterprise and digital-native companies via direct field sales with dedicated Account Executives across US (New York, SF Bay Area), UK, France, DACH, Netherlands, and Spain.",
+        "AI Deployment Strategist roles drive a solutions engineering-led post-sales motion, implementing Mistral AI for enterprise customers across an expansive geographic footprint including Australia, Singapore, Seoul, Sweden, MENA, Morocco, and Luxembourg.",
+        "Channel and partnership motion targeting OEM, neocloud providers, system integrators, and named technology partners like SAP, with dedicated Partner Managers, Partner Solution Architects, and Strategic Partner Leads across EMEA and US.",
+        "Mistral Studio platform and developer ecosystem growth pursued through product-led and community-driven motions, supported by Developer Advocates, a Developer Relations Engineer in Singapore, and a Developer Education Lead focused on onboarding."
       ]
     },
     "OpenAI": {
       "building": [
-        "Stargate datacenter compute infrastructure with dedicated hardware operations, networking deployment, and agentic AI engineering teams indicating a dominant capital-intensive bet on proprietary AI compute scaling.",
-        "Consumer hardware device platform encompassing embedded software, camera firmware and ISP pipelines, on-device transformer inference optimization, and connectivity software for a physical AI product.",
-        "ChatGPT monetization, premium tiers, enterprise backend, education platform, and social products supported by heavy investment across at least fifteen dedicated engineering and data science roles.",
-        "Codex agentic coding product with a core agent systems team, dedicated frontend application engineers, and product analytics, signaling an expanding autonomous software-development toolchain.",
-        "B2B application layer including data connectors, workflow integrations, finance-specific platforms, and order systems alongside financial data quality and unit economics analytics teams."
+        "Stargate datacenter compute infrastructure with dedicated hardware operations, networking deployment, and agentic AI engineering teams signals a significant investment in proprietary large-scale compute infrastructure.",
+        "Consumer AI hardware devices with embedded software, camera firmware, camera ISP, connectivity, and on-device transformer inference optimization indicate an emerging physical product line beyond software.",
+        "ChatGPT product surface expanding across Premium, Enterprise, Education, Monetization, and Social Products with heavy investment spanning Android, frontend, backend, and growth engineering teams.",
+        "Codex agentic coding platform with dedicated core agent engineering, frontend app development, and product analytics teams building AI-powered code generation and completion systems.",
+        "B2B application layer including data connectors, workflow integrations, OpenAI for Finance, and Health AI products supported by dedicated backend, analytics, and financial data quality engineering teams."
       ],
       "selling": [
-        "OpenAI API, ChatGPT Ecosystem, and Codex sold to Fortune 500 enterprises across healthcare, financial services, insurance, retail, and education via direct field sales with dedicated Account Directors.",
-        "Federal, state/local government, and education sectors targeted through specialized account directors and government-cleared AI Deployment Engineers, indicating a regulated-industry vertical sales motion.",
-        "Solutions engineering-led land-and-expand GTM motion with dedicated AI Deployment Engineers driving pilot programs and post-sale adoption, supported by AI Success Engineers ensuring customer retention across segments.",
-        "Active geographic expansion into Japan (Tokyo-based Account Directors and Codex engineers), India, Singapore, and South Korea, plus dedicated startup-focused deployment engineers targeting early-stage digital-native companies through a PLG-adjacent sales motion."
+        "OpenAI API and ChatGPT Ecosystem, including Codex, sold to large enterprises across financial services, healthcare & life sciences, insurance, retail, and education via direct field sales with dedicated Account Directors per vertical.",
+        "Federal, state/local government, and education institutions targeted through specialized Account Directors and government-cleared AI Deployment Engineers, indicating a compliance-heavy direct sales motion for regulated public-sector buyers.",
+        "Solutions engineering-led land-and-expand motion visible through AI Deployment Engineers and AI Success Engineers embedded across verticals, pilot programs, and a dedicated digital-native \"Land Team\" driving initial adoption then scaling accounts.",
+        "Geographic expansion into Japan (Tokyo-based Account Directors and Codex Deployment Engineers), India, Singapore, and South Korea, with regionally placed AI Deployment Managers signaling dedicated in-market go-to-market buildouts."
       ]
     },
     "Cohere": {
       "building": [
-        "Agentic AI platform representing Cohere's dominant technical bet, with 15+ roles spanning agent modeling, agent code generation, next-generation autonomous agents, safety alignment, and dedicated backend/full-stack/infrastructure engineering.",
-        "End-to-end language model training pipeline with specialized teams for pre-training data curation, synthetic data generation, post-training methods including reinforcement learning integration, and training performance optimization on HPC GPU clusters.",
-        "Inference infrastructure at scale with dedicated compiler-level efficiency optimization, audio inference engineering, site reliability for serving, and data collection systems feeding evaluation and model improvement loops.",
-        "Multilingual and sovereign AI model development evidenced by German, Hindi, and Mandarin annotation specialists alongside a dedicated sovereign AI research role and region-specific MLE positions across Korea, Singapore, Middle East, and UK/EU.",
-        "Multimodal AI research and advanced model evaluation science staffed through Cohere Labs, with senior research scientists paired with dedicated evaluation engineers building systematic benchmarking and safety assessment frameworks."
+        "Agentic platform infrastructure is Cohere's dominant technical bet, with 15+ roles spanning agent modeling, agent code generation, next-generation autonomous agents, safety for agents, and dedicated backend/full-stack/infrastructure engineering.",
+        "Full language model training pipeline staffed end-to-end: pre-training data curation, synthetic data generation, post-training methods, integration/reinforcement learning, and training performance optimization on dedicated GPU/HPC infrastructure.",
+        "Inference infrastructure at scale is a heavy investment area, with dedicated roles for inference engine development, site reliability for inference systems, inference data collection, audio inference optimization, and model efficiency/compression research.",
+        "Multilingual and sovereign AI model development, evidenced by data annotation specialists for German, Hindi, and Simplified Chinese/Mandarin alongside a dedicated Sovereign AI research role and regionally distributed MLE teams across Korea, Singapore, Middle East, and UK/EU.",
+        "Multimodal AI research and model evaluation science form a growing research layer, with senior research scientists in Cohere Labs, dedicated multimodal model development, and paired research-engineer and research-scientist evaluation roles for systematic model benchmarking."
       ],
       "selling": [
-        "Cohere's Agentic Platform and enterprise LLM API sold to energy/utilities, telecommunications, and public sector/defense customers via direct strategic field sales with dedicated vertical account executives.",
-        "Solutions engineering-led enterprise deployment motion with multiple Solutions Architects and Forward Deployed Engineers driving technical implementation, prompt optimization, and integration of the Agentic Platform for complex accounts.",
-        "Active geographic expansion into Middle East (KSA, UAE), France, South Korea, and Germany with regional account executives and bilingual/French-speaking customer success managers supporting localized enterprise sales.",
-        "Channel and partner-driven GTM layer via a global partner ecosystem strategy, complemented by partner marketing, to scale Cohere's platform through cloud partnerships and reseller alliances alongside the direct sales motion."
+        "Cohere Agentic Platform sold to enterprise and public sector customers via forward deployed engineers and solutions architects in a solutions engineering-led direct sales motion.",
+        "Vertical-specific direct field sales targeting energy, oil and gas, utilities, and telecommunications companies through dedicated strategic and senior account executives.",
+        "Geographic expansion into France, UAE, KSA, South Korea, and Berlin with language-specific account executives, customer success managers, and support engineers serving regional enterprise markets.",
+        "Global channel motion led by Head of Global Partner Ecosystem and partner marketing manager, driving Cohere platform adoption through an indirect partner ecosystem alongside direct enterprise sales."
       ]
     },
     "Moonshot AI": {
       "building": [
-        "Backend platform infrastructure for AI services, indicating investment in scalable distributed systems such as microservices orchestration, API gateway layers, and data pipeline reliability engineering.",
-        "Core systems engineering at the staff level focused on foundational platform primitives like model-serving frameworks, distributed training orchestration, and low-level performance optimization.",
-        "Heavy concentration on infrastructure over research or product roles, signaling a dominant technical bet on building robust, production-grade AI platform plumbing before scaling model capabilities.",
-        "Seniority distribution across senior and staff tiers suggests a growing but lean infrastructure team prioritizing architectural decision-makers over junior contributors for high-impact systems work.",
-        "Platform-centric engineering culture oriented toward internal developer tooling, CI/CD pipelines for model deployment, and unified compute resource management across training and inference workloads."
+        "Backend systems and infrastructure for an AI platform, indicating investment in scalable server-side architecture that may support capabilities such as model serving, data pipelines, and API management.",
+        "Core systems and infrastructure engineering at the staff level, suggesting a strong emphasis on foundational platform reliability and the buildout of robust AI platform capabilities.",
+        "Recent job postings emphasize infrastructure and backend systems for the AI platform, suggesting a current buildout phase focused on robust, production-grade deployment and orchestration tooling.",
+        "Concentration of senior and staff-level engineers on overlapping platform infrastructure work, indicating a growing team scaling shared backend services and internal developer tooling.",
+        "AI platform architecture spanning backend systems, core systems, and supporting infrastructure, with hierarchical engineering seniority suggesting layered system complexity."
       ],
       "selling": [
-        "Moonshot AI sells an AI platform likely including API access and enterprise-tier services to mid-market and enterprise customers via a direct sales motion led by senior account executives.",
-        "Account strategists manage post-sale customer success, indicating a land-and-expand enterprise motion focused on retaining and growing existing platform accounts.",
-        "Dedicated BDRs generate and qualify inbound and outbound leads, suggesting an outbound-heavy direct sales pipeline targeting business buyers rather than a pure PLG developer motion.",
-        "Multiple conversion rate optimization strategists signal a parallel self-serve or product-led growth funnel optimizing sign-up-to-paid conversion, likely for an API or SaaS tier aimed at SMB and developer segments."
+        "AI platform and services sold to enterprise customers via direct sales motion with Senior Account Executives closing deals and Account Strategists managing ongoing customer success.",
+        "Product-led growth complement visible through dedicated Conversion Rate Optimization Strategists at multiple levels optimizing customer conversion funnels and engagement for the AI platform.",
+        "Outbound pipeline generation driven by Business Development Representatives qualifying prospects and feeding leads to the enterprise sales team for AI platform and services.",
+        "No specific verticals, geographies, partner channels, or named product tiers (API, cloud partnership, specific plans) are visible in these postings beyond a general AI platform offering."
       ]
     },
     "NVIDIA": {
       "building": [
-        "TensorRT-LLM inference optimization stack with dedicated compiler, kernel scheduling, edge deployment, and model compression teams representing NVIDIA's dominant technical bet on LLM serving performance.",
-        "CUDA platform expansion across driver, unified memory, chip-level system software, Tile compiler tools, and CUDA-Q quantum computing libraries, signaling heavy sustained investment in GPU programming infrastructure.",
-        "Deep learning performance architecture group of 6+ architects and engineers focused on inference optimization, quantized inference, and DL compiler verification forming a concentrated performance-tuning pipeline.",
-        "Autonomous agent and humanoid robotics systems spanning LLM agent architecture, GeForce G-Assist consumer AI assistant, and locomotion-manipulation ML for humanoid robots as distinct applied-AI product bets.",
-        "Scientific machine learning for Earth-2 climate simulation, AI safety research for deep learning systems, and post-training techniques for LLMs and diffusion language models as targeted frontier research investments."
+        "TensorRT-LLM inference optimization stack with at least five dedicated engineering roles spanning edge deployment, kernel scheduling, and model compression for LLMs and VLMs.",
+        "CUDA platform expansion across driver architecture, unified memory, GPU kernel scheduling, Tile compiler tooling, and CUDA-Q quantum computing libraries, representing the single largest hiring concentration at approximately 15 roles.",
+        "Deep learning performance architecture as a dominant technical bet, with seven-plus architect and engineer roles focused on inference throughput, training efficiency, and compiler-level optimization of neural network workloads.",
+        "LLM training frameworks and high-performance distributed training infrastructure staffed by multiple senior and new-grad engineers building large-scale model training pipelines and post-training techniques including diffusion language models.",
+        "Embodied AI and physical-world ML spanning humanoid robotics loco-manipulation, autonomous driving perception, Earth-2 climate simulation, and GeForce G-Assist, with dedicated applied scientists building domain-specific learned controllers and agents."
       ],
       "selling": [
-        "NVIDIA AI inference software, vGPU virtualization, and CUDA-X libraries sold to enterprise customers across life sciences, manufacturing, semiconductor, retail, and telecom verticals via direct field sales and OEM channel partnerships.",
-        "Agentic AI, AI Factory infrastructure, and LLM model-building platforms sold to Fortune 500 enterprises and strategic partners like Palantir through a solutions architecture and engineering-led technical sales motion.",
-        "Developer ecosystem expansion driven by Developer Relations and Developer Technology Engineers evangelizing CUDA-X libraries, AI frameworks, and inference optimization tools to AI/ML developer communities via product-led engagement.",
-        "Geographic and vertical expansion visible in Nordics automotive/mobility leadership, NALA regional sales development, global digital health business development, and embedded AI sales across multiple regions."
+        "NVIDIA AI inference products, vGPU virtualization, and CUDA-X libraries sold to enterprise customers via direct sales led by a dedicated Senior Director of AI Inference Sales.",
+        "Deep learning and agentic AI solutions sold to life sciences, manufacturing, semiconductor, retail, telecom, and automotive verticals through solutions architect-led and account manager-driven enterprise motions.",
+        "Developer ecosystem expansion through Developer Relations Managers and Developer Technology Engineers evangelizing CUDA-X libraries, AI frameworks, and LLM model-building platforms to AI/ML developer communities.",
+        "Regional geographic expansion visible in Nordics automotive leadership, NALA sales development, and embedded sales regional managers, with OEM channel motions targeting global OEM partners including a named Palantir partnership."
       ]
     },
     "Amazon AGI": {
       "building": [
-        "AGI Autonomy team with at least four Member of Technical Staff roles building autonomous agent capabilities, representing a dominant technical bet on agentic reasoning and action execution.",
-        "AGI Data Services platform with heavy investment across eight-plus engineering roles spanning language engineering, data pipelines, and infrastructure to supply large-scale training and evaluation data.",
-        "Custom ML accelerator hardware stack at Annapurna Labs encompassing Neuron compiler optimization, PCB and power design, inference performance tuning, and DFT validation for AWS silicon.",
-        "AGI Customization platform combining applied scientists and ML engineers to build fine-tuning, personalization, and adaptation pipelines enabling domain-specific model specialization at scale.",
-        "Vision-language model development and generative AI evaluation for media and fashion through dedicated GEM and DML teams building multimodal content understanding and automated quality benchmarks."
+        "AGI Autonomy team with at least four Member of Technical Staff roles signals a concentrated research bet on autonomous agent capabilities and agentic reasoning systems.",
+        "AGI Data Services is a dominant infrastructure investment with dedicated SDEs, language engineers, and expert consultants building data pipelines, labeling, and ingestion at scale.",
+        "Annapurna Labs ML hardware acceleration stack spanning custom chip architecture modeling, DFT validation, PCB design, power engineering, and Neuron compiler optimization for inference workloads.",
+        "AGI Customization platform combining ML engineers and applied scientists to build fine-tuning, personalization, and adaptation tooling for foundation models across Amazon surfaces.",
+        "Agentic AI applied research spanning AWS Fundamental Research, Sponsored Products advertising, and AgentCore ML systems, indicating cross-org deployment of autonomous agent architectures."
       ],
       "selling": [
-        "Amazon Bedrock API and GenAI/Agentic AI platform solutions sold to Fortune 500 enterprises across automotive, manufacturing, retail, CPG, telecom, media, and private equity via dedicated specialist sales teams.",
-        "Direct enterprise field sales motion reinforced by solutions architecture, prototyping (PACE), and AWS Professional Services delivery consultants driving full-stack GenAI implementation and agentic transformation engagements.",
-        "Aggressive geographic expansion across EMEA, UKI, Europe Central, ANZ, India/SAARC, Japan, and APJ with region-specific AI specialist sellers and German-speaking public sector sales development roles.",
-        "Channel and partner-led GTM through AWS Worldwide Partner Solutions architects, ISV GenAI/ML specialist reps, and startup/venture capital frontier AI sales targeting independent software vendors and emerging AI companies."
+        "Amazon Bedrock and GenAI/Agentic AI solutions sold via specialist direct sales to enterprise customers across automotive, manufacturing, retail, CPG, telecom, media, entertainment, and public sector verticals.",
+        "Geographic expansion across EMEA, UKI, ANZ, India/SAARC, Japan, and Europe Central with dedicated regional AI sales specialists and delivery consultants targeting large enterprise and public sector accounts.",
+        "Channel and partner-led GTM through AWS Professional Services delivery consultants, Worldwide Partner Solutions Architects, and private equity-focused AI solutions architects driving agentic transformation engagements.",
+        "GenAI/ML specialist sales motion targeting ISVs and startups via dedicated Frontier AI sales leaders for global venture capital accounts, alongside Amazon Ads and Amazon Quick product marketing efforts."
       ]
     }
   },

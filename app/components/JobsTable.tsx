@@ -85,9 +85,9 @@ export default function JobsTable({ jobs, companies }: Props) {
       </div>
 
       {/* Table */}
-      <div className="rounded-xl border border-gray-200 overflow-hidden">
+      <div className="rounded-xl border border-gray-200 overflow-hidden max-h-[560px] overflow-y-auto">
         <table className="w-full text-sm">
-          <thead className="bg-gray-50 border-b border-gray-200">
+          <thead className="bg-gray-50 border-b border-gray-200 sticky top-0 z-10">
             <tr>
               <th className="text-left px-4 py-3 font-medium text-gray-600 w-[18%]">Company</th>
               <th className="text-left px-4 py-3 font-medium text-gray-600 w-[28%]">Role</th>
