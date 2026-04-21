@@ -3,109 +3,236 @@ import type { Job, JobsData, VerticalBreakdown, SocialImpactData } from "../type
 const VERTICALS = ["health_rd", "health_delivery", "agriculture", "education"] as const
 
 // ── Sub-area canonicalization ─────────────────────────────────────────────────
-// The Haiku classifier produces 159 unique sub_area strings with inconsistent
-// formatting (spaces, camelCase, slashes, plurals). We normalize then merge
-// near-duplicates into canonical keys before display.
+// Canonical taxonomy (19 sub-areas across 4 categories):
+//
+//   engineering:  software_engineering | platform_infra | hardware | security | product_management
+//   research:     research
+//   sales_gtm:    sales | solutions | business_development | marketing | customer_success
+//   operations:   program_management | finance | legal | hr | facilities | design | trust_safety | policy
+//
+// Everything maps to one of these. Old variants from prior classifier runs
+// are remapped here so historical data stays readable.
 
 const CANONICAL: Record<string, string> = {
-  // ML Research consolidation
-  "ai_ml_research":        "ml_research",
-  "ai/ml_research":        "ml_research",
-  "ai_research":           "ml_research",
-  "ai/ml_researcher":      "ml_research",
-  "applied_ml_research":   "ml_research",
-  "scientific_ml":         "ml_research",
-  "generative_ai_research":"ml_research",
-  "applied_research":      "ml_research",
-  "applied_science":       "ml_research",
+  // ── engineering → software_engineering ───────────────────────────────────
+  "software_engineer":          "software_engineering",
+  "software_engineers":         "software_engineering",
+  "software engineer":          "software_engineering",
+  "full-stack":                 "software_engineering",
+  "full_stack":                 "software_engineering",
+  "backend":                    "software_engineering",
+  "backend_systems":            "software_engineering",
+  "backend_engineering":        "software_engineering",
+  "frontend":                   "software_engineering",
+  "frontend_engineering":       "software_engineering",
+  "engineering":                "software_engineering",
+  "systems":                    "software_engineering",
+  "embedded_systems":           "software_engineering",
+  "devops":                     "software_engineering",
+  "devops_infra":               "software_engineering",
+  // ML engineering → software_engineering (collapsed)
+  "ml_engineering":             "software_engineering",
+  "ml_engineer":                "software_engineering",
+  "ml_engineers":               "software_engineering",
+  "ml engineer":                "software_engineering",
+  "ml engineering":             "software_engineering",
+  "ML engineering":             "software_engineering",
+  "ML engineer":                "software_engineering",
+  "ML_engineer":                "software_engineering",
+  "ML engineers":               "software_engineering",
+  "ai_ml_engineer":             "software_engineering",
+  "ml_systems":                 "software_engineering",
+  "ml_ai_systems":              "software_engineering",
 
-  // Software Engineering consolidation
-  "software_engineer":     "software_engineering",
-  "software_engineers":    "software_engineering",
-  "full-stack":            "software_engineering",
-  "engineering":           "software_engineering",
-
-  // Research Engineering consolidation
-  "research_engineer":     "research_engineering",
-  "research_engineers":    "research_engineering",
-  "research_science":      "research_engineering",
-
-  // ML Engineering consolidation
-  "ml_engineer":           "ml_engineering",
-  "ml_engineers":          "ml_engineering",
-  "ml_engineering":        "ml_engineering",
-  "ml engineer":           "ml_engineering",
-  "ml engineering":        "ml_engineering",
-  "ml engineers":          "ml_engineering",
-  "ai_ml_engineer":        "ml_engineering",
-
-  // Platform / Infrastructure consolidation
-  "platform/infra":        "platform_infra",
-  "platform_engineer":     "platform_infra",
-  "ml_infrastructure":     "platform_infra",
+  // ── engineering → platform_infra ─────────────────────────────────────────
+  "platform/infra":             "platform_infra",
+  "platform":                   "platform_infra",
+  "infra":                      "platform_infra",
+  "infrastructure":             "platform_infra",
+  "infrastructure_platform":    "platform_infra",
+  "platform_infrastructure":    "platform_infra",
+  "platform_engineer":          "platform_infra",
+  "cloud_infra":                "platform_infra",
+  "it_infrastructure":          "platform_infra",
+  "systems_infra":              "platform_infra",
+  "ml_infrastructure":          "platform_infra",
+  "ml_infra":                   "platform_infra",
+  "ml_platform":                "platform_infra",
+  "ml_platform_infra":          "platform_infra",
   "ml/platform_infrastructure": "platform_infra",
   "ml/compiler_infrastructure": "platform_infra",
-  "systems/infra":         "platform_infra",
-  "infra":                 "platform_infra",
-  "cloud_infra":           "platform_infra",
-  "it_infrastructure":     "platform_infra",
+  "data_engineering":           "platform_infra",
+  "data_engineer":              "platform_infra",
+  "data engineering":           "platform_infra",
+  "data_operations":            "platform_infra",
+  "data operations":            "platform_infra",
+  "data_platform":              "platform_infra",
 
-  // DevOps consolidation
-  "devops_infra":          "devops",
+  // ── engineering → hardware ────────────────────────────────────────────────
+  "hardware_engineering":       "hardware",
+  "hardware engineering":       "hardware",
+  "hardware_infrastructure":    "hardware",
+  "hardware/infrastructure":    "hardware",
+  "hardware_manufacturing":     "hardware",
+  "manufacturing_hardware":     "hardware",
+  "hardware/silicon":           "hardware",
+  "silicon_hardware":           "hardware",
+  "hardware/platform":          "hardware",
+  "hardware_engineer":          "hardware",
+  "silicon_engineering":        "hardware",
 
-  // Hardware consolidation
-  "hardware_engineering":  "hardware",
-  "hardware_infrastructure":"hardware",
-  "hardware/infrastructure":"hardware",
-  "hardware_manufacturing": "hardware",
-  "manufacturing_hardware": "hardware",
+  // ── engineering → product_management ─────────────────────────────────────
+  "product_manager":            "product_management",
+  "product management":         "product_management",
+  "product":                    "product_management",
 
-  // Safety Research consolidation
-  "ai_safety":             "ai_safety_research",
-  "ai_training":           "ai_safety_research",
-  "alignment":             "ai_safety_research",
-  "interpretability":      "ai_safety_research",
+  // ── research → research ───────────────────────────────────────────────────
+  "ml_research":                "research",
+  "ai_research":                "research",
+  "ai_ml_research":             "research",
+  "ai/ml_research":             "research",
+  "applied_ml_research":        "research",
+  "scientific_ml":              "research",
+  "generative_ai_research":     "research",
+  "applied_research":           "research",
+  "applied_science":            "research",
+  "applied_scientist":          "research",
+  "applied scientist":          "research",
+  "applied sciences internship":"research",
+  "research_engineer":          "research",
+  "research_engineers":         "research",
+  "research engineer":          "research",
+  "research_engineering":       "research",
+  "research engineering":       "research",
+  "research_scientist":         "research",
+  "research_intern":            "research",
+  "research intern":            "research",
+  "research_internship":        "research",
+  "ai_safety":                  "research",
+  "ai_safety_research":         "research",
+  "alignment":                  "research",
+  "interpretability":           "research",
+  "ai_training":                "research",
+  "core_research":              "research",
+  "core ai research":           "research",
+  "ml_researcher":              "research",
+  "ai_researcher":              "research",
+  "researcher":                 "research",
+  "ai/ml_researcher":           "research",
+  "AI/ML research":             "research",
+  "AI/ML researchers":          "research",
+  "ML research":                "research",
+  "data_science":               "software_engineering",
+  "data science":               "software_engineering",
+  "data_scientist":             "software_engineering",
+  "machine_learning":           "software_engineering",
+  "machine_learning_research":  "research",
 
-  // Sales/GTM consolidation
-  "go_to_market":          "sales_gtm",
-  "go-to-market":          "sales_gtm",
-  "sales":                 "sales_gtm",
-  "sales_development":     "sales_gtm",
+  // ── sales_gtm → sales ─────────────────────────────────────────────────────
+  "sales_gtm":                  "sales",
+  "sales_reps":                 "sales",
+  "sales_rep":                  "sales",
+  "sales reps":                 "sales",
+  "sales management":           "sales",
+  "sales_management":           "sales",
+  "sales_leadership":           "sales",
+  "sales_development":          "sales",
+  "sales enablement":           "sales",
+  "sales_enablement":           "sales",
+  "account_executive":          "sales",
+  "account_executives":         "sales",
+  "field_sales":                "sales",
+  "enterprise_sales":           "sales",
+  "go_to_market":               "sales",
+  "go-to-market":               "sales",
 
-  // Solutions Engineering consolidation
-  "solutions_engineer":    "solutions_engineering",
-  "solutions_engineers":   "solutions_engineering",
-  "solutions_architect":   "solutions_engineering",
-  "solutions_architecture":"solutions_engineering",
+  // ── sales_gtm → solutions ─────────────────────────────────────────────────
+  "solutions_architect":               "solutions",
+  "solutions_architects":              "solutions",
+  "solutions architect":               "solutions",
+  "solutions_architect_technical":     "solutions",
+  "solutions architect (technical)":   "solutions",
+  "solutions architects (technical)":  "solutions",
+  "solutions_architecture":            "solutions",
+  "solutions architecture":            "solutions",
+  "solutions_engineer":                "solutions",
+  "solutions_engineers":               "solutions",
+  "solutions engineer":                "solutions",
+  "solutions_engineering":             "solutions",
+  "solutions engineering":             "solutions",
+  "solutions engineers (commercial)":  "solutions",
+  "solutions architect (commercial)":  "solutions",
+  "solutions_engineer_commercial":     "solutions",
+  "applied_ai":                        "solutions",
 
-  // Customer Success/Support consolidation
-  "customer_support":      "customer_success",
-  "customer_support_ops":  "customer_success",
+  // ── sales_gtm → business_development ─────────────────────────────────────
+  "business development":       "business_development",
+  "partnerships":               "business_development",
+  "partnerships_business_development": "business_development",
 
-  // Trust & Safety consolidation
-  "trust_and_safety":      "trust_safety",
-  "trust_&_safety":        "trust_safety",
-  "trust & safety":        "trust_safety",
+  // ── sales_gtm → customer_success ─────────────────────────────────────────
+  "customer_support":           "customer_success",
+  "customer_support_ops":       "customer_success",
+  "customer support":           "customer_success",
+  "account_management":         "customer_success",
+  "account management":         "customer_success",
+  "account_manager":            "customer_success",
 
-  // HR consolidation
-  "hr":                    "human_resources",
-  "HR":                    "human_resources",
-  "HR/compensation":       "human_resources",
-  "HR/people_ops":         "human_resources",
+  // ── operations → program_management ──────────────────────────────────────
+  "program management":         "program_management",
 
-  // Data consolidation
-  "data_quality":          "data_operations",
-  "data_annotation":       "data_operations",
+  // ── operations → hr ───────────────────────────────────────────────────────
+  "HR":                         "hr",
+  "human_resources":            "hr",
+  "recruiting":                 "hr",
+  "people_ops":                 "hr",
+
+  // ── operations → facilities ───────────────────────────────────────────────
+  "facilities operations":      "facilities",
+  "facilities_operations":      "facilities",
+  "data_center_operations":     "facilities",
+  "data center operations":     "facilities",
+  "supply_chain":               "facilities",
+  "procurement":                "facilities",
+  "construction_facilities":    "facilities",
+  "real_estate_facilities":     "facilities",
+
+  // ── operations → trust_safety ─────────────────────────────────────────────
+  "trust_and_safety":           "trust_safety",
+  "trust_&_safety":             "trust_safety",
+  "trust & safety":             "trust_safety",
+  "Trust & Safety":             "trust_safety",
+
+  // ── operations → policy ───────────────────────────────────────────────────
+  "communications":             "policy",
+  "comms":                      "policy",
+  "government_affairs":         "policy",
+  "policy_safety":              "policy",
+  "external_affairs":           "policy",
+
+  // ── operations → finance ──────────────────────────────────────────────────
+  "accounting":                 "finance",
+  "finance_ops":                "finance",
+  "finance_tax":                "finance",
+
+  // ── operations → legal ───────────────────────────────────────────────────
+  "legal_operations":           "legal",
+  "compliance":                 "legal",
+  "risk_management":            "legal",
+
+  // catch-all: old "other" → operations/program_management
+  "other":                      "program_management",
+  "unknown":                    "program_management",
 }
 
 function normalizeSubArea(raw: string): string {
-  // Normalize spacing/slashes/case
+  // Normalize spacing/slashes/case → look up in CANONICAL
   const key = raw.trim().toLowerCase().replace(/[\s\/\-&]+/g, "_")
-  // De-pluralize trailing 's' for common cases
+  // Try depluralized form for cases like "software_engineers" → "software_engineer"
   const depluraled = key.endsWith("s") && !key.endsWith("ss") && !key.endsWith("us")
     ? key.slice(0, -1)
     : key
-  return CANONICAL[key] ?? CANONICAL[depluraled] ?? key
+  return CANONICAL[raw] ?? CANONICAL[key] ?? CANONICAL[depluraled] ?? key
 }
 
 // ── Types ─────────────────────────────────────────────────────────────────────
