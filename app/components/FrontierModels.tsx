@@ -1,9 +1,10 @@
 "use client"
 
 import { useState, useCallback } from "react"
+import Link from "next/link"
 import type { ModelsData, ModelRecord, RankedModel } from "../types"
 
-// ── Helpers ───────────────────────────────────────────────────────────────────
+// ── Colors & helpers ──────────────────────────────────────────────────────────
 
 const ORG_COLORS: Record<string, string> = {
   "Anthropic":       "#c084fc",
@@ -20,33 +21,25 @@ const ORG_COLORS: Record<string, string> = {
   "Alibaba":         "#e879f9",
 }
 const DEFAULT_COLOR = "#94a3b8"
+function orgColor(org: string) { return ORG_COLORS[org] ?? DEFAULT_COLOR }
 
-function orgColor(org: string): string {
-  return ORG_COLORS[org] ?? DEFAULT_COLOR
-}
-
-function fmt(n: number | null, decimals = 1): string {
+function fmt(n: number | null, dec = 1): string {
   if (n == null) return "—"
-  return n.toFixed(decimals)
+  return n.toFixed(dec)
 }
-
-function fmtPct(n: number | null): string {
-  if (n == null) return "—"
-  return `${Math.round(n * 100)}%`
-}
-
 function fmtPrice(n: number | null): string {
   if (n == null) return "—"
-  return `$${n % 1 === 0 ? n.toFixed(0) : n.toFixed(2)}`
+  if (n < 0.01) return `$${n.toFixed(3)}`
+  if (n < 1)    return `$${n.toFixed(2)}`
+  return `$${n.toFixed(0)}`
 }
-
 function fmtDate(d: string | null): string {
   if (!d) return "—"
   try { return new Date(d).toLocaleDateString("en-US", { month: "short", year: "numeric" }) }
   catch { return d }
 }
 
-// ── Refresh button ────────────────────────────────────────────────────────────
+// ── RefreshButton ─────────────────────────────────────────────────────────────
 
 type RefreshStatus = {
   state: "idle" | "running" | "done" | "error"
@@ -68,17 +61,13 @@ function RefreshButton({ builtAt }: { builtAt: string | null }) {
       return
     }
     setStatus({ state: "running", started_at: new Date().toISOString(), finished_at: null, log: ["Starting..."], error: null })
-
-    // Poll until done
     const poll = setInterval(async () => {
       const r = await fetch("/api/refresh-models")
       const s: RefreshStatus = await r.json()
       setStatus(s)
       if (s.state === "done" || s.state === "error") {
         clearInterval(poll)
-        if (s.state === "done") {
-          setTimeout(() => window.location.reload(), 1000)
-        }
+        if (s.state === "done") setTimeout(() => window.location.reload(), 1000)
       }
     }, 3000)
   }, [])
@@ -87,12 +76,8 @@ function RefreshButton({ builtAt }: { builtAt: string | null }) {
 
   return (
     <div className="flex items-center gap-3">
-      {builtAt && (
-        <span className="text-xs text-slate-400">Data as of {builtAt}</span>
-      )}
       <button
-        onClick={startRefresh}
-        disabled={running}
+        onClick={startRefresh} disabled={running}
         className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
           running
             ? "bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed"
@@ -106,14 +91,12 @@ function RefreshButton({ builtAt }: { builtAt: string | null }) {
         </svg>
         {running ? "Refreshing…" : "Refresh Data"}
       </button>
-
       {status && (status.state === "done" || status.state === "error" || status.log.length > 1) && (
         <button onClick={() => setShowLog((v) => !v)}
           className="text-xs text-slate-400 hover:text-slate-600 underline underline-offset-2">
           {showLog ? "hide log" : "show log"}
         </button>
       )}
-
       {showLog && status && (
         <div className="fixed inset-x-4 bottom-4 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[480px] bg-slate-900 rounded-xl shadow-2xl border border-slate-700 p-4 z-50">
           <div className="flex items-center justify-between mb-2">
@@ -125,133 +108,318 @@ function RefreshButton({ builtAt }: { builtAt: string | null }) {
             </button>
           </div>
           <div className="space-y-0.5 max-h-64 overflow-y-auto">
-            {status.log.map((line, i) => (
-              <p key={i} className="text-xs font-mono text-slate-400">{line}</p>
-            ))}
+            {status.log.map((line, i) => <p key={i} className="text-xs font-mono text-slate-400">{line}</p>)}
           </div>
-          {status.state === "error" && (
-            <p className="mt-2 text-xs text-red-400 font-mono">{status.error}</p>
-          )}
-          {status.state === "done" && (
-            <p className="mt-2 text-xs text-green-400 font-mono">✓ Complete — reloading page…</p>
-          )}
+          {status.state === "error" && <p className="mt-2 text-xs text-red-400 font-mono">{status.error}</p>}
+          {status.state === "done"  && <p className="mt-2 text-xs text-green-400 font-mono">✓ Complete — reloading…</p>}
         </div>
       )}
     </div>
   )
 }
 
-// ── Stats bar ─────────────────────────────────────────────────────────────────
+// ── MetadataStrip ─────────────────────────────────────────────────────────────
 
-function StatsBar({ data }: { data: ModelsData }) {
-  const latest = data.models.reduce((best, m) => {
-    if (!m.release_date) return best
-    return !best || m.release_date > best ? m.release_date : best
-  }, null as string | null)
+function MetadataStrip({ data: _data, builtAt: _builtAt }: { data: ModelsData; builtAt: string | null }) {
+  return (
+    <p className="text-xs text-slate-400 mt-1">
+      Data sourced from{" "}
+      <span className="text-slate-600 font-medium">Artificial Analysis</span>
+      {" "}and{" "}
+      <span className="text-slate-600 font-medium">LLM Stats</span>
+    </p>
+  )
+}
 
-  const stats = [
-    { label: "Models Tracked",    value: data.model_count.toLocaleString() },
-    { label: "Open-Weight",       value: data.open_count.toLocaleString() },
-    { label: "Labs & Orgs",       value: data.org_count.toLocaleString() },
-    { label: "Latest Release",    value: fmtDate(latest) },
+// ── BestInClass ───────────────────────────────────────────────────────────────
+
+function BestInClass({ models }: { models: ModelRecord[] }) {
+  const byIntel   = [...models].filter(m => m.intelligence_index != null).sort((a,b) => b.intelligence_index! - a.intelligence_index!)
+  const byCoding  = [...models].filter(m => m.coding_index != null).sort((a,b) => b.coding_index! - a.coding_index!)
+  const byMath    = [...models].filter(m => m.math_index != null).sort((a,b) => b.math_index! - a.math_index!)
+  const byValue   = [...models].filter(m => m.intelligence_index != null && m.price_blended != null && m.price_blended > 0)
+    .sort((a,b) => (b.intelligence_index! / b.price_blended!) - (a.intelligence_index! / a.price_blended!))
+  const bestOpen  = [...models].filter(m => m.open_weight === true && m.intelligence_index != null)
+    .sort((a,b) => b.intelligence_index! - a.intelligence_index!)
+
+  const slots = [
+    { label: "Best Overall",    model: byIntel[0],  metric: "Intelligence", value: byIntel[0]?.intelligence_index,  accent: "#8b5cf6" },
+    { label: "Best Coding",     model: byCoding[0], metric: "Coding Index", value: byCoding[0]?.coding_index,       accent: "#3b82f6" },
+    { label: "Best Math",       model: byMath[0],   metric: "Math Index",   value: byMath[0]?.math_index,           accent: "#10b981" },
+    {
+      label: "Best Value",
+      model: byValue[0],
+      metric: "Intel ÷ $/1M",
+      value: byValue[0] ? byValue[0].intelligence_index! / byValue[0].price_blended! : null,
+      accent: "#f59e0b",
+    },
+    { label: "Best Open Model", model: bestOpen[0], metric: "Intelligence", value: bestOpen[0]?.intelligence_index, accent: "#f97316", badge: true },
   ]
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-      {stats.map((s) => (
-        <div key={s.label} className="bg-white rounded-xl border border-slate-200/70 shadow-[0_1px_3px_rgba(0,0,0,0.04)] px-4 py-3">
-          <p className="text-xs text-slate-400 font-medium uppercase tracking-wide">{s.label}</p>
-          <p className="text-2xl font-semibold text-slate-900 mt-1 tabular-nums">{s.value}</p>
+    <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
+      {slots.map((s) => (
+        <div key={s.label} className="bg-white rounded-xl border border-slate-200/70 px-4 py-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+          <div className="flex items-center gap-1.5 mb-2">
+            <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: s.accent }} />
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">{s.label}</p>
+          </div>
+          <div className="flex items-center gap-1.5 mb-0.5">
+            <p className="text-sm font-semibold text-slate-900 truncate leading-tight" title={s.model?.name}>
+              {s.model?.name ?? "—"}
+            </p>
+            {s.badge && s.model && (
+              <span className="shrink-0 text-[9px] px-1 py-0.5 rounded bg-orange-50 text-orange-600 font-semibold leading-none border border-orange-100">OW</span>
+            )}
+          </div>
+          <p className="text-[11px] text-slate-400 truncate">{s.model?.org ?? ""}</p>
+          <div className="mt-2 flex items-baseline gap-1">
+            <span className="text-lg font-bold tabular-nums" style={{ color: s.accent }}>
+              {s.value != null ? s.value.toFixed(1) : "—"}
+            </span>
+            <span className="text-[10px] text-slate-400">{s.metric}</span>
+          </div>
         </div>
       ))}
     </div>
   )
 }
 
-// ── Release Timeline ──────────────────────────────────────────────────────────
+// ── SideLeaderboard ───────────────────────────────────────────────────────────
 
-function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
-  // Bucket by quarter
-  const buckets: Record<string, { open: number; closed: number }> = {}
-  for (const m of models) {
-    if (!m.release_date) continue
-    const d = new Date(m.release_date)
-    if (isNaN(d.getTime())) continue
-    const year = d.getFullYear()
-    if (year < 2023) continue
-    const q = Math.floor(d.getMonth() / 3) + 1
-    const key = `${year} Q${q}`
-    if (!buckets[key]) buckets[key] = { open: 0, closed: 0 }
-    if (m.open_weight === true) buckets[key].open++
-    else buckets[key].closed++
+type SideSort = "intelligence_index" | "coding_index" | "math_index" | "price_blended" | "tokens_per_sec"
+
+const SIDE_SORT_OPTS: { key: SideSort; label: string }[] = [
+  { key: "intelligence_index", label: "Intel"  },
+  { key: "coding_index",       label: "Coding" },
+  { key: "math_index",         label: "Math"   },
+  { key: "price_blended",      label: "Price"  },
+  { key: "tokens_per_sec",     label: "Speed"  },
+]
+
+function SideLeaderboard({ models }: { models: ModelRecord[] }) {
+  const [sort, setSort] = useState<SideSort>("intelligence_index")
+  const [filterOpen, setFilterOpen] = useState<"all" | "open" | "closed">("all")
+
+  const priceAsc = sort === "price_blended"
+
+  const list = [...models]
+    .filter(m => {
+      if (filterOpen === "open"   && m.open_weight !== true)  return false
+      if (filterOpen === "closed" && m.open_weight !== false) return false
+      return m[sort] != null
+    })
+    .sort((a, b) => {
+      const av = a[sort] as number
+      const bv = b[sort] as number
+      return priceAsc ? av - bv : bv - av
+    })
+    .slice(0, 25)
+
+  return (
+    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_3px_rgba(0,0,0,0.04)] flex flex-col"
+      style={{ maxHeight: "calc(100vh - 5.5rem)", overflowY: "hidden" }}>
+      {/* Header */}
+      <div className="px-4 pt-4 pb-3 border-b border-slate-100 shrink-0">
+        <div className="flex items-center justify-between mb-3">
+          <h3 className="text-sm font-semibold text-slate-800">Leaderboard</h3>
+          <Link href="/models/leaderboard"
+            className="text-xs text-violet-600 hover:text-violet-700 font-medium">
+            See all →
+          </Link>
+        </div>
+        <div className="flex flex-wrap gap-1 mb-2">
+          {SIDE_SORT_OPTS.map(o => (
+            <button key={o.key} onClick={() => setSort(o.key)}
+              className={`px-2 py-0.5 rounded-md text-[11px] font-medium transition-colors ${
+                sort === o.key
+                  ? "bg-violet-100 text-violet-700"
+                  : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
+              }`}>
+              {o.label}
+            </button>
+          ))}
+        </div>
+        <div className="flex gap-1">
+          {(["all", "open", "closed"] as const).map(v => (
+            <button key={v} onClick={() => setFilterOpen(v)}
+              className={`px-2 py-0.5 rounded-md text-[11px] capitalize transition-colors ${
+                filterOpen === v
+                  ? "bg-slate-800 text-white"
+                  : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
+              }`}>
+              {v}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* List */}
+      <div className="overflow-y-auto flex-1">
+        {list.map((m, i) => {
+          const val = m[sort] as number
+          const display = sort === "price_blended"
+            ? fmtPrice(val)
+            : fmt(val, sort === "tokens_per_sec" ? 0 : 1)
+          return (
+            <div key={m.id}
+              className="flex items-center gap-2.5 px-4 py-2.5 border-b border-slate-50 hover:bg-slate-50/70 transition-colors">
+              <span className="text-[11px] text-slate-400 w-5 shrink-0 tabular-nums text-right">{i + 1}</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-1.5">
+                  <span className="text-xs font-medium text-slate-800 truncate">{m.name}</span>
+                  {m.open_weight === true && (
+                    <span className="shrink-0 text-[9px] px-1 py-0.5 rounded bg-violet-50 text-violet-600 font-semibold leading-none">OW</span>
+                  )}
+                </div>
+                <p className="text-[10px] text-slate-400 truncate">{m.org}</p>
+              </div>
+              <span className="text-xs font-semibold tabular-nums text-slate-700 shrink-0">{display}</span>
+            </div>
+          )
+        })}
+      </div>
+
+      <div className="px-4 py-2.5 border-t border-slate-100 shrink-0">
+        <Link href="/models/leaderboard"
+          className="block text-center text-xs text-violet-600 hover:text-violet-700 font-medium py-1">
+          View full leaderboard →
+        </Link>
+      </div>
+    </div>
+  )
+}
+
+// ── Open vs Closed Frontier Over Time ────────────────────────────────────────
+
+type MetricKey = "intelligence_index" | "coding_index" | "math_index"
+const METRIC_OPTS: { key: MetricKey; label: string }[] = [
+  { key: "intelligence_index", label: "Intelligence" },
+  { key: "coding_index",       label: "Coding"       },
+  { key: "math_index",         label: "Math"         },
+]
+
+function OpenVsClosedOverTime({ models }: { models: ModelRecord[] }) {
+  const [metric, setMetric] = useState<MetricKey>("intelligence_index")
+
+  const valid = [...models]
+    .filter(m => m.release_date && m[metric] != null && m.release_date >= "2023-01-01")
+    .sort((a, b) => (a.release_date! < b.release_date! ? -1 : 1))
+
+  // Build frontier (running best-to-date) for open and closed separately
+  let bestOpen = 0, bestClosed = 0
+  const openPts:   { date: string; v: number }[] = []
+  const closedPts: { date: string; v: number }[] = []
+
+  for (const m of valid) {
+    const score = m[metric] as number
+    if (m.open_weight === true) {
+      if (score > bestOpen) { bestOpen = score; openPts.push({ date: m.release_date!, v: score }) }
+    } else {
+      if (score > bestClosed) { bestClosed = score; closedPts.push({ date: m.release_date!, v: score }) }
+    }
   }
 
-  const quarters = Object.keys(buckets).sort()
-  const maxTotal = Math.max(...quarters.map((q) => buckets[q].open + buckets[q].closed), 1)
+  const allPts = [...openPts, ...closedPts]
+  if (allPts.length === 0) return null
 
-  const W = 560, H = 180, PAD_L = 32, PAD_B = 28, PAD_T = 12, PAD_R = 12
+  const W = 800, H = 260, PAD_L = 46, PAD_B = 30, PAD_T = 16, PAD_R = 20
   const plotW = W - PAD_L - PAD_R
   const plotH = H - PAD_T - PAD_B
-  const barW = Math.max(2, plotW / quarters.length - 3)
+
+  const minDate = new Date("2023-01-01").getTime()
+  const maxDate = Date.now()
+  const dateRange = maxDate - minDate
+
+  const allVals = allPts.map(p => p.v)
+  const rawMin = Math.min(...allVals)
+  const rawMax = Math.max(...allVals)
+  const pad = (rawMax - rawMin) * 0.1
+  const minV = Math.max(0, rawMin - pad)
+  const maxV = rawMax + pad
+  const valRange = maxV - minV || 1
+
+  const toX = (d: string) => PAD_L + ((new Date(d).getTime() - minDate) / dateRange) * plotW
+  const toY = (v: number) => PAD_T + (1 - (v - minV) / valRange) * plotH
+
+  function stepPath(pts: { date: string; v: number }[]): string {
+    if (!pts.length) return ""
+    let d = `M ${toX(pts[0].date)} ${toY(pts[0].v)}`
+    for (let i = 1; i < pts.length; i++) {
+      d += ` H ${toX(pts[i].date)} V ${toY(pts[i].v)}`
+    }
+    d += ` H ${PAD_L + plotW}`
+    return d
+  }
+
+  const years = [2023, 2024, 2025, 2026].filter(y => {
+    const t = new Date(`${y}-01-01`).getTime()
+    return t > minDate && t < maxDate
+  })
+  const yLabels = [10, 20, 30, 40, 50, 60, 70, 80, 90].filter(v => v >= minV - 1 && v <= maxV + 1)
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
-      <h3 className="text-sm font-semibold text-slate-700 mb-4">Release Cadence</h3>
+      <div className="flex items-start justify-between mb-3">
+        <div>
+          <h3 className="text-sm font-semibold text-slate-700">Open vs. Closed Frontier</h3>
+          <p className="text-xs text-slate-400 mt-0.5">Best model score over time — each step marks a new state-of-the-art</p>
+        </div>
+        <div className="flex gap-1.5 shrink-0">
+          {METRIC_OPTS.map(o => (
+            <button key={o.key} onClick={() => setMetric(o.key)}
+              className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
+                metric === o.key
+                  ? "bg-violet-100 text-violet-700"
+                  : "text-slate-400 hover:bg-slate-50 hover:text-slate-600"
+              }`}>
+              {o.label}
+            </button>
+          ))}
+        </div>
+      </div>
 
-      <div className="flex items-center gap-4 mb-3">
+      <div className="flex items-center gap-5 mb-4">
         <span className="flex items-center gap-1.5 text-xs text-slate-500">
-          <span className="w-2.5 h-2.5 rounded-sm bg-violet-400 inline-block" /> Open-weight
+          <span className="w-5 h-0.5 bg-violet-500 inline-block rounded" /> Open-weight frontier
         </span>
         <span className="flex items-center gap-1.5 text-xs text-slate-500">
-          <span className="w-2.5 h-2.5 rounded-sm bg-slate-300 inline-block" /> Closed / unknown
+          <span className="w-5 h-0.5 bg-slate-400 inline-block rounded" /> Closed frontier
         </span>
       </div>
 
       <div className="overflow-x-auto">
-        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="overflow-visible">
-          {/* Y gridlines */}
-          {[0.25, 0.5, 0.75, 1.0].map((v) => {
-            const y = PAD_T + plotH * (1 - v)
+        <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="overflow-visible">
+          {yLabels.map(v => {
+            const y = toY(v)
             return (
               <g key={v}>
                 <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
-                <text x={PAD_L - 4} y={y} textAnchor="end" dominantBaseline="middle"
-                  fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
-                  {Math.round(v * maxTotal)}
-                </text>
+                <text x={PAD_L - 5} y={y} textAnchor="end" dominantBaseline="middle"
+                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{v}</text>
               </g>
             )
           })}
-
-          {/* Bars */}
-          {quarters.map((q, i) => {
-            const { open, closed } = buckets[q]
-            const total = open + closed
-            const x = PAD_L + (i / quarters.length) * plotW + (plotW / quarters.length - barW) / 2
-            const totalH = (total / maxTotal) * plotH
-            const openH = (open / maxTotal) * plotH
-            const closedH = totalH - openH
-
+          {years.map(y => {
+            const x = PAD_L + ((new Date(`${y}-01-01`).getTime() - minDate) / dateRange) * plotW
             return (
-              <g key={q}>
-                {/* closed portion (bottom) */}
-                <rect x={x} y={PAD_T + plotH - totalH + openH} width={barW} height={closedH}
-                  fill="#cbd5e1" rx={1} />
-                {/* open portion (top) */}
-                <rect x={x} y={PAD_T + plotH - totalH} width={barW} height={openH}
-                  fill="#a78bfa" rx={1} />
-                {/* X label — every other quarter */}
-                {i % 2 === 0 && (
-                  <text x={x + barW / 2} y={H - 6} textAnchor="middle"
-                    fontSize={7} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
-                    {q}
-                  </text>
-                )}
+              <g key={y}>
+                <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#f1f5f9" strokeWidth={1} strokeDasharray="3 3" />
+                <text x={x} y={H - 6} textAnchor="middle" fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{y}</text>
               </g>
             )
           })}
 
-          {/* Axes */}
+          {closedPts.length > 0 && <path d={stepPath(closedPts)} fill="none" stroke="#94a3b8" strokeWidth={2.5} strokeLinejoin="round" />}
+          {openPts.length  > 0 && <path d={stepPath(openPts)}  fill="none" stroke="#8b5cf6" strokeWidth={2.5} strokeLinejoin="round" />}
+
+          {closedPts.map((p, i) => (
+            <circle key={`c${i}`} cx={toX(p.date)} cy={toY(p.v)} r={3.5} fill="white" stroke="#94a3b8" strokeWidth={1.5} />
+          ))}
+          {openPts.map((p, i) => (
+            <circle key={`o${i}`} cx={toX(p.date)} cy={toY(p.v)} r={3.5} fill="white" stroke="#8b5cf6" strokeWidth={1.5} />
+          ))}
+
           <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
           <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
         </svg>
@@ -260,63 +428,152 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
   )
 }
 
-// ── Cost vs Capability Scatter ────────────────────────────────────────────────
+// ── Release Timeline (line chart) ─────────────────────────────────────────────
+
+function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
+  const qCounts: Record<string, { open: number; closed: number }> = {}
+  for (const m of models) {
+    if (!m.release_date) continue
+    const d = new Date(m.release_date)
+    if (isNaN(d.getTime()) || d.getFullYear() < 2023) continue
+    const q = `${d.getFullYear()} Q${Math.floor(d.getMonth() / 3) + 1}`
+    if (!qCounts[q]) qCounts[q] = { open: 0, closed: 0 }
+    if (m.open_weight === true) qCounts[q].open++
+    else qCounts[q].closed++
+  }
+
+  const sortedQ = Object.keys(qCounts).sort()
+  let cumOpen = 0, cumClosed = 0
+  const data = sortedQ.map(q => {
+    cumOpen   += qCounts[q].open
+    cumClosed += qCounts[q].closed
+    return { q, cumOpen, cumClosed, total: cumOpen + cumClosed }
+  })
+
+  if (data.length < 2) return null
+
+  const W = 800, H = 220, PAD_L = 46, PAD_B = 30, PAD_T = 16, PAD_R = 20
+  const plotW = W - PAD_L - PAD_R
+  const plotH = H - PAD_T - PAD_B
+  const maxTotal = Math.max(...data.map(d => d.total), 1)
+
+  const toX = (i: number) => PAD_L + (i / (data.length - 1)) * plotW
+  const toY = (v: number) => PAD_T + (1 - v / maxTotal) * plotH
+
+  function linePath(vals: number[]): string {
+    return vals.map((v, i) => `${i === 0 ? "M" : "L"} ${toX(i).toFixed(1)} ${toY(v).toFixed(1)}`).join(" ")
+  }
+
+  const yStep = Math.ceil(maxTotal / 4 / 25) * 25
+  const yLabels = Array.from({ length: 5 }, (_, i) => i * yStep).filter(v => v <= maxTotal + yStep)
+
+  return (
+    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
+      <h3 className="text-sm font-semibold text-slate-700 mb-1">Model Release Timeline</h3>
+      <p className="text-xs text-slate-400 mb-3">Cumulative models tracked by quarter (2023–present)</p>
+
+      <div className="flex items-center gap-5 mb-4">
+        <span className="flex items-center gap-1.5 text-xs text-slate-500">
+          <span className="w-5 h-0.5 bg-slate-400 inline-block rounded" /> All models
+        </span>
+        <span className="flex items-center gap-1.5 text-xs text-slate-500">
+          <span className="w-5 h-0.5 bg-violet-500 inline-block rounded" /> Open-weight
+        </span>
+      </div>
+
+      <div className="overflow-x-auto">
+        <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="overflow-visible">
+          {yLabels.map(v => {
+            const y = toY(v)
+            if (y < PAD_T - 2 || y > PAD_T + plotH + 2) return null
+            return (
+              <g key={v}>
+                <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
+                <text x={PAD_L - 5} y={y} textAnchor="end" dominantBaseline="middle"
+                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{v}</text>
+              </g>
+            )
+          })}
+
+          {/* Area fills */}
+          <path
+            d={`${linePath(data.map(d => d.total))} L ${toX(data.length - 1)} ${PAD_T + plotH} L ${PAD_L} ${PAD_T + plotH} Z`}
+            fill="#e2e8f0" fillOpacity={0.5}
+          />
+          <path
+            d={`${linePath(data.map(d => d.cumOpen))} L ${toX(data.length - 1)} ${PAD_T + plotH} L ${PAD_L} ${PAD_T + plotH} Z`}
+            fill="#8b5cf6" fillOpacity={0.12}
+          />
+
+          {/* Lines */}
+          <path d={linePath(data.map(d => d.total))}   fill="none" stroke="#94a3b8" strokeWidth={2.5} strokeLinejoin="round" />
+          <path d={linePath(data.map(d => d.cumOpen))} fill="none" stroke="#8b5cf6" strokeWidth={2.5} strokeLinejoin="round" />
+
+          {/* X labels every other quarter */}
+          {data.map((d, i) => i % 2 === 0 ? (
+            <text key={d.q} x={toX(i)} y={H - 6} textAnchor="middle"
+              fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{d.q}</text>
+          ) : null)}
+
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
+        </svg>
+      </div>
+    </div>
+  )
+}
+
+// ── Cost vs Capability ────────────────────────────────────────────────────────
 
 function CostScatter({ models }: { models: ModelRecord[] }) {
   const [hovered, setHovered] = useState<ModelRecord | null>(null)
 
-  // Filter to models with both intelligence index and price
-  const plotModels = models.filter((m) => m.intelligence_index != null && m.price_blended != null && m.price_blended > 0)
+  const plotModels = models.filter(m => m.intelligence_index != null && m.price_blended != null && m.price_blended > 0)
 
-  const W = 520, H = 260, PAD_L = 48, PAD_B = 32, PAD_T = 12, PAD_R = 24
+  const W = 800, H = 280, PAD_L = 52, PAD_B = 36, PAD_T = 16, PAD_R = 24
   const plotW = W - PAD_L - PAD_R
   const plotH = H - PAD_T - PAD_B
 
-  const prices = plotModels.map((m) => m.price_blended!)
-  const minP = Math.min(...prices), maxP = Math.max(...prices)
-  const logMin = Math.log10(Math.max(minP, 0.01))
-  const logMax = Math.log10(maxP)
+  const prices  = plotModels.map(m => m.price_blended!)
+  const intels  = plotModels.map(m => m.intelligence_index!)
+  const minP    = Math.min(...prices), maxP = Math.max(...prices)
+  const logMin  = Math.log10(Math.max(minP, 0.001))
+  const logMax  = Math.log10(maxP)
+  const minI    = Math.min(...intels), maxI = Math.max(...intels)
 
-  const intelligences = plotModels.map((m) => m.intelligence_index!)
-  const minI = Math.min(...intelligences), maxI = Math.max(...intelligences)
+  const toX = (v: number) => PAD_L + ((v - minI) / (maxI - minI || 1)) * plotW
+  const toY = (p: number) => PAD_T + (1 - (Math.log10(Math.max(p, 0.001)) - logMin) / (logMax - logMin || 1)) * plotH
 
-  const xPos = (intel: number) => PAD_L + ((intel - minI) / (maxI - minI || 1)) * plotW
-  const yPos = (price: number) => PAD_T + (1 - (Math.log10(Math.max(price, 0.01)) - logMin) / (logMax - logMin || 1)) * plotH
-
-  const yTicks = [0.01, 0.1, 1, 5, 15, 50, 150].filter((t) => t >= minP * 0.5 && t <= maxP * 2)
+  const yTicks = [0.01, 0.1, 0.5, 1, 5, 15, 50, 150].filter(t => t >= minP * 0.4 && t <= maxP * 2.5)
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
       <h3 className="text-sm font-semibold text-slate-700 mb-1">Cost vs. Capability</h3>
-      <p className="text-xs text-slate-400 mb-4">Blended price per 1M tokens (log scale) vs. Intelligence Index</p>
+      <p className="text-xs text-slate-400 mb-4">Blended price per 1M tokens (log scale) vs. Intelligence Index — hover for details</p>
 
       <div className="overflow-x-auto">
-        <svg width={W} height={H} viewBox={`0 0 ${W} ${H}`} className="overflow-visible">
-          {/* Y gridlines + labels */}
-          {yTicks.map((t) => {
-            const y = yPos(t)
+        <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="overflow-visible">
+          {yTicks.map(t => {
+            const y = toY(t)
             if (y < PAD_T || y > PAD_T + plotH) return null
             return (
               <g key={t}>
                 <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
-                <text x={PAD_L - 4} y={y} textAnchor="end" dominantBaseline="middle"
-                  fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
-                  ${t < 1 ? t.toFixed(2) : t}
+                <text x={PAD_L - 5} y={y} textAnchor="end" dominantBaseline="middle"
+                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+                  ${t < 1 ? t.toFixed(t < 0.1 ? 3 : 2) : t}
                 </text>
               </g>
             )
           })}
 
-          {/* Dots */}
-          {plotModels.map((m) => {
-            const x = xPos(m.intelligence_index!)
-            const y = yPos(m.price_blended!)
-            const r = hovered?.id === m.id ? 5 : 3.5
+          {plotModels.map(m => {
+            const x = toX(m.intelligence_index!), y = toY(m.price_blended!)
+            const isHov = hovered?.id === m.id
             return (
-              <circle
-                key={m.id} cx={x} cy={y} r={r}
+              <circle key={m.id} cx={x} cy={y} r={isHov ? 5.5 : 3.5}
                 fill={orgColor(m.org)} fillOpacity={0.8}
-                stroke={hovered?.id === m.id ? "#0f172a" : "white"} strokeWidth={0.5}
+                stroke={isHov ? "#0f172a" : "white"} strokeWidth={0.5}
                 className="cursor-pointer transition-all"
                 onMouseEnter={() => setHovered(m)}
                 onMouseLeave={() => setHovered(null)}
@@ -324,118 +581,210 @@ function CostScatter({ models }: { models: ModelRecord[] }) {
             )
           })}
 
-          {/* Tooltip */}
           {hovered && (() => {
-            const x = xPos(hovered.intelligence_index!)
-            const y = yPos(hovered.price_blended!)
-            const tx = x > W * 0.7 ? x - 140 : x + 8
-            const ty = y < 40 ? y + 8 : y - 52
+            const x = toX(hovered.intelligence_index!), y = toY(hovered.price_blended!)
+            const tx = x > W * 0.7 ? x - 148 : x + 8
+            const ty = y < 50 ? y + 8 : y - 56
             return (
               <g>
-                <rect x={tx} y={ty} width={132} height={44} rx={4}
-                  fill="#0f172a" fillOpacity={0.92} />
-                <text x={tx + 6} y={ty + 13} fontSize={8} fontWeight={600} fill="white"
-                  fontFamily="ui-sans-serif, system-ui">{hovered.name.length > 22 ? hovered.name.slice(0, 20) + "…" : hovered.name}</text>
-                <text x={tx + 6} y={ty + 24} fontSize={7.5} fill="#94a3b8"
-                  fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
-                <text x={tx + 6} y={ty + 36} fontSize={7.5} fill="#cbd5e1"
-                  fontFamily="ui-sans-serif, system-ui">
-                  Intel: {fmt(hovered.intelligence_index)}  ·  {fmtPrice(hovered.price_blended)}/1M
+                <rect x={tx} y={ty} width={140} height={48} rx={4} fill="#0f172a" fillOpacity={0.92} />
+                <text x={tx + 6} y={ty + 14} fontSize={9} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
+                  {hovered.name.length > 22 ? hovered.name.slice(0, 20) + "…" : hovered.name}
+                </text>
+                <text x={tx + 6} y={ty + 25} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
+                <text x={tx + 6} y={ty + 38} fontSize={8} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                  Intel: {fmt(hovered.intelligence_index)} · {fmtPrice(hovered.price_blended)}/1M
                 </text>
               </g>
             )
           })()}
 
-          {/* Axes */}
+          <text x={PAD_L + plotW / 2} y={H - 4} textAnchor="middle"
+            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index →</text>
+
           <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
           <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
-          <text x={PAD_L + plotW / 2} y={H - 4} textAnchor="middle"
-            fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index →</text>
         </svg>
       </div>
 
-      {/* Org legend */}
       <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5">
         {Object.entries(ORG_COLORS).map(([org, color]) => (
           <span key={org} className="flex items-center gap-1 text-xs text-slate-500">
-            <span className="w-2 h-2 rounded-full inline-block shrink-0" style={{ backgroundColor: color }} />
-            {org}
+            <span className="w-2 h-2 rounded-full inline-block shrink-0" style={{ backgroundColor: color }} />{org}
           </span>
         ))}
         <span className="flex items-center gap-1 text-xs text-slate-500">
-          <span className="w-2 h-2 rounded-full inline-block shrink-0 bg-slate-400" />
-          Other
+          <span className="w-2 h-2 rounded-full inline-block shrink-0 bg-slate-400" />Other
         </span>
       </div>
     </div>
   )
 }
 
-// ── Domain Rankings ───────────────────────────────────────────────────────────
+// ── Speed vs Intelligence ─────────────────────────────────────────────────────
 
-const RANKING_TABS = [
-  "reasoning", "coding", "math", "general", "safety",
-  "healthcare", "legal", "finance", "vision", "agents", "language",
-]
+function SpeedVsIntelligence({ models }: { models: ModelRecord[] }) {
+  const [hovered, setHovered] = useState<ModelRecord | null>(null)
 
-function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
-  const available = RANKING_TABS.filter((t) => rankings[t]?.models?.length)
-  const [active, setActive] = useState(available[0] ?? "")
+  const plotModels = models.filter(m => m.intelligence_index != null && m.tokens_per_sec != null && m.tokens_per_sec > 0)
+  if (plotModels.length === 0) return null
 
-  const ranked: RankedModel[] = rankings[active]?.models ?? []
+  const W = 800, H = 280, PAD_L = 56, PAD_B = 36, PAD_T = 16, PAD_R = 24
+  const plotW = W - PAD_L - PAD_R
+  const plotH = H - PAD_T - PAD_B
+
+  const intels = plotModels.map(m => m.intelligence_index!)
+  const speeds = plotModels.map(m => m.tokens_per_sec!)
+  const minI = Math.min(...intels), maxI = Math.max(...intels)
+  const minS = 0, maxS = Math.max(...speeds) * 1.05
+
+  const toX = (v: number) => PAD_L + ((v - minI) / (maxI - minI || 1)) * plotW
+  const toY = (v: number) => PAD_T + (1 - (v - minS) / (maxS - minS || 1)) * plotH
+
+  const yTicks = [0, 25, 50, 100, 200, 400, 800, 1500, 3000].filter(t => t <= maxS)
+  const xStep = Math.ceil((maxI - minI) / 6 / 5) * 5
+  const xTicks = Array.from({ length: 7 }, (_, i) => Math.round(minI + i * xStep)).filter(t => t <= maxI + 1)
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
-      <div className="flex items-baseline justify-between mb-4">
-        <h3 className="text-sm font-semibold text-slate-700">Domain Rankings</h3>
-        <span className="text-xs text-slate-400">TrueSkill — top 10 per domain</span>
+      <h3 className="text-sm font-semibold text-slate-700 mb-1">Speed vs. Intelligence</h3>
+      <p className="text-xs text-slate-400 mb-4">Tokens per second vs. Intelligence Index — hover a dot for details</p>
+
+      <div className="overflow-x-auto">
+        <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="overflow-visible">
+          {yTicks.map(t => {
+            const y = toY(t)
+            if (y < PAD_T - 2 || y > PAD_T + plotH + 2) return null
+            return (
+              <g key={t}>
+                <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
+                <text x={PAD_L - 5} y={y} textAnchor="end" dominantBaseline="middle"
+                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{t}</text>
+              </g>
+            )
+          })}
+          {xTicks.map(t => {
+            const x = toX(t)
+            return (
+              <g key={t}>
+                <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#f8fafc" strokeWidth={1} />
+                <text x={x} y={H - 8} textAnchor="middle"
+                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{t}</text>
+              </g>
+            )
+          })}
+
+          {plotModels.map(m => {
+            const x = toX(m.intelligence_index!), y = toY(m.tokens_per_sec!)
+            const isHov = hovered?.id === m.id
+            return (
+              <circle key={m.id} cx={x} cy={y} r={isHov ? 5.5 : 3.5}
+                fill={orgColor(m.org)} fillOpacity={0.8}
+                stroke={isHov ? "#0f172a" : "white"} strokeWidth={0.5}
+                className="cursor-pointer transition-all"
+                onMouseEnter={() => setHovered(m)}
+                onMouseLeave={() => setHovered(null)}
+              />
+            )
+          })}
+
+          {hovered && (() => {
+            const x = toX(hovered.intelligence_index!), y = toY(hovered.tokens_per_sec!)
+            const tx = x > W * 0.7 ? x - 148 : x + 8
+            const ty = y < 50 ? y + 8 : y - 56
+            return (
+              <g>
+                <rect x={tx} y={ty} width={140} height={48} rx={4} fill="#0f172a" fillOpacity={0.92} />
+                <text x={tx + 6} y={ty + 14} fontSize={9} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
+                  {hovered.name.length > 22 ? hovered.name.slice(0, 20) + "…" : hovered.name}
+                </text>
+                <text x={tx + 6} y={ty + 25} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
+                <text x={tx + 6} y={ty + 38} fontSize={8} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                  Intel: {fmt(hovered.intelligence_index)} · {fmt(hovered.tokens_per_sec, 0)} tok/s
+                </text>
+              </g>
+            )
+          })()}
+
+          <text x={PAD_L + plotW / 2} y={H - 3} textAnchor="middle"
+            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index →</text>
+          <text x={12} y={PAD_T + plotH / 2} textAnchor="middle"
+            transform={`rotate(-90, 12, ${PAD_T + plotH / 2})`}
+            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Tokens / sec</text>
+
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
+        </svg>
       </div>
 
-      {/* Tabs */}
-      <div className="flex flex-wrap gap-1.5 mb-5">
-        {available.map((tab) => (
-          <button
-            key={tab}
-            onClick={() => setActive(tab)}
-            className={`px-2.5 py-1 rounded-md text-xs font-medium capitalize transition-colors ${
-              active === tab
-                ? "bg-violet-600 text-white"
-                : "bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700"
-            }`}
-          >
-            {tab.replace(/_/g, " ")}
-          </button>
+      <div className="mt-3 flex flex-wrap gap-x-4 gap-y-1.5">
+        {Object.entries(ORG_COLORS).map(([org, color]) => (
+          <span key={org} className="flex items-center gap-1 text-xs text-slate-500">
+            <span className="w-2 h-2 rounded-full inline-block shrink-0" style={{ backgroundColor: color }} />{org}
+          </span>
         ))}
+        <span className="flex items-center gap-1 text-xs text-slate-500">
+          <span className="w-2 h-2 rounded-full inline-block shrink-0 bg-slate-400" />Other
+        </span>
+      </div>
+    </div>
+  )
+}
+
+// ── Geographic Distribution ───────────────────────────────────────────────────
+
+function GeographyChart({ models }: { models: ModelRecord[] }) {
+  const counts: Record<string, { open: number; closed: number }> = {}
+  for (const m of models) {
+    const c = m.country || "Unknown"
+    if (!counts[c]) counts[c] = { open: 0, closed: 0 }
+    if (m.open_weight === true) counts[c].open++
+    else counts[c].closed++
+  }
+
+  const sorted = Object.entries(counts)
+    .map(([country, { open, closed }]) => ({ country, open, closed, total: open + closed }))
+    .sort((a, b) => b.total - a.total)
+    .slice(0, 10)
+
+  const maxTotal = Math.max(...sorted.map(d => d.total), 1)
+
+  return (
+    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
+      <h3 className="text-sm font-semibold text-slate-700 mb-1">Geographic Distribution</h3>
+      <p className="text-xs text-slate-400 mb-4">Models by country of origin</p>
+
+      <div className="flex items-center gap-4 mb-4">
+        <span className="flex items-center gap-1.5 text-xs text-slate-500">
+          <span className="w-2.5 h-2.5 rounded-sm bg-slate-300 inline-block" /> Closed / proprietary
+        </span>
+        <span className="flex items-center gap-1.5 text-xs text-slate-500">
+          <span className="w-2.5 h-2.5 rounded-sm bg-violet-400 inline-block" /> Open-weight
+        </span>
       </div>
 
-      {/* Leaderboard */}
-      <div className="space-y-2">
-        {ranked.map((m) => {
-          const barW = Math.round(m.score * 100)
+      <div className="space-y-2.5">
+        {sorted.map(d => {
+          const closedW = (d.closed / maxTotal) * 100
+          const openW   = (d.open   / maxTotal) * 100
           return (
-            <div key={m.model_id} className="flex items-center gap-3">
-              <span className="text-xs tabular-nums text-slate-400 w-4 text-right shrink-0">
-                {m.rank}
-              </span>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-0.5">
-                  <span className="text-xs font-medium text-slate-800 truncate">{m.model_name}</span>
-                  {m.open_weight && (
-                    <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-violet-50 text-violet-600 font-medium">open</span>
-                  )}
-                  {m.min_input_price != null && m.min_input_price > 0 && (
-                    <span className="shrink-0 text-[10px] text-slate-400 ml-auto tabular-nums">
-                      ${(m.min_input_price / 1_000_000).toFixed(2)}/1M
-                    </span>
-                  )}
-                </div>
-                <div className="h-1 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-violet-400 rounded-full" style={{ width: `${barW}%` }} />
-                </div>
+            <div key={d.country} className="flex items-center gap-3">
+              <span className="text-xs text-slate-600 w-32 shrink-0 text-right font-medium">{d.country}</span>
+              <div className="flex-1 flex rounded overflow-hidden h-5 bg-slate-50">
+                {d.closed > 0 && (
+                  <div className="bg-slate-200 flex items-center justify-center text-[10px] font-medium text-slate-500 shrink-0"
+                    style={{ width: `${closedW}%` }}>
+                    {closedW > 7 ? d.closed : ""}
+                  </div>
+                )}
+                {d.open > 0 && (
+                  <div className="bg-violet-300 flex items-center justify-center text-[10px] font-medium text-violet-700 shrink-0"
+                    style={{ width: `${openW}%` }}>
+                    {openW > 7 ? d.open : ""}
+                  </div>
+                )}
               </div>
-              <span className="text-xs tabular-nums text-slate-400 w-8 text-right shrink-0">
-                {m.score.toFixed(2)}
-              </span>
+              <span className="text-xs font-semibold text-slate-700 w-8 tabular-nums text-right">{d.total}</span>
             </div>
           )
         })}
@@ -444,132 +793,83 @@ function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
   )
 }
 
-// ── Frontier Leaderboard ──────────────────────────────────────────────────────
+// ── Domain Rankings (TrueSkill, at bottom) ────────────────────────────────────
 
-type SortKey = "intelligence_index" | "coding_index" | "math_index" | "price_blended" | "tokens_per_sec" | "release_date"
+function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
+  const tabs = Object.keys(rankings)
+    .filter(k => rankings[k]?.models?.length > 0)
+    .sort()
+  const [active, setActive] = useState(tabs[0] ?? "")
 
-function FrontierLeaderboard({ models }: { models: ModelRecord[] }) {
-  const [filterOpen, setFilterOpen] = useState<"all" | "open" | "closed">("all")
-  const [filterOrg, setFilterOrg] = useState("all")
-  const [sortKey, setSortKey] = useState<SortKey>("intelligence_index")
-  const [sortAsc, setSortAsc] = useState(false)
-  const [showCount, setShowCount] = useState(50)
+  const ranked: RankedModel[] = rankings[active]?.models?.slice(0, 10) ?? []
+  const maxScore = ranked.length ? Math.max(...ranked.map(m => m.score)) : 1
+  const minScore = ranked.length ? Math.min(...ranked.map(m => m.score)) : 0
+  const range    = maxScore - minScore || 1
 
-  const orgs = Array.from(new Set(models.map((m) => m.org))).sort()
-
-  const filtered = models
-    .filter((m) => {
-      if (filterOpen === "open" && m.open_weight !== true) return false
-      if (filterOpen === "closed" && m.open_weight !== false) return false
-      if (filterOrg !== "all" && m.org !== filterOrg) return false
-      return true
-    })
-    .sort((a, b) => {
-      const av = sortKey === "release_date" ? (a.release_date ?? "") : ((a[sortKey] as number | null) ?? -Infinity)
-      const bv = sortKey === "release_date" ? (b.release_date ?? "") : ((b[sortKey] as number | null) ?? -Infinity)
-      if (av < bv) return sortAsc ? -1 : 1
-      if (av > bv) return sortAsc ? 1 : -1
-      return 0
-    })
-    .slice(0, showCount)
-
-  function Th({ label, k }: { label: string; k: SortKey }) {
-    const active = sortKey === k
-    return (
-      <th
-        className="px-3 py-2 text-left text-xs font-medium text-slate-500 cursor-pointer hover:text-slate-700 whitespace-nowrap select-none"
-        onClick={() => { if (active) setSortAsc((v) => !v); else { setSortKey(k); setSortAsc(false) } }}
-      >
-        <span className="flex items-center gap-1">
-          {label}
-          {active && <span className="text-violet-500">{sortAsc ? "↑" : "↓"}</span>}
-        </span>
-      </th>
-    )
-  }
+  const tabLabel = (k: string) => k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
 
   return (
     <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
-      <div className="flex flex-wrap items-center gap-3 mb-4">
-        <h3 className="text-sm font-semibold text-slate-700 mr-auto">Frontier Leaderboard</h3>
-
-        {/* Open/closed toggle */}
-        <div className="flex rounded-lg border border-slate-200 overflow-hidden text-xs">
-          {(["all", "open", "closed"] as const).map((v) => (
-            <button key={v} onClick={() => setFilterOpen(v)}
-              className={`px-2.5 py-1.5 capitalize transition-colors ${filterOpen === v ? "bg-violet-600 text-white" : "text-slate-500 hover:bg-slate-50"}`}>
-              {v}
-            </button>
-          ))}
+      <div className="flex flex-col sm:flex-row sm:items-start justify-between gap-2 mb-2">
+        <div>
+          <h3 className="text-sm font-semibold text-slate-700">TrueSkill Domain Rankings</h3>
+          <p className="text-xs text-slate-400 mt-0.5 max-w-lg">
+            Rankings from pairwise head-to-head comparisons across {tabs.length} domains. A higher score means the model
+            consistently won against peers in that domain. Bar widths show the relative gap — not absolute scores.
+          </p>
         </div>
-
-        {/* Org filter */}
-        <select
-          value={filterOrg}
-          onChange={(e) => setFilterOrg(e.target.value)}
-          className="text-xs border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-600 bg-white focus:outline-none focus:ring-2 focus:ring-violet-300"
-        >
-          <option value="all">All orgs</option>
-          {orgs.map((o) => <option key={o} value={o}>{o}</option>)}
-        </select>
       </div>
 
-      <div className="overflow-x-auto">
-        <table className="w-full text-sm">
-          <thead>
-            <tr className="border-b border-slate-100">
-              <th className="px-3 py-2 text-left text-xs font-medium text-slate-500 w-8">#</th>
-              <th className="px-3 py-2 text-left text-xs font-medium text-slate-500">Model</th>
-              <th className="px-3 py-2 text-left text-xs font-medium text-slate-500">Org</th>
-              <Th label="Intelligence" k="intelligence_index" />
-              <Th label="Coding" k="coding_index" />
-              <Th label="Math" k="math_index" />
-              <Th label="Price/1M" k="price_blended" />
-              <Th label="Tok/s" k="tokens_per_sec" />
-              <Th label="Released" k="release_date" />
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-slate-50">
-            {filtered.map((m, i) => (
-              <tr key={m.id} className="hover:bg-slate-50 transition-colors">
-                <td className="px-3 py-2 text-xs text-slate-400 tabular-nums">{i + 1}</td>
-                <td className="px-3 py-2">
-                  <div className="flex items-center gap-2">
-                    <span className="text-xs font-medium text-slate-800 max-w-[200px] truncate" title={m.name}>{m.name}</span>
-                    {m.open_weight === true && (
-                      <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-violet-50 text-violet-600 font-medium">open</span>
-                    )}
-                  </div>
-                </td>
-                <td className="px-3 py-2">
-                  <span className="flex items-center gap-1.5 text-xs text-slate-600">
-                    <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: orgColor(m.org) }} />
-                    {m.org}
-                  </span>
-                </td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-700">{fmt(m.intelligence_index)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-500">{fmt(m.coding_index)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-500">{fmt(m.math_index)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-600">{fmtPrice(m.price_blended)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-500">{fmt(m.tokens_per_sec, 0)}</td>
-                <td className="px-3 py-2 text-xs text-slate-400">{fmtDate(m.release_date)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
+      <div className="flex flex-wrap gap-1.5 mb-5 mt-3">
+        {tabs.map(tab => (
+          <button key={tab} onClick={() => setActive(tab)}
+            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
+              active === tab
+                ? "bg-violet-600 text-white shadow-sm"
+                : "bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700"
+            }`}>
+            {tabLabel(tab)}
+          </button>
+        ))}
       </div>
 
-      {models.filter((m) => {
-        if (filterOpen === "open" && m.open_weight !== true) return false
-        if (filterOpen === "closed" && m.open_weight !== false) return false
-        if (filterOrg !== "all" && m.org !== filterOrg) return false
-        return true
-      }).length > showCount && (
-        <button onClick={() => setShowCount((n) => n + 50)}
-          className="mt-3 w-full text-xs text-slate-400 hover:text-slate-600 py-2 border border-dashed border-slate-200 rounded-lg transition-colors">
-          Show more
-        </button>
-      )}
+      <div className="space-y-3">
+        {ranked.map(m => {
+          const rel = (m.score - minScore) / range
+          const barPct = Math.max(8, Math.round(rel * 100))
+          return (
+            <div key={m.model_id} className="flex items-center gap-3">
+              <span className="text-[11px] tabular-nums text-slate-400 w-5 text-right shrink-0 font-semibold">{m.rank}</span>
+              <div className="flex-1 min-w-0">
+                <div className="flex items-center gap-2 mb-1">
+                  <span className="text-xs font-medium text-slate-800 truncate">{m.model_name}</span>
+                  {m.open_weight && (
+                    <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded-full bg-violet-50 text-violet-600 font-medium border border-violet-100">
+                      open
+                    </span>
+                  )}
+                  {m.min_input_price != null && m.min_input_price > 0 && (
+                    <span className="shrink-0 text-[10px] text-slate-400 ml-auto tabular-nums">
+                      ${(m.min_input_price / 1_000_000).toFixed(2)}/1M
+                    </span>
+                  )}
+                </div>
+                <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
+                  <div className="h-full bg-violet-500 rounded-full" style={{ width: `${barPct}%` }} />
+                </div>
+              </div>
+              <span className="text-[11px] tabular-nums text-slate-500 w-12 text-right shrink-0 font-mono">
+                {m.score.toFixed(3)}
+              </span>
+            </div>
+          )
+        })}
+      </div>
+
+      <p className="mt-4 text-[11px] text-slate-400 border-t border-slate-100 pt-3">
+        Source: LLM Stats (TrueSkill algorithm). Scores are domain-specific — a score in "coding" is not comparable to "finance".
+        Bar widths show relative standing within the selected domain only.
+      </p>
     </div>
   )
 }
@@ -578,32 +878,34 @@ function FrontierLeaderboard({ models }: { models: ModelRecord[] }) {
 
 export default function FrontierModels({ data, builtAt }: { data: ModelsData; builtAt: string | null }) {
   return (
-    <div className="space-y-6 max-w-[1400px] mx-auto">
-      {/* Page header + refresh */}
-      <div className="flex items-start justify-between">
+    <div className="w-full">
+      {/* Page header — full width */}
+      <div className="flex items-start justify-between gap-4 mb-6">
         <div>
           <h1 className="text-xl font-semibold text-slate-900 tracking-tight">Frontier Model Tracking</h1>
-          <p className="text-sm text-slate-400 mt-0.5">
-            {data.model_count} models across {data.org_count} labs — benchmarks, cost, and capability signals
-          </p>
+          <MetadataStrip data={data} builtAt={builtAt} />
         </div>
         <RefreshButton builtAt={builtAt} />
       </div>
 
-      {/* Stats */}
-      <StatsBar data={data} />
+      {/* Two-column layout: leaderboard sidebar | main content */}
+      <div className="flex gap-6 items-start">
+        {/* LEFT: sticky leaderboard sidebar — sticks at navbar height */}
+        <div className="w-72 xl:w-80 shrink-0 sticky top-[3.75rem]">
+          <SideLeaderboard models={data.models} />
+        </div>
 
-      {/* Charts row */}
-      <div className="grid grid-cols-1 lg:grid-cols-2 gap-5">
-        <ReleaseTimeline models={data.models} />
-        <CostScatter models={data.models} />
+        {/* RIGHT: all content stacked */}
+        <div className="flex-1 min-w-0 space-y-5">
+          <BestInClass models={data.models} />
+          <OpenVsClosedOverTime models={data.models} />
+          <ReleaseTimeline models={data.models} />
+          <CostScatter models={data.models} />
+          <SpeedVsIntelligence models={data.models} />
+          <GeographyChart models={data.models} />
+          <DomainRankings rankings={data.rankings} />
+        </div>
       </div>
-
-      {/* Domain rankings */}
-      <DomainRankings rankings={data.rankings} />
-
-      {/* Full leaderboard */}
-      <FrontierLeaderboard models={data.models} />
     </div>
   )
 }

@@ -26,7 +26,7 @@ export default function ModelsPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
-      <Navbar scrapedAt={builtAt} />
+      <Navbar scrapedAt={null} />
       <div className="flex-1 px-4 sm:px-6 py-8">
         {!data ? (
           <div className="bg-white rounded-2xl border border-dashed border-slate-200 px-6 py-12 text-center">
