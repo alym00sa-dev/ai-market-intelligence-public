@@ -33,6 +33,9 @@ export default function Page() {
       })
     : null
 
+  // Strip descriptions — only used during classification, not in the UI (~13 MB saved)
+  data.jobs.forEach((j) => { delete (j as Record<string, unknown>).description })
+
   const profiles = computeCompanyProfiles(data)
 
   return (

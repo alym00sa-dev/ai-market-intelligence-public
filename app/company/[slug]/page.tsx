@@ -35,6 +35,9 @@ export default async function CompanyPage({
   const company = fromSlug(slug, companyNames)
   if (!company) notFound()
 
+  // Strip descriptions — not shown in UI, saves significant payload per page
+  data.jobs.forEach((j) => { delete (j as Record<string, unknown>).description })
+
   const detail = computeCompanyDetail(data, company)
   if (!detail) notFound()
 
