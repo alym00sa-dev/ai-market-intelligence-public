@@ -58,6 +58,58 @@ export type SocialImpactData = {
   byCategory: Record<string, number>
 }
 
+// ── Frontier Model Tracking ───────────────────────────────────────────────────
+
+export type ModelRecord = {
+  id: string
+  name: string
+  slug: string
+  org: string
+  country: string
+  release_date: string | null
+  open_weight: boolean | null
+  param_count: number | null
+  license: string | null
+  modalities: string[]
+  // Benchmarks
+  intelligence_index: number | null
+  coding_index: number | null
+  math_index: number | null
+  gpqa: number | null
+  hle: number | null
+  mmlu_pro: number | null
+  livecodebench: number | null
+  ifbench: number | null
+  lcr: number | null
+  aime_25: number | null
+  // Pricing
+  price_input: number | null
+  price_output: number | null
+  price_blended: number | null
+  // Speed
+  tokens_per_sec: number | null
+  ttft: number | null
+}
+
+export type RankedModel = {
+  rank: number
+  model_id: string
+  model_name: string
+  organization: string
+  score: number
+  open_weight: boolean
+  min_input_price: number | null
+}
+
+export type ModelsData = {
+  built_at: string
+  model_count: number
+  open_count: number
+  org_count: number
+  models: ModelRecord[]
+  rankings: Record<string, { category: string; ranked_at: string; models: RankedModel[] }>
+}
+
 export type CompanyProfile = {
   company: string
   total: number
