@@ -3,6 +3,13 @@
 import Link from "next/link"
 import type { CompanyDetailData, SubAreaDetail, GeoRow } from "../lib/company-detail"
 
+// ── Display name overrides ────────────────────────────────────────────────────
+
+const DISPLAY_NAMES: Record<string, string> = {
+  "Microsoft Research": "Microsoft",
+  "Amazon AGI":         "Amazon",
+}
+
 // ── Shared constants ──────────────────────────────────────────────────────────
 
 const CAT_COLOR: Record<string, string> = {
@@ -271,13 +278,13 @@ export default function CompanyDetailView({ detail }: { detail: CompanyDetailDat
           Dashboard
         </Link>
         <span className="text-slate-200">/</span>
-        <span className="text-[12px] text-slate-600">{company}</span>
+        <span className="text-[12px] text-slate-600">{DISPLAY_NAMES[company] ?? company}</span>
       </div>
 
       {/* Header + overview */}
       <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-6 py-6">
         <div className="flex items-baseline justify-between mb-6">
-          <h1 className="text-xl font-semibold text-slate-900 tracking-tight">{company}</h1>
+          <h1 className="text-xl font-semibold text-slate-900 tracking-tight">{DISPLAY_NAMES[company] ?? company}</h1>
           <span className="text-sm text-slate-400 tabular-nums">{total.toLocaleString()} open roles</span>
         </div>
 

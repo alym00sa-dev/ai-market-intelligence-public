@@ -10,6 +10,11 @@ function formatSubArea(raw: string): string {
   return raw.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
 }
 
+const DISPLAY_NAMES: Record<string, string> = {
+  "Microsoft Research": "Microsoft",
+  "Amazon AGI":         "Amazon",
+}
+
 // ── Radar chart ───────────────────────────────────────────────────────────────
 
 const RADAR_DIMS = [
@@ -273,14 +278,25 @@ function VerticalRadar({ breakdown, total, size = 110 }: {
       {VERTICAL_RADAR_DIMS.map((d, i) => {
         const a = angle(i), lx = cx + lr * Math.cos(a), ly = cy + lr * Math.sin(a)
         const pct = total > 0 ? Math.round(((breakdown[d.key] ?? 0) / total) * 100) : 0
+        const words = d.label.split(" ")
+        const hasTwo = words.length > 1
+        // Position-aware anchor: left side → end, right side → start, top/bottom → middle
+        const anchor = Math.cos(a) < -0.3 ? "end" : Math.cos(a) > 0.3 ? "start" : "middle"
         return (
           <g key={d.key}>
-            <text x={lx} y={ly - 3.5} textAnchor="middle" dominantBaseline="middle"
+            <text x={lx} y={hasTwo ? ly - 7 : ly - 3.5} textAnchor={anchor} dominantBaseline="middle"
               fontSize={7} fontWeight={500} fill="#64748b"
               fontFamily="ui-sans-serif, system-ui, sans-serif">
-              {d.label.split(" ")[0]}
+              {words[0]}
             </text>
-            <text x={lx} y={ly + 3.5} textAnchor="middle" dominantBaseline="middle"
+            {hasTwo && (
+              <text x={lx} y={ly - 0.5} textAnchor={anchor} dominantBaseline="middle"
+                fontSize={7} fontWeight={500} fill="#64748b"
+                fontFamily="ui-sans-serif, system-ui, sans-serif">
+                {words.slice(1).join(" ")}
+              </text>
+            )}
+            <text x={lx} y={hasTwo ? ly + 6 : ly + 3.5} textAnchor={anchor} dominantBaseline="middle"
               fontSize={6.5} fill={pct > 0 ? "#94a3b8" : "#cbd5e1"}
               fontFamily="ui-sans-serif, system-ui, sans-serif">
               {pct > 0 ? `${pct}%` : "—"}
@@ -399,7 +415,7 @@ function CompanyRow({ profile }: { profile: CompanyProfile }) {
     <div className="bg-white rounded-2xl border border-slate-200/70 border-l-[3px] border-l-indigo-200 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-6 py-5">
       {/* Header — company name + role count + CTA */}
       <div className="flex items-center justify-between mb-5">
-        <span className="text-[17px] font-semibold text-slate-900 tracking-tight">{company}</span>
+        <span className="text-[17px] font-semibold text-slate-900 tracking-tight">{DISPLAY_NAMES[company] ?? company}</span>
         <div className="flex items-center gap-3">
           <span className="text-xs text-slate-400 tabular-nums">{total.toLocaleString()} roles</span>
           <Link
