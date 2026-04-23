@@ -16,7 +16,7 @@ from pathlib import Path
 AA_FILE   = Path(__file__).parent / "artificial-analysis/data/llms_models.json"
 LS_FILE   = Path(__file__).parent / "llm-stats/data/models.json"
 RANK_FILE = Path(__file__).parent / "llm-stats/data/rankings.json"
-OUT_FILE  = Path(__file__).parent.parent / "ai-market-intelligence-dashboard/public/data/models.json"
+OUT_FILE  = Path(__file__).parent.parent / "public/data/models.json"
 
 # ── Org → country mapping ─────────────────────────────────────────────────────
 
