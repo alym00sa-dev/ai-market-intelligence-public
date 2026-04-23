@@ -1,0 +1,43 @@
+name: Refresh Models Data
+
+on:
+  schedule:
+    - cron: "0 6 * * *"   # every morning at 6am UTC
+  workflow_dispatch:        # manual trigger from dashboard or GitHub UI
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv
+
+      - name: Fetch Artificial Analysis data
+        env:
+          ARTIFICIAL_ANALYSIS_API_KEY: ${{ secrets.ARTIFICIAL_ANALYSIS_API_KEY }}
+        run: python model-cap-benchmarks/artificial-analysis/fetch.py
+
+      - name: Fetch LLM Stats data
+        env:
+          LLM_STATS_API_KEY: ${{ secrets.LLM_STATS_API_KEY }}
+        run: python model-cap-benchmarks/llm-stats/fetch.py
+
+      - name: Build models.json
+        run: python model-cap-benchmarks/build_models_json.py
+
+      - name: Commit updated models.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/models.json
+          git diff --cached --quiet || git commit -m "chore: refresh models data [skip ci]"
+          git push

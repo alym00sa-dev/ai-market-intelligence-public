@@ -1,0 +1,903 @@
+{
+  "fetched_at": "2026-04-23T15:20:39.960732+00:00",
+  "source": "llm_stats",
+  "days": 30,
+  "data": [
+    {
+      "id": "kimi-k2-0905",
+      "name": "Kimi K2 0905",
+      "organization": {
+        "id": "moonshotai",
+        "name": "Moonshot AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-09-05",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:33.828647Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/kimi-k2-0905"
+    },
+    {
+      "id": "glm-4.5v",
+      "name": "GLM-4.5V",
+      "organization": {
+        "id": "zai-org",
+        "name": "Zhipu AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text",
+        "video"
+      ],
+      "context_window": null,
+      "release_date": "2025-08-11",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.825536Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/glm-4.5v"
+    },
+    {
+      "id": "qwen3-235b-a22b-thinking-2507",
+      "name": "Qwen3-235B-A22B-Thinking-2507",
+      "organization": {
+        "id": "qwen",
+        "name": "Alibaba Cloud / Qwen Team"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-07-25",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.750645Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/qwen3-235b-a22b-thinking-2507"
+    },
+    {
+      "id": "qvq-72b-preview",
+      "name": "QvQ-72B-Preview",
+      "organization": {
+        "id": "qwen",
+        "name": "Alibaba Cloud / Qwen Team"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2024-12-25",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.736250Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/qvq-72b-preview"
+    },
+    {
+      "id": "qwen-2.5-coder-7b-instruct",
+      "name": "Qwen2.5-Coder 7B Instruct",
+      "organization": {
+        "id": "qwen",
+        "name": "Alibaba Cloud / Qwen Team"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2024-09-19",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.679049Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/qwen-2.5-coder-7b-instruct"
+    },
+    {
+      "id": "qwq-32b-preview",
+      "name": "QwQ-32B-Preview",
+      "organization": {
+        "id": "qwen",
+        "name": "Alibaba Cloud / Qwen Team"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2024-11-28",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.661527Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/qwq-32b-preview"
+    },
+    {
+      "id": "qwen-2.5-coder-32b-instruct",
+      "name": "Qwen2.5-Coder 32B Instruct",
+      "organization": {
+        "id": "qwen",
+        "name": "Alibaba Cloud / Qwen Team"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2024-09-19",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.613221Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/qwen-2.5-coder-32b-instruct"
+    },
+    {
+      "id": "kimi-k2-thinking-0905",
+      "name": "Kimi K2-Thinking-0905",
+      "organization": {
+        "id": "moonshotai",
+        "name": "Moonshot AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-09-05",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.527794Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/kimi-k2-thinking-0905"
+    },
+    {
+      "id": "kimi-k2-instruct",
+      "name": "Kimi K2 Instruct",
+      "organization": {
+        "id": "moonshotai",
+        "name": "Moonshot AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-07-11",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.415778Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/kimi-k2-instruct"
+    },
+    {
+      "id": "mistral-small-3.2-24b-instruct-2506",
+      "name": "Mistral Small 3.2 24B Instruct",
+      "organization": {
+        "id": "mistral",
+        "name": "Mistral AI"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2025-06-20",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.368207Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/mistral-small-3.2-24b-instruct-2506"
+    },
+    {
+      "id": "pixtral-large",
+      "name": "Pixtral Large",
+      "organization": {
+        "id": "mistral",
+        "name": "Mistral AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2024-11-18",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.345517Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/pixtral-large"
+    },
+    {
+      "id": "phi-4-reasoning",
+      "name": "Phi 4 Reasoning",
+      "organization": {
+        "id": "microsoft",
+        "name": "Microsoft"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2025-04-30",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.312372Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/phi-4-reasoning"
+    },
+    {
+      "id": "llama-3.1-nemotron-70b-instruct",
+      "name": "Llama 3.1 Nemotron 70B Instruct",
+      "organization": {
+        "id": "nvidia",
+        "name": "NVIDIA"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2024-10-01",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.278729Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/llama-3.1-nemotron-70b-instruct"
+    },
+    {
+      "id": "deepseek-v3.1",
+      "name": "DeepSeek-V3.1",
+      "organization": {
+        "id": "deepseek",
+        "name": "DeepSeek"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-01-10",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.229397Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/deepseek-v3.1"
+    },
+    {
+      "id": "deepseek-r1-zero",
+      "name": "DeepSeek R1 Zero",
+      "organization": {
+        "id": "deepseek",
+        "name": "DeepSeek"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2025-01-20",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.215545Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/deepseek-r1-zero"
+    },
+    {
+      "id": "deepseek-r1-0528",
+      "name": "DeepSeek-R1-0528",
+      "organization": {
+        "id": "deepseek",
+        "name": "DeepSeek"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-05-28",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.167126Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/deepseek-r1-0528"
+    },
+    {
+      "id": "glm-5v-turbo",
+      "name": "GLM-5V-Turbo",
+      "organization": {
+        "id": "zai-org",
+        "name": "Zhipu AI"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2026-04-02",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:33.096697Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/glm-5v-turbo"
+    },
+    {
+      "id": "glm-5.1",
+      "name": "GLM-5.1",
+      "organization": {
+        "id": "zai-org",
+        "name": "Zhipu AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2026-04-07",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.040521Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/glm-5.1"
+    },
+    {
+      "id": "glm-5",
+      "name": "GLM-5",
+      "organization": {
+        "id": "zai-org",
+        "name": "Zhipu AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2026-02-11",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:33.021452Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/glm-5"
+    },
+    {
+      "id": "glm-4.7-flash",
+      "name": "GLM-4.7-Flash",
+      "organization": {
+        "id": "zai-org",
+        "name": "Zhipu AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2026-01-19",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:32.994966Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/glm-4.7-flash"
+    },
+    {
+      "id": "glm-4.7",
+      "name": "GLM-4.7",
+      "organization": {
+        "id": "zai-org",
+        "name": "Zhipu AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-12-22",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:32.949909Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/glm-4.7"
+    },
+    {
+      "id": "glm-4.6",
+      "name": "GLM-4.6",
+      "organization": {
+        "id": "zai-org",
+        "name": "Zhipu AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text",
+        "video"
+      ],
+      "context_window": null,
+      "release_date": "2025-09-30",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:32.926178Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/glm-4.6"
+    },
+    {
+      "id": "glm-4.5-air",
+      "name": "GLM-4.5-Air",
+      "organization": {
+        "id": "zai-org",
+        "name": "Zhipu AI"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2025-07-28",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:32.882290Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/glm-4.5-air"
+    },
+    {
+      "id": "glm-4.5",
+      "name": "GLM-4.5",
+      "organization": {
+        "id": "zai-org",
+        "name": "Zhipu AI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-07-28",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:32.840910Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/glm-4.5"
+    },
+    {
+      "id": "mimo-v2-pro",
+      "name": "MiMo-V2-Pro",
+      "organization": {
+        "id": "xiaomi",
+        "name": "Xiaomi"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2026-03-18",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.813230Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/mimo-v2-pro"
+    },
+    {
+      "id": "mimo-v2-omni",
+      "name": "MiMo-V2-Omni",
+      "organization": {
+        "id": "xiaomi",
+        "name": "Xiaomi"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "audio",
+        "image",
+        "text",
+        "video"
+      ],
+      "context_window": null,
+      "release_date": "2026-03-18",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.793356Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/mimo-v2-omni"
+    },
+    {
+      "id": "mimo-v2-flash",
+      "name": "MiMo-V2-Flash",
+      "organization": {
+        "id": "xiaomi",
+        "name": "Xiaomi"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-12-16",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:32.740230Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/mimo-v2-flash"
+    },
+    {
+      "id": "grok-code-fast-1",
+      "name": "Grok Code Fast 1",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-08-28",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.725121Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-code-fast-1"
+    },
+    {
+      "id": "grok-4.20-multi-agent-beta-0309",
+      "name": "Grok-4.20 Multi-Agent Beta",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2026-03-09",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.721970Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4.20-multi-agent-beta-0309"
+    },
+    {
+      "id": "grok-4.20-beta-0309-reasoning",
+      "name": "Grok-4.20 Beta Reasoning",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2026-03-09",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.718826Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4.20-beta-0309-reasoning"
+    },
+    {
+      "id": "grok-4.20-beta-0309-non-reasoning",
+      "name": "Grok-4.20 Beta Non-Reasoning",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2026-03-09",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.715867Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4.20-beta-0309-non-reasoning"
+    },
+    {
+      "id": "grok-4.1-thinking-2025-11-17",
+      "name": "Grok-4.1 Thinking",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-11-17",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.674600Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4.1-thinking-2025-11-17"
+    },
+    {
+      "id": "grok-4.1-2025-11-17",
+      "name": "Grok-4.1",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-11-17",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.660272Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4.1-2025-11-17"
+    },
+    {
+      "id": "grok-4-heavy",
+      "name": "Grok-4 Heavy",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": null,
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.640806Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4-heavy"
+    },
+    {
+      "id": "grok-4-fast-reasoning",
+      "name": "Grok-4 Fast Reasoning",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-08-28",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.637906Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4-fast-reasoning"
+    },
+    {
+      "id": "grok-4-fast-non-reasoning",
+      "name": "Grok-4 Fast Non-Reasoning",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-08-28",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.634800Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4-fast-non-reasoning"
+    },
+    {
+      "id": "grok-4-fast",
+      "name": "Grok 4 Fast",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-08-28",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.613177Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4-fast"
+    },
+    {
+      "id": "grok-4-1-fast-reasoning",
+      "name": "Grok-4.1 Fast Reasoning",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-11-17",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.610600Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4-1-fast-reasoning"
+    },
+    {
+      "id": "grok-4-1-fast-non-reasoning",
+      "name": "Grok-4.1 Fast Non-Reasoning",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-11-17",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.607882Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4-1-fast-non-reasoning"
+    },
+    {
+      "id": "grok-4",
+      "name": "Grok-4",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-07-09",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.586229Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-4"
+    },
+    {
+      "id": "grok-3-mini",
+      "name": "Grok-3 Mini",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-02-17",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.563836Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-3-mini"
+    },
+    {
+      "id": "grok-3",
+      "name": "Grok-3",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2025-02-17",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.547570Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-3"
+    },
+    {
+      "id": "grok-2-mini",
+      "name": "Grok-2 mini",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2024-08-13",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.521976Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-2-mini"
+    },
+    {
+      "id": "grok-2-image-1212",
+      "name": "Grok-2 Image 1212",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2024-12-12",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.518831Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-2-image-1212"
+    },
+    {
+      "id": "grok-2",
+      "name": "Grok-2",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2024-08-13",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.489706Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-2"
+    },
+    {
+      "id": "grok-1.5v",
+      "name": "Grok-1.5V",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2024-04-12",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.461603Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-1.5v"
+    },
+    {
+      "id": "grok-1.5",
+      "name": "Grok-1.5",
+      "organization": {
+        "id": "xai",
+        "name": "xAI"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2024-03-28",
+      "open_weight": false,
+      "added_at": "2026-04-23T01:52:32.431838Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/grok-1.5"
+    },
+    {
+      "id": "step3-vl-10b",
+      "name": "Step3-VL-10B",
+      "organization": {
+        "id": "stepfun",
+        "name": "StepFun"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2026-01-15",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:32.397506Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/step3-vl-10b"
+    },
+    {
+      "id": "step-3.5-flash",
+      "name": "Step-3.5-Flash",
+      "organization": {
+        "id": "stepfun",
+        "name": "StepFun"
+      },
+      "model_type": "llm",
+      "modalities": [
+        "image",
+        "text"
+      ],
+      "context_window": null,
+      "release_date": "2026-02-02",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:32.373762Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/step-3.5-flash"
+    },
+    {
+      "id": "sarvam-30b",
+      "name": "Sarvam-30B",
+      "organization": {
+        "id": "sarvamai",
+        "name": "Sarvam AI"
+      },
+      "model_type": "llm",
+      "modalities": [],
+      "context_window": null,
+      "release_date": "2026-03-06",
+      "open_weight": true,
+      "added_at": "2026-04-23T01:52:32.323045Z",
+      "source": "LLM Stats",
+      "url": "https://llm-stats.com/models/sarvam-30b"
+    }
+  ],
+  "count": 50
+}
