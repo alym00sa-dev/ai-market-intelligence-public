@@ -49,10 +49,6 @@ def save(filename: str, data) -> None:
 def pull(path: str, filename: str, params: dict = None, label: str = "") -> None:
     out_path = OUT_DIR / filename
     print(f"\n[{label or path}]")
-    # Skip if already fetched this session
-    if out_path.exists():
-        print(f"  already exists — skipping ({out_path.stat().st_size // 1024} KB)")
-        return
     try:
         raw = fetch(path, params=params)
     except Exception as e:
