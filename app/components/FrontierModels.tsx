@@ -31,9 +31,10 @@ function fmt(n: number | null, dec = 1): string {
 }
 function fmtPrice(n: number | null): string {
   if (n == null) return "n/a"
-  if (n < 0.01) return `$${n.toFixed(3)}`
-  if (n < 1)    return `$${n.toFixed(2)}`
-  return `$${n.toFixed(0)}`
+  if (n < 0.01)  return `$${n.toFixed(4)}`
+  if (n < 1)     return `$${n.toFixed(3)}`
+  if (n < 10)    return `$${n.toFixed(2)}`
+  return `$${n.toFixed(2)}`
 }
 function fmtDate(d: string | null): string {
   if (!d) return "n/a"
@@ -534,7 +535,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
     <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-slate-700">Open vs. Closed Frontier</h3>
+          <h3 className="text-sm font-semibold text-slate-700">Open vs. Closed Intelligence Over Time</h3>
           <p className="text-xs text-slate-400 mt-0.5">
             Best model score at each point in time. Each step marks a new state-of-the-art. Hover any dot to see which model set the record.
           </p>
@@ -979,7 +980,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
 
 // ── Graph 4: Cost vs Intelligence (top 20 + by-company view) ─────────────────
 
-function CostScatter({ models }: { models: ModelRecord[] }) {
+function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean }) {
   const [hovered, setHovered] = useState<ModelRecord | null>(null)
   const [viewMode, setViewMode] = useState<"open-closed" | "by-company">("open-closed")
 
@@ -1001,7 +1002,7 @@ function CostScatter({ models }: { models: ModelRecord[] }) {
   const plotModels = viewMode === "by-company" ? topByCompany : [...topOpen, ...topClosed]
   if (plotModels.length === 0) return null
 
-  const W = 820, H = 300, PAD_L = 58, PAD_B = 38, PAD_T = 16, PAD_R = 24
+  const W = 820, H = 380, PAD_L = 58, PAD_B = 56, PAD_T = 16, PAD_R = 24
   const plotW = W - PAD_L - PAD_R
   const plotH = H - PAD_T - PAD_B
 
@@ -1012,10 +1013,12 @@ function CostScatter({ models }: { models: ModelRecord[] }) {
   const logMax = Math.log10(maxP)
   const minI = Math.min(...intels), maxI = Math.max(...intels)
 
-  const toX = (v: number) => PAD_L + ((v - minI) / (maxI - minI || 1)) * plotW
-  const toY = (p: number) => PAD_T + (1 - (Math.log10(Math.max(p, 0.001)) - logMin) / (logMax - logMin || 1)) * plotH
+  const toX = (p: number) => PAD_L + ((Math.log10(Math.max(p, 0.001)) - logMin) / (logMax - logMin || 1)) * plotW
+  const toY = (v: number) => PAD_T + (1 - (v - minI) / (maxI - minI || 1)) * plotH
 
-  const yTicks = [0.001, 0.01, 0.1, 0.5, 1, 5, 15, 50, 150].filter(t => t >= minP * 0.4 && t <= maxP * 2.5)
+  const xTicks = [0.001, 0.005, 0.01, 0.05, 0.1, 0.25, 0.5, 1, 2, 5, 10, 15, 30, 50, 100, 150].filter(t => t >= minP * 0.4 && t <= maxP * 2.5)
+  const iStep = (maxI - minI) / 8
+  const yTicks = Array.from({ length: 9 }, (_, i) => parseFloat((minI + i * iStep).toFixed(1))).filter(t => t <= maxI + 0.1)
 
   const dotColor = (m: ModelRecord) =>
     viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#94a3b8")
@@ -1024,15 +1027,16 @@ function CostScatter({ models }: { models: ModelRecord[] }) {
     ? [...new Set(topByCompany.map(m => m.org))].sort()
     : []
 
+  const inner_ = inner
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
+    <div className={inner_ ? "px-5 py-5" : "bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5"}>
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-slate-700">Cost vs. Capability</h3>
+          <h3 className="text-sm font-semibold text-slate-700">Capability vs. Cost</h3>
           <p className="text-xs text-slate-400 mt-0.5">
             {viewMode === "open-closed"
-              ? "Top 10 open-weight and top 10 closed models by Intelligence Index. Price axis uses a log scale (blended per 1M tokens). Hover a dot for details."
-              : "Top 30 models with pricing data, colored by company. Price axis uses a log scale. Hover a dot for details."
+              ? "Top 10 open-weight and top 10 closed models. Cost on X axis (log scale, blended per 1M tokens); Intelligence Index on Y axis. Hover a dot for details."
+              : "Top 30 models with pricing data, colored by company. Cost on X axis (log scale); Intelligence Index on Y axis. Hover a dot for details."
             }
           </p>
         </div>
@@ -1081,6 +1085,17 @@ function CostScatter({ models }: { models: ModelRecord[] }) {
               <g key={t}>
                 <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
                 <text x={PAD_L - 5} y={y} textAnchor="end" dominantBaseline="middle"
+                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{t}</text>
+              </g>
+            )
+          })}
+          {xTicks.map(t => {
+            const x = toX(t)
+            if (x < PAD_L - 2 || x > PAD_L + plotW + 2) return null
+            return (
+              <g key={t}>
+                <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#f8fafc" strokeWidth={1} />
+                <text x={x} y={H - PAD_B + 14} textAnchor="middle"
                   fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
                   ${t < 1 ? t.toFixed(t < 0.01 ? 3 : 2) : t}
                 </text>
@@ -1089,7 +1104,7 @@ function CostScatter({ models }: { models: ModelRecord[] }) {
           })}
 
           {plotModels.map(m => {
-            const x = toX(m.intelligence_index!), y = toY(m.price_blended!)
+            const x = toX(m.price_blended!), y = toY(m.intelligence_index!)
             const isHov = hovered?.id === m.id
             return (
               <g key={m.id}>
@@ -1104,7 +1119,7 @@ function CostScatter({ models }: { models: ModelRecord[] }) {
           })}
 
           {hovered && (() => {
-            const x = toX(hovered.intelligence_index!), y = toY(hovered.price_blended!)
+            const x = toX(hovered.price_blended!), y = toY(hovered.intelligence_index!)
             const tx = x > W * 0.68 ? x - 158 : x + 10
             const ty = y < 60 ? y + 8 : y - 62
             return (
@@ -1126,11 +1141,11 @@ function CostScatter({ models }: { models: ModelRecord[] }) {
             )
           })()}
 
-          <text x={PAD_L + plotW / 2} y={H - 4} textAnchor="middle"
-            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
+          <text x={PAD_L + plotW / 2} y={H - 8} textAnchor="middle"
+            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Price per 1M tokens (log scale)</text>
           <text x={14} y={PAD_T + plotH / 2} textAnchor="middle"
             transform={`rotate(-90, 14, ${PAD_T + plotH / 2})`}
-            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Price per 1M tokens (log scale)</text>
+            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
 
           <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
           <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
@@ -1142,7 +1157,7 @@ function CostScatter({ models }: { models: ModelRecord[] }) {
 
 // ── Graph 5: Speed vs Intelligence (top 20 + by-company view) ────────────────
 
-function SpeedVsIntelligence({ models }: { models: ModelRecord[] }) {
+function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?: boolean }) {
   const [hovered, setHovered] = useState<ModelRecord | null>(null)
   const [viewMode, setViewMode] = useState<"open-closed" | "by-company">("open-closed")
 
@@ -1164,7 +1179,7 @@ function SpeedVsIntelligence({ models }: { models: ModelRecord[] }) {
   const plotModels = viewMode === "by-company" ? topByCompany : [...topOpen, ...topClosed]
   if (plotModels.length === 0) return null
 
-  const W = 820, H = 300, PAD_L = 60, PAD_B = 38, PAD_T = 16, PAD_R = 24
+  const W = 820, H = 380, PAD_L = 60, PAD_B = 56, PAD_T = 16, PAD_R = 24
   const plotW = W - PAD_L - PAD_R
   const plotH = H - PAD_T - PAD_B
 
@@ -1176,9 +1191,9 @@ function SpeedVsIntelligence({ models }: { models: ModelRecord[] }) {
   const toX = (v: number) => PAD_L + ((v - minI) / (maxI - minI || 1)) * plotW
   const toY = (v: number) => PAD_T + (1 - (v - minS) / (maxS - minS || 1)) * plotH
 
-  const yTicks = [0, 25, 50, 100, 200, 400, 800, 1500, 3000].filter(t => t <= maxS * 1.1)
-  const xStep  = Math.ceil((maxI - minI) / 5 / 5) * 5 || 5
-  const xTicks = Array.from({ length: 7 }, (_, i) => Math.round(minI + i * xStep)).filter(t => t <= maxI + 1)
+  const yTicks = [0, 10, 25, 50, 75, 100, 150, 200, 300, 400, 600, 800, 1200, 1500, 2000, 3000].filter(t => t <= maxS * 1.1)
+  const xStep  = (maxI - minI) / 9
+  const xTicks = Array.from({ length: 10 }, (_, i) => parseFloat((minI + i * xStep).toFixed(1))).filter(t => t <= maxI + 0.1)
 
   const dotColor = (m: ModelRecord) =>
     viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#94a3b8")
@@ -1187,8 +1202,9 @@ function SpeedVsIntelligence({ models }: { models: ModelRecord[] }) {
     ? [...new Set(topByCompany.map(m => m.org))].sort()
     : []
 
+  const inner_ = inner
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
+    <div className={inner_ ? "px-5 py-5" : "bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5"}>
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-slate-700">Speed vs. Intelligence</h3>
@@ -1253,7 +1269,7 @@ function SpeedVsIntelligence({ models }: { models: ModelRecord[] }) {
             return (
               <g key={t}>
                 <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#f8fafc" strokeWidth={1} />
-                <text x={x} y={H - 8} textAnchor="middle"
+                <text x={x} y={H - PAD_B + 14} textAnchor="middle"
                   fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{t}</text>
               </g>
             )
@@ -1297,7 +1313,7 @@ function SpeedVsIntelligence({ models }: { models: ModelRecord[] }) {
             )
           })()}
 
-          <text x={PAD_L + plotW / 2} y={H - 4} textAnchor="middle"
+          <text x={PAD_L + plotW / 2} y={H - 8} textAnchor="middle"
             fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
           <text x={14} y={PAD_T + plotH / 2} textAnchor="middle"
             transform={`rotate(-90, 14, ${PAD_T + plotH / 2})`}
@@ -1307,6 +1323,72 @@ function SpeedVsIntelligence({ models }: { models: ModelRecord[] }) {
           <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
         </svg>
       </div>
+    </div>
+  )
+}
+
+// ── Scatter Section (metrics header + both scatter plots) ────────────────────
+
+function MetricStat({ label, value }: { label: string; value: string }) {
+  return (
+    <div>
+      <div className="text-xs text-slate-400 leading-tight">{label}</div>
+      <div className="text-base font-semibold text-slate-800 mt-0.5 tabular-nums">{value}</div>
+    </div>
+  )
+}
+
+function ScatterSection({ models }: { models: ModelRecord[] }) {
+  const top10Open = [...models]
+    .filter(m => m.open_weight === true && m.intelligence_index != null)
+    .sort((a, b) => b.intelligence_index! - a.intelligence_index!)
+    .slice(0, 10)
+
+  const top10Closed = [...models]
+    .filter(m => m.open_weight !== true && m.intelligence_index != null)
+    .sort((a, b) => b.intelligence_index! - a.intelligence_index!)
+    .slice(0, 10)
+
+  const avg = (arr: number[]) => arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : null
+
+  const openIntel  = avg(top10Open.map(m => m.intelligence_index!))
+  const openSpeed  = avg(top10Open.filter(m => m.tokens_per_sec != null && m.tokens_per_sec > 0).map(m => m.tokens_per_sec!))
+  const openPrice  = avg(top10Open.filter(m => m.price_blended != null && m.price_blended > 0).map(m => m.price_blended!))
+  const closedIntel = avg(top10Closed.map(m => m.intelligence_index!))
+  const closedSpeed = avg(top10Closed.filter(m => m.tokens_per_sec != null && m.tokens_per_sec > 0).map(m => m.tokens_per_sec!))
+  const closedPrice = avg(top10Closed.filter(m => m.price_blended != null && m.price_blended > 0).map(m => m.price_blended!))
+
+  return (
+    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] overflow-hidden">
+      {/* Metrics header */}
+      <div className="px-5 py-4 grid grid-cols-2 gap-6 divide-x divide-slate-200 bg-slate-50">
+        <div>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-violet-400 shrink-0" />
+            <span className="text-xs font-semibold text-slate-700">Open-weight — top 10</span>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            <MetricStat label="Avg Intelligence" value={openIntel != null ? openIntel.toFixed(1) : "n/a"} />
+            <MetricStat label="Avg Speed" value={openSpeed != null ? `${openSpeed.toFixed(0)} t/s` : "n/a"} />
+            <MetricStat label="Avg Price / 1M" value={openPrice != null ? fmtPrice(openPrice) : "n/a"} />
+          </div>
+        </div>
+        <div className="pl-6">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0" />
+            <span className="text-xs font-semibold text-slate-700">Closed — top 10</span>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            <MetricStat label="Avg Intelligence" value={closedIntel != null ? closedIntel.toFixed(1) : "n/a"} />
+            <MetricStat label="Avg Speed" value={closedSpeed != null ? `${closedSpeed.toFixed(0)} t/s` : "n/a"} />
+            <MetricStat label="Avg Price / 1M" value={closedPrice != null ? fmtPrice(closedPrice) : "n/a"} />
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-slate-100" />
+      <CostScatter models={models} inner />
+      <div className="border-t border-slate-100" />
+      <SpeedVsIntelligence models={models} inner />
     </div>
   )
 }
@@ -1467,8 +1549,7 @@ export default function FrontierModels({ data, builtAt }: { data: ModelsData; bu
           <TopModelsBarChart models={data.models} />
           <OpenVsClosedFrontier models={data.models} />
           <ReleaseTimeline models={data.models} />
-          <CostScatter models={data.models} />
-          <SpeedVsIntelligence models={data.models} />
+          <ScatterSection models={data.models} />
           <GeographyChart models={data.models} />
           <DomainRankings rankings={data.rankings} />
         </div>
