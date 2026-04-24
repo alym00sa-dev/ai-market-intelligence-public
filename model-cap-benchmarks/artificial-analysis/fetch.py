@@ -76,27 +76,4 @@ pull("/data/llms/models",
      "llms_models.json",
      label="LLM models (benchmarks, pricing, speed)")
 
-pull("/data/media/text-to-image",
-     "text_to_image.json",
-     params={"include_categories": "true"},
-     label="Text-to-image ELO rankings")
-
-pull("/data/media/image-editing",
-     "image_editing.json",
-     label="Image editing ELO rankings")
-
-pull("/data/media/text-to-speech",
-     "text_to_speech.json",
-     label="Text-to-speech ELO rankings")
-
-pull("/data/media/text-to-video",
-     "text_to_video.json",
-     params={"include_categories": "true"},
-     label="Text-to-video ELO rankings")
-
-pull("/data/media/image-to-video",
-     "image_to_video.json",
-     params={"include_categories": "true"},
-     label="Image-to-video ELO rankings")
-
 print("\nDone.")
