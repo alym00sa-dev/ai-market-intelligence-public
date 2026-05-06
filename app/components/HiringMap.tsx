@@ -11,18 +11,30 @@ import { cityCoords } from "../lib/geo"
 // Free CARTO Positron style — clean light basemap, no API key required
 const MAP_STYLE = "https://basemaps.cartocdn.com/gl/positron-gl-style/style.json"
 
+const DISPLAY_NAMES: Record<string, string> = {
+  "Amazon AGI":         "Amazon",
+  "Microsoft Research": "Microsoft",
+  "Google DeepMind":    "Google",
+}
+
+function displayName(raw: string): string {
+  return DISPLAY_NAMES[raw] ?? raw
+}
+
 const COMPANY_COLORS: Record<string, string> = {
-  "Anthropic":       "#6366f1",
-  "OpenAI":          "#10b981",
-  "Google DeepMind": "#3b82f6",
-  "xAI":             "#f59e0b",
-  "Mistral AI":      "#ec4899",
-  "Cohere":          "#8b5cf6",
-  "NVIDIA":          "#22c55e",
-  "Amazon AGI":      "#f97316",
-  "Inflection AI":   "#06b6d4",
-  "Stability AI":    "#a855f7",
-  "Moonshot AI":     "#ef4444",
+  "Anthropic":  "#6366f1",
+  "OpenAI":     "#10b981",
+  "Google":     "#3b82f6",
+  "xAI":        "#f59e0b",
+  "Mistral AI": "#ec4899",
+  "Cohere":     "#8b5cf6",
+  "NVIDIA":     "#22c55e",
+  "Amazon":     "#f97316",
+  "Microsoft":  "#0ea5e9",
+  "Inflection AI": "#06b6d4",
+  "Stability AI":  "#a855f7",
+  "Moonshot AI":   "#ef4444",
+  "ByteDance":     "#f43f5e",
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
@@ -72,10 +84,11 @@ function buildClusters(jobs: Job[], mode: ViewMode): JobCluster[] {
     if (!coords) continue
 
     const city = (job.location ?? "").split(",")[0].trim()
-    const colorKey =
+    const rawKey =
       mode === "company"  ? job.company :
       mode === "role"     ? (job.category ?? "unclassified") :
                             (job.vertical ?? "none")
+    const colorKey = mode === "company" ? displayName(rawKey) : rawKey
 
     const color =
       mode === "company"  ? (COMPANY_COLORS[colorKey] ?? "#94a3b8") :
@@ -90,7 +103,7 @@ function buildClusters(jobs: Job[], mode: ViewMode): JobCluster[] {
     if (groups[key].sampleJobs.length < 6) {
       groups[key].sampleJobs.push({
         title: job.title,
-        company: job.company,
+        company: displayName(job.company),
         what: (job.what && !job.what.startsWith("Classification failed")) ? job.what : "",
         url: job.url ?? "",
       })
@@ -100,10 +113,30 @@ function buildClusters(jobs: Job[], mode: ViewMode): JobCluster[] {
   return Object.values(groups)
 }
 
+// Spread overlapping clusters at the same city so dots don't stack on each other
+function jitterClusters(clusters: JobCluster[]): JobCluster[] {
+  const byCityBase: Record<string, JobCluster[]> = {}
+  for (const c of clusters) {
+    const key = c.city
+    if (!byCityBase[key]) byCityBase[key] = []
+    byCityBase[key].push(c)
+  }
+  return clusters.map((c) => {
+    const siblings = byCityBase[c.city]
+    if (siblings.length <= 1) return c
+    const idx = siblings.indexOf(c)
+    const n   = siblings.length
+    const r   = 0.22
+    const angle = (2 * Math.PI * idx) / n - Math.PI / 2
+    return { ...c, lon: c.lon + r * Math.cos(angle), lat: c.lat + r * Math.sin(angle) }
+  })
+}
+
 function clustersToGeoJSON(clusters: JobCluster[]) {
+  const jittered = jitterClusters(clusters)
   return {
     type: "FeatureCollection" as const,
-    features: clusters.map((c) => ({
+    features: jittered.map((c) => ({
       type: "Feature" as const,
       geometry: { type: "Point" as const, coordinates: [c.lon, c.lat] },
       properties: {
@@ -143,7 +176,7 @@ function Legend({ mode, clusters }: { mode: ViewMode; clusters: JobCluster[] }) 
           ...Object.entries(COMPANY_COLORS)
             .filter(([k]) => seen.has(k))
             .map(([k, c]) => ({ key: k, label: k, color: c })),
-          ...(([...seen].some((k) => !COMPANY_COLORS[k])) ? [{ key: "other", label: "Other", color: "#94a3b8" }] : []),
+          ...([...seen].some((k) => !COMPANY_COLORS[k]) ? [{ key: "other", label: "Other", color: "#94a3b8" }] : []),
         ]
       : mode === "role"
       ? Object.entries(CATEGORY_COLORS)
@@ -154,20 +187,22 @@ function Legend({ mode, clusters }: { mode: ViewMode; clusters: JobCluster[] }) 
           .map(([k, c]) => ({ key: k, label: VERTICAL_LABELS[k] ?? k, color: c }))
 
   return (
-    <div className="flex flex-wrap gap-x-4 gap-y-1.5 mb-4">
-      {entries.map(({ key, label, color }) => (
-        <div key={key} className="flex items-center gap-1.5">
-          <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
-          <span className="text-[11px] text-slate-500">{label}</span>
-        </div>
-      ))}
+    <div className="absolute bottom-8 left-3 z-10 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/80 shadow-sm px-3 py-2.5 max-w-[220px]">
+      <div className="flex flex-wrap gap-x-3 gap-y-1.5">
+        {entries.map(({ key, label, color }) => (
+          <div key={key} className="flex items-center gap-1.5">
+            <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color }} />
+            <span className="text-[10px] text-slate-600 font-medium">{label}</span>
+          </div>
+        ))}
+      </div>
     </div>
   )
 }
 
 // ── Popup HTML ────────────────────────────────────────────────────────────────
 
-function buildGroupSection(props: Record<string, unknown>, showCity: boolean): string {
+function buildGroupSection(props: Record<string, unknown>, showCity: boolean, pinned: boolean): string {
   const city    = props.city as string
   const count   = props.count as number
   const color   = props.color as string
@@ -186,21 +221,24 @@ function buildGroupSection(props: Record<string, unknown>, showCity: boolean): s
         <span style="margin-left:auto;font-size:10px;color:#94a3b8;white-space:nowrap;">${count} role${count !== 1 ? "s" : ""}</span>
       </div>`
 
-  const jobRows = samples.slice(0, 3).map((j) => `
+  const limit = pinned ? samples.length : 3
+  const jobRows = samples.slice(0, limit).map((j) => `
     <div style="padding-top:6px;margin-top:6px;border-top:1px solid #f8fafc;">
       <div style="font-size:11px;font-weight:500;color:#1e293b;line-height:1.3;">${j.title}</div>
       <div style="font-size:10px;color:#94a3b8;margin-top:1px;">${j.company}</div>
-      ${j.what ? `<div style="font-size:10px;color:#64748b;margin-top:3px;line-height:1.4;">${j.what.slice(0, 100)}${j.what.length > 100 ? "…" : ""}</div>` : ""}
+      ${j.what ? `<div style="font-size:10px;color:#64748b;margin-top:3px;line-height:1.4;">${j.what.slice(0, 120)}${j.what.length > 120 ? "…" : ""}</div>` : ""}
       ${j.url ? `<a href="${j.url}" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#6366f1;text-decoration:none;display:inline-block;margin-top:3px;">View posting →</a>` : ""}
     </div>
   `).join("")
 
-  const more = count > 3 ? `<div style="font-size:10px;color:#94a3b8;padding-top:5px;margin-top:5px;">+${count - 3} more</div>` : ""
+  const more = !pinned && count > 3
+    ? `<div style="font-size:10px;color:#94a3b8;padding-top:5px;margin-top:5px;">+${count - 3} more — click dot to expand</div>`
+    : ""
 
   return `${header}${jobRows}${more}`
 }
 
-function buildPopupHTML(allProps: Record<string, unknown>[]): string {
+function buildPopupHTML(allProps: Record<string, unknown>[], pinned = false): string {
   const city = allProps[0].city as string
   const totalCount = allProps.reduce((s, p) => s + (p.count as number), 0)
 
@@ -208,17 +246,19 @@ function buildPopupHTML(allProps: Record<string, unknown>[]): string {
     ? `<div style="font-size:12px;font-weight:600;color:#64748b;margin-bottom:4px;">📍 ${city} · ${totalCount} total roles</div>`
     : ""
 
-  const sections = allProps.map((p, i) => buildGroupSection(p, i === 0 && allProps.length === 1)).join("")
+  const sections = allProps.map((p, i) => buildGroupSection(p, i === 0 && allProps.length === 1, pinned)).join("")
 
-  return `<div style="font-family:ui-sans-serif,system-ui,sans-serif;max-width:300px;padding:4px 2px;max-height:400px;overflow-y:auto;">${cityHeader}${sections}</div>`
+  const maxH = pinned ? "520px" : "340px"
+  return `<div style="font-family:ui-sans-serif,system-ui,sans-serif;max-width:300px;padding:4px 2px;max-height:${maxH};overflow-y:auto;">${cityHeader}${sections}</div>`
 }
 
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function HiringMap({ jobs }: { jobs: Job[] }) {
-  const containerRef = useRef<HTMLDivElement>(null)
-  const mapRef       = useRef<maplibregl.Map | null>(null)
-  const popupRef     = useRef<maplibregl.Popup | null>(null)
+  const containerRef    = useRef<HTMLDivElement>(null)
+  const mapRef          = useRef<maplibregl.Map | null>(null)
+  const hoverPopupRef   = useRef<maplibregl.Popup | null>(null)
+  const pinnedPopupRef  = useRef<maplibregl.Popup | null>(null)
   const [mode, setMode]       = useState<ViewMode>("company")
   const [mapReady, setMapReady] = useState(false)
 
@@ -239,12 +279,15 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
     map.addControl(new maplibregl.NavigationControl(), "top-right")
     map.addControl(new maplibregl.AttributionControl({ compact: true }), "bottom-right")
 
-    popupRef.current = new maplibregl.Popup({
-      closeButton: false,
+    const popupOpts = {
       closeOnClick: false,
-      maxWidth: "300px",
+      maxWidth: "320px",
+      anchor: "right" as const,
+      offset: [-8, 0] as [number, number],
       className: "hiring-map-popup",
-    })
+    }
+    hoverPopupRef.current  = new maplibregl.Popup({ ...popupOpts, closeButton: false })
+    pinnedPopupRef.current = new maplibregl.Popup({ ...popupOpts, closeButton: true })
 
     map.on("load", () => {
       map.addSource("jobs", {
@@ -272,56 +315,47 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
         },
       })
 
-      // Hover — query ALL overlapping features at the cursor point
-      map.on("mouseenter", "jobs-circles", (e) => {
-        map.getCanvas().style.cursor = "pointer"
-        // Expand hit area slightly so stacked dots are all captured
-        const bbox: [maplibregl.PointLike, maplibregl.PointLike] = [
-          [e.point.x - 4, e.point.y - 4],
-          [e.point.x + 4, e.point.y + 4],
-        ]
-        const features = map.queryRenderedFeatures(bbox, { layers: ["jobs-circles"] })
-        if (!features.length) return
-
-        // Deduplicate by colorKey (same dot rendered multiple times at different zoom levels)
+      // Helper: given a hovered feature, collect ALL features for that city in the viewport
+      function featuresForCity(hoveredCity: string) {
+        const all = map.queryRenderedFeatures(undefined, { layers: ["jobs-circles"] })
         const seen = new Set<string>()
-        const unique = features.filter((f) => {
+        return all.filter((f) => {
+          if (f.properties?.city !== hoveredCity) return false
           const key = `${f.properties?.city}::${f.properties?.colorKey}`
           if (seen.has(key)) return false
           seen.add(key)
           return true
         })
+      }
 
-        const anchorFeature = unique[0]
-        if (anchorFeature.geometry.type !== "Point") return
-        const coords = anchorFeature.geometry.coordinates as [number, number]
-
-        popupRef.current!
+      map.on("mouseenter", "jobs-circles", (e) => {
+        map.getCanvas().style.cursor = "pointer"
+        if (pinnedPopupRef.current?.isOpen()) return
+        if (!e.features?.length) return
+        const hoveredCity = e.features[0].properties?.city as string
+        if (!hoveredCity) return
+        const unique = featuresForCity(hoveredCity)
+        if (!unique.length) return
+        const anchor = e.features[0]
+        if (anchor.geometry.type !== "Point") return
+        const coords = anchor.geometry.coordinates as [number, number]
+        hoverPopupRef.current!
           .setLngLat(coords)
           .setHTML(buildPopupHTML(unique.map((f) => f.properties as Record<string, unknown>)))
           .addTo(map)
       })
 
       map.on("mousemove", "jobs-circles", (e) => {
-        // Refresh on move so fast hover transitions feel snappy
-        const bbox: [maplibregl.PointLike, maplibregl.PointLike] = [
-          [e.point.x - 4, e.point.y - 4],
-          [e.point.x + 4, e.point.y + 4],
-        ]
-        const features = map.queryRenderedFeatures(bbox, { layers: ["jobs-circles"] })
-        if (!features.length) { popupRef.current!.remove(); return }
-
-        const seen = new Set<string>()
-        const unique = features.filter((f) => {
-          const key = `${f.properties?.city}::${f.properties?.colorKey}`
-          if (seen.has(key)) return false
-          seen.add(key)
-          return true
-        })
-        const anchorFeature = unique[0]
-        if (anchorFeature.geometry.type !== "Point") return
-        const coords = anchorFeature.geometry.coordinates as [number, number]
-        popupRef.current!
+        if (pinnedPopupRef.current?.isOpen()) return
+        if (!e.features?.length) { hoverPopupRef.current!.remove(); return }
+        const hoveredCity = e.features[0].properties?.city as string
+        if (!hoveredCity) { hoverPopupRef.current!.remove(); return }
+        const unique = featuresForCity(hoveredCity)
+        if (!unique.length) { hoverPopupRef.current!.remove(); return }
+        const anchor = e.features[0]
+        if (anchor.geometry.type !== "Point") return
+        const coords = anchor.geometry.coordinates as [number, number]
+        hoverPopupRef.current!
           .setLngLat(coords)
           .setHTML(buildPopupHTML(unique.map((f) => f.properties as Record<string, unknown>)))
           .addTo(map)
@@ -329,7 +363,28 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
 
       map.on("mouseleave", "jobs-circles", () => {
         map.getCanvas().style.cursor = ""
-        popupRef.current!.remove()
+        if (!pinnedPopupRef.current?.isOpen()) hoverPopupRef.current!.remove()
+      })
+
+      map.on("click", "jobs-circles", (e) => {
+        if (!e.features?.length) return
+        const hoveredCity = e.features[0].properties?.city as string
+        if (!hoveredCity) return
+        const unique = featuresForCity(hoveredCity)
+        if (!unique.length) return
+        const anchor = e.features[0]
+        if (anchor.geometry.type !== "Point") return
+        const coords = anchor.geometry.coordinates as [number, number]
+        hoverPopupRef.current!.remove()
+        pinnedPopupRef.current!
+          .setLngLat(coords)
+          .setHTML(buildPopupHTML(unique.map((f) => f.properties as Record<string, unknown>), true))
+          .addTo(map)
+      })
+
+      map.on("click", (e) => {
+        const hits = map.queryRenderedFeatures(e.point, { layers: ["jobs-circles"] })
+        if (!hits.length) pinnedPopupRef.current!.remove()
       })
 
       setMapReady(true)
@@ -359,35 +414,37 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
   const totalShown = clusters.reduce((s, c) => s + c.count, 0)
 
   return (
-    <div>
-      {/* Tabs + count */}
-      <div className="flex items-center gap-1 mb-4">
+    <div className="relative" style={{ height: "calc(100vh - 280px)", minHeight: 600 }}>
+      {/* Map fills the entire container */}
+      <div ref={containerRef} className="w-full h-full" />
+
+      {/* Mode tabs overlay — top left */}
+      <div className="absolute top-3 left-3 z-10 flex items-center gap-1 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/80 shadow-sm px-2 py-1.5">
         {tabs.map((t) => (
           <button
             key={t.key}
             onClick={() => setMode(t.key)}
-            className={`px-3 py-1.5 rounded-lg text-[12px] font-medium transition-colors ${
+            className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors ${
               mode === t.key
-                ? "bg-indigo-50 text-indigo-600"
-                : "text-slate-500 hover:text-slate-700 hover:bg-slate-50"
+                ? "bg-slate-900 text-white"
+                : "text-slate-500 hover:text-slate-700 hover:bg-slate-100"
             }`}
           >
             {t.label}
           </button>
         ))}
-        <span className="ml-auto text-[11px] text-slate-400 tabular-nums">
+      </div>
+
+      {/* Role count overlay — top right */}
+      <div className="absolute top-3 right-12 z-10 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/80 shadow-sm px-3 py-1.5">
+        <span className="text-[11px] text-slate-500 tabular-nums">
           {totalShown.toLocaleString()} roles · {clusters.length} locations
-          {mode === "vertical" && <span className="ml-1 text-violet-400">(vertical-tagged only)</span>}
+          {mode === "vertical" && <span className="ml-1 text-violet-500"> (vertical only)</span>}
         </span>
       </div>
 
-      {/* Legend — top */}
+      {/* Legend overlay — bottom left */}
       <Legend mode={mode} clusters={clusters} />
-
-      {/* Map */}
-      <div className="rounded-xl overflow-hidden border border-slate-200" style={{ height: 780 }}>
-        <div ref={containerRef} className="w-full h-full" />
-      </div>
     </div>
   )
 }

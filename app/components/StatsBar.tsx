@@ -18,6 +18,78 @@ const CATEGORY_LABELS: Record<string, string> = {
   unclassified: "Unclassified",
 }
 
+const DISPLAY_NAMES: Record<string, string> = {
+  "Amazon AGI":         "Amazon",
+  "Microsoft Research": "Microsoft",
+  "Google DeepMind":    "Google",
+}
+
+const COMPANY_COLORS: Record<string, string> = {
+  "Anthropic":     "#6366f1",
+  "OpenAI":        "#10b981",
+  "Google":        "#3b82f6",
+  "xAI":           "#f59e0b",
+  "Mistral AI":    "#ec4899",
+  "Cohere":        "#8b5cf6",
+  "NVIDIA":        "#22c55e",
+  "Amazon":        "#f97316",
+  "Microsoft":     "#0ea5e9",
+  "Inflection AI": "#06b6d4",
+  "Stability AI":  "#a855f7",
+  "Moonshot AI":   "#ef4444",
+  "ByteDance":     "#f43f5e",
+}
+
+function displayName(raw: string): string {
+  return DISPLAY_NAMES[raw] ?? raw
+}
+
+function companyColor(raw: string): string {
+  return COMPANY_COLORS[displayName(raw)] ?? "#94a3b8"
+}
+
+// ── Who's Leading the Charge ──────────────────────────────────────────────────
+
+type LeaderBucket = {
+  label: string
+  leader: string
+  count: number
+  hasData: boolean
+}
+
+function computeLeaders(jobs: Job[]): LeaderBucket[] {
+  function topCompany(filter: (j: Job) => boolean): { leader: string; count: number } | null {
+    const counts: Record<string, number> = {}
+    for (const job of jobs) {
+      if (!filter(job)) continue
+      const name = displayName(job.company)
+      counts[name] = (counts[name] ?? 0) + 1
+    }
+    const entries = Object.entries(counts).sort((a, b) => b[1] - a[1])
+    if (!entries.length) return null
+    return { leader: entries[0][0], count: entries[0][1] }
+  }
+
+  const buckets: { label: string; filter: (j: Job) => boolean }[] = [
+    { label: "Building",        filter: (j) => j.category === "engineering" || j.category === "research" },
+    { label: "Selling",         filter: (j) => j.category === "sales_gtm" },
+    { label: "Health R&D",      filter: (j) => j.vertical === "health_rd" },
+    { label: "Health Delivery", filter: (j) => j.vertical === "health_delivery" },
+    { label: "Agriculture",     filter: (j) => j.vertical === "agriculture" },
+    { label: "Education",       filter: (j) => j.vertical === "education" },
+    { label: "Social Impact",   filter: (j) => j.social_impact === true },
+  ]
+
+  return buckets.map(({ label, filter }) => {
+    const result = topCompany(filter)
+    return result
+      ? { label, leader: result.leader, count: result.count, hasData: true }
+      : { label, leader: "", count: 0, hasData: false }
+  })
+}
+
+// ── Main component ────────────────────────────────────────────────────────────
+
 type Props = {
   totalJobs: number
   companyCount: number
@@ -35,34 +107,15 @@ export default function StatsBar({ totalJobs, companyCount, jobs, scrapedAt }: P
   const categoryOrder = ["engineering", "research", "sales_gtm", "operations", "other", "unclassified"]
   const active = categoryOrder.filter((c) => byCategory[c] > 0)
 
-  const buildingCount = (byCategory["engineering"] ?? 0) + (byCategory["research"] ?? 0)
-  const sellingCount  = byCategory["sales_gtm"] ?? 0
+  const leaders = computeLeaders(jobs).filter((b) => b.hasData)
 
   return (
-    <div className="space-y-3">
-
-      {/* Hero card: title + breakdown bar */}
-      <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-6 py-5">
-        <div className="flex items-start justify-between mb-5">
-          <div>
-            <h1 className="text-[17px] font-semibold text-slate-900 tracking-tight leading-snug">
-              Frontier AI · Hiring Intelligence
-            </h1>
-            <p className="text-[13px] text-slate-400 mt-0.5">
-              What the industry is actually building — from{" "}
-              <span className="text-slate-600 font-medium tabular-nums">{totalJobs.toLocaleString()}</span> open roles
-            </p>
-          </div>
-          {scrapedAt && (
-            <span className="text-[11px] text-slate-300 shrink-0 ml-4 mt-0.5 tabular-nums">
-              {scrapedAt}
-            </span>
-          )}
-        </div>
-
+    <div>
+      {/* Single dark card: breakdown bar + who's leading */}
+      <div className="bg-slate-900 rounded-2xl px-6 py-5 space-y-5">
         {/* Breakdown bar */}
         <div>
-          <div className="flex rounded-full overflow-hidden h-2.5 mb-3">
+          <div className="flex rounded-full overflow-hidden h-2 mb-3">
             {active.map((cat) => (
               <div
                 key={cat}
@@ -78,64 +131,47 @@ export default function StatsBar({ totalJobs, companyCount, jobs, scrapedAt }: P
               return (
                 <span key={cat} className="inline-flex items-center gap-1.5 text-[11px]">
                   <span className={`inline-block w-2 h-2 rounded-full ${CATEGORY_COLORS[cat] ?? "bg-slate-300"}`} />
-                  <span className="text-slate-500">{CATEGORY_LABELS[cat]}</span>
-                  <span className="text-slate-700 font-medium tabular-nums">{pct}%</span>
-                  <span className="text-slate-300">·</span>
+                  <span className="text-slate-400">{CATEGORY_LABELS[cat]}</span>
+                  <span className="text-white font-medium tabular-nums">{pct}%</span>
+                  <span className="text-slate-600">·</span>
                   <span className="text-slate-400 tabular-nums">{byCategory[cat].toLocaleString()}</span>
                 </span>
               )
             })}
           </div>
         </div>
-      </div>
 
-      {/* Stat cards */}
-      <div className="grid grid-cols-2 sm:grid-cols-4 gap-3">
-        <StatCard
-          label="Total Roles"
-          value={totalJobs.toLocaleString()}
-          accent="bg-slate-800"
-        />
-        <StatCard
-          label="Companies Tracked"
-          value={companyCount}
-          accent="bg-indigo-500"
-        />
-        <StatCard
-          label="Building Capacity"
-          value={buildingCount.toLocaleString()}
-          sub={`${Math.round((buildingCount / totalJobs) * 100)}% engineering + research`}
-          accent="bg-blue-500"
-        />
-        <StatCard
-          label="Go-to-Market"
-          value={sellingCount.toLocaleString()}
-          sub={`${Math.round((sellingCount / totalJobs) * 100)}% sales & GTM`}
-          accent="bg-emerald-500"
-        />
-      </div>
-    </div>
-  )
-}
+        {/* Divider */}
+        {leaders.length > 0 && <div className="border-t border-white/10" />}
 
-function StatCard({
-  label,
-  value,
-  sub,
-  accent,
-}: {
-  label: string
-  value: number | string
-  sub?: string
-  accent: string
-}) {
-  return (
-    <div className="relative overflow-hidden bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
-      {/* Colored top accent bar */}
-      <div className={`absolute top-0 left-0 right-0 h-[3px] ${accent}`} />
-      <p className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 mt-1">{label}</p>
-      <p className="text-2xl font-semibold text-slate-900 mt-1.5 tabular-nums">{value}</p>
-      {sub && <p className="text-[11px] text-slate-400 mt-0.5 leading-snug">{sub}</p>}
+        {/* Who's leading the charge */}
+        {leaders.length > 0 && (
+          <div>
+            <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500 mb-3">
+              Who&rsquo;s leading the charge
+            </p>
+            <div className="flex gap-2.5">
+              {leaders.map(({ label, leader, count }) => {
+                const color = companyColor(leader)
+                return (
+                  <div
+                    key={label}
+                    className="flex-1 flex flex-col gap-2 rounded-xl px-4 py-3.5 border border-white/10 hover:border-white/20 transition-colors"
+                    style={{ backgroundColor: `${color}18` }}
+                  >
+                    <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 truncate">{label}</span>
+                    <div className="flex items-center gap-1.5">
+                      <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color }} />
+                      <span className="text-[12px] font-semibold text-white truncate">{leader}</span>
+                    </div>
+                    <span className="text-[22px] font-bold tabular-nums leading-none" style={{ color }}>{count}</span>
+                  </div>
+                )
+              })}
+            </div>
+          </div>
+        )}
+      </div>
     </div>
   )
 }
