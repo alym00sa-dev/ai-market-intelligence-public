@@ -79,9 +79,6 @@ export default function HiringView({
               {t.label}
             </button>
           ))}
-          <span className="ml-auto pb-2.5 text-[11px] text-slate-400 tabular-nums">
-            {profiles.length} companies
-          </span>
         </div>
 
         {/* Stats bar — profiles tab only */}
