@@ -1,6 +1,6 @@
 "use client"
 
-import { useEffect, useRef, useState } from "react"
+import { useEffect, useRef, useState, useMemo } from "react"
 import maplibregl from "maplibre-gl"
 import "maplibre-gl/dist/maplibre-gl.css"
 import type { Job } from "../types"
@@ -167,34 +167,46 @@ function colorExpression(mode: ViewMode): maplibregl.ExpressionSpecification {
 
 // ── Legend ────────────────────────────────────────────────────────────────────
 
-function Legend({ mode, clusters }: { mode: ViewMode; clusters: JobCluster[] }) {
-  const seen = new Set(clusters.map((c) => c.colorKey))
-
-  const entries: { key: string; label: string; color: string }[] =
-    mode === "company"
-      ? [
-          ...Object.entries(COMPANY_COLORS)
-            .filter(([k]) => seen.has(k))
-            .map(([k, c]) => ({ key: k, label: k, color: c })),
-          ...([...seen].some((k) => !COMPANY_COLORS[k]) ? [{ key: "other", label: "Other", color: "#94a3b8" }] : []),
-        ]
-      : mode === "role"
-      ? Object.entries(CATEGORY_COLORS)
-          .filter(([k]) => seen.has(k))
-          .map(([k, c]) => ({ key: k, label: CATEGORY_LABELS[k] ?? k, color: c }))
-      : Object.entries(VERTICAL_COLORS)
-          .filter(([k]) => seen.has(k))
-          .map(([k, c]) => ({ key: k, label: VERTICAL_LABELS[k] ?? k, color: c }))
-
+function Legend({
+  options,
+  filters,
+  onToggle,
+}: {
+  options: { key: string; label: string; color: string }[]
+  filters: Set<string>
+  onToggle: (key: string) => void
+}) {
+  if (options.length === 0) return null
   return (
-    <div className="absolute bottom-8 left-3 z-10 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/80 shadow-sm px-3 py-2.5 max-w-[220px]">
+    <div className="absolute bottom-8 left-3 z-10 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/80 shadow-sm px-3 py-2.5 max-w-[260px]">
+      <p className="text-[9px] font-semibold uppercase tracking-widest text-slate-400 mb-2">
+        Click to filter
+      </p>
       <div className="flex flex-wrap gap-x-3 gap-y-1.5">
-        {entries.map(({ key, label, color }) => (
-          <div key={key} className="flex items-center gap-1.5">
-            <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color }} />
-            <span className="text-[10px] text-slate-600 font-medium">{label}</span>
-          </div>
-        ))}
+        {options.map(({ key, label, color }) => {
+          const active = filters.has(key)
+          const dimmed = filters.size > 0 && !active
+          return (
+            <button
+              key={key}
+              onClick={() => onToggle(key)}
+              className="flex items-center gap-1.5 transition-opacity"
+              style={{ opacity: dimmed ? 0.35 : 1 }}
+            >
+              <span
+                className="w-2 h-2 rounded-full shrink-0 transition-transform"
+                style={{
+                  backgroundColor: color,
+                  transform: active ? "scale(1.3)" : "scale(1)",
+                  boxShadow: active ? `0 0 0 2px white, 0 0 0 3px ${color}` : "none",
+                }}
+              />
+              <span className={`text-[10px] font-medium ${active ? "text-slate-900" : "text-slate-600"}`}>
+                {label}
+              </span>
+            </button>
+          )
+        })}
       </div>
     </div>
   )
@@ -261,8 +273,47 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
   const pinnedPopupRef  = useRef<maplibregl.Popup | null>(null)
   const [mode, setMode]       = useState<ViewMode>("company")
   const [mapReady, setMapReady] = useState(false)
+  const [filters, setFilters] = useState<Set<string>>(new Set())
 
-  const clusters = buildClusters(jobs, mode)
+  // Clear filters when switching modes
+  useEffect(() => { setFilters(new Set()) }, [mode])
+
+  function toggleFilter(key: string) {
+    setFilters((prev) => {
+      const next = new Set(prev)
+      if (next.has(key)) next.delete(key)
+      else next.add(key)
+      return next
+    })
+  }
+
+  const filterOptions = useMemo(() => {
+    if (mode === "company") {
+      const seen = [...new Set(jobs.map((j) => displayName(j.company)))].sort()
+      return seen.map((c) => ({ key: c, label: c, color: COMPANY_COLORS[c] ?? "#94a3b8" }))
+    }
+    if (mode === "role") {
+      const seen = new Set<string>(jobs.map((j) => j.category ?? "unclassified"))
+      return Object.keys(CATEGORY_COLORS)
+        .filter((k) => seen.has(k))
+        .map((k) => ({ key: k, label: CATEGORY_LABELS[k] ?? k, color: CATEGORY_COLORS[k] }))
+    }
+    const seen = new Set<string>(jobs.filter((j) => j.vertical).map((j) => j.vertical as string))
+    return Object.keys(VERTICAL_COLORS)
+      .filter((k) => seen.has(k))
+      .map((k) => ({ key: k, label: VERTICAL_LABELS[k] ?? k, color: VERTICAL_COLORS[k] }))
+  }, [mode, jobs])
+
+  const filteredJobs = useMemo(() => {
+    if (filters.size === 0) return jobs
+    return jobs.filter((job) => {
+      if (mode === "company") return filters.has(displayName(job.company))
+      if (mode === "role")    return filters.has(job.category ?? "unclassified")
+      return job.vertical != null && filters.has(job.vertical as string)
+    })
+  }, [jobs, filters, mode])
+
+  const clusters = buildClusters(filteredJobs, mode)
 
   // ── Init map ────────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -395,7 +446,7 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [])
 
-  // ── Update data + colors when mode changes ──────────────────────────────────
+  // ── Update data + colors when mode or filters change ───────────────────────
   useEffect(() => {
     if (!mapReady || !mapRef.current) return
     const map = mapRef.current
@@ -403,7 +454,7 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
     if (!src) return
     src.setData(clustersToGeoJSON(clusters) as GeoJSON.FeatureCollection)
     map.setPaintProperty("jobs-circles", "circle-color", colorExpression(mode))
-  }, [mode, mapReady, clusters])
+  }, [mode, filters, mapReady, clusters])
 
   const tabs: { key: ViewMode; label: string }[] = [
     { key: "company",  label: "By Company" },
@@ -443,8 +494,8 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
         </span>
       </div>
 
-      {/* Legend overlay — bottom left */}
-      <Legend mode={mode} clusters={clusters} />
+      {/* Legend overlay — bottom left (doubles as filter) */}
+      <Legend options={filterOptions} filters={filters} onToggle={toggleFilter} />
     </div>
   )
 }
