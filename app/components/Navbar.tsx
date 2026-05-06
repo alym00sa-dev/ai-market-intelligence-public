@@ -5,11 +5,13 @@ import Link from "next/link"
 import { usePathname } from "next/navigation"
 
 const DATA_SOURCES = [
-  { label: "Hiring Signals",          href: "/",        available: true  },
-  { label: "Frontier Model Tracking", href: "/models",  available: true  },
+  { label: "Hiring Signals",          href: "/",          available: true  },
+  { label: "Compute Distribution",    href: "/compute",   available: true  },
+  { label: "Safety Track Record",     href: "/rep-risk",  available: true  },
+  { label: "Frontier Model Tracking", href: "/models",    available: true  },
 ]
 
-export default function Navbar({ scrapedAt }: { scrapedAt: string | null }) {
+export default function Navbar() {
   const [open, setOpen] = useState(false)
   const ref = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
@@ -37,12 +39,6 @@ export default function Navbar({ scrapedAt }: { scrapedAt: string | null }) {
 
       {/* Right side */}
       <div className="flex items-center gap-4">
-        {scrapedAt && (
-          <span className="hidden sm:block text-xs text-gray-500">
-            Updated {scrapedAt}
-          </span>
-        )}
-
         {/* Data source dropdown */}
         <div className="relative" ref={ref}>
           <button
