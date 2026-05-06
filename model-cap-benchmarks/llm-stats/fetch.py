@@ -30,11 +30,19 @@ OUT_DIR = Path(__file__).parent / "data"
 OUT_DIR.mkdir(exist_ok=True)
 
 
-def fetch(path: str, params: dict = None) -> dict:
+def fetch(path: str, params: dict = None, retries: int = 4) -> dict:
     url = BASE + path
-    r = requests.get(url, headers=HEADERS, params=params, timeout=15)
-    r.raise_for_status()
-    return r.json()
+    for attempt in range(retries):
+        try:
+            r = requests.get(url, headers=HEADERS, params=params, timeout=45)
+            r.raise_for_status()
+            return r.json()
+        except (requests.exceptions.ReadTimeout, requests.exceptions.ConnectionError) as e:
+            if attempt == retries - 1:
+                raise
+            wait = 2 ** attempt * 3  # 3s, 6s, 12s
+            print(f"    timeout/connection error on {path} (attempt {attempt + 1}/{retries}), retrying in {wait}s...")
+            time.sleep(wait)
 
 
 def fetch_paginated(path: str, data_key: str, delay: float = 1.0) -> list:
