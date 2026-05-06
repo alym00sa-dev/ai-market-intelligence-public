@@ -12,13 +12,13 @@
   ],
   "category_descriptions": {
     "harmful_outputs": "Commitments about preventing or addressing real-world harm caused by deployed models (injuries, harassment, misinformation, CSAM, etc.)",
-    "deployment_due_diligence": "Commitments about safety review, red-teaming, or evaluation that must happen before a model ships — i.e. gates on the deployment process",
+    "deployment_due_diligence": "Commitments about safety review, red-teaming, or evaluation that must happen before a model ships \u2014 i.e. gates on the deployment process",
     "representation_accuracy": "Commitments about honest public communication: not overstating safety, accurately representing capabilities and known risks",
     "data_practices": "Commitments about how user data and training data are collected, stored, used, and protected",
     "regulatory_compliance": "Commitments about engaging with, cooperating with, or complying with government regulators and legal frameworks",
     "governance_integrity": "Commitments about safety governance structures: independent boards, whistleblower protections, named bodies with real authority that can't be easily overruled",
     "incident_response": "Commitments about what happens after something goes wrong: monitoring, rapid response, disclosure, remediation",
-    "commitment_stability": "Commitments about maintaining and not rolling back safety pledges — public logging of changes, version control of policies, anti-retaliation for raising concerns"
+    "commitment_stability": "Commitments about maintaining and not rolling back safety pledges \u2014 public logging of changes, version control of policies, anti-retaliation for raising concerns"
   },
   "labs": [
     {
@@ -237,7 +237,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/technology/2026/apr/01/anthropic-claudes-code-leaks-ai",
               "date": "2026-04-01",
-              "title": "Claude’s code: Anthropic leaks source code for AI software engineering tool"
+              "title": "Claude\u2019s code: Anthropic leaks source code for AI software engineering tool"
             },
             {
               "summary": "Anthropic's Mythos model, which the company had withheld from public release citing risks, was leaked by external researchers and reported by The Verge.",
@@ -281,7 +281,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/technology/2026/mar/05/trump-anthropic-ai-pentagon",
               "date": "2026-03-05",
-              "title": "Trump says he fired Anthropic ‘like dogs’ as Pentagon formally blacklists AI startup"
+              "title": "Trump says he fired Anthropic \u2018like dogs\u2019 as Pentagon formally blacklists AI startup"
             },
             {
               "summary": "The ACLU and CDT filed an amicus brief supporting Anthropic's D.C. Circuit appeal challenging a DoD 'supply-chain risk' designation that Anthropic alleges was retaliation for its First Amendment-protected AI safety advocacy.",
@@ -453,6 +453,15 @@
               "url": "https://www.theguardian.com/technology/2026/mar/13/anthropic-pentagon-artificial-intelligence",
               "date": "2026-03-13",
               "title": "Anthropic-Pentagon battle shows how big tech has reversed course on AI and war"
+            },
+            {
+              "summary": "Time reports that Anthropic quietly dropped its flagship safety pledge \u2014 the Responsible Scaling Policy commitment to pause development if models exceeded safety thresholds \u2014 signaling a material retreat from a core public commitment made to regulators and the public.",
+              "severity": "high",
+              "severity_rationale": "Dropping a named, public safety pledge that had been central to Anthropic's regulatory positioning is a direct commitment stability failure. Covered by Time in an exclusive, indicating broad public and policy significance.",
+              "source": "time",
+              "url": "https://time.com/7380854/exclusive-anthropic-drops-flagship-safety-pledge/",
+              "date": "2026-02-24",
+              "title": "Exclusive: Anthropic Drops Flagship Safety Pledge"
             }
           ]
         }
@@ -486,7 +495,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/us-news/2026/apr/21/florida-openai-chatgpt-investigation",
               "date": "2026-04-21",
-              "title": "Florida to open criminal investigation into OpenAI over ChatGPT’s influence on alleged mass shooter"
+              "title": "Florida to open criminal investigation into OpenAI over ChatGPT\u2019s influence on alleged mass shooter"
             },
             {
               "summary": "Families of Tumbler Ridge shooting victims filed California lawsuits alleging OpenAI was negligent in failing to notify police about the shooter's ChatGPT activity, based on whistleblower disclosures.",
@@ -525,7 +534,7 @@
               "title": "At Least 10,000 AI Chatbots, Including Jailbroken Models, Allegedly Promote Eating Disorders, Self-Harm, and Sexualized Minors"
             },
             {
-              "summary": "Multiple users reportedly experienced severe real-world harm—including death, psychiatric commitments, and dangerous medication decisions—after ChatGPT allegedly reinforced delusional thinking and conspiracies.",
+              "summary": "Multiple users reportedly experienced severe real-world harm\u2014including death, psychiatric commitments, and dangerous medication decisions\u2014after ChatGPT allegedly reinforced delusional thinking and conspiracies.",
               "severity": "high",
               "severity_rationale": "Multiple documented real-world harms including a death (Alexander Taylor killed by police), involuntary psychiatric commitments, and an arrest, covered in major media investigations.",
               "source": "aiid",
@@ -828,7 +837,7 @@
               "source": "aiid",
               "url": "https://restofworld.org/2024/ghana-election-ai-bots-x-twitter/",
               "date": "2024-02-01",
-              "title": "Network of 171 AI-Powered Bots Reportedly Spread Political Disinformation Ahead of Ghana’s December 2024 General Election"
+              "title": "Network of 171 AI-Powered Bots Reportedly Spread Political Disinformation Ahead of Ghana\u2019s December 2024 General Election"
             },
             {
               "summary": "The suspect in the Las Vegas Cybertruck explosion reportedly used ChatGPT to research explosives and related regulations while planning the attack, though the information was general and publicly accessible.",
@@ -966,7 +975,7 @@
               "title": "Purportedly AI-Generated Fake Videos of Louvre Heist Reportedly Circulated Widely Online"
             },
             {
-              "summary": "Children's AI products from FoloToy, Miko, and Character.AI — some reportedly built on OpenAI models — allegedly generated harmful content including sexual material and suicide advice, and allegedly exposed user data.",
+              "summary": "Children's AI products from FoloToy, Miko, and Character.AI \u2014 some reportedly built on OpenAI models \u2014 allegedly generated harmful content including sexual material and suicide advice, and allegedly exposed user data.",
               "severity": "medium",
               "severity_rationale": "Multiple children's AI products, some reportedly using OpenAI models, allegedly produced sexual content, suicide-related advice, and exposed user data, drawing media investigation into child safety risks.",
               "source": "aiid",
@@ -975,7 +984,7 @@
               "title": "Alleged Harmful Outputs and Data Exposure in Children's AI Products by FoloToy, Miko, and Character.AI"
             },
             {
-              "summary": "Two patients in Hyderabad reportedly suffered serious medical harm—a kidney transplant graft failure and severe hyponatremia—after allegedly following ChatGPT-generated medical advice instead of clinician guidance.",
+              "summary": "Two patients in Hyderabad reportedly suffered serious medical harm\u2014a kidney transplant graft failure and severe hyponatremia\u2014after allegedly following ChatGPT-generated medical advice instead of clinician guidance.",
               "severity": "medium",
               "severity_rationale": "Two alleged serious patient harms (graft failure and severe hyponatremia) reportedly tied to ChatGPT medical advice, reported in regional media but without regulatory action.",
               "source": "aiid",
@@ -1029,7 +1038,7 @@
               "title": "Nippon Life Alleged ChatGPT Practiced Law Without a License in Illinois Disability Case"
             },
             {
-              "summary": "Accounts opposing NYC mayor-elect Zohran Mamdani reportedly posted AI-generated videos—some bearing visible Sora watermarks—of fictional constituents to simulate grassroots political opposition across Instagram, TikTok, and X.",
+              "summary": "Accounts opposing NYC mayor-elect Zohran Mamdani reportedly posted AI-generated videos\u2014some bearing visible Sora watermarks\u2014of fictional constituents to simulate grassroots political opposition across Instagram, TikTok, and X.",
               "severity": "medium",
               "severity_rationale": "Sora-watermarked deepfakes were used in a coordinated political influence campaign across multiple major platforms with substantial engagement, indicating misuse of OpenAI's generative video tool for election-related disinformation.",
               "source": "aiid",
@@ -1080,7 +1089,7 @@
               "source": "aiid",
               "url": "https://github.com/responsible-ai-collaborative/aiid/issues/449",
               "date": "2020-10-27",
-              "title": "OpenAI’s GPT-3 Reported as Unviable in Medical Tasks by Healthcare Firm"
+              "title": "OpenAI\u2019s GPT-3 Reported as Unviable in Medical Tasks by Healthcare Firm"
             },
             {
               "summary": "Students reportedly used generative models including GPT-3 and ChatGPT to complete school assignments and exams, raising academic integrity concerns.",
@@ -1576,7 +1585,7 @@
               "title": "Scarlett Johansson Alleges OpenAI's Sky Imitates Her Voice Without Licensing"
             },
             {
-              "summary": "Children's AI products from FoloToy, Miko, and Character.AI — some reportedly built on OpenAI models — allegedly generated harmful content including sexual material and suicide advice, and allegedly exposed user data.",
+              "summary": "Children's AI products from FoloToy, Miko, and Character.AI \u2014 some reportedly built on OpenAI models \u2014 allegedly generated harmful content including sexual material and suicide advice, and allegedly exposed user data.",
               "severity": "medium",
               "severity_rationale": "Multiple children's AI products, some reportedly using OpenAI models, allegedly produced sexual content, suicide-related advice, and exposed user data, drawing media investigation into child safety risks.",
               "source": "aiid",
@@ -1651,7 +1660,7 @@
             {
               "summary": "Former OpenAI board member Helen Toner publicly detailed reasons for Sam Altman's November 2023 firing, citing repeated failures to inform the board (e.g., ChatGPT launch, undisclosed ownership of the OpenAI Startup Fund) and lack of candor.",
               "severity": "high",
-              "severity_rationale": "Former board member publicly disclosed that the CEO was fired for not being 'consistently candid' with the board, including withholding information about ChatGPT's release and undisclosed ownership of the OpenAI Startup Fund — a C-level governance failure with major media reach.",
+              "severity_rationale": "Former board member publicly disclosed that the CEO was fired for not being 'consistently candid' with the board, including withholding information about ChatGPT's release and undisclosed ownership of the OpenAI Startup Fund \u2014 a C-level governance failure with major media reach.",
               "source": "websearch",
               "url": "https://www.cnbc.com/2024/05/29/former-openai-board-member-explains-why-ceo-sam-altman-was-fired.html",
               "date": "2024-05-29",
@@ -1789,7 +1798,7 @@
               "source": "aiid",
               "url": "https://www.theatlantic.com/technology/archive/2025/03/libgen-meta-openai/682093/",
               "date": "2023-02-28",
-              "title": "Meta and OpenAI Accused of Using LibGen’s Pirated Books to Train AI Models"
+              "title": "Meta and OpenAI Accused of Using LibGen\u2019s Pirated Books to Train AI Models"
             },
             {
               "summary": "Share-link features in ChatGPT and other LLM platforms allegedly allowed over 100,000 user conversations to be indexed by search engines and archived, exposing credentials and sensitive personal and business information.",
@@ -1816,7 +1825,7 @@
               "source": "websearch",
               "url": "https://www.mintz.com/insights-center/viewpoints/2191/2023-08-10-ftcs-investigation-openai-ai-washington-report",
               "date": "2023-08-10",
-              "title": "The FTC's Investigation of OpenAI — AI: The Washington Report"
+              "title": "The FTC's Investigation of OpenAI \u2014 AI: The Washington Report"
             },
             {
               "summary": "EPIC filed a complaint with the FTC on October 29, 2024 urging investigation of OpenAI for unsafe security and privacy practices, deceptive practices, and consumer harms including biased outputs.",
@@ -1954,7 +1963,7 @@
               "title": "Argentine Court Reportedly Annuls Criminal Conviction After Judge Allegedly Used ChatGPT to Draft Ruling Without Disclosure"
             },
             {
-              "summary": "Children's AI products from FoloToy, Miko, and Character.AI — some reportedly built on OpenAI models — allegedly generated harmful content including sexual material and suicide advice, and allegedly exposed user data.",
+              "summary": "Children's AI products from FoloToy, Miko, and Character.AI \u2014 some reportedly built on OpenAI models \u2014 allegedly generated harmful content including sexual material and suicide advice, and allegedly exposed user data.",
               "severity": "medium",
               "severity_rationale": "Multiple children's AI products, some reportedly using OpenAI models, allegedly produced sexual content, suicide-related advice, and exposed user data, drawing media investigation into child safety risks.",
               "source": "aiid",
@@ -2051,7 +2060,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/us-news/2026/apr/21/florida-openai-chatgpt-investigation",
               "date": "2026-04-21",
-              "title": "Florida to open criminal investigation into OpenAI over ChatGPT’s influence on alleged mass shooter"
+              "title": "Florida to open criminal investigation into OpenAI over ChatGPT\u2019s influence on alleged mass shooter"
             },
             {
               "summary": "Suchir Balaji, a former OpenAI researcher who publicly accused the company of copyright violations and was identified in NYT v. OpenAI litigation, was found dead on November 26, 2024, with authorities ruling suicide while family alleged foul play.",
@@ -2123,7 +2132,7 @@
               "source": "aiid",
               "url": "https://www.theatlantic.com/technology/archive/2025/03/libgen-meta-openai/682093/",
               "date": "2023-02-28",
-              "title": "Meta and OpenAI Accused of Using LibGen’s Pirated Books to Train AI Models"
+              "title": "Meta and OpenAI Accused of Using LibGen\u2019s Pirated Books to Train AI Models"
             },
             {
               "summary": "A Munich regional court ruled that ChatGPT reproduced copyrighted German song lyrics and that OpenAI trained on protected works without authorization, ordering damages.",
@@ -2141,7 +2150,7 @@
               "source": "websearch",
               "url": "https://www.mintz.com/insights-center/viewpoints/2191/2023-08-10-ftcs-investigation-openai-ai-washington-report",
               "date": "2023-08-10",
-              "title": "The FTC's Investigation of OpenAI — AI: The Washington Report"
+              "title": "The FTC's Investigation of OpenAI \u2014 AI: The Washington Report"
             },
             {
               "summary": "EPIC filed a complaint with the FTC on October 29, 2024 urging investigation of OpenAI for unsafe security and privacy practices, deceptive practices, and consumer harms including biased outputs.",
@@ -2226,7 +2235,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/technology/2026/apr/27/elon-musk-sam-altman-open-ai-lawsuit",
               "date": "2026-04-27",
-              "title": "Elon Musk and Sam Altman face off in court over OpenAI’s founding mission"
+              "title": "Elon Musk and Sam Altman face off in court over OpenAI\u2019s founding mission"
             },
             {
               "summary": "Suchir Balaji, a former OpenAI researcher who publicly accused the company of copyright violations and was identified in NYT v. OpenAI litigation, was found dead on November 26, 2024, with authorities ruling suicide while family alleged foul play.",
@@ -2276,7 +2285,7 @@
             {
               "summary": "Former OpenAI board member Helen Toner publicly detailed reasons for Sam Altman's November 2023 firing, citing repeated failures to inform the board (e.g., ChatGPT launch, undisclosed ownership of the OpenAI Startup Fund) and lack of candor.",
               "severity": "high",
-              "severity_rationale": "Former board member publicly disclosed that the CEO was fired for not being 'consistently candid' with the board, including withholding information about ChatGPT's release and undisclosed ownership of the OpenAI Startup Fund — a C-level governance failure with major media reach.",
+              "severity_rationale": "Former board member publicly disclosed that the CEO was fired for not being 'consistently candid' with the board, including withholding information about ChatGPT's release and undisclosed ownership of the OpenAI Startup Fund \u2014 a C-level governance failure with major media reach.",
               "source": "websearch",
               "url": "https://www.cnbc.com/2024/05/29/former-openai-board-member-explains-why-ceo-sam-altman-was-fired.html",
               "date": "2024-05-29",
@@ -2384,7 +2393,7 @@
             {
               "summary": "OpenAI dissolved its dedicated superalignment team focused on long-term AGI safety risks, following the public departures of its co-leads.",
               "severity": "high",
-              "severity_rationale": "The dedicated superalignment team — a publicly committed long-term safety function led by co-founder Ilya Sutskever and Jan Leike — was disbanded following high-profile safety researcher departures, representing a major reversal of a stated safety commitment.",
+              "severity_rationale": "The dedicated superalignment team \u2014 a publicly committed long-term safety function led by co-founder Ilya Sutskever and Jan Leike \u2014 was disbanded following high-profile safety researcher departures, representing a major reversal of a stated safety commitment.",
               "source": "websearch",
               "url": "https://www.transparencycoalition.ai/news/openais-long-term-safety-team-disbands",
               "date": "2025-05-18",
@@ -2491,7 +2500,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/technology/2026/apr/27/elon-musk-sam-altman-open-ai-lawsuit",
               "date": "2026-04-27",
-              "title": "Elon Musk and Sam Altman face off in court over OpenAI’s founding mission"
+              "title": "Elon Musk and Sam Altman face off in court over OpenAI\u2019s founding mission"
             },
             {
               "summary": "OpenAI disbanded its mission alignment team, dispersing members across divisions and reassigning its leader to a 'chief futurist' role with no operational authority over safety.",
@@ -2541,7 +2550,7 @@
             {
               "summary": "OpenAI dissolved its dedicated superalignment team focused on long-term AGI safety risks, following the public departures of its co-leads.",
               "severity": "high",
-              "severity_rationale": "The dedicated superalignment team — a publicly committed long-term safety function led by co-founder Ilya Sutskever and Jan Leike — was disbanded following high-profile safety researcher departures, representing a major reversal of a stated safety commitment.",
+              "severity_rationale": "The dedicated superalignment team \u2014 a publicly committed long-term safety function led by co-founder Ilya Sutskever and Jan Leike \u2014 was disbanded following high-profile safety researcher departures, representing a major reversal of a stated safety commitment.",
               "source": "websearch",
               "url": "https://www.transparencycoalition.ai/news/openais-long-term-safety-team-disbands",
               "date": "2025-05-18",
@@ -2597,9 +2606,9 @@
               "title": "Google, Character.AI to settle suits involving minor suicides and AI chatbots"
             },
             {
-              "summary": "Google suspended Gemini's image generation of people in early 2024 after bias and historical inaccuracy complaints, drew regulatory scrutiny in India, and was fined €250 million by France over copyright-related issues.",
+              "summary": "Google suspended Gemini's image generation of people in early 2024 after bias and historical inaccuracy complaints, drew regulatory scrutiny in India, and was fined \u20ac250 million by France over copyright-related issues.",
               "severity": "high",
-              "severity_rationale": "France's Autorité de la concurrence imposed a €250 million fine on Google, and Indian regulators alleged IT Rules violations.",
+              "severity_rationale": "France's Autorit\u00e9 de la concurrence imposed a \u20ac250 million fine on Google, and Indian regulators alleged IT Rules violations.",
               "source": "websearch",
               "url": "https://en.wikipedia.org/wiki/Google_Gemini",
               "date": "",
@@ -2756,7 +2765,7 @@
               "source": "aiid",
               "url": "https://www.nytimes.com/2022/08/21/technology/google-surveillance-toddler-photo.html",
               "date": "2022-08-21",
-              "title": "Google’s Automated Child Abuse Detection Wrongfully Flagged a Parent’s Naked Photo of His Child"
+              "title": "Google\u2019s Automated Child Abuse Detection Wrongfully Flagged a Parent\u2019s Naked Photo of His Child"
             },
             {
               "summary": "Google's Bard chatbot gave a factually incorrect answer about the James Webb Space Telescope in a promotional video, which drew widespread media attention and was linked to a temporary plunge in Alphabet's share price.",
@@ -2864,7 +2873,7 @@
               "source": "aiid",
               "url": "https://www.theatlantic.com/magazine/archive/2025/08/google-gemini-ai-sexting/683248/",
               "date": "2025-07-14",
-              "title": "Google Gemini Reportedly Generates Sexual Role‑Play for Account Registered as Minor"
+              "title": "Google Gemini Reportedly Generates Sexual Role\u2011Play for Account Registered as Minor"
             },
             {
               "summary": "Google's AI Overview allegedly produced a false claim that Charlie Kirk was on Ukraine's Myrotvorets list following his assassination, alongside similar misinformation from other AI systems.",
@@ -3053,7 +3062,7 @@
               "source": "aiid",
               "url": "https://www.vice.com/en/article/v7dk8m/googles-ai-powered-inclusive-warnings-feature-is-very-broken",
               "date": "2022-04-19",
-              "title": "Google’s Assistive Writing Feature Provided Allegedly Unnecessary and Clumsy Suggestions"
+              "title": "Google\u2019s Assistive Writing Feature Provided Allegedly Unnecessary and Clumsy Suggestions"
             },
             {
               "summary": "Google Lens's camera-based translation feature produced an offensive mistranslation of a book title authored by Korea's first minister of culture, reportedly due to training data biases and lack of context.",
@@ -3062,7 +3071,7 @@
               "source": "aiid",
               "url": "https://incidentdatabase.ai/blog/multilingual-incident-reporting",
               "date": "2022-07-18",
-              "title": "Google Lens’s Camera-Based Translation Feature Provided an Offensive Mistranslation of a Book Title in Korean"
+              "title": "Google Lens\u2019s Camera-Based Translation Feature Provided an Offensive Mistranslation of a Book Title in Korean"
             },
             {
               "summary": "Google Image search returned racially biased results, displaying predominantly white women for 'professional hairstyles' and Black women for 'unprofessional hairstyles' queries.",
@@ -3071,7 +3080,7 @@
               "source": "aiid",
               "url": "https://www.dailymail.co.uk/femail/article-3527717/Student-left-shocked-Google-search-unprofessional-hairstyles-work-features-black-women.html",
               "date": "2016-04-05",
-              "title": "Google Image Showed Racially Biased Results for “Professional” Hairstyles"
+              "title": "Google Image Showed Racially Biased Results for \u201cProfessional\u201d Hairstyles"
             },
             {
               "summary": "Google Search reportedly surfaced fewer abortion clinic results for users in poorer and rural areas, particularly those with TRAP laws, potentially limiting access to reproductive health information.",
@@ -3107,7 +3116,7 @@
               "source": "aiid",
               "url": "https://themarkup.org/google-the-giant/2020/02/26/wheres-my-email",
               "date": "2018-01-15",
-              "title": "Gmail’s Inbox Sorting System Reportedly Reduced Visibility of Political Emails and Campaign Calls-to-Action"
+              "title": "Gmail\u2019s Inbox Sorting System Reportedly Reduced Visibility of Political Emails and Campaign Calls-to-Action"
             },
             {
               "summary": "Google's automated content moderation tools for detecting sexual explicitness reportedly exhibited gender bias by disproportionately flagging images of women's bodies, suppressing their reach despite not violating policies.",
@@ -3137,7 +3146,7 @@
               "title": "Users Reported Security Issues with Google Pixel 6a's Fingerprint Unlocking"
             },
             {
-              "summary": "Testing revealed that Google Photos continues to avoid labeling primates altogether—an apparent workaround rather than a fix to the 2015 incident where Black individuals were mislabeled as gorillas.",
+              "summary": "Testing revealed that Google Photos continues to avoid labeling primates altogether\u2014an apparent workaround rather than a fix to the 2015 incident where Black individuals were mislabeled as gorillas.",
               "severity": "low",
               "severity_rationale": "Eight years after the original gorilla-labeling incident, Google Photos still avoids labeling primates rather than fixing the underlying recognition issue, drawing media criticism but no regulatory action.",
               "source": "aiid",
@@ -3224,7 +3233,7 @@
               "source": "aiid",
               "url": "https://www.theregister.com/2025/01/27/google_confirms_action_taken_to/",
               "date": "2025-02-20",
-              "title": "Cybercriminals Reportedly Exploited Google’s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder"
+              "title": "Cybercriminals Reportedly Exploited Google\u2019s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder"
             },
             {
               "summary": "Google's search featured snippet allegedly amplified an Amazon AI-generated review summary that described Mein Kampf as 'a true work of art,' creating a self-reinforcing AI misinformation loop.",
@@ -3260,7 +3269,7 @@
               "source": "aiid",
               "url": "https://www.theverge.com/health/718049/google-med-gemini-basilar-ganglia-paper-typo-hallucination",
               "date": "2024-05-06",
-              "title": "Google Healthcare AI Model Med‑Gemini Allegedly Produces Non‑Existent 'Basilar Ganglia' Term in Published Output"
+              "title": "Google Healthcare AI Model Med\u2011Gemini Allegedly Produces Non\u2011Existent 'Basilar Ganglia' Term in Published Output"
             },
             {
               "summary": "Google's Gemini chatbot reportedly entered loops of self-loathing statements during tasks, which a Google DeepMind manager attributed to an infinite-looping bug being fixed.",
@@ -3350,7 +3359,7 @@
               "source": "aiid",
               "url": "https://www.scmp.com/news/world/united-states-canada/article/3339097/ai-deepfakes-flood-social-media-after-dramatic-us-raid-maduro",
               "date": "2026-01-03",
-              "title": "Purportedly AI-Generated Images and Videos Reportedly Spread Misinformation About Nicolás Maduro's Capture on X"
+              "title": "Purportedly AI-Generated Images and Videos Reportedly Spread Misinformation About Nicol\u00e1s Maduro's Capture on X"
             },
             {
               "summary": "Woolworths' Olive chatbot, upgraded with Google Cloud's Gemini Enterprise, reportedly produced fabricated humanlike personal anecdotes during customer-support calls, prompting Woolworths to adjust its responses.",
@@ -3402,9 +3411,9 @@
               "title": "Google, Character.AI to settle suits involving minor suicides and AI chatbots"
             },
             {
-              "summary": "Google suspended Gemini's image generation of people in early 2024 after bias and historical inaccuracy complaints, drew regulatory scrutiny in India, and was fined €250 million by France over copyright-related issues.",
+              "summary": "Google suspended Gemini's image generation of people in early 2024 after bias and historical inaccuracy complaints, drew regulatory scrutiny in India, and was fined \u20ac250 million by France over copyright-related issues.",
               "severity": "high",
-              "severity_rationale": "France's Autorité de la concurrence imposed a €250 million fine on Google, and Indian regulators alleged IT Rules violations.",
+              "severity_rationale": "France's Autorit\u00e9 de la concurrence imposed a \u20ac250 million fine on Google, and Indian regulators alleged IT Rules violations.",
               "source": "websearch",
               "url": "https://en.wikipedia.org/wiki/Google_Gemini",
               "date": "",
@@ -3498,7 +3507,7 @@
               "source": "aiid",
               "url": "https://www.theatlantic.com/magazine/archive/2025/08/google-gemini-ai-sexting/683248/",
               "date": "2025-07-14",
-              "title": "Google Gemini Reportedly Generates Sexual Role‑Play for Account Registered as Minor"
+              "title": "Google Gemini Reportedly Generates Sexual Role\u2011Play for Account Registered as Minor"
             },
             {
               "summary": "Google Cloud's Natural Language API was found to return negative sentiment scores for phrases related to race, sexual orientation, and religion, reflecting biased outputs.",
@@ -3597,7 +3606,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/technology/2025/dec/09/eu-investigation-google-ai-models-gemini",
               "date": "2025-12-09",
-              "title": "EU opens investigation into Google’s use of online content for AI models"
+              "title": "EU opens investigation into Google\u2019s use of online content for AI models"
             },
             {
               "summary": "Google DeepMind received identifiable health records of 1.6 million NHS patients from the Royal Free London Trust to develop the Streams app, resulting in regulatory findings of data protection violations and a subsequent class action lawsuit.",
@@ -3633,7 +3642,7 @@
               "source": "aiid",
               "url": "https://www.theverge.com/2022/6/6/23156198/google-class-action-face-grouping-biometric-information-illinois-privacy-act",
               "date": "2015-05-01",
-              "title": "Google’s Face Grouping Allegedly Collected and Analyzed Users’ Facial Structure without Consent, Violated BIPA"
+              "title": "Google\u2019s Face Grouping Allegedly Collected and Analyzed Users\u2019 Facial Structure without Consent, Violated BIPA"
             },
             {
               "summary": "Israeli military intelligence reportedly used Google Photos alongside Corsight facial recognition technology to identify Palestinians in Gaza, resulting in misidentifications and wrongful detentions including that of poet Mosab Abu Toha.",
@@ -3714,7 +3723,7 @@
               "source": "aiid",
               "url": "https://www.theregister.com/2025/01/27/google_confirms_action_taken_to/",
               "date": "2025-02-20",
-              "title": "Cybercriminals Reportedly Exploited Google’s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder"
+              "title": "Cybercriminals Reportedly Exploited Google\u2019s G.Co Subdomain and Spoofed Caller ID in AI-Driven Phishing Attack on Hack Club Founder"
             }
           ]
         },
@@ -3733,7 +3742,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/technology/2025/dec/09/eu-investigation-google-ai-models-gemini",
               "date": "2025-12-09",
-              "title": "EU opens investigation into Google’s use of online content for AI models"
+              "title": "EU opens investigation into Google\u2019s use of online content for AI models"
             },
             {
               "summary": "Google DeepMind received identifiable health records of 1.6 million NHS patients from the Royal Free London Trust to develop the Streams app, resulting in regulatory findings of data protection violations and a subsequent class action lawsuit.",
@@ -3745,9 +3754,9 @@
               "title": "Google DeepMind and class action lawsuit"
             },
             {
-              "summary": "Google suspended Gemini's image generation of people in early 2024 after bias and historical inaccuracy complaints, drew regulatory scrutiny in India, and was fined €250 million by France over copyright-related issues.",
+              "summary": "Google suspended Gemini's image generation of people in early 2024 after bias and historical inaccuracy complaints, drew regulatory scrutiny in India, and was fined \u20ac250 million by France over copyright-related issues.",
               "severity": "high",
-              "severity_rationale": "France's Autorité de la concurrence imposed a €250 million fine on Google, and Indian regulators alleged IT Rules violations.",
+              "severity_rationale": "France's Autorit\u00e9 de la concurrence imposed a \u20ac250 million fine on Google, and Indian regulators alleged IT Rules violations.",
               "source": "websearch",
               "url": "https://en.wikipedia.org/wiki/Google_Gemini",
               "date": "",
@@ -3778,12 +3787,12 @@
               "source": "aiid",
               "url": "https://www.theverge.com/2022/6/6/23156198/google-class-action-face-grouping-biometric-information-illinois-privacy-act",
               "date": "2015-05-01",
-              "title": "Google’s Face Grouping Allegedly Collected and Analyzed Users’ Facial Structure without Consent, Violated BIPA"
+              "title": "Google\u2019s Face Grouping Allegedly Collected and Analyzed Users\u2019 Facial Structure without Consent, Violated BIPA"
             },
             {
               "summary": "The European Commission fined Google for manipulating its shopping search algorithms to favor its own comparison shopping service over competitors.",
               "severity": "high",
-              "severity_rationale": "EU Commission imposed a formal antitrust fine (€2.42 billion) on Google for anti-competitive algorithmic conduct.",
+              "severity_rationale": "EU Commission imposed a formal antitrust fine (\u20ac2.42 billion) on Google for anti-competitive algorithmic conduct.",
               "source": "aiid",
               "url": "https://www.politico.eu/article/eu-commission-margrethe-vestager-wins-google-shopping-case/",
               "date": "2017-09-27",
@@ -3937,7 +3946,7 @@
               "source": "aiid",
               "url": "https://www.nytimes.com/2022/08/21/technology/google-surveillance-toddler-photo.html",
               "date": "2022-08-21",
-              "title": "Google’s Automated Child Abuse Detection Wrongfully Flagged a Parent’s Naked Photo of His Child"
+              "title": "Google\u2019s Automated Child Abuse Detection Wrongfully Flagged a Parent\u2019s Naked Photo of His Child"
             },
             {
               "summary": "Google's Gemini chatbot produced racially inaccurate historical images and politically biased responses upon release, prompting Google to pause the feature and apologize.",
@@ -3958,7 +3967,7 @@
               "title": "Google's Bard, Gemini, and Gemma AI Systems Allegedly Generated Defamatory Claims About Activist Robby Starbuck, Prompting Lawsuit"
             },
             {
-              "summary": "Testing revealed that Google Photos continues to avoid labeling primates altogether—an apparent workaround rather than a fix to the 2015 incident where Black individuals were mislabeled as gorillas.",
+              "summary": "Testing revealed that Google Photos continues to avoid labeling primates altogether\u2014an apparent workaround rather than a fix to the 2015 incident where Black individuals were mislabeled as gorillas.",
               "severity": "low",
               "severity_rationale": "Eight years after the original gorilla-labeling incident, Google Photos still avoids labeling primates rather than fixing the underlying recognition issue, drawing media criticism but no regulatory action.",
               "source": "aiid",
@@ -3973,7 +3982,7 @@
               "source": "aiid",
               "url": "https://www.theverge.com/health/718049/google-med-gemini-basilar-ganglia-paper-typo-hallucination",
               "date": "2024-05-06",
-              "title": "Google Healthcare AI Model Med‑Gemini Allegedly Produces Non‑Existent 'Basilar Ganglia' Term in Published Output"
+              "title": "Google Healthcare AI Model Med\u2011Gemini Allegedly Produces Non\u2011Existent 'Basilar Ganglia' Term in Published Output"
             }
           ]
         },
@@ -4063,7 +4072,7 @@
               "source": "aiid",
               "url": "https://www.wsj.com/articles/facebook-algorithm-change-zuckerberg-11631654215",
               "date": "2018-10-01",
-              "title": "Facebook \"News Feed\" Allegedly Boosted Misinformation and Violating Content Following Use of MSI Metric"
+              "title": "Facebook \"News Feed\" Allegedly Boosted Misinformation and Violating Content\u00a0Following Use of MSI Metric"
             },
             {
               "summary": "Facebook's algorithmic ad delivery system for housing and employment ads reportedly skewed audience exposure along racial and gender lines, resulting in discriminatory outcomes.",
@@ -4113,7 +4122,7 @@
             {
               "summary": "Instagram's ad targeting algorithm reportedly delivered a children's merchandise campaign intended for adult women predominantly to adult men, including convicted sex offenders, leading to sexual solicitations directed at a 5-year-old child model featured in the ads.",
               "severity": "high",
-              "severity_rationale": "Instagram's algorithm directed ads featuring a 5-year-old to convicted sex offenders, resulting in documented sexual solicitations of a child — a severe child safety harm with significant media coverage.",
+              "severity_rationale": "Instagram's algorithm directed ads featuring a 5-year-old to convicted sex offenders, resulting in documented sexual solicitations of a child \u2014 a severe child safety harm with significant media coverage.",
               "source": "aiid",
               "url": "https://www.nytimes.com/2024/05/13/us/instagram-child-safety.html",
               "date": "2024-05-13",
@@ -4158,7 +4167,7 @@
             {
               "summary": "Internal Meta documents reportedly show automated ad and targeting systems profited from fraudulent ads, exposing users to billions of scam impressions daily while enforcement was constrained by revenue considerations.",
               "severity": "high",
-              "severity_rationale": "Reuters review of internal documents alleges billions of daily scam ad impressions and major revenue tied to fraudulent ads, with enforcement throttled by internal revenue guardrails — documented mass-scale harm.",
+              "severity_rationale": "Reuters review of internal documents alleges billions of daily scam ad impressions and major revenue tied to fraudulent ads, with enforcement throttled by internal revenue guardrails \u2014 documented mass-scale harm.",
               "source": "aiid",
               "url": "https://doctorow.medium.com/https-pluralistic-net-2025-11-08-faecebook-too-big-to-care-8b1923c0834f",
               "date": "2025-11-06",
@@ -4189,7 +4198,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/technology/2026/mar/20/meta-ai-agents-instruction-causes-large-sensitive-data-leak-to-employees",
               "date": "2026-03-20",
-              "title": "Meta AI agent’s instruction causes large sensitive data leak to employees"
+              "title": "Meta AI agent\u2019s instruction causes large sensitive data leak to employees"
             },
             {
               "summary": "The Guardian reports that Robby Starbuck, appointed as a Meta AI adviser through a lawsuit settlement, is being condemned by critics for spreading disinformation and extremism on topics including shootings, vaccines, and trans people.",
@@ -4234,7 +4243,7 @@
               "source": "aiid",
               "url": "https://techpoint.africa/2020/10/22/facebook-lekkimassacre-false/",
               "date": "2020-10-21",
-              "title": "#LekkiMassacre: Why Facebook labelled content from October 20 incident ‘false’"
+              "title": "#LekkiMassacre: Why Facebook labelled content from October 20 incident \u2018false\u2019"
             },
             {
               "summary": "Facebook's AI system labeled a video featuring Black men with a prompt asking users if they wanted to keep seeing videos about 'primates,' producing a racially offensive misclassification.",
@@ -4261,7 +4270,7 @@
               "source": "aiid",
               "url": "https://balkaninsight.com/2021/02/16/facebook-twitter-struggling-in-fight-against-balkan-content-violations/",
               "date": "2021-02-16",
-              "title": "Facebook’s and Twitter's Automated Content Moderation Reportedly Failed to Effectively Enforce Violation Rules for Small Language Groups"
+              "title": "Facebook\u2019s and Twitter's Automated Content Moderation Reportedly Failed to Effectively Enforce Violation Rules for Small Language Groups"
             },
             {
               "summary": "Internal Facebook research revealed that the company's hate-speech detection algorithms disproportionately failed to remove harmful content targeting minority groups including Black, Muslim, LGBTQ, and Jewish users.",
@@ -4270,7 +4279,7 @@
               "source": "aiid",
               "url": "https://www.washingtonpost.com/technology/2021/11/21/facebook-algorithm-biased-race/",
               "date": "2021-11-21",
-              "title": "Facebook’s Hate Speech Detection Algorithms Allegedly Disproportionately Failed to Remove Racist Content towards Minority Groups"
+              "title": "Facebook\u2019s Hate Speech Detection Algorithms Allegedly Disproportionately Failed to Remove Racist Content towards Minority Groups"
             },
             {
               "summary": "Researchers found that Facebook's automated political ad detection system had high error rates that varied significantly by country, failing to reliably enforce political advertising policies.",
@@ -4279,7 +4288,7 @@
               "source": "aiid",
               "url": "https://osf.io/7tw3e/",
               "date": "2020-07-01",
-              "title": "Facebook’s Political Ad Detection Reportedly Showed High and Geographically Uneven Error Rates"
+              "title": "Facebook\u2019s Political Ad Detection Reportedly Showed High and Geographically Uneven Error Rates"
             },
             {
               "summary": "An internal Facebook report disclosed that a software bug in the ranking algorithm failed to down-rank moderator-flagged harmful content for at least six months, causing misinformation surges in users' News Feeds.",
@@ -4453,7 +4462,7 @@
               "title": "Scams Reportedly Impersonating Wealthy Investors Proliferating on Facebook"
             },
             {
-              "summary": "Meta's automated 'Advantage Plus' ad platform malfunctioned, causing advertisers—particularly small businesses—to exceed daily budgets due to surging CPMs from February through April with limited transparency from Meta.",
+              "summary": "Meta's automated 'Advantage Plus' ad platform malfunctioned, causing advertisers\u2014particularly small businesses\u2014to exceed daily budgets due to surging CPMs from February through April with limited transparency from Meta.",
               "severity": "medium",
               "severity_rationale": "Multi-month malfunction in Meta's Advantage Plus ad platform caused small businesses to overspend their budgets with poor transparency, drawing media coverage but no documented regulator action.",
               "source": "aiid",
@@ -4588,13 +4597,13 @@
               "title": "Purportedly AI-Generated Deepfake Ads on Facebook Reportedly Impersonate Trump, Musk, Ocasio-Cortez, Warren, Sanders, and Leavitt to Promote Fraudulent Rebates"
             },
             {
-              "summary": "Fraudsters ran AI-generated deepfake ads on Instagram impersonating Gisele Bündchen and other celebrities to promote fake giveaways and skincare products in Brazil, leading to police arrests and millions in losses.",
+              "summary": "Fraudsters ran AI-generated deepfake ads on Instagram impersonating Gisele B\u00fcndchen and other celebrities to promote fake giveaways and skincare products in Brazil, leading to police arrests and millions in losses.",
               "severity": "medium",
               "severity_rationale": "Brazilian police arrested four suspects in a deepfake ad fraud scheme on Instagram that generated over 20 million reais ($3.9 million) in suspicious funds.",
               "source": "aiid",
               "url": "https://www.reuters.com/world/americas/brazilian-scammers-raking-millions-used-gisele-bundchen-deepfakes-instagram-ads-2025-10-03/",
               "date": "2025-10-01",
-              "title": "Purportedly AI-Generated Deepfake Ads on Instagram Impersonate Gisele Bündchen and Other Celebrities in Brazilian Fraud Scheme"
+              "title": "Purportedly AI-Generated Deepfake Ads on Instagram Impersonate Gisele B\u00fcndchen and Other Celebrities in Brazilian Fraud Scheme"
             },
             {
               "summary": "Robby Starbuck filed a defamation lawsuit against Meta alleging its AI chatbot generated false statements claiming he participated in the January 6 riot, was arrested, denied the Holocaust, and was unfit to parent.",
@@ -4630,7 +4639,7 @@
               "source": "aiid",
               "url": "https://www.nytimes.com/2021/02/11/style/disabled-fashion-facebook-discrimination.html",
               "date": "2021-02-11",
-              "title": "Facebook’s Advertisement Moderation System Routinely Misidentified Adaptive Fashion Products as Medical Equipment and Blocked Their Sellers"
+              "title": "Facebook\u2019s Advertisement Moderation System Routinely Misidentified Adaptive Fashion Products as Medical Equipment and Blocked Their Sellers"
             },
             {
               "summary": "Facebook's ad-moderation AI erroneously blocked legitimate ads from small businesses after the company reduced human moderator oversight in favor of algorithmic review.",
@@ -4648,7 +4657,7 @@
               "source": "aiid",
               "url": "https://fortune.com/2022/08/09/painful-offensive-responses-meta-blenderbot-3-chatbot-tay/",
               "date": "2022-08-07",
-              "title": "Meta’s BlenderBot 3 Chatbot Demo Made Offensive Antisemitic Comments"
+              "title": "Meta\u2019s BlenderBot 3 Chatbot Demo Made Offensive Antisemitic Comments"
             },
             {
               "summary": "Facebook's automated content moderation wrongly censored and banned Australian users for posting a 19th-century photograph of Aboriginal men in chains, misclassifying the historical slavery evidence as nudity violations.",
@@ -4657,7 +4666,7 @@
               "source": "aiid",
               "url": "https://www.techtimes.com/articles/250337/20200615/facebook-blocks-bans-users-for-sharing-article-showing-aboriginal-men-in-chains-over-nudity.htm",
               "date": "2020-06-11",
-              "title": "Facebook’s Moderation Algorithm Banned Users for Historical Evidence of Slavery"
+              "title": "Facebook\u2019s Moderation Algorithm Banned Users for Historical Evidence of Slavery"
             },
             {
               "summary": "Facebook's automated ad system reportedly displayed an Instagram user's violent image as an advertisement on Facebook.",
@@ -4684,7 +4693,7 @@
               "source": "aiid",
               "url": "https://www.businessinsider.com/facebook-declaration-of-independence-hate-speech-2018-7",
               "date": "2018-07-02",
-              "title": "Facebook’s Automated Content Moderation Tool Flagged a Post Containing Parts of the Declaration of Independence as Hate Speech by Mistake"
+              "title": "Facebook\u2019s Automated Content Moderation Tool Flagged a Post Containing Parts of the Declaration of Independence as Hate Speech by Mistake"
             },
             {
               "summary": "Facebook's content moderation algorithm incorrectly flagged a Canadian business's onion advertisement as sexually suggestive content and removed it before later reinstating it.",
@@ -4693,7 +4702,7 @@
               "source": "aiid",
               "url": "https://www.businessinsider.com/facebook-mistakes-onions-for-sexualised-content-2020-10",
               "date": "2020-10-03",
-              "title": "Facebook’s Algorithm Mistook an Advertisement of Onions as Sexual Suggestive Content"
+              "title": "Facebook\u2019s Algorithm Mistook an Advertisement of Onions as Sexual Suggestive Content"
             },
             {
               "summary": "Meta's BlenderBot 3 chatbot falsely identified a sitting Dutch politician as a terrorist when asked 'who is a terrorist,' prompting public confusion from the named individual.",
@@ -4711,7 +4720,7 @@
               "source": "aiid",
               "url": "https://www.theverge.com/2015/4/2/8315897/facebook-on-this-day-nostalgia-app-bringing-back-painful-memories",
               "date": "2015-03-24",
-              "title": "Facebook’s On-This-Day Feature Mistakenly Showed Painful Memories to Users"
+              "title": "Facebook\u2019s On-This-Day Feature Mistakenly Showed Painful Memories to Users"
             },
             {
               "summary": "Facebook's anti-spam system allegedly contained a bug that blocked legitimate posts containing news about the COVID-19 pandemic.",
@@ -4720,7 +4729,7 @@
               "source": "aiid",
               "url": "https://www.businessinsider.com/facebook-blocking-coronavirus-articles-bug-2020-3",
               "date": "2020-03-17",
-              "title": "Bug in Facebook’s Anti-Spam Filter Allegedly Blocked Legitimate Posts about COVID-19"
+              "title": "Bug in Facebook\u2019s Anti-Spam Filter Allegedly Blocked Legitimate Posts about COVID-19"
             },
             {
               "summary": "Facebook's automated and human moderation systems removed posts featuring classical artworks containing nudity, drawing criticism from museums and cultural institutions for censoring legitimate art.",
@@ -4729,7 +4738,7 @@
               "source": "aiid",
               "url": "https://www.latestly.com/technology/facebook-bans-nudity-social-media-removes-flemish-paintings-by-rubens-for-nude-content-285004.html",
               "date": "2018-05-01",
-              "title": "Facebook’s Automated Removal of Content Featuring Nudity-Containing Artworks Denounced as Censorship"
+              "title": "Facebook\u2019s Automated Removal of Content Featuring Nudity-Containing Artworks Denounced as Censorship"
             },
             {
               "summary": "Facebook's ad-approval algorithm reportedly failed to perform basic URL domain checks, allowing fraudulent ads to reach users.",
@@ -4849,13 +4858,13 @@
               "title": "Prominent AI Chatbots Allegedly Produced Incorrect UK Financial and ISA Guidance"
             },
             {
-              "summary": "A Facebook page hosted a reportedly AI-manipulated video falsely depicting Croatian immunologist Stipan Jonjić endorsing an anti-parasite product, leading at least one woman to purchase it.",
+              "summary": "A Facebook page hosted a reportedly AI-manipulated video falsely depicting Croatian immunologist Stipan Jonji\u0107 endorsing an anti-parasite product, leading at least one woman to purchase it.",
               "severity": "low",
               "severity_rationale": "A single deceptive AI-generated ad on Facebook reportedly led to at least one consumer purchase of a questionable health product, with no regulatory action reported.",
               "source": "aiid",
               "url": "https://faktograf.hr/2024/08/30/imunolog-stipan-jonjic-ne-reklamira-sumnjivi-lijek/",
               "date": "2024-08-27",
-              "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonjić Promoting Anti-Parasite Product on Facebook"
+              "title": "Video with Reportedly AI-Generated Media Purported to Show Croatian Immunologist Stipan Jonji\u0107 Promoting Anti-Parasite Product on Facebook"
             },
             {
               "summary": "A Facebook page reportedly ran a fake TV-style ad using AI-manipulated media of Croatian neurosurgeon Josip Paladino to endorse a product called Steplex, directing users to a site impersonating Croatia's Ministry of Health.",
@@ -4950,7 +4959,7 @@
               "source": "aiid",
               "url": "https://balkaninsight.com/2021/02/16/facebook-twitter-struggling-in-fight-against-balkan-content-violations/",
               "date": "2021-02-16",
-              "title": "Facebook’s and Twitter's Automated Content Moderation Reportedly Failed to Effectively Enforce Violation Rules for Small Language Groups"
+              "title": "Facebook\u2019s and Twitter's Automated Content Moderation Reportedly Failed to Effectively Enforce Violation Rules for Small Language Groups"
             },
             {
               "summary": "Facebook content moderators protested working conditions after the company's automated content moderation system allegedly failed to adequately filter psychologically hazardous content, leaving humans exposed to graphic violence and child abuse material.",
@@ -5188,7 +5197,7 @@
               "source": "aiid",
               "url": "https://www.washingtonpost.com/technology/2021/11/21/facebook-algorithm-biased-race/",
               "date": "2021-11-21",
-              "title": "Facebook’s Hate Speech Detection Algorithms Allegedly Disproportionately Failed to Remove Racist Content towards Minority Groups"
+              "title": "Facebook\u2019s Hate Speech Detection Algorithms Allegedly Disproportionately Failed to Remove Racist Content towards Minority Groups"
             },
             {
               "summary": "Researchers found that Facebook's automated political ad detection system had high error rates that varied significantly by country, failing to reliably enforce political advertising policies.",
@@ -5197,7 +5206,7 @@
               "source": "aiid",
               "url": "https://osf.io/7tw3e/",
               "date": "2020-07-01",
-              "title": "Facebook’s Political Ad Detection Reportedly Showed High and Geographically Uneven Error Rates"
+              "title": "Facebook\u2019s Political Ad Detection Reportedly Showed High and Geographically Uneven Error Rates"
             },
             {
               "summary": "Facebook's recommendation system continued serving ads for gun accessories and military gear despite the company's announced pause on such ads following the January 6 Capitol attack.",
@@ -5316,7 +5325,7 @@
               "source": "aiid",
               "url": "https://www.theverge.com/2020/1/29/21114358/facebook-550-million-settle-lawsuit-facial-recognition-technology-illinois",
               "date": "2015-06-14",
-              "title": "Facebook’s \"Tag Suggestions\" Allegedly Stored Biometric Data without User Consent"
+              "title": "Facebook\u2019s \"Tag Suggestions\" Allegedly Stored Biometric Data without User Consent"
             },
             {
               "summary": "Meta allegedly used Books3, a dataset of 191,000 pirated books, to train LLaMA without author consent, prompting copyright infringement lawsuits.",
@@ -5334,7 +5343,7 @@
               "source": "aiid",
               "url": "https://www.theatlantic.com/technology/archive/2025/03/libgen-meta-openai/682093/",
               "date": "2023-02-28",
-              "title": "Meta and OpenAI Accused of Using LibGen’s Pirated Books to Train AI Models"
+              "title": "Meta and OpenAI Accused of Using LibGen\u2019s Pirated Books to Train AI Models"
             },
             {
               "summary": "Meta AI smart glasses reportedly captured intimate imagery, including unintentional recordings, which was then accessed by human reviewers in Kenya, as revealed by a Swedish investigation.",
@@ -5352,7 +5361,7 @@
               "source": "guardian",
               "url": "https://www.theguardian.com/technology/2026/mar/20/meta-ai-agents-instruction-causes-large-sensitive-data-leak-to-employees",
               "date": "2026-03-20",
-              "title": "Meta AI agent’s instruction causes large sensitive data leak to employees"
+              "title": "Meta AI agent\u2019s instruction causes large sensitive data leak to employees"
             },
             {
               "summary": "Whistleblowers leaked a list of approximately 100,000 websites that Meta allegedly scraped to train its AI models while ignoring robots.txt and other web protocols, which Meta denied as bogus.",
@@ -5488,7 +5497,7 @@
               "source": "aiid",
               "url": "https://www.theverge.com/2020/1/29/21114358/facebook-550-million-settle-lawsuit-facial-recognition-technology-illinois",
               "date": "2015-06-14",
-              "title": "Facebook’s \"Tag Suggestions\" Allegedly Stored Biometric Data without User Consent"
+              "title": "Facebook\u2019s \"Tag Suggestions\" Allegedly Stored Biometric Data without User Consent"
             },
             {
               "summary": "Facebook's algorithmic ad delivery system for housing and employment ads reportedly skewed audience exposure along racial and gender lines, resulting in discriminatory outcomes.",
@@ -5598,7 +5607,7 @@
               "source": "aiid",
               "url": "https://www.wsj.com/articles/facebook-algorithm-change-zuckerberg-11631654215",
               "date": "2018-10-01",
-              "title": "Facebook \"News Feed\" Allegedly Boosted Misinformation and Violating Content Following Use of MSI Metric"
+              "title": "Facebook \"News Feed\" Allegedly Boosted Misinformation and Violating Content\u00a0Following Use of MSI Metric"
             },
             {
               "summary": "Court filings allege Meta employees, with Mark Zuckerberg's apparent approval, used the pirated LibGen book repository to train LLaMA models and took steps to conceal the dataset's origins.",
@@ -5607,12 +5616,12 @@
               "source": "aiid",
               "url": "https://www.theatlantic.com/technology/archive/2025/03/libgen-meta-openai/682093/",
               "date": "2023-02-28",
-              "title": "Meta and OpenAI Accused of Using LibGen’s Pirated Books to Train AI Models"
+              "title": "Meta and OpenAI Accused of Using LibGen\u2019s Pirated Books to Train AI Models"
             },
             {
               "summary": "Internal Meta documents reportedly show automated ad and targeting systems profited from fraudulent ads, exposing users to billions of scam impressions daily while enforcement was constrained by revenue considerations.",
               "severity": "high",
-              "severity_rationale": "Reuters review of internal documents alleges billions of daily scam ad impressions and major revenue tied to fraudulent ads, with enforcement throttled by internal revenue guardrails — documented mass-scale harm.",
+              "severity_rationale": "Reuters review of internal documents alleges billions of daily scam ad impressions and major revenue tied to fraudulent ads, with enforcement throttled by internal revenue guardrails \u2014 documented mass-scale harm.",
               "source": "aiid",
               "url": "https://doctorow.medium.com/https-pluralistic-net-2025-11-08-faecebook-too-big-to-care-8b1923c0834f",
               "date": "2025-11-06",
@@ -5656,7 +5665,7 @@
             {
               "summary": "Internal Meta documents reportedly show automated ad and targeting systems profited from fraudulent ads, exposing users to billions of scam impressions daily while enforcement was constrained by revenue considerations.",
               "severity": "high",
-              "severity_rationale": "Reuters review of internal documents alleges billions of daily scam ad impressions and major revenue tied to fraudulent ads, with enforcement throttled by internal revenue guardrails — documented mass-scale harm.",
+              "severity_rationale": "Reuters review of internal documents alleges billions of daily scam ad impressions and major revenue tied to fraudulent ads, with enforcement throttled by internal revenue guardrails \u2014 documented mass-scale harm.",
               "source": "aiid",
               "url": "https://doctorow.medium.com/https-pluralistic-net-2025-11-08-faecebook-too-big-to-care-8b1923c0834f",
               "date": "2025-11-06",
@@ -5690,7 +5699,7 @@
               "title": "Facebook, Instagram, and Twitter Cited Errors in Automated Systems as Cause for Blocking pro-Palestinian Content on Israeli-Palestinian Conflict"
             },
             {
-              "summary": "Meta's automated 'Advantage Plus' ad platform malfunctioned, causing advertisers—particularly small businesses—to exceed daily budgets due to surging CPMs from February through April with limited transparency from Meta.",
+              "summary": "Meta's automated 'Advantage Plus' ad platform malfunctioned, causing advertisers\u2014particularly small businesses\u2014to exceed daily budgets due to surging CPMs from February through April with limited transparency from Meta.",
               "severity": "medium",
               "severity_rationale": "Multi-month malfunction in Meta's Advantage Plus ad platform caused small businesses to overspend their budgets with poor transparency, drawing media coverage but no documented regulator action.",
               "source": "aiid",
@@ -5793,7 +5802,7 @@
           "commitments": [
             "Microsoft provides hands-on counseling for high-impact and higher-risk AI uses through its Sensitive Uses and Emerging Technologies team.",
             "Microsoft uses a multilayered approach to manage and mitigate risks for generative AI systems and models across the full AI development lifecycle.",
-            "Microsoft will expand responsible AI tooling to cover modalities beyond text—including images, audio, and video—and add support for agentic systems."
+            "Microsoft will expand responsible AI tooling to cover modalities beyond text\u2014including images, audio, and video\u2014and add support for agentic systems."
           ],
           "issue_detected": true,
           "potential_issue": "high",
@@ -6012,7 +6021,7 @@
               "source": "aiid",
               "url": "https://www.theverge.com/2020/6/9/21284934/microsoft-ai-news-editors-msn-homepage-little-mix-singers",
               "date": "2020-06-06",
-              "title": "Microsoft’s Algorithm Allegedly Selected Photo of the Wrong Mixed-Race Person Featured in a News Story"
+              "title": "Microsoft\u2019s Algorithm Allegedly Selected Photo of the Wrong Mixed-Race Person Featured in a News Story"
             },
             {
               "summary": "A study found that Microsoft's Face API (and Face++) emotion detection scored Black faces as having more negative emotion than white faces in similar or ambiguous photos, indicating racial bias.",
@@ -6093,7 +6102,7 @@
               "source": "aiid",
               "url": "https://www.thetimes.com/uk/environment/article/defra-ai-peatland-map-cq9x80vnp",
               "date": "2025-05-10",
-              "title": "Government‑Backed AI4Peat Mapping Tool Allegedly Misidentifies Granite Outcrops and Quarries as Peat"
+              "title": "Government\u2011Backed AI4Peat Mapping Tool Allegedly Misidentifies Granite Outcrops and Quarries as Peat"
             },
             {
               "summary": "An American Security Project report found that Microsoft Copilot, alongside other major LLMs, sometimes produced responses aligning with CCP propaganda or censorship on sensitive topics in English and Simplified Chinese.",
@@ -6233,7 +6242,7 @@
               "source": "aiid",
               "url": "https://www.theverge.com/2020/6/9/21284934/microsoft-ai-news-editors-msn-homepage-little-mix-singers",
               "date": "2020-06-06",
-              "title": "Microsoft’s Algorithm Allegedly Selected Photo of the Wrong Mixed-Race Person Featured in a News Story"
+              "title": "Microsoft\u2019s Algorithm Allegedly Selected Photo of the Wrong Mixed-Race Person Featured in a News Story"
             },
             {
               "summary": "Microsoft's Bing AI chatbot became confused about the current date and engaged in an erratic conversation with a user asking about 2023 movie showtimes.",
@@ -6251,7 +6260,7 @@
               "source": "aiid",
               "url": "https://www.thetimes.com/uk/environment/article/defra-ai-peatland-map-cq9x80vnp",
               "date": "2025-05-10",
-              "title": "Government‑Backed AI4Peat Mapping Tool Allegedly Misidentifies Granite Outcrops and Quarries as Peat"
+              "title": "Government\u2011Backed AI4Peat Mapping Tool Allegedly Misidentifies Granite Outcrops and Quarries as Peat"
             }
           ]
         },
@@ -6332,7 +6341,7 @@
               "source": "websearch",
               "url": "https://githubcopilotlitigation.com/",
               "date": "",
-              "title": "GitHub Copilot litigation · Joseph Saveri Law Firm & Matthew Butterick"
+              "title": "GitHub Copilot litigation \u00b7 Joseph Saveri Law Firm & Matthew Butterick"
             },
             {
               "summary": "A class-action complaint was filed alleging GitHub Copilot reproduces open-source code without preserving required license terms, copyright notices, or attribution.",
@@ -6469,7 +6478,7 @@
               "source": "websearch",
               "url": "https://githubcopilotlitigation.com/",
               "date": "",
-              "title": "GitHub Copilot litigation · Joseph Saveri Law Firm & Matthew Butterick"
+              "title": "GitHub Copilot litigation \u00b7 Joseph Saveri Law Firm & Matthew Butterick"
             },
             {
               "summary": "A class-action complaint was filed alleging GitHub Copilot reproduces open-source code without preserving required license terms, copyright notices, or attribution.",
