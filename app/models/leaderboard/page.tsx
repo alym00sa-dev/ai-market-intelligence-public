@@ -19,7 +19,7 @@ export default function LeaderboardPage() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
-      <Navbar scrapedAt={null} />
+      <Navbar />
       <div className="flex-1 px-4 sm:px-6 py-8">
         <div className="w-full space-y-5">
           <div className="flex items-center gap-3">

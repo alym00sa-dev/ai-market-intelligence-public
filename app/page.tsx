@@ -40,7 +40,7 @@ export default function Page() {
 
   return (
     <div className="min-h-screen bg-slate-50 flex flex-col">
-      <Navbar scrapedAt={scraped} />
+      <Navbar />
 
       <div className="flex flex-1 min-h-0">
         {/* Main content */}
