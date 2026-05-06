@@ -5,7 +5,6 @@ import dynamic from "next/dynamic"
 import CompanyProfiles from "./CompanyProfiles"
 import CompanyComparison from "./CompanyComparison"
 import StatsBar from "./StatsBar"
-import ChatPanel from "./ChatPanel"
 import JobsTable from "./JobsTable"
 import type { CompanyProfile, Job } from "../types"
 
@@ -24,14 +23,12 @@ export default function HiringView({
   companyCount,
   jobs,
   profiles,
-  companies,
   scrapedAt,
 }: {
   totalJobs: number
   companyCount: number
   jobs: Job[]
   profiles: CompanyProfile[]
-  companies: string[]
   scrapedAt: string | null
 }) {
   const [tab, setTab] = useState<Tab>("profiles")
@@ -107,18 +104,11 @@ export default function HiringView({
         {/* Jobs table — profiles tab only */}
         {tab === "profiles" && (
           <div className="mt-8">
-            <JobsTable jobs={jobs} companies={companies} />
+            <JobsTable jobs={jobs} />
           </div>
         )}
 
       </div>
-
-      {/* Chat sidebar — profiles tab only */}
-      {tab === "profiles" && (
-        <div className="hidden lg:flex w-[360px] shrink-0 px-4 py-8 sticky top-14 h-[calc(100vh-3.5rem)]">
-          <ChatPanel availableCompanies={companies} />
-        </div>
-      )}
     </div>
   )
 }

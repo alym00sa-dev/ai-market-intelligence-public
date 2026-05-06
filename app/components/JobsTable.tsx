@@ -23,14 +23,19 @@ const CATEGORY_COLORS: Record<string, string> = {
 
 type Props = {
   jobs: Job[]
-  companies: string[]
 }
 
-export default function JobsTable({ jobs, companies }: Props) {
+export default function JobsTable({ jobs }: Props) {
   const [search, setSearch] = useState("")
   const [filterCompany, setFilterCompany] = useState("all")
   const [filterCategory, setFilterCategory] = useState("all")
   const [expandedId, setExpandedId] = useState<string | null>(null)
+
+  const companies = useMemo(() => {
+    const seen = new Set<string>()
+    jobs.forEach((j) => seen.add(j.company))
+    return Array.from(seen).sort()
+  }, [jobs])
 
   const categories = useMemo(() => {
     const seen = new Set<string>()

@@ -17,7 +17,6 @@ function loadJobs(): JobsData {
 
 export default function Page() {
   const data = loadJobs()
-  const companies = Object.keys(data.companies).sort()
 
   const scraped = data.scraped_at
     ? new Date(data.scraped_at).toLocaleString("en-US", {
@@ -55,7 +54,6 @@ export default function Page() {
           companyCount={Object.keys(data.companies).length}
           jobs={data.jobs}
           profiles={profiles}
-          companies={companies}
           scrapedAt={scraped}
         />
       )}
