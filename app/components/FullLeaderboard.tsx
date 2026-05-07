@@ -55,9 +55,11 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
   const [sortAsc, setSortAsc]     = useState(false)
   const [filterOpen, setFilterOpen] = useState<"all" | "open" | "closed">("all")
   const [filterOrg, setFilterOrg] = useState("all")
+  const [filterCountry, setFilterCountry] = useState("all")
   const [search, setSearch]       = useState("")
 
-  const orgs = Array.from(new Set(models.map(m => m.org))).sort()
+  const orgs      = Array.from(new Set(models.map(m => m.org))).sort()
+  const countries = Array.from(new Set(models.map(m => m.country).filter(Boolean))).sort()
 
   const priceAsc = sortKey === "price_blended"
   const defaultAsc = priceAsc
@@ -66,7 +68,8 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
     .filter(m => {
       if (filterOpen === "open"   && m.open_weight !== true)  return false
       if (filterOpen === "closed" && m.open_weight !== false) return false
-      if (filterOrg !== "all" && m.org !== filterOrg)         return false
+      if (filterOrg !== "all" && m.org !== filterOrg)             return false
+      if (filterCountry !== "all" && m.country !== filterCountry) return false
       if (search && !m.name.toLowerCase().includes(search.toLowerCase()) &&
           !m.org.toLowerCase().includes(search.toLowerCase())) return false
       return true
@@ -134,6 +137,15 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
           {orgs.map(o => <option key={o} value={o}>{o}</option>)}
         </select>
 
+        <select
+          value={filterCountry}
+          onChange={e => setFilterCountry(e.target.value)}
+          className="text-xs border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-600 bg-white focus:outline-none focus:ring-2 focus:ring-violet-300"
+        >
+          <option value="all">All countries</option>
+          {countries.map(c => <option key={c} value={c}>{c}</option>)}
+        </select>
+
         <span className="ml-auto text-xs text-slate-400 tabular-nums">{filtered.length} models</span>
       </div>
 
@@ -145,6 +157,7 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
               <th className="px-3 py-2.5 text-left text-xs font-medium text-slate-500 w-8 border-b border-slate-100">#</th>
               <th className="px-3 py-2.5 text-left text-xs font-medium text-slate-500 border-b border-slate-100">Model</th>
               <th className="px-3 py-2.5 text-left text-xs font-medium text-slate-500 border-b border-slate-100">Org</th>
+              <th className="px-3 py-2.5 text-left text-xs font-medium text-slate-500 border-b border-slate-100 whitespace-nowrap">Country</th>
               {COLUMNS.map(col => <Th key={col.key} col={col} />)}
             </tr>
           </thead>
@@ -166,6 +179,7 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
                     {m.org}
                   </span>
                 </td>
+                <td className="px-3 py-2 text-xs text-slate-500 whitespace-nowrap">{m.country || "—"}</td>
                 <td className="px-3 py-2 text-xs tabular-nums text-slate-700 font-medium">{fmt(m.intelligence_index)}</td>
                 <td className="px-3 py-2 text-xs tabular-nums text-slate-600">{fmt(m.coding_index)}</td>
                 <td className="px-3 py-2 text-xs tabular-nums text-slate-600">{fmt(m.math_index)}</td>
