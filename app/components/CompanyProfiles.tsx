@@ -231,7 +231,7 @@ const VERTICAL_LABELS: Record<string, string> = {
   health_rd:       "Health R&D",
   health_delivery: "Health Delivery",
   agriculture:     "Agriculture",
-  education:       "Education",
+  education:       "Edu",
 }
 
 const VERTICAL_RADAR_DIMS = VERTICAL_ORDER.map((k) => ({ key: k, label: VERTICAL_LABELS[k] }))
@@ -268,7 +268,7 @@ function VerticalRadar({ breakdown, total, size = 110 }: {
   const dPath  = values.map((v, i) => { const { x, y } = pt(i, v); return `${i === 0 ? "M" : "L"} ${x} ${y}` }).join(" ") + " Z"
 
   return (
-    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-hidden="true" className="shrink-0">
+    <svg width={size} height={size} viewBox={`0 0 ${size} ${size}`} aria-hidden="true" className="shrink-0" overflow="visible">
       {[0.25, 0.5, 0.75, 1.0].map((lvl) => (
         <path key={lvl} d={gPath(lvl)} fill="none" stroke={lvl === 1 ? "#e2e8f0" : "#f1f5f9"} strokeWidth={lvl === 1 ? 0.75 : 0.5} />
       ))}
@@ -457,7 +457,7 @@ function CompanyRow({ profile }: { profile: CompanyProfile }) {
       {/* Row 2: vertical radar | vertical bins — only when vertical data exists */}
       {showVertical && (
         <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
-          <div className="shrink-0 mx-auto sm:mx-0 w-[220px] flex justify-center items-start">
+          <div className="shrink-0 mx-auto sm:mx-0 w-[220px] flex justify-center items-start px-8">
             {totalVertical > 0 && (
               <VerticalRadar breakdown={verticalBreakdown} total={totalVertical} size={220} />
             )}

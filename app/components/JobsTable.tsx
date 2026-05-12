@@ -21,6 +21,12 @@ const CATEGORY_COLORS: Record<string, string> = {
   unclassified: "bg-gray-100 text-gray-400",
 }
 
+const DISPLAY_NAMES: Record<string, string> = {
+  "Amazon AGI":         "Amazon",
+  "Microsoft Research": "Microsoft",
+  "Google DeepMind":    "Google",
+}
+
 const VERTICAL_LABELS: Record<string, string> = {
   health_rd:       "Health R&D",
   health_delivery: "Health Delivery",
@@ -112,7 +118,7 @@ export default function JobsTable({ jobs }: Props) {
         >
           <option value="all">All Companies</option>
           {companies.map((c) => (
-            <option key={c} value={c}>{c}</option>
+            <option key={c} value={c}>{DISPLAY_NAMES[c] ?? c}</option>
           ))}
         </select>
         <select
@@ -189,7 +195,7 @@ export default function JobsTable({ jobs }: Props) {
                     className="hover:bg-gray-50 cursor-pointer transition-colors"
                     onClick={() => setExpandedId(isExpanded ? null : job.id)}
                   >
-                    <td className="px-4 py-3 font-medium text-gray-800">{job.company}</td>
+                    <td className="px-4 py-3 font-medium text-gray-800">{DISPLAY_NAMES[job.company] ?? job.company}</td>
                     <td className="px-4 py-3 text-gray-700">{job.title}</td>
                     <td className="px-4 py-3">
                       <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${CATEGORY_COLORS[cat] ?? "bg-gray-100 text-gray-500"}`}>
