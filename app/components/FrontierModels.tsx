@@ -545,9 +545,10 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
         <div className="flex gap-1.5 shrink-0">
           {METRIC_OPTS.map(o => (
             <button key={o.key} onClick={() => setMetric(o.key)}
-              className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
-                metric === o.key ? `${o.bg} ${o.text}` : "text-slate-400 hover:bg-slate-50 hover:text-slate-600"
-              }`}>
+              className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
+                metric === o.key ? "text-white border-transparent" : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+              }`}
+              style={metric === o.key ? { backgroundColor: o.color, borderColor: o.color } : {}}>
               {o.label}
             </button>
           ))}
@@ -893,19 +894,19 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
             {hovered && hovered.intelligence_index != null && (() => {
               const cx = toChartX(hovered.release_date!)
               const cy = toChartY(hovered.intelligence_index)
-              const tx = cx > W * 0.68 ? cx - 196 : cx + 12
-              const ty = cy < 80 ? cy + 10 : cy - 82
+              const tx = cx > W * 0.68 ? cx - 246 : cx + 12
+              const ty = cy < 100 ? cy + 10 : cy - 100
               return (
                 <g>
-                  <rect x={tx} y={ty} width={188} height={72} rx={5} fill="#0f172a" fillOpacity={0.93} />
-                  <text x={tx + 10} y={ty + 18} fontSize={12} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
+                  <rect x={tx} y={ty} width={235} height={90} rx={6} fill="#0f172a" fillOpacity={0.93} />
+                  <text x={tx + 12} y={ty + 22} fontSize={15} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
                     {truncate(hovered.name, 22)}
                   </text>
-                  <text x={tx + 10} y={ty + 33} fontSize={10} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
-                  <text x={tx + 10} y={ty + 49} fontSize={10} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                  <text x={tx + 12} y={ty + 41} fontSize={13} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
+                  <text x={tx + 12} y={ty + 62} fontSize={13} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                     Intelligence: {hovered.intelligence_index.toFixed(1)}
                   </text>
-                  <text x={tx + 10} y={ty + 63} fontSize={9.5} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
+                  <text x={tx + 12} y={ty + 79} fontSize={12} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
                     Released {fmtDate(hovered.release_date)}
                   </text>
                 </g>
@@ -979,20 +980,20 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
               const x = toSwimlaneX(hovered.release_date)
               const ri = topOrgs.indexOf(hovered.org)
               const y = PAD_T + ri * ROW_H + ROW_H / 2
-              const tx = x > W * 0.68 ? x - 162 : x + 10
-              const ty = y - 42
+              const tx = x > W * 0.68 ? x - 204 : x + 10
+              const ty = y - 68
               return (
                 <g>
-                  <rect x={tx} y={ty} width={155} height={54} rx={4} fill="#0f172a" fillOpacity={0.93} />
-                  <text x={tx + 7} y={ty + 14} fontSize={9} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
+                  <rect x={tx} y={ty} width={195} height={68} rx={6} fill="#0f172a" fillOpacity={0.93} />
+                  <text x={tx + 10} y={ty + 18} fontSize={11} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
                     {truncate(hovered.name, 22)}
                   </text>
-                  <text x={tx + 7} y={ty + 26} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
-                  <text x={tx + 7} y={ty + 38} fontSize={8} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                  <text x={tx + 10} y={ty + 33} fontSize={10} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
+                  <text x={tx + 10} y={ty + 48} fontSize={10} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                     Released: {fmtDate(hovered.release_date)}
                   </text>
                   {hovered.intelligence_index != null && (
-                    <text x={tx + 7} y={ty + 49} fontSize={7.5} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
+                    <text x={tx + 10} y={ty + 62} fontSize={9.5} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
                       Intelligence: {hovered.intelligence_index.toFixed(1)}
                     </text>
                   )}
@@ -1151,21 +1152,21 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
 
           {hovered && (() => {
             const x = toX(hovered.price_blended!), y = toY(hovered.intelligence_index!)
-            const tx = x > W * 0.68 ? x - 196 : x + 12
-            const ty = y < 80 ? y + 10 : y - 82
+            const tx = x > W * 0.68 ? x - 276 : x + 12
+            const ty = y < 110 ? y + 10 : y - 110
             return (
               <g>
-                <rect x={tx} y={ty} width={188} height={72} rx={5} fill="#0f172a" fillOpacity={0.93} />
-                <text x={tx + 10} y={ty + 18} fontSize={12} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
-                  {truncate(hovered.name, 22)}
+                <rect x={tx} y={ty} width={265} height={104} rx={6} fill="#0f172a" fillOpacity={0.93} />
+                <text x={tx + 14} y={ty + 24} fontSize={16} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
+                  {truncate(hovered.name, 24)}
                 </text>
-                <text x={tx + 10} y={ty + 33} fontSize={10} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 44} fontSize={14} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
                   {hovered.org} {hovered.open_weight ? "(open)" : "(closed)"}
                 </text>
-                <text x={tx + 10} y={ty + 49} fontSize={10} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 68} fontSize={14} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                   Intelligence: {hovered.intelligence_index?.toFixed(1)}
                 </text>
-                <text x={tx + 10} y={ty + 63} fontSize={9.5} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 88} fontSize={13} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                   Price: {fmtPrice(hovered.price_blended)} per 1M tokens
                 </text>
               </g>
@@ -1323,21 +1324,21 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
 
           {hovered && (() => {
             const x = toX(hovered.intelligence_index!), y = toY(hovered.tokens_per_sec!)
-            const tx = x > W * 0.68 ? x - 196 : x + 12
-            const ty = y < 80 ? y + 10 : y - 82
+            const tx = x > W * 0.68 ? x - 276 : x + 12
+            const ty = y < 110 ? y + 10 : y - 110
             return (
               <g>
-                <rect x={tx} y={ty} width={188} height={72} rx={5} fill="#0f172a" fillOpacity={0.93} />
-                <text x={tx + 10} y={ty + 18} fontSize={12} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
-                  {truncate(hovered.name, 22)}
+                <rect x={tx} y={ty} width={265} height={104} rx={6} fill="#0f172a" fillOpacity={0.93} />
+                <text x={tx + 14} y={ty + 24} fontSize={16} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
+                  {truncate(hovered.name, 24)}
                 </text>
-                <text x={tx + 10} y={ty + 33} fontSize={10} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 44} fontSize={14} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
                   {hovered.org} {hovered.open_weight ? "(open)" : "(closed)"}
                 </text>
-                <text x={tx + 10} y={ty + 49} fontSize={10} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 68} fontSize={14} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                   Intelligence: {hovered.intelligence_index?.toFixed(1)}
                 </text>
-                <text x={tx + 10} y={ty + 63} fontSize={9.5} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 88} fontSize={13} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                   Speed: {hovered.tokens_per_sec?.toFixed(0)} tokens/sec
                 </text>
               </g>
