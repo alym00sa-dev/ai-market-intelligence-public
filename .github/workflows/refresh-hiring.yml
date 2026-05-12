@@ -1,0 +1,51 @@
+name: Refresh Hiring Data
+
+on:
+  schedule:
+    - cron: "0 6 * * 1"   # every Monday at 6am UTC
+  workflow_dispatch:        # manual trigger from GitHub UI
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    timeout-minutes: 120
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install -r frontier-labs-hiring/requirements.txt
+
+      - name: Install Playwright browsers
+        run: |
+          playwright install chromium
+          playwright install-deps chromium
+
+      - name: Scrape + classify jobs
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python frontier-labs-hiring/scraper.py --no-summarize
+
+      - name: Classify verticals + social impact
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python frontier-labs-hiring/vertical_classifier.py
+
+      - name: Generate company summaries
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python frontier-labs-hiring/run_summarizer.py
+
+      - name: Commit updated jobs.json
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/jobs.json
+          git diff --cached --quiet || git commit -m "chore: refresh hiring data [skip ci]"
+          git push
