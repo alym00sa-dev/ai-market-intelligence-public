@@ -1,6 +1,6 @@
 "use client"
 
-import { useState, useCallback } from "react"
+import { useState, useCallback, useRef, useEffect } from "react"
 import Link from "next/link"
 import type { ModelsData, ModelRecord, RankedModel } from "../types"
 
@@ -313,7 +313,7 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
     : 100
 
   const W = 820, PAD_L = 200, PAD_T = 16, PAD_B = 44, PAD_R = 64
-  const ROW_H = 30, BAR_H = 16
+  const ROW_H = 24, BAR_H = 12
   const plotW = W - PAD_L - PAD_R
   const H = top15.length * ROW_H + PAD_T + PAD_B
   const axisY = PAD_T + top15.length * ROW_H
@@ -324,7 +324,7 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
   const barFill = (m: ModelRecord) => m.open_weight === true ? metric.color : "#94a3b8"
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
+    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-slate-700">Top 15 Models by Capability</h3>
@@ -411,12 +411,12 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
           })}
 
           {/* Y axis line */}
-          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={axisY} stroke="#e2e8f0" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={axisY} stroke="#94a3b8" strokeWidth={1} />
           {/* X axis bottom line */}
-          <line x1={PAD_L} y1={axisY} x2={PAD_L + plotW} y2={axisY} stroke="#e2e8f0" strokeWidth={1} />
+          <line x1={PAD_L} y1={axisY} x2={PAD_L + plotW} y2={axisY} stroke="#94a3b8" strokeWidth={1} />
           {/* X axis label — below tick numbers with clear separation */}
           <text x={PAD_L + plotW / 2} y={H - 8} textAnchor="middle"
-            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Score (0 to 100)</text>
+            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Score (0 to 100)</text>
         </svg>
       </div>
     </div>
@@ -426,16 +426,18 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
 // ── Graph 2: Open vs Closed Frontier (hoverable) ──────────────────────────────
 
 type MetricKey = "intelligence_index" | "coding_index" | "math_index"
-const METRIC_OPTS: { key: MetricKey; label: string }[] = [
-  { key: "intelligence_index", label: "Intelligence" },
-  { key: "coding_index",       label: "Coding"       },
-  { key: "math_index",         label: "Math"         },
+const METRIC_OPTS: { key: MetricKey; label: string; color: string; bg: string; text: string }[] = [
+  { key: "intelligence_index", label: "Intelligence", color: "#8b5cf6", bg: "bg-violet-100", text: "text-violet-700" },
+  { key: "coding_index",       label: "Coding",       color: "#3b82f6", bg: "bg-blue-100",   text: "text-blue-700"   },
+  { key: "math_index",         label: "Math",         color: "#10b981", bg: "bg-emerald-100",text: "text-emerald-700"},
 ]
 
 type FrontierPt = { date: string; v: number; model: ModelRecord }
 
 function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
   const [metric, setMetric] = useState<MetricKey>("intelligence_index")
+  const metricOpt = METRIC_OPTS.find(o => o.key === metric)!
+  const metricColor = metricOpt.color
   const [hovOpen, setHovOpen]     = useState<number | null>(null)
   const [hovClosed, setHovClosed] = useState<number | null>(null)
 
@@ -459,7 +461,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
   const allPts = [...openPts, ...closedPts]
   if (allPts.length === 0) return null
 
-  const W = 820, H = 280, PAD_L = 46, PAD_B = 30, PAD_T = 20, PAD_R = 160
+  const W = 820, H = 240, PAD_L = 46, PAD_B = 30, PAD_T = 20, PAD_R = 160
   const plotW = W - PAD_L - PAD_R
   const plotH = H - PAD_T - PAD_B
 
@@ -532,7 +534,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
+    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-slate-700">Open vs. Closed Intelligence Over Time</h3>
@@ -544,7 +546,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
           {METRIC_OPTS.map(o => (
             <button key={o.key} onClick={() => setMetric(o.key)}
               className={`px-2.5 py-1 rounded-md text-xs font-medium transition-colors ${
-                metric === o.key ? "bg-violet-100 text-violet-700" : "text-slate-400 hover:bg-slate-50 hover:text-slate-600"
+                metric === o.key ? `${o.bg} ${o.text}` : "text-slate-400 hover:bg-slate-50 hover:text-slate-600"
               }`}>
               {o.label}
             </button>
@@ -554,7 +556,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
 
       <div className="flex items-center gap-6 mb-4">
         <span className="flex items-center gap-2 text-xs text-slate-600">
-          <span className="w-6 h-0.5 bg-violet-500 inline-block rounded" />
+          <span className="w-6 h-0.5 inline-block rounded" style={{ backgroundColor: metricColor }} />
           Open-weight frontier
           {lastOpen && <span className="text-slate-400 font-normal">({truncate(lastOpen.model.name, 18)})</span>}
         </span>
@@ -594,7 +596,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
           })}
 
           {closedPts.length > 0 && <path d={stepPath(closedPts)} fill="none" stroke="#94a3b8" strokeWidth={2.5} strokeLinejoin="round" />}
-          {openPts.length  > 0 && <path d={stepPath(openPts)}  fill="none" stroke="#8b5cf6" strokeWidth={2.5} strokeLinejoin="round" />}
+          {openPts.length  > 0 && <path d={stepPath(openPts)}  fill="none" stroke={metricColor} strokeWidth={2.5} strokeLinejoin="round" />}
 
           {closedPts.map((p, i) => (
             <circle key={`c${i}`} cx={toX(p.date)} cy={toY(p.v)} r={hovClosed === i ? 6 : 4.5}
@@ -605,7 +607,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
           ))}
           {openPts.map((p, i) => (
             <circle key={`o${i}`} cx={toX(p.date)} cy={toY(p.v)} r={hovOpen === i ? 6 : 4.5}
-              fill="white" stroke="#8b5cf6" strokeWidth={hovOpen === i ? 2 : 1.5}
+              fill="white" stroke={metricColor} strokeWidth={hovOpen === i ? 2 : 1.5}
               style={{ cursor: "pointer" }}
               onMouseEnter={() => setHovOpen(i)}
               onMouseLeave={() => setHovOpen(null)} />
@@ -626,8 +628,8 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
 
           {hovPt && <Tooltip pt={hovPt} />}
 
-          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
-          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
         </svg>
       </div>
     </div>
@@ -640,6 +642,18 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
   const [viewMode, setViewMode] = useState<"chart" | "swimlane">("chart")
   const [hovered, setHovered] = useState<ModelRecord | null>(null)
   const [selectedOrgs, setSelectedOrgs] = useState<Set<string> | null>(null)
+  const [dropdownOpen, setDropdownOpen] = useState(false)
+  const dropdownRef = useRef<HTMLDivElement>(null)
+
+  useEffect(() => {
+    function handleClickOutside(e: MouseEvent) {
+      if (dropdownRef.current && !dropdownRef.current.contains(e.target as Node)) {
+        setDropdownOpen(false)
+      }
+    }
+    document.addEventListener("mousedown", handleClickOutside)
+    return () => document.removeEventListener("mousedown", handleClickOutside)
+  }, [])
 
   const minDate = new Date("2023-01-01").getTime()
   const maxDate = Date.now()
@@ -679,7 +693,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
     : chartModels.filter(m => selectedOrgs.has(m.org))
 
   const W = 820
-  const CH = 380, CPAD_L = 64, CPAD_B = 34, CPAD_T = 20, CPAD_R = 20
+  const CH = 440, CPAD_L = 64, CPAD_B = 34, CPAD_T = 20, CPAD_R = 20
   const cPlotW = W - CPAD_L - CPAD_R
   const cPlotH = CH - CPAD_T - CPAD_B
 
@@ -726,7 +740,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
     return !isNaN(d.getTime()) && d.getFullYear() >= 2023
   })
 
-  const ROW_H = 44, PAD_L = 110, PAD_T = 28, PAD_B = 30, PAD_R = 30
+  const ROW_H = 38, PAD_L = 110, PAD_T = 28, PAD_B = 30, PAD_R = 30
   const swimH = topOrgs.length * ROW_H + PAD_T + PAD_B
   const swimW = W - PAD_L - PAD_R
 
@@ -753,7 +767,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
   })
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
+    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-slate-700">Model Release Timeline</h3>
@@ -779,38 +793,55 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
       </div>
 
       {viewMode === "chart" && (
-        <div className="mt-2 mb-3">
-          <div className="flex items-center gap-2 mb-2">
-            <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">Companies</span>
-            <button onClick={() => setSelectedOrgs(null)}
-              className="text-[10px] text-violet-500 hover:text-violet-700 font-medium transition-colors">All</button>
-            <span className="text-slate-200 text-xs">·</span>
-            <button onClick={() => setSelectedOrgs(new Set())}
-              className="text-[10px] text-slate-400 hover:text-slate-600 font-medium transition-colors">None</button>
-          </div>
-          <div className="flex flex-wrap gap-1.5">
-            {chartOrgs.map(org => {
-              const selected = isOrgSelected(org)
-              const color = orgColor(org)
-              return (
-                <button key={org} onClick={() => toggleOrg(org)}
-                  className={`flex items-center gap-1.5 px-2.5 py-1 rounded-full text-xs font-medium transition-all border ${
-                    selected
-                      ? "shadow-sm"
-                      : "border-slate-200 text-slate-400 bg-white hover:border-slate-300 hover:text-slate-600"
-                  }`}
-                  style={selected ? {
-                    backgroundColor: `${color}15`,
-                    borderColor: `${color}55`,
-                    color: "#334155",
-                  } : {}}>
-                  <span className="w-2 h-2 rounded-full shrink-0 transition-colors"
-                    style={{ backgroundColor: selected ? color : "#cbd5e1" }} />
-                  {org}
-                </button>
-              )
-            })}
-          </div>
+        <div className="mt-2 mb-3 relative" ref={dropdownRef}>
+          <button
+            onClick={() => setDropdownOpen(o => !o)}
+            className="flex items-center gap-2 px-3 py-1.5 text-xs border border-slate-200 rounded-lg bg-white hover:bg-slate-50 hover:border-slate-300 transition-colors"
+          >
+            <span className="text-slate-600 font-medium">
+              {selectedOrgs == null
+                ? "All companies"
+                : selectedOrgs.size === 0
+                  ? "No companies"
+                  : `${selectedOrgs.size} of ${chartOrgs.length} companies`}
+            </span>
+            <svg className={`w-3.5 h-3.5 text-slate-400 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+              <path d="M6 9l6 6 6-6" />
+            </svg>
+          </button>
+
+          {dropdownOpen && (
+            <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-slate-200 rounded-xl shadow-lg z-20 overflow-hidden">
+              <div className="flex items-center gap-2 px-3 py-2 border-b border-slate-100">
+                <button onClick={() => setSelectedOrgs(null)}
+                  className="text-[11px] text-violet-500 hover:text-violet-700 font-medium transition-colors">All</button>
+                <span className="text-slate-200">·</span>
+                <button onClick={() => setSelectedOrgs(new Set())}
+                  className="text-[11px] text-slate-400 hover:text-slate-600 font-medium transition-colors">None</button>
+              </div>
+              <div className="max-h-64 overflow-y-auto py-1">
+                {chartOrgs.map(org => {
+                  const selected = isOrgSelected(org)
+                  const color = orgColor(org)
+                  return (
+                    <button key={org} onClick={() => toggleOrg(org)}
+                      className="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-50 transition-colors text-left">
+                      <span className={`w-3.5 h-3.5 rounded shrink-0 border flex items-center justify-center transition-colors ${selected ? "border-transparent" : "border-slate-300 bg-white"}`}
+                        style={selected ? { backgroundColor: color } : {}}>
+                        {selected && (
+                          <svg className="w-2.5 h-2.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
+                            <path d="M5 13l4 4L19 7" />
+                          </svg>
+                        )}
+                      </span>
+                      <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color }} />
+                      <span className="text-xs text-slate-700 truncate">{org}</span>
+                    </button>
+                  )
+                })}
+              </div>
+            </div>
+          )}
         </div>
       )}
 
@@ -823,7 +854,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
                 <g key={v}>
                   <line x1={CPAD_L} y1={y} x2={CPAD_L + cPlotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
                   <text x={CPAD_L - 6} y={y} textAnchor="end" dominantBaseline="middle"
-                    fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{Math.round(v)}</text>
+                    fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">{Math.round(v)}</text>
                 </g>
               )
             })}
@@ -836,7 +867,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
                     : <line x1={x} y1={CPAD_T} x2={x} y2={CPAD_T + cPlotH} stroke="#f1f5f9" strokeWidth={1} strokeDasharray="3 3" />
                   }
                   <text x={x} y={CH - 6} textAnchor="middle"
-                    fontSize={major ? 9 : 7.5}
+                    fontSize={major ? 11 : 9}
                     fontWeight={major ? 500 : 400}
                     fill={major ? "#94a3b8" : "#b8c8d8"}
                     fontFamily="ui-sans-serif, system-ui">{label}</text>
@@ -849,9 +880,9 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
               const cy = toChartY(m.intelligence_index!)
               const isHov = hovered?.id === m.id
               return (
-                <circle key={m.id} cx={cx} cy={cy} r={isHov ? 6 : 4}
-                  fill={orgColor(m.org)} fillOpacity={isHov ? 1 : 0.65}
-                  stroke={isHov ? "#0f172a" : "white"} strokeWidth={isHov ? 1.5 : 0.8}
+                <circle key={m.id} cx={cx} cy={cy} r={isHov ? 9 : 6}
+                  fill={orgColor(m.org)} fillOpacity={isHov ? 1 : 0.7}
+                  stroke={isHov ? "#0f172a" : "white"} strokeWidth={isHov ? 1.5 : 1}
                   style={{ cursor: "pointer" }}
                   onMouseEnter={() => setHovered(m)}
                   onMouseLeave={() => setHovered(null)}
@@ -862,27 +893,27 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
             {hovered && hovered.intelligence_index != null && (() => {
               const cx = toChartX(hovered.release_date!)
               const cy = toChartY(hovered.intelligence_index)
-              const tx = cx > W * 0.68 ? cx - 162 : cx + 10
-              const ty = cy < 60 ? cy + 8 : cy - 62
+              const tx = cx > W * 0.68 ? cx - 196 : cx + 12
+              const ty = cy < 80 ? cy + 10 : cy - 82
               return (
                 <g>
-                  <rect x={tx} y={ty} width={155} height={54} rx={4} fill="#0f172a" fillOpacity={0.93} />
-                  <text x={tx + 7} y={ty + 14} fontSize={9} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
+                  <rect x={tx} y={ty} width={188} height={72} rx={5} fill="#0f172a" fillOpacity={0.93} />
+                  <text x={tx + 10} y={ty + 18} fontSize={12} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
                     {truncate(hovered.name, 22)}
                   </text>
-                  <text x={tx + 7} y={ty + 26} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
-                  <text x={tx + 7} y={ty + 38} fontSize={8} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                  <text x={tx + 10} y={ty + 33} fontSize={10} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
+                  <text x={tx + 10} y={ty + 49} fontSize={10} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                     Intelligence: {hovered.intelligence_index.toFixed(1)}
                   </text>
-                  <text x={tx + 7} y={ty + 49} fontSize={7.5} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
+                  <text x={tx + 10} y={ty + 63} fontSize={9.5} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
                     Released {fmtDate(hovered.release_date)}
                   </text>
                 </g>
               )
             })()}
 
-            <line x1={CPAD_L} y1={CPAD_T} x2={CPAD_L} y2={CPAD_T + cPlotH} stroke="#e2e8f0" strokeWidth={1} />
-            <line x1={CPAD_L} y1={CPAD_T + cPlotH} x2={CPAD_L + cPlotW} y2={CPAD_T + cPlotH} stroke="#e2e8f0" strokeWidth={1} />
+            <line x1={CPAD_L} y1={CPAD_T} x2={CPAD_L} y2={CPAD_T + cPlotH} stroke="#94a3b8" strokeWidth={1} />
+            <line x1={CPAD_L} y1={CPAD_T + cPlotH} x2={CPAD_L + cPlotW} y2={CPAD_T + cPlotH} stroke="#94a3b8" strokeWidth={1} />
             <text x={14} y={CPAD_T + cPlotH / 2} textAnchor="middle"
               transform={`rotate(-90, 14, ${CPAD_T + cPlotH / 2})`}
               fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
@@ -900,8 +931,8 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
                     : <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + topOrgs.length * ROW_H} stroke="#f1f5f9" strokeWidth={1} strokeDasharray="3 3" />
                   }
                   <text x={x} y={swimH - 6} textAnchor="middle"
-                    fontSize={major ? 9 : 7.5} fontWeight={major ? 500 : 400}
-                    fill={major ? "#94a3b8" : "#b8c8d8"}
+                    fontSize={major ? 11 : 9} fontWeight={major ? 500 : 400}
+                    fill={major ? "#64748b" : "#94a3b8"}
                     fontFamily="ui-sans-serif, system-ui">{label}</text>
                 </g>
               )
@@ -970,7 +1001,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
             })()}
 
             <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + topOrgs.length * ROW_H}
-              stroke="#e2e8f0" strokeWidth={1} />
+              stroke="#94a3b8" strokeWidth={1} />
           </svg>
         </div>
       )}
@@ -1002,7 +1033,7 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
   const plotModels = viewMode === "by-company" ? topByCompany : [...topOpen, ...topClosed]
   if (plotModels.length === 0) return null
 
-  const W = 820, H = 380, PAD_L = 58, PAD_B = 56, PAD_T = 16, PAD_R = 24
+  const W = 820, H = 360, PAD_L = 58, PAD_B = 56, PAD_T = 16, PAD_R = 24
   const plotW = W - PAD_L - PAD_R
   const plotH = H - PAD_T - PAD_B
 
@@ -1029,7 +1060,7 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
 
   const inner_ = inner
   return (
-    <div className={inner_ ? "px-5 py-5" : "bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5"}>
+    <div className={inner_ ? "px-5 py-4" : "bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4"}>
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-slate-700">Capability vs. Cost</h3>
@@ -1085,7 +1116,7 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
               <g key={t}>
                 <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
                 <text x={PAD_L - 5} y={y} textAnchor="end" dominantBaseline="middle"
-                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{t}</text>
+                  fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">{t}</text>
               </g>
             )
           })}
@@ -1096,7 +1127,7 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
               <g key={t}>
                 <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#f8fafc" strokeWidth={1} />
                 <text x={x} y={H - PAD_B + 14} textAnchor="middle"
-                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+                  fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
                   ${t < 1 ? t.toFixed(t < 0.01 ? 3 : 2) : t}
                 </text>
               </g>
@@ -1120,21 +1151,21 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
 
           {hovered && (() => {
             const x = toX(hovered.price_blended!), y = toY(hovered.intelligence_index!)
-            const tx = x > W * 0.68 ? x - 158 : x + 10
-            const ty = y < 60 ? y + 8 : y - 62
+            const tx = x > W * 0.68 ? x - 196 : x + 12
+            const ty = y < 80 ? y + 10 : y - 82
             return (
               <g>
-                <rect x={tx} y={ty} width={150} height={54} rx={4} fill="#0f172a" fillOpacity={0.93} />
-                <text x={tx + 7} y={ty + 14} fontSize={9} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
+                <rect x={tx} y={ty} width={188} height={72} rx={5} fill="#0f172a" fillOpacity={0.93} />
+                <text x={tx + 10} y={ty + 18} fontSize={12} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
                   {truncate(hovered.name, 22)}
                 </text>
-                <text x={tx + 7} y={ty + 26} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 10} y={ty + 33} fontSize={10} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
                   {hovered.org} {hovered.open_weight ? "(open)" : "(closed)"}
                 </text>
-                <text x={tx + 7} y={ty + 38} fontSize={8} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 10} y={ty + 49} fontSize={10} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                   Intelligence: {hovered.intelligence_index?.toFixed(1)}
                 </text>
-                <text x={tx + 7} y={ty + 49} fontSize={8} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 10} y={ty + 63} fontSize={9.5} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                   Price: {fmtPrice(hovered.price_blended)} per 1M tokens
                 </text>
               </g>
@@ -1142,13 +1173,13 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
           })()}
 
           <text x={PAD_L + plotW / 2} y={H - 8} textAnchor="middle"
-            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Price per 1M tokens (log scale)</text>
+            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Price per 1M tokens (log scale)</text>
           <text x={14} y={PAD_T + plotH / 2} textAnchor="middle"
             transform={`rotate(-90, 14, ${PAD_T + plotH / 2})`}
-            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
+            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
 
-          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
-          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
         </svg>
       </div>
     </div>
@@ -1179,7 +1210,7 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
   const plotModels = viewMode === "by-company" ? topByCompany : [...topOpen, ...topClosed]
   if (plotModels.length === 0) return null
 
-  const W = 820, H = 380, PAD_L = 60, PAD_B = 56, PAD_T = 16, PAD_R = 24
+  const W = 820, H = 360, PAD_L = 60, PAD_B = 56, PAD_T = 16, PAD_R = 24
   const plotW = W - PAD_L - PAD_R
   const plotH = H - PAD_T - PAD_B
 
@@ -1204,7 +1235,7 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
 
   const inner_ = inner
   return (
-    <div className={inner_ ? "px-5 py-5" : "bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5"}>
+    <div className={inner_ ? "px-5 py-4" : "bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4"}>
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-slate-700">Speed vs. Intelligence</h3>
@@ -1260,7 +1291,7 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
               <g key={t}>
                 <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
                 <text x={PAD_L - 5} y={y} textAnchor="end" dominantBaseline="middle"
-                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{t}</text>
+                  fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">{t}</text>
               </g>
             )
           })}
@@ -1270,7 +1301,7 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
               <g key={t}>
                 <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#f8fafc" strokeWidth={1} />
                 <text x={x} y={H - PAD_B + 14} textAnchor="middle"
-                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{t}</text>
+                  fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">{t}</text>
               </g>
             )
           })}
@@ -1292,21 +1323,21 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
 
           {hovered && (() => {
             const x = toX(hovered.intelligence_index!), y = toY(hovered.tokens_per_sec!)
-            const tx = x > W * 0.68 ? x - 158 : x + 10
-            const ty = y < 60 ? y + 8 : y - 62
+            const tx = x > W * 0.68 ? x - 196 : x + 12
+            const ty = y < 80 ? y + 10 : y - 82
             return (
               <g>
-                <rect x={tx} y={ty} width={150} height={54} rx={4} fill="#0f172a" fillOpacity={0.93} />
-                <text x={tx + 7} y={ty + 14} fontSize={9} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
+                <rect x={tx} y={ty} width={188} height={72} rx={5} fill="#0f172a" fillOpacity={0.93} />
+                <text x={tx + 10} y={ty + 18} fontSize={12} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
                   {truncate(hovered.name, 22)}
                 </text>
-                <text x={tx + 7} y={ty + 26} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 10} y={ty + 33} fontSize={10} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
                   {hovered.org} {hovered.open_weight ? "(open)" : "(closed)"}
                 </text>
-                <text x={tx + 7} y={ty + 38} fontSize={8} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 10} y={ty + 49} fontSize={10} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                   Intelligence: {hovered.intelligence_index?.toFixed(1)}
                 </text>
-                <text x={tx + 7} y={ty + 49} fontSize={8} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 10} y={ty + 63} fontSize={9.5} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
                   Speed: {hovered.tokens_per_sec?.toFixed(0)} tokens/sec
                 </text>
               </g>
@@ -1314,13 +1345,13 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
           })()}
 
           <text x={PAD_L + plotW / 2} y={H - 8} textAnchor="middle"
-            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
+            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
           <text x={14} y={PAD_T + plotH / 2} textAnchor="middle"
             transform={`rotate(-90, 14, ${PAD_T + plotH / 2})`}
-            fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Output speed (tokens per second)</text>
+            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Output speed (tokens per second)</text>
 
-          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
-          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
         </svg>
       </div>
     </div>
@@ -1386,9 +1417,10 @@ function ScatterSection({ models }: { models: ModelRecord[] }) {
         </div>
       </div>
       <div className="border-t border-slate-100" />
-      <CostScatter models={models} inner />
-      <div className="border-t border-slate-100" />
-      <SpeedVsIntelligence models={models} inner />
+      <div className="grid grid-cols-2 divide-x divide-slate-100">
+        <CostScatter models={models} inner />
+        <SpeedVsIntelligence models={models} inner />
+      </div>
     </div>
   )
 }
@@ -1412,7 +1444,7 @@ function GeographyChart({ models }: { models: ModelRecord[] }) {
   const maxTotal = Math.max(...sorted.map(d => d.total), 1)
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
+    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
       <h3 className="text-sm font-semibold text-slate-700">Geographic Distribution</h3>
       <p className="text-xs text-slate-400 mt-0.5">Models by country of origin, split by open-weight vs. proprietary.</p>
 
@@ -1425,14 +1457,14 @@ function GeographyChart({ models }: { models: ModelRecord[] }) {
         </span>
       </div>
 
-      <div className="space-y-2.5">
+      <div className="space-y-3">
         {sorted.map(d => {
           const closedW = (d.closed / maxTotal) * 100
           const openW   = (d.open   / maxTotal) * 100
           return (
             <div key={d.country} className="flex items-center gap-3">
               <span className="text-xs text-slate-600 w-32 shrink-0 text-right font-medium">{d.country}</span>
-              <div className="flex-1 flex rounded overflow-hidden h-5 bg-slate-50">
+              <div className="flex-1 flex rounded overflow-hidden h-6 bg-slate-50">
                 {d.closed > 0 && (
                   <div className="bg-slate-200 flex items-center justify-center text-[10px] font-medium text-slate-500 shrink-0"
                     style={{ width: `${closedW}%` }}>
@@ -1469,7 +1501,7 @@ function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
   const tabLabel = (k: string) => k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-5">
+    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
       <h3 className="text-sm font-semibold text-slate-700">TrueSkill Domain Rankings</h3>
       <p className="text-xs text-slate-400 mt-0.5">
         Rankings from pairwise head-to-head comparisons across {tabs.length} domains (source: LLM Stats).
@@ -1529,7 +1561,7 @@ function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
 export default function FrontierModels({ data, builtAt }: { data: ModelsData; builtAt: string | null }) {
   return (
     <div className="w-full">
-      <div className="flex items-start justify-between gap-4 mb-6">
+      <div className="flex items-start justify-between gap-4 mb-4">
         <div>
           <h1 className="text-xl font-semibold text-slate-900 tracking-tight">Frontier Model Tracking</h1>
           <MetadataStrip data={data} builtAt={builtAt} />
@@ -1544,13 +1576,15 @@ export default function FrontierModels({ data, builtAt }: { data: ModelsData; bu
         </div>
 
         {/* RIGHT: all content stacked */}
-        <div className="flex-1 min-w-0 space-y-5">
+        <div className="flex-1 min-w-0 space-y-3">
           <BestInClass models={data.models} />
           <TopModelsBarChart models={data.models} />
           <OpenVsClosedFrontier models={data.models} />
-          <ReleaseTimeline models={data.models} />
+          <div className="grid grid-cols-2 gap-3">
+            <ReleaseTimeline models={data.models} />
+            <GeographyChart models={data.models} />
+          </div>
           <ScatterSection models={data.models} />
-          <GeographyChart models={data.models} />
           <DomainRankings rankings={data.rankings} />
         </div>
       </div>
