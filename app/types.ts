@@ -212,6 +212,24 @@ export type CompanyProfile = {
 
 export type RepRiskSeverity = "low" | "medium" | "high"
 
+export type IncidentAlignment = "aligned" | "partial" | "misaligned" | "no_response"
+
+export type IncidentResponse = {
+  action: string
+  alignment: IncidentAlignment
+  rationale: string
+  weight: number
+}
+
+export type LabAlignmentScore = {
+  score: number
+  aligned: number
+  partial: number
+  misaligned: number
+  no_response: number
+  total_weighted: number
+}
+
 export type RepRiskIncident = {
   summary: string
   severity: RepRiskSeverity
@@ -220,6 +238,7 @@ export type RepRiskIncident = {
   url: string
   date: string
   title: string
+  response?: IncidentResponse
 }
 
 export type RepRiskCell = {
@@ -243,4 +262,5 @@ export type RepRiskData = {
   categories: string[]
   category_descriptions: Record<string, string>
   labs: RepRiskLab[]
+  lab_alignment_scores?: Record<string, LabAlignmentScore>
 }

@@ -1,7 +1,7 @@
 "use client"
 
 import { useState, useMemo } from "react"
-import type { RepRiskData, RepRiskLab, RepRiskCell, RepRiskIncident, RepRiskSeverity } from "../types"
+import type { RepRiskData, RepRiskLab, RepRiskCell, RepRiskIncident, RepRiskSeverity, IncidentAlignment, IncidentResponse, LabAlignmentScore } from "../types"
 
 // ── Constants ─────────────────────────────────────────────────────────────────
 
@@ -89,6 +89,20 @@ const KNOWN_DOMAINS: Record<string, string> = {
   "statista.com":          "Statista",
   "medium.com":            "Medium",
   "substack.com":          "Substack",
+}
+
+const ALIGNMENT_LABELS: Record<string, string> = {
+  aligned:     "Aligned",
+  partial:     "Partial",
+  misaligned:  "Misaligned",
+  no_response: "No Response Found",
+}
+
+const ALIGNMENT_COLORS: Record<string, { bg: string; text: string; border: string; dot: string }> = {
+  aligned:     { bg: "bg-emerald-50", text: "text-emerald-700", border: "border-emerald-200", dot: "bg-emerald-500" },
+  partial:     { bg: "bg-amber-50",   text: "text-amber-700",   border: "border-amber-200",   dot: "bg-amber-400"  },
+  misaligned:  { bg: "bg-red-50",     text: "text-red-700",     border: "border-red-200",     dot: "bg-red-500"    },
+  no_response: { bg: "bg-slate-100",  text: "text-slate-500",   border: "border-slate-200",   dot: "bg-slate-400"  },
 }
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
@@ -799,10 +813,416 @@ function IncidentFeed({ data }: { data: RepRiskData }) {
   )
 }
 
+// ── Response Kanban ───────────────────────────────────────────────────────────
+
+type KanbanCard = {
+  lab: string
+  labColor: string
+  catKey: string
+  incident: RepRiskIncident
+  severityWeight: number
+}
+
+const ALIGNMENT_ORDER: IncidentAlignment[] = ["aligned", "partial", "misaligned", "no_response"]
+
+function ResponseKanban({ data }: { data: RepRiskData }) {
+  const [filterLab,      setFilterLab]      = useState<string>("All Labs")
+  const [filterSeverity, setFilterSeverity] = useState<string>("All")
+
+  const allCards = useMemo<KanbanCard[]>(() => {
+    const cards: KanbanCard[] = []
+    for (const lab of data.labs) {
+      for (const [catKey, cell] of Object.entries(lab.categories)) {
+        for (const inc of cell.incidents ?? []) {
+          if (!inc.response) continue
+          cards.push({
+            lab:           lab.display_name,
+            labColor:      LAB_COLORS[lab.display_name] ?? "#94a3b8",
+            catKey,
+            incident:      inc,
+            severityWeight: inc.severity === "high" ? 3 : inc.severity === "medium" ? 2 : 1,
+          })
+        }
+      }
+    }
+    return cards
+  }, [data])
+
+  if (allCards.length === 0) return null
+
+  const labNames = Array.from(new Set(allCards.map(c => c.lab))).sort()
+
+  const filtered = useMemo(() => {
+    return allCards.filter(c => {
+      if (filterLab !== "All Labs" && c.lab !== filterLab) return false
+      if (filterSeverity !== "All" && c.incident.severity !== filterSeverity.toLowerCase()) return false
+      return true
+    })
+  }, [allCards, filterLab, filterSeverity])
+
+  const columns = useMemo<Record<IncidentAlignment, KanbanCard[]>>(() => {
+    const cols: Record<IncidentAlignment, KanbanCard[]> = {
+      aligned:     [],
+      partial:     [],
+      misaligned:  [],
+      no_response: [],
+    }
+    for (const card of filtered) {
+      const alignment = card.incident.response!.alignment
+      cols[alignment].push(card)
+    }
+    for (const key of ALIGNMENT_ORDER) {
+      cols[key].sort((a, b) => b.severityWeight - a.severityWeight)
+    }
+    return cols
+  }, [filtered])
+
+  return (
+    <div>
+      {/* Filter bar */}
+      <div className="flex items-center gap-2 mb-4 flex-wrap">
+        <select
+          value={filterLab}
+          onChange={e => setFilterLab(e.target.value)}
+          className="text-[11px] border border-slate-200 rounded-md px-2 py-1 text-slate-600 bg-white focus:outline-none focus:ring-1 focus:ring-indigo-400"
+        >
+          <option value="All Labs">All Labs</option>
+          {labNames.map(n => <option key={n} value={n}>{n}</option>)}
+        </select>
+        <div className="flex gap-1">
+          {(["All", "High", "Medium", "Low"] as const).map(v => (
+            <button
+              key={v}
+              onClick={() => setFilterSeverity(v)}
+              className={`px-2 py-0.5 rounded-md text-[11px] font-medium transition-colors ${
+                filterSeverity === v
+                  ? v === "High"   ? "bg-red-100 text-red-700"
+                  : v === "Medium" ? "bg-amber-100 text-amber-700"
+                  : v === "Low"    ? "bg-slate-100 text-slate-600"
+                  :                  "bg-slate-800 text-white"
+                  : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
+              }`}
+            >
+              {v}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      {/* Columns */}
+      <div className="grid grid-cols-2 gap-3">
+        {ALIGNMENT_ORDER.map(alignment => {
+          const col    = columns[alignment]
+          const colors = ALIGNMENT_COLORS[alignment]
+          return (
+            <div key={alignment} className={`rounded-xl border ${colors.border} ${colors.bg} p-2.5`}>
+              <div className="flex items-center gap-1.5 mb-2">
+                <span className={`w-2 h-2 rounded-full shrink-0 ${colors.dot}`} />
+                <span className={`text-[11px] font-semibold ${colors.text}`}>{ALIGNMENT_LABELS[alignment]}</span>
+                <span className={`ml-auto text-[10px] tabular-nums font-medium ${colors.text} opacity-70`}>{col.length}</span>
+              </div>
+              <div className="max-h-[480px] overflow-y-auto space-y-2">
+                {col.length === 0 ? (
+                  <p className="text-[11px] text-slate-400 italic py-2 text-center">No incidents</p>
+                ) : (
+                  col.map((card, i) => (
+                    <div key={i} className="bg-white rounded-lg border border-slate-100 px-2.5 py-2 shadow-[0_1px_2px_rgba(0,0,0,0.04)]">
+                      {/* Lab badge + category */}
+                      <div className="flex items-center gap-1.5 mb-1.5 flex-wrap">
+                        <span
+                          className="text-[10px] font-semibold px-1.5 py-0.5 rounded text-white leading-none"
+                          style={{ backgroundColor: card.labColor }}
+                        >
+                          {card.lab}
+                        </span>
+                        <span className="text-[10px] text-slate-400 bg-slate-100 rounded px-1.5 py-0.5 leading-none">
+                          {CATEGORY_LABELS[card.catKey] ?? card.catKey}
+                        </span>
+                        <span className={`ml-auto shrink-0 text-[10px] font-semibold px-1.5 py-0.5 rounded ${severityClasses(card.incident.severity)}`}>
+                          {severityLabel(card.incident.severity)}
+                        </span>
+                      </div>
+                      {/* Title */}
+                      <p className="text-[12px] font-medium text-slate-800 leading-snug line-clamp-2 mb-1.5">
+                        {card.incident.title || card.incident.summary.slice(0, 80)}
+                      </p>
+                      {/* Response action */}
+                      <p className="text-[11px] text-slate-500 leading-snug line-clamp-2 mb-1.5">
+                        {card.incident.response!.action}
+                      </p>
+                      {/* Source link */}
+                      {card.incident.url && (
+                        <a href={card.incident.url} target="_blank" rel="noopener noreferrer"
+                          className="text-[10px] text-indigo-500 hover:text-indigo-700 transition-colors">
+                          View source →
+                        </a>
+                      )}
+                    </div>
+                  ))
+                )}
+              </div>
+            </div>
+          )
+        })}
+      </div>
+    </div>
+  )
+}
+
+// ── Commitment Scatter ────────────────────────────────────────────────────────
+
+function CommitmentScatter({ data }: { data: RepRiskData }) {
+  const [hoveredLab,   setHoveredLab]   = useState<string | null>(null)
+  const [filteredLabs, setFilteredLabs] = useState<Set<string>>(new Set())
+
+  function toggleLabFilter(labKey: string) {
+    setFilteredLabs(prev => {
+      const next = new Set(prev)
+      if (next.has(labKey)) next.delete(labKey)
+      else next.add(labKey)
+      return next
+    })
+  }
+
+  const W     = 600
+  const H     = 330
+  const PAD_L = 64
+  const PAD_T = 30
+  const PAD_B = 50
+  const PAD_R = 40
+  const plotW = W - PAD_L - PAD_R
+  const plotH = H - PAD_T - PAD_B
+
+  const points = useMemo(() => {
+    return data.labs.map(lab => {
+      const cells           = Object.values(lab.categories)
+      const commitmentCount = cells.filter(c => c.commitment_present).length
+      const commitmentX     = (commitmentCount / 8) * 100
+      const alignScore      = data.lab_alignment_scores?.[lab.name]?.score ?? null
+      const totalIncidents  = cells.reduce((s, c) => s + (c.incidents?.length ?? 0), 0)
+      const scoreData       = data.lab_alignment_scores?.[lab.name] ?? null
+      return {
+        name:        lab.display_name,
+        labKey:      lab.name,
+        commitmentX,
+        alignScore,
+        totalIncidents,
+        r:           10,
+        color:       LAB_COLORS[lab.display_name] ?? "#94a3b8",
+        scoreData,
+      }
+    }).filter(p => p.alignScore !== null)
+  }, [data])
+
+  if (points.length === 0) return null
+
+  function toSvgX(val: number) { return PAD_L + (val / 100) * plotW }
+  function toSvgY(val: number) { return PAD_T + plotH - (val / 100) * plotH }
+
+  const ticks = [0, 25, 50, 75, 100]
+
+  // Tooltip position for hovered point
+  const hoveredPoint = hoveredLab ? points.find(p => p.name === hoveredLab) : null
+  const ttW = 125
+  const ttH = hoveredPoint?.scoreData ? 84 : 36
+  const hovSvgX = hoveredPoint ? toSvgX(hoveredPoint.commitmentX) : 0
+  const hovSvgY = hoveredPoint ? toSvgY(hoveredPoint.alignScore!) : 0
+  const ttX     = Math.min(hovSvgX + 14, W - ttW - 4)
+  const ttY     = Math.max(hovSvgY - ttH - 10, PAD_T)
+
+  const sortedByScore = [...points].sort((a, b) => (b.alignScore ?? 0) - (a.alignScore ?? 0))
+
+  return (
+    <div className="flex gap-6 items-start">
+      {/* Scatter SVG — takes remaining width */}
+      <div className="flex-1 min-w-0">
+        <svg
+          viewBox={`0 0 ${W} ${H}`}
+          width="100%"
+          preserveAspectRatio="xMinYMid meet"
+          className="overflow-visible"
+          role="img"
+          aria-label="Commitment vs response alignment scatter plot"
+          onMouseLeave={() => setHoveredLab(null)}
+        >
+          {/* Grid lines */}
+          {ticks.map(t => (
+            <g key={`grid-${t}`}>
+              <line x1={toSvgX(t)} y1={PAD_T} x2={toSvgX(t)} y2={PAD_T + plotH}
+                stroke="#e2e8f0" strokeWidth={1} strokeDasharray={t === 50 ? "4 3" : "2 3"} />
+              <line x1={PAD_L} y1={toSvgY(t)} x2={PAD_L + plotW} y2={toSvgY(t)}
+                stroke="#e2e8f0" strokeWidth={1} strokeDasharray={t === 50 ? "4 3" : "2 3"} />
+            </g>
+          ))}
+
+          {/* Quadrant midlines */}
+          <line x1={toSvgX(50)} y1={PAD_T} x2={toSvgX(50)} y2={PAD_T + plotH}
+            stroke="#cbd5e1" strokeWidth={1} strokeDasharray="4 3" />
+          <line x1={PAD_L} y1={toSvgY(50)} x2={PAD_L + plotW} y2={toSvgY(50)}
+            stroke="#cbd5e1" strokeWidth={1} strokeDasharray="4 3" />
+
+          {/* Axes */}
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
+
+          {/* Tick labels */}
+          {ticks.map(t => (
+            <g key={`tick-${t}`}>
+              <text x={toSvgX(t)} y={PAD_T + plotH + 14}
+                textAnchor="middle" fontSize={10} fill="#64748b"
+                fontFamily="ui-sans-serif,system-ui,sans-serif">{t}</text>
+              <text x={PAD_L - 6} y={toSvgY(t)}
+                textAnchor="end" dominantBaseline="middle" fontSize={10} fill="#64748b"
+                fontFamily="ui-sans-serif,system-ui,sans-serif">{t}</text>
+            </g>
+          ))}
+
+          {/* Axis labels */}
+          <text x={PAD_L + plotW / 2} y={H - 6}
+            textAnchor="middle" fontSize={9} fill="#64748b"
+            fontFamily="ui-sans-serif,system-ui,sans-serif">Commitment Strength →</text>
+          <text x={12} y={PAD_T + plotH / 2}
+            textAnchor="middle" dominantBaseline="middle" fontSize={9} fill="#64748b"
+            fontFamily="ui-sans-serif,system-ui,sans-serif"
+            transform={`rotate(-90, 12, ${PAD_T + plotH / 2})`}>Response Alignment →</text>
+
+          {/* Quadrant labels */}
+          <text x={toSvgX(51)} y={PAD_T + 10} fontSize={9} fill="#cbd5e1" fontFamily="ui-sans-serif,system-ui,sans-serif">Strong commitments · follows through</text>
+          <text x={PAD_L + 4}  y={PAD_T + 10} fontSize={9} fill="#cbd5e1" fontFamily="ui-sans-serif,system-ui,sans-serif">Responds well · fewer commitments</text>
+          <text x={toSvgX(51)} y={toSvgY(50) + 14} fontSize={9} fill="#cbd5e1" fontFamily="ui-sans-serif,system-ui,sans-serif">Strong commitments · poor follow-through</text>
+          <text x={PAD_L + 4}  y={toSvgY(50) + 14} fontSize={9} fill="#cbd5e1" fontFamily="ui-sans-serif,system-ui,sans-serif">Weak commitments · poor response</text>
+
+          {/* Data points */}
+          {points.map(p => {
+            const cx      = toSvgX(p.commitmentX)
+            const cy      = toSvgY(p.alignScore!)
+            const isHov   = hoveredLab === p.name
+            const active  = filteredLabs.size === 0 || filteredLabs.has(p.labKey)
+            const dimmed  = filteredLabs.size > 0 && !active
+            return (
+              <g key={p.name} style={{ opacity: dimmed ? 0.2 : 1, transition: "opacity 0.15s" }}>
+                <circle cx={cx} cy={cy} r={p.r + 6} fill="transparent"
+                  onMouseEnter={() => setHoveredLab(p.name)} />
+                <circle cx={cx} cy={cy} r={p.r}
+                  fill={p.color} fillOpacity={isHov ? 1 : 0.85}
+                  stroke="white" strokeWidth={1.5} pointerEvents="none" />
+              </g>
+            )
+          })}
+
+          {/* Tooltip */}
+          {hoveredPoint && (() => {
+            const sd = hoveredPoint.scoreData
+            return (
+              <g pointerEvents="none">
+                <rect x={ttX} y={ttY} width={ttW} height={ttH} rx={6}
+                  fill="#0f172a" filter="drop-shadow(0 4px 12px rgba(0,0,0,0.22))" />
+                <circle cx={ttX + 10} cy={ttY + 11} r={3.5} fill={hoveredPoint.color} />
+                <text x={ttX + 18} y={ttY + 11} fontSize={9} fontWeight={600} fill="white"
+                  fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle">
+                  {hoveredPoint.name}
+                </text>
+                <text x={ttX + 10} y={ttY + 22} fontSize={8} fill="#94a3b8"
+                  fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle">
+                  Commitment: {Math.round(hoveredPoint.commitmentX)}%
+                </text>
+                <text x={ttX + 10} y={ttY + 32} fontSize={8} fill="#94a3b8"
+                  fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle">
+                  Alignment: {hoveredPoint.alignScore?.toFixed(1)}
+                </text>
+                {sd && (["aligned", "partial", "misaligned", "no_response"] as IncidentAlignment[]).map((k, i) => (
+                  <g key={k}>
+                    <circle cx={ttX + 12} cy={ttY + 44 + i * 11} r={2.5}
+                      fill={k === "aligned" ? "#10b981" : k === "partial" ? "#f59e0b" : k === "misaligned" ? "#ef4444" : "#94a3b8"} />
+                    <text x={ttX + 19} y={ttY + 44 + i * 11} fontSize={8} fill="#cbd5e1"
+                      fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle">
+                      {ALIGNMENT_LABELS[k]}
+                    </text>
+                    <text x={ttX + ttW - 7} y={ttY + 44 + i * 11} fontSize={8} fill="white"
+                      textAnchor="end" fontFamily="ui-sans-serif,system-ui,sans-serif"
+                      dominantBaseline="middle" fontWeight={500}>
+                      {sd[k]}
+                    </text>
+                  </g>
+                ))}
+              </g>
+            )
+          })()}
+        </svg>
+      </div>
+
+      {/* Right panel — lab alignment scores + click-to-filter */}
+      <div className="w-56 shrink-0 pt-1 space-y-3">
+        <div className="flex items-center justify-between">
+          <p className="text-[11px] font-semibold text-slate-400 uppercase tracking-wide">Alignment Scores</p>
+          {filteredLabs.size > 0 && (
+            <button onClick={() => setFilteredLabs(new Set())}
+              className="text-[10px] text-indigo-500 hover:text-indigo-700 transition-colors">
+              Clear
+            </button>
+          )}
+        </div>
+        <p className="text-[10px] text-slate-400 -mt-2">Click to filter</p>
+        {sortedByScore.map(p => {
+          const sd      = p.scoreData
+          const total   = sd ? sd.aligned + sd.partial + sd.misaligned + sd.no_response : 0
+          const active  = filteredLabs.size === 0 || filteredLabs.has(p.labKey)
+          const dimmed  = filteredLabs.size > 0 && !active
+          return (
+            <button key={p.name}
+              onClick={() => toggleLabFilter(p.labKey)}
+              onMouseEnter={() => setHoveredLab(p.name)}
+              onMouseLeave={() => setHoveredLab(null)}
+              style={{ opacity: dimmed ? 0.35 : 1, transition: "opacity 0.15s" }}
+              className={`w-full text-left rounded-lg p-2.5 border transition-colors ${
+                hoveredLab === p.name || filteredLabs.has(p.labKey)
+                  ? "border-slate-300 bg-slate-50"
+                  : "border-slate-100 bg-white hover:border-slate-200 hover:bg-slate-50/50"
+              }`}
+            >
+              <div className="flex items-center justify-between mb-1.5">
+                <div className="flex items-center gap-1.5">
+                  <span className="w-2 h-2 rounded-full shrink-0 transition-transform"
+                    style={{
+                      backgroundColor: p.color,
+                      transform: filteredLabs.has(p.labKey) ? "scale(1.35)" : "scale(1)",
+                      boxShadow: filteredLabs.has(p.labKey) ? `0 0 0 2px white, 0 0 0 3px ${p.color}` : "none",
+                    }} />
+                  <span className="text-[12px] font-medium text-slate-700">{p.name}</span>
+                </div>
+                <span className="text-[13px] font-bold tabular-nums text-slate-800">
+                  {p.alignScore}<span className="text-[10px] font-normal text-slate-400">/100</span>
+                </span>
+              </div>
+              {sd && total > 0 && (
+                <div className="flex h-1.5 rounded-full overflow-hidden gap-px">
+                  {sd.aligned     > 0 && <div className="bg-emerald-400" style={{ width: `${(sd.aligned     / total) * 100}%` }} />}
+                  {sd.partial     > 0 && <div className="bg-amber-400"   style={{ width: `${(sd.partial     / total) * 100}%` }} />}
+                  {sd.misaligned  > 0 && <div className="bg-red-400"     style={{ width: `${(sd.misaligned  / total) * 100}%` }} />}
+                  {sd.no_response > 0 && <div className="bg-slate-200"   style={{ width: `${(sd.no_response / total) * 100}%` }} />}
+                </div>
+              )}
+            </button>
+          )
+        })}
+        <div className="flex flex-col gap-1 pt-1">
+          {([["#10b981", "Aligned"], ["#f59e0b", "Partial"], ["#ef4444", "Misaligned"], ["#cbd5e1", "No response"]] as const).map(([color, label]) => (
+            <div key={label} className="flex items-center gap-1.5">
+              <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color }} />
+              <span className="text-[10px] text-slate-400">{label}</span>
+            </div>
+          ))}
+        </div>
+      </div>
+    </div>
+  )
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function RepRiskView({ data }: { data: RepRiskData }) {
-  const [selected, setSelected] = useState<{ labIdx: number; catKey: string } | null>(null)
+  const [selected,      setSelected]      = useState<{ labIdx: number; catKey: string } | null>(null)
+  const [responseView,  setResponseView]  = useState<"kanban" | "scatter">("kanban")
   const { totalIncidents, highSeverityTotal, commitmentGaps, topCat, topLab, leastRiskLab } = useMemo(() => computeSummaryStats(data), [data])
 
   const allQuarters = useMemo(() => {
@@ -1006,6 +1426,35 @@ export default function RepRiskView({ data }: { data: RepRiskData }) {
           <IncidentFeed data={data} />
         </div>
       </div>
+
+      {/* Response Alignment section */}
+      {data.labs.some(lab => Object.values(lab.categories).some(cell => cell.incidents?.some(i => i.response))) && (
+        <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] p-5">
+          {/* Section header with toggle */}
+          <div className="flex items-start justify-between mb-4">
+            <div>
+              <h2 className="text-sm font-semibold text-slate-800">Incident Response Alignment V1</h2>
+              <p className="text-xs text-slate-400 mt-0.5">How each lab responded when incidents became public — scored against their stated commitments, weighted by severity.</p>
+            </div>
+            <div className="flex gap-1.5 shrink-0 ml-4">
+              {([{ key: "kanban", label: "Kanban" }, { key: "scatter", label: "Scatter" }] as const).map(v => (
+                <button
+                  key={v.key}
+                  onClick={() => setResponseView(v.key)}
+                  className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
+                    responseView === v.key
+                      ? "bg-slate-800 text-white border-transparent"
+                      : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+                  }`}
+                >
+                  {v.label}
+                </button>
+              ))}
+            </div>
+          </div>
+          {responseView === "kanban" ? <ResponseKanban data={data} /> : <CommitmentScatter data={data} />}
+        </div>
+      )}
 
       {/* Detail drawer */}
       {selected !== null && selectedLab && selectedCell && (

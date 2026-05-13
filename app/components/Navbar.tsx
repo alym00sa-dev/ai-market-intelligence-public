@@ -45,7 +45,6 @@ export default function Navbar() {
             onClick={() => setOpen((v) => !v)}
             className="flex items-center gap-2 text-sm bg-gray-800 hover:bg-gray-700 px-3 py-1.5 rounded-lg transition-colors border border-gray-700"
           >
-            <span className="w-1.5 h-1.5 rounded-full bg-green-400 shrink-0" />
             <span>{activeSource.label}</span>
             <svg
               className={`w-3.5 h-3.5 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
@@ -68,9 +67,7 @@ export default function Navbar() {
                       isActive ? "text-white bg-gray-800" : "text-gray-300 hover:bg-gray-800 hover:text-white"
                     }`}
                   >
-                    <span className={`w-1.5 h-1.5 rounded-full shrink-0 ${isActive ? "bg-green-400" : "bg-gray-600"}`} />
                     {source.label}
-                    {isActive && <span className="ml-auto w-1.5 h-1.5 rounded-full bg-green-400" />}
                   </Link>
                 )
               })}

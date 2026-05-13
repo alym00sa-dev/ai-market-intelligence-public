@@ -537,7 +537,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
     <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-slate-700">Open vs. Closed Intelligence Over Time</h3>
+          <h3 className="text-sm font-semibold text-slate-700">Open vs. Closed Capability Over Time</h3>
           <p className="text-xs text-slate-400 mt-0.5">
             Best model score at each point in time. Each step marks a new state-of-the-art. Hover any dot to see which model set the record.
           </p>
