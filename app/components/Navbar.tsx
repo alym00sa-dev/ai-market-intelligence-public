@@ -6,7 +6,6 @@ import { usePathname } from "next/navigation"
 
 const DATA_SOURCES = [
   { label: "Hiring Signals",          href: "/",          available: true  },
-  { label: "Compute Distribution",    href: "/compute",   available: true  },
   { label: "Safety Track Record",     href: "/rep-risk",  available: true  },
   { label: "Frontier Model Tracking", href: "/models",    available: true  },
 ]
@@ -38,7 +37,19 @@ export default function Navbar() {
       </div>
 
       {/* Right side */}
-      <div className="flex items-center gap-4">
+      <div className="flex items-center gap-3">
+        {/* Planning toggle */}
+        <a
+          href={pathname.startsWith("/planning") ? "/" : "/planning"}
+          className={`text-xs px-3 py-1.5 rounded-lg border transition-colors ${
+            pathname.startsWith("/planning")
+              ? "bg-indigo-600 text-white border-transparent"
+              : "text-gray-400 border-gray-700 hover:bg-gray-700 hover:text-white"
+          }`}
+        >
+          Planning
+        </a>
+
         {/* Data source dropdown */}
         <div className="relative" ref={ref}>
           <button

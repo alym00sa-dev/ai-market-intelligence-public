@@ -216,6 +216,66 @@ function computeSummaryStats(data: RepRiskData) {
   return { totalIncidents, highSeverityTotal, commitmentGaps, topCat, topLab, leastRiskLab }
 }
 
+// ── Alignment scoring helpers ─────────────────────────────────────────────────
+
+const ALIGNMENT_VALUE: Record<IncidentAlignment, number> = {
+  aligned: 1.0, partial: 0.5, misaligned: 0, no_response: 0,
+}
+const SEVERITY_WEIGHT: Record<RepRiskSeverity, number> = {
+  high: 3, medium: 2, low: 1,
+}
+
+function uniqueLabIncidents(lab: RepRiskLab): RepRiskIncident[] {
+  const seen = new Set<string>()
+  const out: RepRiskIncident[] = []
+  for (const cell of Object.values(lab.categories)) {
+    for (const inc of cell.incidents ?? []) {
+      if (!inc.title || seen.has(inc.title)) continue
+      seen.add(inc.title)
+      out.push(inc)
+    }
+  }
+  return out
+}
+
+function computeAlignmentScore(incidents: RepRiskIncident[]): LabAlignmentScore | null {
+  let aligned = 0, partial = 0, misaligned = 0, no_response = 0
+  let totalWeighted = 0
+  let alignedSum    = 0
+  for (const inc of incidents) {
+    if (!inc.response) continue
+    const w = inc.response.weight ?? SEVERITY_WEIGHT[inc.severity]
+    const v = ALIGNMENT_VALUE[inc.response.alignment]
+    totalWeighted += w
+    alignedSum    += w * v
+    if      (inc.response.alignment === "aligned")    aligned++
+    else if (inc.response.alignment === "partial")    partial++
+    else if (inc.response.alignment === "misaligned") misaligned++
+    else                                              no_response++
+  }
+  if (totalWeighted === 0) return null
+  return {
+    score: Math.round((alignedSum / totalWeighted) * 100),
+    aligned, partial, misaligned, no_response,
+    total_weighted: totalWeighted,
+  }
+}
+
+function filterIncidentsByDate(
+  incidents: RepRiskIncident[],
+  from: Date | null,
+  to: Date,
+): RepRiskIncident[] {
+  return incidents.filter(inc => {
+    if (!inc.date) return false
+    const d = new Date(inc.date)
+    if (isNaN(d.getTime())) return false
+    if (from && d < from) return false
+    if (d > to) return false
+    return true
+  })
+}
+
 // ── Incident Timeline ─────────────────────────────────────────────────────────
 
 type HoveredPoint   = { lab: string; quarter: string; count: number; cx: number; cy: number }
@@ -387,32 +447,32 @@ function IncidentTimeline({ data }: { data: RepRiskData }) {
             {hoveredQuarter && (() => {
               const { quarter, cx, topY } = hoveredQuarter
               const breakdown = labNames.filter(n => (labQuarterlyCounts[n]?.[quarter] ?? 0) > 0)
-              const ttH = 30 + breakdown.length * 20
-              const ttW = 168
-              const tx  = Math.min(cx + 12, W - ttW - 4)
-              const ty  = Math.max(topY - ttH - 10, PAD_T)
+              const ttH = 24 + breakdown.length * 14
+              const ttW = 146
+              const tx  = Math.min(cx + 10, W - ttW - 4)
+              const ty  = Math.max(topY - ttH - 8, PAD_T)
               return (
                 <g pointerEvents="none">
-                  <rect x={tx} y={ty} width={ttW} height={ttH} rx={7}
+                  <rect x={tx} y={ty} width={ttW} height={ttH} rx={5}
                     fill="#0f172a"
-                    filter="drop-shadow(0 6px 16px rgba(0,0,0,0.25))" />
-                  <text x={tx + 14} y={ty + 16} fontSize={11} fontWeight={600} fill="white"
+                    filter="drop-shadow(0 3px 8px rgba(0,0,0,0.18))" />
+                  <text x={tx + 10} y={ty + 12} fontSize={10} fontWeight={600} fill="white"
                     fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle">
                     {quarterLabel(quarter)}
                   </text>
-                  <text x={tx + ttW - 12} y={ty + 16} fontSize={10} fill="#64748b" textAnchor="end"
+                  <text x={tx + ttW - 10} y={ty + 12} fontSize={9} fill="#64748b" textAnchor="end"
                     fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle">
                     {quarterlyCounts[quarter]} total
                   </text>
                   {breakdown.map((name, i) => (
                     <g key={name}>
-                      <rect x={tx + 14} y={ty + 28 + i * 20 - 5} width={6} height={10} rx={2}
-                        fill={LAB_COLORS[name]} opacity={0.9} />
-                      <text x={tx + 26} y={ty + 28 + i * 20} fontSize={10} fill="#cbd5e1"
+                      <circle cx={tx + 13} cy={ty + 22 + i * 14} r={2.5}
+                        fill={LAB_COLORS[name]} opacity={0.95} />
+                      <text x={tx + 20} y={ty + 22 + i * 14} fontSize={9.5} fill="#cbd5e1"
                         fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle">
                         {name}
                       </text>
-                      <text x={tx + ttW - 12} y={ty + 28 + i * 20} fontSize={10} fill="white" textAnchor="end"
+                      <text x={tx + ttW - 10} y={ty + 22 + i * 14} fontSize={9.5} fill="white" textAnchor="end"
                         fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle" fontWeight={500}>
                         {labQuarterlyCounts[name]?.[quarter] ?? 0}
                       </text>
@@ -465,25 +525,25 @@ function IncidentTimeline({ data }: { data: RepRiskData }) {
             })}
 
             {hoveredPoint && (() => {
-              const ttW = 164, ttH = 46
-              const tx  = Math.min(hoveredPoint.cx + 12, W - ttW - 4)
-              const ty  = Math.max(hoveredPoint.cy - ttH - 10, PAD_T)
+              const ttW = 140, ttH = 38
+              const tx  = Math.min(hoveredPoint.cx + 10, W - ttW - 4)
+              const ty  = Math.max(hoveredPoint.cy - ttH - 8, PAD_T)
               const color = LAB_COLORS[hoveredPoint.lab] ?? "#94a3b8"
               return (
                 <g pointerEvents="none">
-                  <rect x={tx} y={ty} width={ttW} height={ttH} rx={7}
+                  <rect x={tx} y={ty} width={ttW} height={ttH} rx={5}
                     fill="#0f172a"
-                    filter="drop-shadow(0 6px 16px rgba(0,0,0,0.25))" />
-                  <circle cx={tx + 16} cy={ty + 15} r={5} fill={color} />
-                  <text x={tx + 27} y={ty + 15} fontSize={12} fontWeight={600} fill="white"
+                    filter="drop-shadow(0 3px 8px rgba(0,0,0,0.18))" />
+                  <circle cx={tx + 11} cy={ty + 12} r={3.5} fill={color} />
+                  <text x={tx + 19} y={ty + 12} fontSize={10.5} fontWeight={600} fill="white"
                     fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle">
                     {hoveredPoint.lab}
                   </text>
-                  <text x={tx + 14} y={ty + 33} fontSize={10} fill="#64748b"
+                  <text x={tx + 10} y={ty + 27} fontSize={9.5} fill="#64748b"
                     fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle">
                     {quarterLabel(hoveredPoint.quarter)}
                   </text>
-                  <text x={tx + ttW - 12} y={ty + 33} fontSize={10} fill="#e2e8f0" textAnchor="end"
+                  <text x={tx + ttW - 10} y={ty + 27} fontSize={9.5} fill="#e2e8f0" textAnchor="end"
                     fontFamily="ui-sans-serif,system-ui,sans-serif" dominantBaseline="middle" fontWeight={500}>
                     {hoveredPoint.count} incident{hoveredPoint.count !== 1 ? "s" : ""}
                   </text>
@@ -971,7 +1031,11 @@ function ResponseKanban({ data }: { data: RepRiskData }) {
 
 // ── Commitment Scatter ────────────────────────────────────────────────────────
 
-function CommitmentScatter({ data }: { data: RepRiskData }) {
+function CommitmentScatter({ data, from, to }: {
+  data: RepRiskData
+  from: Date | null
+  to: Date
+}) {
   const [hoveredLab,   setHoveredLab]   = useState<string | null>(null)
   const [filteredLabs, setFilteredLabs] = useState<Set<string>>(new Set())
 
@@ -998,23 +1062,29 @@ function CommitmentScatter({ data }: { data: RepRiskData }) {
       const cells           = Object.values(lab.categories)
       const commitmentCount = cells.filter(c => c.commitment_present).length
       const commitmentX     = (commitmentCount / 8) * 100
-      const alignScore      = data.lab_alignment_scores?.[lab.name]?.score ?? null
-      const totalIncidents  = cells.reduce((s, c) => s + (c.incidents?.length ?? 0), 0)
-      const scoreData       = data.lab_alignment_scores?.[lab.name] ?? null
+      const allIncidents    = uniqueLabIncidents(lab)
+      const filtered        = filterIncidentsByDate(allIncidents, from, to)
+      const scoreData       = computeAlignmentScore(filtered)
       return {
         name:        lab.display_name,
         labKey:      lab.name,
         commitmentX,
-        alignScore,
-        totalIncidents,
+        alignScore:  scoreData?.score ?? null,
+        totalIncidents: filtered.length,
         r:           10,
         color:       LAB_COLORS[lab.display_name] ?? "#94a3b8",
         scoreData,
       }
     }).filter(p => p.alignScore !== null)
-  }, [data])
+  }, [data, from, to])
 
-  if (points.length === 0) return null
+  if (points.length === 0) {
+    return (
+      <div className="text-xs text-slate-400 italic px-2 py-8 text-center">
+        No incidents with response data in this date range.
+      </div>
+    )
+  }
 
   function toSvgX(val: number) { return PAD_L + (val / 100) * plotW }
   function toSvgY(val: number) { return PAD_T + plotH - (val / 100) * plotH }
@@ -1078,19 +1148,19 @@ function CommitmentScatter({ data }: { data: RepRiskData }) {
           ))}
 
           {/* Axis labels */}
-          <text x={PAD_L + plotW / 2} y={H - 6}
-            textAnchor="middle" fontSize={9} fill="#64748b"
-            fontFamily="ui-sans-serif,system-ui,sans-serif">Commitment Strength →</text>
-          <text x={12} y={PAD_T + plotH / 2}
-            textAnchor="middle" dominantBaseline="middle" fontSize={9} fill="#64748b"
+          <text x={PAD_L + plotW / 2} y={PAD_T + plotH + 30}
+            textAnchor="middle" fontSize={8} fill="#94a3b8"
+            fontFamily="ui-sans-serif,system-ui,sans-serif">Commitment Coverage →</text>
+          <text x={26} y={PAD_T + plotH / 2}
+            textAnchor="middle" dominantBaseline="middle" fontSize={8} fill="#94a3b8"
             fontFamily="ui-sans-serif,system-ui,sans-serif"
-            transform={`rotate(-90, 12, ${PAD_T + plotH / 2})`}>Response Alignment →</text>
+            transform={`rotate(-90, 26, ${PAD_T + plotH / 2})`}>Response Alignment →</text>
 
           {/* Quadrant labels */}
-          <text x={toSvgX(51)} y={PAD_T + 10} fontSize={9} fill="#cbd5e1" fontFamily="ui-sans-serif,system-ui,sans-serif">Strong commitments · follows through</text>
-          <text x={PAD_L + 4}  y={PAD_T + 10} fontSize={9} fill="#cbd5e1" fontFamily="ui-sans-serif,system-ui,sans-serif">Responds well · fewer commitments</text>
-          <text x={toSvgX(51)} y={toSvgY(50) + 14} fontSize={9} fill="#cbd5e1" fontFamily="ui-sans-serif,system-ui,sans-serif">Strong commitments · poor follow-through</text>
-          <text x={PAD_L + 4}  y={toSvgY(50) + 14} fontSize={9} fill="#cbd5e1" fontFamily="ui-sans-serif,system-ui,sans-serif">Weak commitments · poor response</text>
+          <text x={toSvgX(51)} y={PAD_T + 11} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif,system-ui,sans-serif">Broad commitments · follows through</text>
+          <text x={PAD_L + 4}  y={PAD_T + 11} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif,system-ui,sans-serif">Narrow commitments · responds well</text>
+          <text x={toSvgX(51)} y={toSvgY(50) + 13} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif,system-ui,sans-serif">Broad commitments · poor follow-through</text>
+          <text x={PAD_L + 4}  y={toSvgY(50) + 13} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif,system-ui,sans-serif">Narrow commitments · poor response</text>
 
           {/* Data points */}
           {points.map(p => {
@@ -1218,11 +1288,56 @@ function CommitmentScatter({ data }: { data: RepRiskData }) {
   )
 }
 
+// ── Date range slider ─────────────────────────────────────────────────────────
+
+function fmtMonthShort(d: Date): string {
+  return `${d.toLocaleDateString("en-US", { month: "short" })} '${String(d.getFullYear()).slice(2)}`
+}
+
+function DateRangeSlider({ months, value, onChange }: {
+  months: Date[]
+  value:  [number, number]
+  onChange: (from: number, to: number) => void
+}) {
+  const max = months.length - 1
+  const [fromIdx, toIdx] = value
+  const pct = (i: number) => (i / max) * 100
+  const thumb =
+    "[&::-webkit-slider-thumb]:pointer-events-auto [&::-webkit-slider-thumb]:appearance-none " +
+    "[&::-webkit-slider-thumb]:h-3.5 [&::-webkit-slider-thumb]:w-3.5 [&::-webkit-slider-thumb]:rounded-full " +
+    "[&::-webkit-slider-thumb]:bg-white [&::-webkit-slider-thumb]:border-2 [&::-webkit-slider-thumb]:border-slate-700 " +
+    "[&::-webkit-slider-thumb]:shadow-sm [&::-webkit-slider-thumb]:cursor-grab " +
+    "[&::-moz-range-thumb]:pointer-events-auto [&::-moz-range-thumb]:appearance-none " +
+    "[&::-moz-range-thumb]:h-3.5 [&::-moz-range-thumb]:w-3.5 [&::-moz-range-thumb]:rounded-full " +
+    "[&::-moz-range-thumb]:bg-white [&::-moz-range-thumb]:border-2 [&::-moz-range-thumb]:border-slate-700"
+  return (
+    <div className="px-1 max-w-md">
+      <div className="relative h-6 flex items-center">
+        <div className="absolute inset-x-0 h-1 bg-slate-200 rounded-full" />
+        <div className="absolute h-1 bg-slate-600 rounded-full"
+          style={{ left: `${pct(fromIdx)}%`, width: `${pct(toIdx) - pct(fromIdx)}%` }} />
+        <input type="range" min={0} max={max} value={fromIdx}
+          onChange={e => onChange(Math.min(Number(e.target.value), toIdx), toIdx)}
+          className={`absolute inset-0 w-full appearance-none bg-transparent pointer-events-none ${thumb}`} />
+        <input type="range" min={0} max={max} value={toIdx}
+          onChange={e => onChange(fromIdx, Math.max(Number(e.target.value), fromIdx))}
+          className={`absolute inset-0 w-full appearance-none bg-transparent pointer-events-none ${thumb}`} />
+      </div>
+      <div className="flex justify-between text-[9px] text-slate-400 tabular-nums mt-1">
+        <span>{fmtMonthShort(months[0])}</span>
+        <span>{fmtMonthShort(months[max])}</span>
+      </div>
+    </div>
+  )
+}
+
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function RepRiskView({ data }: { data: RepRiskData }) {
   const [selected,      setSelected]      = useState<{ labIdx: number; catKey: string } | null>(null)
-  const [responseView,  setResponseView]  = useState<"kanban" | "scatter">("kanban")
+  const [responseView,  setResponseView]  = useState<"kanban" | "snapshot">("kanban")
+  const [dateMode,      setDateMode]      = useState<"all" | "custom">("all")
+  const [customRange,   setCustomRange]   = useState<[number, number] | null>(null)
   const { totalIncidents, highSeverityTotal, commitmentGaps, topCat, topLab, leastRiskLab } = useMemo(() => computeSummaryStats(data), [data])
 
   const allQuarters = useMemo(() => {
@@ -1243,9 +1358,52 @@ export default function RepRiskView({ data }: { data: RepRiskData }) {
   const quarterFilter: string | null = timeSlice < ALL_TIME ? allQuarters[timeSlice] : null
 
   const dateFrom = "Jan 2023"
+  const anchorDate = useMemo(
+    () => (data.generated_at ? new Date(data.generated_at) : new Date()),
+    [data.generated_at],
+  )
   const dateTo = data.generated_at
-    ? new Date(data.generated_at).toLocaleDateString("en-US", { month: "short", year: "numeric" })
+    ? anchorDate.toLocaleDateString("en-US", { month: "short", year: "numeric" })
     : "present"
+
+  // Available months for date slider — from earliest incident through anchor
+  const availableMonths = useMemo(() => {
+    let minDate: Date | null = null
+    for (const lab of data.labs) {
+      for (const inc of uniqueLabIncidents(lab)) {
+        if (!inc.date) continue
+        const d = new Date(inc.date)
+        if (isNaN(d.getTime())) continue
+        if (!minDate || d < minDate) minDate = d
+      }
+    }
+    if (!minDate) return [] as Date[]
+    const start = new Date(minDate.getFullYear(), minDate.getMonth(), 1)
+    const end   = new Date(anchorDate.getFullYear(), anchorDate.getMonth(), 1)
+    const months: Date[] = []
+    const cursor = new Date(start)
+    while (cursor <= end) {
+      months.push(new Date(cursor))
+      cursor.setMonth(cursor.getMonth() + 1)
+    }
+    return months
+  }, [data, anchorDate])
+
+  const customResolved: [number, number] =
+    customRange ?? [0, Math.max(0, availableMonths.length - 1)]
+
+  const snapshotFrom: Date | null =
+    dateMode === "all" || availableMonths.length === 0
+      ? null
+      : availableMonths[customResolved[0]]
+  const snapshotTo: Date =
+    dateMode === "all" || availableMonths.length === 0
+      ? anchorDate
+      : new Date(
+          availableMonths[customResolved[1]].getFullYear(),
+          availableMonths[customResolved[1]].getMonth() + 1,
+          0, 23, 59, 59,
+        )
 
   const selectedLab  = selected !== null ? data.labs[selected.labIdx] : null
   const selectedCell = selected !== null ? data.labs[selected.labIdx]?.categories[selected.catKey] : null
@@ -1437,7 +1595,10 @@ export default function RepRiskView({ data }: { data: RepRiskData }) {
               <p className="text-xs text-slate-400 mt-0.5">How each lab responded when incidents became public — scored against their stated commitments, weighted by severity.</p>
             </div>
             <div className="flex gap-1.5 shrink-0 ml-4">
-              {([{ key: "kanban", label: "Kanban" }, { key: "scatter", label: "Scatter" }] as const).map(v => (
+              {([
+                { key: "kanban",   label: "Kanban"   },
+                { key: "snapshot", label: "Snapshot" },
+              ] as const).map(v => (
                 <button
                   key={v.key}
                   onClick={() => setResponseView(v.key)}
@@ -1452,7 +1613,60 @@ export default function RepRiskView({ data }: { data: RepRiskData }) {
               ))}
             </div>
           </div>
-          {responseView === "kanban" ? <ResponseKanban data={data} /> : <CommitmentScatter data={data} />}
+
+          {/* Snapshot controls — scoring formula + date range slider */}
+          {responseView === "snapshot" && (
+            <div className="mb-4 space-y-3">
+              {/* How the score works */}
+              <div className="text-[11px] text-slate-600 leading-relaxed bg-slate-50/70 border border-slate-200/70 rounded-lg px-3 py-2.5 space-y-1.5">
+                <p>
+                  <span className="font-semibold text-slate-700">How the score works.</span>{" "}
+                  Every incident counts toward a lab&apos;s score based on two things: how well they responded, and how serious the incident was.
+                </p>
+                <p>
+                  An aligned response earns full credit, a partial response earns half credit, and a misaligned or silent response earns none. High-severity incidents count three times as much as low-severity ones, and medium-severity incidents count twice as much. The final 0–100 number is the share of credit a lab earned out of the maximum possible across all incidents in the selected window.
+                </p>
+              </div>
+
+              {/* Date mode toggle + summary */}
+              <div className="flex flex-wrap items-center gap-3">
+                <span className="text-[11px] font-semibold uppercase tracking-wide text-slate-400">Score window</span>
+                <div className="flex gap-1">
+                  {(["all", "custom"] as const).map(m => (
+                    <button
+                      key={m}
+                      onClick={() => setDateMode(m)}
+                      className={`px-2.5 py-1 rounded-md text-[11px] font-medium transition-colors border ${
+                        dateMode === m
+                          ? "bg-slate-100 text-slate-800 border-slate-300"
+                          : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+                      }`}
+                    >
+                      {m === "all" ? "All-time" : "Custom"}
+                    </button>
+                  ))}
+                </div>
+                <span className="text-[10px] text-slate-400 italic">
+                  {dateMode === "all" || availableMonths.length === 0
+                    ? "Scoring uses every recorded incident"
+                    : `Scoring uses incidents from ${fmtMonthShort(availableMonths[customResolved[0]])} to ${fmtMonthShort(availableMonths[customResolved[1]])}`}
+                </span>
+              </div>
+
+              {dateMode === "custom" && availableMonths.length >= 2 && (
+                <DateRangeSlider
+                  months={availableMonths}
+                  value={customResolved}
+                  onChange={(a, b) => setCustomRange([a, b])} />
+              )}
+            </div>
+          )}
+
+          {responseView === "kanban" ? (
+            <ResponseKanban data={data} />
+          ) : (
+            <CommitmentScatter data={data} from={snapshotFrom} to={snapshotTo} />
+          )}
         </div>
       )}
 

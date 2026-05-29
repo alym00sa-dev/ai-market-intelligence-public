@@ -22,7 +22,7 @@ HEADERS = {
         "Chrome/124.0.0.0 Safari/537.36"
     ),
     "Accept": "text/html,application/xhtml+xml,*/*;q=0.9",
-    "Accept-Encoding": "gzip, deflate, br",
+    "Accept-Encoding": "gzip, deflate",
 }
 
 MAX_DESC_CHARS = 1500
