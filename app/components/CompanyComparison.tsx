@@ -1,7 +1,8 @@
 "use client"
 
 import { useState } from "react"
-import type { CompanyProfile, Job } from "../types"
+import type { CompanyProfile, CompanyChange, Job } from "../types"
+import { SectionLabel, Donut, type DonutSegment } from "./ds"
 
 const DISPLAY_NAMES: Record<string, string> = {
   "Amazon AGI":         "Amazon",
@@ -10,28 +11,29 @@ const DISPLAY_NAMES: Record<string, string> = {
 }
 
 const COMPANY_COLORS: Record<string, string> = {
-  "Anthropic":     "#6366f1",
-  "OpenAI":        "#10b981",
-  "Google":        "#3b82f6",
-  "xAI":           "#f59e0b",
-  "Mistral AI":    "#ec4899",
-  "Cohere":        "#8b5cf6",
-  "NVIDIA":        "#22c55e",
-  "Amazon":        "#f97316",
-  "Microsoft":     "#0ea5e9",
-  "Inflection AI": "#06b6d4",
-  "Stability AI":  "#a855f7",
-  "Moonshot AI":   "#ef4444",
-  "ByteDance":     "#f43f5e",
+  "Anthropic":     "#D97757",
+  "OpenAI":        "#10A37F",
+  "Google":        "#4285F4",
+  "xAI":           "#1F1F1F",
+  "Meta":          "#1877F2",
+  "Microsoft":     "#00A4EF",
+  "Amazon":        "#FF9900",
+  "NVIDIA":        "#76B900",
+  "Mistral AI":    "#FF6B35",
+  "Cohere":        "#39594D",
+  "Inflection AI": "#06B6D4",
+  "Stability AI":  "#A855F7",
+  "Moonshot AI":   "#EF4444",
+  "ByteDance":     "#F43F5E",
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  engineering:  "#3b82f6",
-  research:     "#8b5cf6",
-  sales_gtm:    "#10b981",
-  operations:   "#f59e0b",
-  other:        "#94a3b8",
-  unclassified: "#cbd5e1",
+  engineering:  "#2C4D9E",   // accent-blue
+  research:     "#C77F2E",   // accent-amber
+  sales_gtm:    "#2D8F66",   // accent-green
+  operations:   "#6B5BC9",   // muted indigo
+  other:        "#BCC4D2",   // light slate
+  unclassified: "#DDE3EC",   // border-subtle
 }
 
 const CATEGORY_LABELS: Record<string, string> = {
@@ -58,39 +60,45 @@ function displayName(raw: string): string {
 }
 
 function companyColor(raw: string): string {
-  return COMPANY_COLORS[displayName(raw)] ?? "#94a3b8"
+  return COMPANY_COLORS[displayName(raw)] ?? "var(--accent-blue)"
 }
 
 function formatSubArea(raw: string): string {
   return raw.replace(/_/g, " ").replace(/\b\w/g, (c) => c.toUpperCase())
 }
 
-// ── Stacked bar ───────────────────────────────────────────────────────────────
+function tint(hex: string, alpha: number): string {
+  if (hex.startsWith("#") && hex.length === 7) {
+    const r = parseInt(hex.slice(1, 3), 16)
+    const g = parseInt(hex.slice(3, 5), 16)
+    const b = parseInt(hex.slice(5, 7), 16)
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`
+  }
+  return hex
+}
 
-function StackedBar({ breakdown, total }: { breakdown: Record<string, number>; total: number }) {
-  const segments = CATEGORY_ORDER.filter((c) => (breakdown[c] ?? 0) > 0)
+// ── Role-mix donut ──────────────────────────────────────────────────────────
+
+function RoleMix({ breakdown, total }: { breakdown: Record<string, number>; total: number }) {
+  const present = CATEGORY_ORDER.filter((c) => (breakdown[c] ?? 0) > 0)
+  const segments: DonutSegment[] = present.map((cat) => ({
+    label: CATEGORY_LABELS[cat] ?? cat,
+    value: breakdown[cat] ?? 0,
+    color: CATEGORY_COLORS[cat] ?? "#DDE3EC",
+  }))
   return (
-    <div className="w-full">
-      <div className="flex rounded-full overflow-hidden h-1.5 mb-2">
-        {segments.map((cat) => (
-          <div
-            key={cat}
-            style={{
-              width: `${((breakdown[cat] ?? 0) / total) * 100}%`,
-              backgroundColor: CATEGORY_COLORS[cat] ?? "#cbd5e1",
-            }}
-            title={`${CATEGORY_LABELS[cat]}: ${breakdown[cat]}`}
-          />
-        ))}
-      </div>
-      <div className="flex flex-wrap gap-x-3 gap-y-1">
-        {segments.map((cat) => {
+    <div className="flex items-center gap-4">
+      <Donut segments={segments} size={84} thickness={12} />
+      <div className="flex flex-col gap-1">
+        {present.map((cat) => {
           const pct = Math.round(((breakdown[cat] ?? 0) / total) * 100)
           return (
-            <span key={cat} className="inline-flex items-center gap-1 text-[10px]">
+            <span key={cat} className="inline-flex items-center gap-1.5 text-[10px]">
               <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: CATEGORY_COLORS[cat] }} />
-              <span className="text-slate-500">{CATEGORY_LABELS[cat]}</span>
-              <span className="text-slate-700 font-medium tabular-nums">{pct}%</span>
+              <span style={{ color: "var(--text-secondary)" }}>{CATEGORY_LABELS[cat]}</span>
+              <span className="font-mono tabular-nums" style={{ color: "var(--text-primary)", fontWeight: 500 }}>
+                {pct}%
+              </span>
             </span>
           )
         })}
@@ -99,12 +107,52 @@ function StackedBar({ breakdown, total }: { breakdown: Record<string, number>; t
   )
 }
 
+// ── Weekly change (Δ + shift narrative) ───────────────────────────────────────
+
+function ChangeDelta({ change }: { change?: CompanyChange }) {
+  if (!change || (change.new === 0 && change.removed === 0)) return null
+  return (
+    <div className="flex items-center gap-2 mt-1.5 text-[11px] font-mono tabular-nums">
+      <span style={{ color: "var(--accent-green)" }}>▲ {change.new} new</span>
+      <span style={{ color: "var(--text-tertiary)" }}>·</span>
+      <span style={{ color: "var(--accent-red)" }}>▼ {change.removed} closed</span>
+      <span style={{ color: "var(--text-tertiary)", fontFamily: "var(--font-plex-sans)" }}>this week</span>
+    </div>
+  )
+}
+
+// ── Bulleted list with colored dot ────────────────────────────────────────────
+
+function BulletList({ items, dotColor }: { items: string[]; dotColor: string }) {
+  return (
+    <ul className="space-y-1.5">
+      {items.map((b, i) => (
+        <li key={i} className="flex gap-2 items-start text-[12px]">
+          <span
+            className="mt-[6px] w-1.5 h-1.5 rounded-full shrink-0"
+            style={{ background: dotColor }}
+          />
+          <span
+            className="leading-relaxed"
+            style={{ color: "var(--text-primary)" }}
+          >
+            {b}
+          </span>
+        </li>
+      ))}
+    </ul>
+  )
+}
+
 // ── Table primitives ──────────────────────────────────────────────────────────
 
 function RowLabel({ label }: { label: string }) {
   return (
     <td className="px-5 py-4 align-top w-[150px]">
-      <span className="text-[10px] font-semibold uppercase tracking-widest text-slate-400 whitespace-nowrap">
+      <span
+        className="text-[10px] font-semibold uppercase tracking-widest whitespace-nowrap"
+        style={{ color: "var(--text-tertiary)" }}
+      >
         {label}
       </span>
     </td>
@@ -113,21 +161,31 @@ function RowLabel({ label }: { label: string }) {
 
 function Cell({ children }: { children: React.ReactNode }) {
   return (
-    <td className="px-5 py-4 align-top border-l border-slate-100">
+    <td
+      className="px-5 py-4 align-top"
+      style={{ borderLeft: "1px solid var(--border-subtle)" }}
+    >
       {children}
     </td>
   )
 }
 
-const Empty = () => <span className="text-[12px] text-slate-300">—</span>
+const Empty = () => (
+  <span className="text-[12px]" style={{ color: "var(--text-tertiary)" }}>—</span>
+)
+
+const ROW_BORDER = { borderBottom: "1px solid var(--border-subtle)" }
+const ROW_STRIPED_BG = "var(--bg-elevated)"
 
 // ── Main component ────────────────────────────────────────────────────────────
 
 export default function CompanyComparison({
   profiles,
+  changes = {},
 }: {
   profiles: CompanyProfile[]
   jobs: Job[]
+  changes?: Record<string, CompanyChange>
 }) {
   const sorted   = [...profiles].sort((a, b) => b.total - a.total)
   const defaults = sorted.slice(0, 3).map((p) => p.company)
@@ -145,6 +203,11 @@ export default function CompanyComparison({
     .map((c) => profiles.find((p) => p.company === c))
     .filter(Boolean) as CompanyProfile[]
 
+  const hasShift         = sel.some((p) => (p.llmSummary?.shift?.length ?? 0) > 0)
+  const hasChange        = sel.some((p) => {
+    const c = changes[p.company]
+    return c && (c.new > 0 || c.removed > 0)
+  })
   const hasBuilding      = sel.some((p) => p.buildingInsights.length > 0)
   const hasBuildLLM      = sel.some((p) => (p.llmSummary?.building?.length ?? 0) > 0)
   const hasSelling       = sel.some((p) => p.sellingInsights.length > 0)
@@ -158,12 +221,22 @@ export default function CompanyComparison({
     <div className="space-y-4">
 
       {/* Company selector */}
-      <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
+      <div
+        className="rounded-xl px-5 py-4"
+        style={{
+          background: "var(--bg-surface)",
+          border: "1px solid var(--border-subtle)",
+          boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+        }}
+      >
         <div className="flex items-center justify-between mb-3">
-          <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-400">
-            Select up to 3 companies to compare
-          </p>
-          <span className="text-[11px] text-slate-400 tabular-nums">{selected.length} / {MAX_SELECTED}</span>
+          <SectionLabel as="span">Select up to 3 companies to compare</SectionLabel>
+          <span
+            className="text-[11px] font-mono tabular-nums"
+            style={{ color: "var(--text-tertiary)" }}
+          >
+            {selected.length} / {MAX_SELECTED}
+          </span>
         </div>
         <div className="flex flex-wrap gap-2">
           {sorted.map((p) => {
@@ -171,26 +244,37 @@ export default function CompanyComparison({
             const color    = companyColor(p.company)
             const isOn     = selected.includes(p.company)
             const disabled = !isOn && selected.length >= MAX_SELECTED
+            const buttonStyle: React.CSSProperties = isOn
+              ? { backgroundColor: color, color: "#FFFFFF", border: "1px solid transparent" }
+              : disabled
+              ? {
+                  background: "var(--bg-elevated)",
+                  color: "var(--text-tertiary)",
+                  border: "1px solid var(--border-subtle)",
+                  cursor: "not-allowed",
+                }
+              : {
+                  background: "var(--bg-surface)",
+                  color: "var(--text-secondary)",
+                  border: "1px solid var(--border-subtle)",
+                }
             return (
               <button
                 key={p.company}
                 onClick={() => toggle(p.company)}
                 disabled={disabled}
-                className={`inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-medium border transition-all ${
-                  isOn
-                    ? "border-transparent text-white shadow-sm"
-                    : disabled
-                    ? "border-slate-100 text-slate-300 bg-slate-50 cursor-not-allowed"
-                    : "border-slate-200 text-slate-600 bg-white hover:border-slate-300 hover:bg-slate-50"
-                }`}
-                style={isOn ? { backgroundColor: color } : {}}
+                className="inline-flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-[12px] font-medium transition-all"
+                style={buttonStyle}
               >
                 <span
                   className="w-1.5 h-1.5 rounded-full shrink-0"
                   style={{ backgroundColor: isOn ? "rgba(255,255,255,0.7)" : color }}
                 />
                 {name}
-                <span className={`tabular-nums text-[10px] ${isOn ? "text-white/70" : "text-slate-400"}`}>
+                <span
+                  className="font-mono tabular-nums text-[10px]"
+                  style={{ color: isOn ? "rgba(255,255,255,0.7)" : "var(--text-tertiary)" }}
+                >
                   {p.total.toLocaleString()}
                 </span>
               </button>
@@ -201,21 +285,39 @@ export default function CompanyComparison({
 
       {/* Comparison table */}
       {sel.length > 0 && (
-        <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] overflow-hidden">
+        <div
+          className="rounded-xl overflow-hidden"
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
+            boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+          }}
+        >
           <table className="w-full border-collapse">
 
-            {/* Header */}
             <thead>
-              <tr className="border-b-2 border-slate-100">
+              <tr style={{ borderBottom: "2px solid var(--border-subtle)" }}>
                 <th className="px-5 py-4 w-[150px]" />
                 {sel.map((p) => {
                   const name  = displayName(p.company)
                   const color = companyColor(p.company)
                   return (
-                    <th key={p.company} className="px-5 py-4 text-left border-l border-slate-100">
+                    <th
+                      key={p.company}
+                      className="px-5 py-4 text-left"
+                      style={{ borderLeft: "1px solid var(--border-subtle)" }}
+                    >
                       <div className="flex items-center gap-2">
-                        <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: color }} />
-                        <span className="text-[14px] font-semibold text-slate-900">{name}</span>
+                        <span
+                          className="w-2.5 h-2.5 rounded-full shrink-0"
+                          style={{ backgroundColor: color }}
+                        />
+                        <span
+                          className="text-[14px] font-semibold"
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {name}
+                        </span>
                       </div>
                     </th>
                   )
@@ -225,31 +327,53 @@ export default function CompanyComparison({
 
             <tbody>
 
-              {/* Open Roles */}
-              <tr className="border-b border-slate-100">
+              {/* Open Roles + weekly delta */}
+              <tr style={ROW_BORDER}>
                 <RowLabel label="Open Roles" />
                 {sel.map((p) => (
                   <Cell key={p.company}>
-                    <span className="text-2xl font-bold tabular-nums text-slate-900">
+                    <span
+                      className="text-2xl font-mono font-semibold tabular-nums"
+                      style={{ color: "var(--text-primary)" }}
+                    >
                       {p.total.toLocaleString()}
                     </span>
+                    <ChangeDelta change={changes[p.company]} />
                   </Cell>
                 ))}
               </tr>
 
-              {/* Role Mix */}
-              <tr className="border-b border-slate-100 even:bg-slate-50/40 bg-slate-50/40">
+              {/* What's Changed — shift narrative (the week-over-week signal) */}
+              {(hasShift || hasChange) && (
+                <tr style={{ ...ROW_BORDER, background: ROW_STRIPED_BG }}>
+                  <RowLabel label="What's Changed" />
+                  {sel.map((p) => (
+                    <Cell key={p.company}>
+                      {p.llmSummary?.shift?.length ? (
+                        <BulletList items={p.llmSummary.shift} dotColor="var(--accent-amber)" />
+                      ) : changes[p.company] && (changes[p.company].new > 0 || changes[p.company].removed > 0) ? (
+                        <span className="text-[12px]" style={{ color: "var(--text-secondary)" }}>
+                          {changes[p.company].new} opened, {changes[p.company].removed} closed this week.
+                        </span>
+                      ) : <Empty />}
+                    </Cell>
+                  ))}
+                </tr>
+              )}
+
+              {/* Role Mix donut */}
+              <tr style={ROW_BORDER}>
                 <RowLabel label="Role Mix" />
                 {sel.map((p) => (
                   <Cell key={p.company}>
-                    <StackedBar breakdown={p.categoryBreakdown} total={p.total} />
+                    <RoleMix breakdown={p.categoryBreakdown} total={p.total} />
                   </Cell>
                 ))}
               </tr>
 
               {/* Building Focus */}
               {hasBuilding && (
-                <tr className="border-b border-slate-100">
+                <tr style={ROW_BORDER}>
                   <RowLabel label="Building Focus" />
                   {sel.map((p) => (
                     <Cell key={p.company}>
@@ -257,8 +381,18 @@ export default function CompanyComparison({
                         <div className="space-y-1.5">
                           {p.buildingInsights.slice(0, 5).map((ins) => (
                             <div key={ins.subArea} className="flex items-baseline justify-between gap-3">
-                              <span className="text-[12px] text-slate-600 truncate">{formatSubArea(ins.subArea)}</span>
-                              <span className="text-[11px] font-medium tabular-nums text-slate-400 shrink-0">{ins.count}</span>
+                              <span
+                                className="text-[12px] truncate"
+                                style={{ color: "var(--text-primary)" }}
+                              >
+                                {formatSubArea(ins.subArea)}
+                              </span>
+                              <span
+                                className="text-[11px] font-mono tabular-nums shrink-0"
+                                style={{ color: "var(--text-tertiary)" }}
+                              >
+                                {ins.count}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -270,19 +404,12 @@ export default function CompanyComparison({
 
               {/* What They Build */}
               {hasBuildLLM && (
-                <tr className="border-b border-slate-100 bg-slate-50/40">
+                <tr style={{ ...ROW_BORDER, background: ROW_STRIPED_BG }}>
                   <RowLabel label="What They Build" />
                   {sel.map((p) => (
                     <Cell key={p.company}>
                       {p.llmSummary?.building?.length ? (
-                        <ul className="space-y-1.5">
-                          {p.llmSummary.building.map((b, i) => (
-                            <li key={i} className="flex gap-1.5 text-[12px] text-slate-600">
-                              <span className="text-slate-300 shrink-0 mt-0.5 select-none">·</span>
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        <BulletList items={p.llmSummary.building} dotColor="var(--accent-blue)" />
                       ) : <Empty />}
                     </Cell>
                   ))}
@@ -291,7 +418,7 @@ export default function CompanyComparison({
 
               {/* GTM Focus */}
               {hasSelling && (
-                <tr className="border-b border-slate-100">
+                <tr style={ROW_BORDER}>
                   <RowLabel label="GTM Focus" />
                   {sel.map((p) => (
                     <Cell key={p.company}>
@@ -299,8 +426,18 @@ export default function CompanyComparison({
                         <div className="space-y-1.5">
                           {p.sellingInsights.slice(0, 5).map((ins) => (
                             <div key={ins.subArea} className="flex items-baseline justify-between gap-3">
-                              <span className="text-[12px] text-slate-600 truncate">{formatSubArea(ins.subArea)}</span>
-                              <span className="text-[11px] font-medium tabular-nums text-slate-400 shrink-0">{ins.count}</span>
+                              <span
+                                className="text-[12px] truncate"
+                                style={{ color: "var(--text-primary)" }}
+                              >
+                                {formatSubArea(ins.subArea)}
+                              </span>
+                              <span
+                                className="text-[11px] font-mono tabular-nums shrink-0"
+                                style={{ color: "var(--text-tertiary)" }}
+                              >
+                                {ins.count}
+                              </span>
                             </div>
                           ))}
                         </div>
@@ -312,19 +449,12 @@ export default function CompanyComparison({
 
               {/* What They Sell */}
               {hasSellLLM && (
-                <tr className="border-b border-slate-100 bg-slate-50/40">
+                <tr style={{ ...ROW_BORDER, background: ROW_STRIPED_BG }}>
                   <RowLabel label="What They Sell" />
                   {sel.map((p) => (
                     <Cell key={p.company}>
                       {p.llmSummary?.selling?.length ? (
-                        <ul className="space-y-1.5">
-                          {p.llmSummary.selling.map((b, i) => (
-                            <li key={i} className="flex gap-1.5 text-[12px] text-slate-600">
-                              <span className="text-slate-300 shrink-0 mt-0.5 select-none">·</span>
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        <BulletList items={p.llmSummary.selling} dotColor="var(--accent-green)" />
                       ) : <Empty />}
                     </Cell>
                   ))}
@@ -333,7 +463,7 @@ export default function CompanyComparison({
 
               {/* Verticals */}
               {hasVerticals && (
-                <tr className="border-b border-slate-100">
+                <tr style={ROW_BORDER}>
                   <RowLabel label="Verticals" />
                   {sel.map((p) => {
                     const active = Object.entries(p.verticalBreakdown).filter(([, v]) => v > 0)
@@ -344,10 +474,20 @@ export default function CompanyComparison({
                             {active.map(([v, count]) => (
                               <span
                                 key={v}
-                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full bg-violet-50 text-violet-700 text-[10px] font-medium border border-violet-100"
+                                className="inline-flex items-center gap-1 px-2 py-0.5 rounded text-[10px] font-medium"
+                                style={{
+                                  background: "var(--accent-amber-bg)",
+                                  color: "var(--accent-amber)",
+                                  border: "1px solid " + tint("#C77F2E", 0.2),
+                                }}
                               >
                                 {VERTICAL_LABELS[v] ?? v}
-                                <span className="text-violet-400 tabular-nums">{count}</span>
+                                <span
+                                  className="font-mono tabular-nums"
+                                  style={{ opacity: 0.7 }}
+                                >
+                                  {count}
+                                </span>
                               </span>
                             ))}
                           </div>
@@ -360,7 +500,7 @@ export default function CompanyComparison({
 
               {/* Vertical Notes */}
               {hasVerticalLLM && (
-                <tr className="border-b border-slate-100 bg-slate-50/40">
+                <tr style={{ ...ROW_BORDER, background: ROW_STRIPED_BG }}>
                   <RowLabel label="Vertical Notes" />
                   {sel.map((p) => {
                     const vb = p.llmSummary?.vertical_bullets ?? {}
@@ -371,17 +511,13 @@ export default function CompanyComparison({
                           <div className="space-y-3">
                             {entries.map(([vKey, bullets]) => (
                               <div key={vKey}>
-                                <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400 mb-1">
+                                <p
+                                  className="text-[10px] font-semibold uppercase tracking-wider mb-1"
+                                  style={{ color: "var(--text-tertiary)" }}
+                                >
                                   {VERTICAL_LABELS[vKey] ?? vKey}
                                 </p>
-                                <ul className="space-y-1">
-                                  {bullets.map((b, i) => (
-                                    <li key={i} className="flex gap-1.5 text-[12px] text-slate-600">
-                                      <span className="text-slate-300 shrink-0 mt-0.5 select-none">·</span>
-                                      <span>{b}</span>
-                                    </li>
-                                  ))}
-                                </ul>
+                                <BulletList items={bullets} dotColor="var(--accent-amber)" />
                               </div>
                             ))}
                           </div>
@@ -394,17 +530,28 @@ export default function CompanyComparison({
 
               {/* Social Impact */}
               {hasSocial && (
-                <tr className={hasSocialLLM ? "border-b border-slate-100" : ""}>
+                <tr style={hasSocialLLM ? ROW_BORDER : undefined}>
                   <RowLabel label="Social Impact" />
                   {sel.map((p) => (
                     <Cell key={p.company}>
                       {p.socialImpactData.count > 0 ? (
                         <div className="flex items-baseline gap-1.5">
-                          <span className="text-[15px] font-bold tabular-nums text-slate-900">
+                          <span
+                            className="text-[15px] font-mono font-semibold tabular-nums"
+                            style={{ color: "var(--accent-green)" }}
+                          >
                             {p.socialImpactData.count}
                           </span>
-                          <span className="text-[12px] text-slate-400">roles</span>
-                          <span className="text-[11px] text-slate-400">
+                          <span
+                            className="text-[12px]"
+                            style={{ color: "var(--text-tertiary)" }}
+                          >
+                            roles
+                          </span>
+                          <span
+                            className="text-[11px] font-mono"
+                            style={{ color: "var(--text-tertiary)" }}
+                          >
                             ({p.socialImpactData.pct.toFixed(1)}%)
                           </span>
                         </div>
@@ -416,19 +563,12 @@ export default function CompanyComparison({
 
               {/* Social Impact Notes */}
               {hasSocialLLM && (
-                <tr className="bg-slate-50/40">
+                <tr style={{ background: ROW_STRIPED_BG }}>
                   <RowLabel label="Social Notes" />
                   {sel.map((p) => (
                     <Cell key={p.company}>
                       {p.llmSummary?.social_impact_bullets?.length ? (
-                        <ul className="space-y-1.5">
-                          {p.llmSummary.social_impact_bullets.map((b, i) => (
-                            <li key={i} className="flex gap-1.5 text-[12px] text-slate-600">
-                              <span className="text-slate-300 shrink-0 mt-0.5 select-none">·</span>
-                              <span>{b}</span>
-                            </li>
-                          ))}
-                        </ul>
+                        <BulletList items={p.llmSummary.social_impact_bullets} dotColor="var(--accent-green)" />
                       ) : <Empty />}
                     </Cell>
                   ))}

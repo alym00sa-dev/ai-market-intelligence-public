@@ -4,9 +4,7 @@ import { notFound } from "next/navigation"
 import type { JobsData } from "../../types"
 import { toSlug, fromSlug } from "../../lib/slug"
 import { computeCompanyDetail } from "../../lib/company-detail"
-import Navbar from "../../components/Navbar"
 import CompanyDetailView from "../../components/CompanyDetailView"
-import ChatPanel from "../../components/ChatPanel"
 
 function loadJobs(): JobsData {
   const filePath = path.join(process.cwd(), "public", "data", "jobs.json")
@@ -41,33 +39,10 @@ export default async function CompanyPage({
   const detail = computeCompanyDetail(data, company)
   if (!detail) notFound()
 
-  const scraped = data.scraped_at
-    ? new Date(data.scraped_at).toLocaleString("en-US", {
-        month: "short",
-        day: "numeric",
-        year: "numeric",
-        hour: "numeric",
-        minute: "2-digit",
-        timeZoneName: "short",
-      })
-    : null
-
-  const allCompanies = companyNames.sort()
-
   return (
-    <div className="min-h-screen bg-slate-50 flex flex-col">
-      <Navbar />
-
-      <div className="flex flex-1 min-h-0">
-        {/* Main content */}
-        <div className="flex-1 min-w-0 overflow-y-auto">
-          <CompanyDetailView detail={detail} />
-        </div>
-
-        {/* Chat sidebar */}
-        <div className="hidden lg:flex w-[360px] shrink-0 px-4 py-8 sticky top-14 h-[calc(100vh-3.5rem)]">
-          <ChatPanel availableCompanies={allCompanies} defaultCompany={company} />
-        </div>
+    <div className="min-h-screen flex flex-col">
+      <div className="flex-1 min-w-0 overflow-y-auto">
+        <CompanyDetailView detail={detail} />
       </div>
     </div>
   )

@@ -364,12 +364,19 @@ def _amazon_job(job: dict) -> dict:
     qual = re.sub(r"<[^>]+>", " ", qual)
     qual = re.sub(r"\s+", " ", qual).strip()
     full_desc = (desc + (" | Qualifications: " + qual if qual else "")).strip()[:MAX_DESC_CHARS]
+    job_path = job.get("job_path", "")
+    # Amazon's search API omits a top-level "id"; use the stable icims id, else the
+    # numeric segment of job_path (/<lang>/jobs/<id>/slug). Avoids the random-UUID
+    # fallback in scraper.py, which would break week-over-week change tracking.
+    jid = str(job.get("id_icims") or job.get("id") or "")
+    if not jid and "/jobs/" in job_path:
+        jid = job_path.split("/jobs/")[-1].split("/")[0]
     return {
-        "id": str(job.get("id", "")),
+        "id": jid,
         "title": job.get("title", ""),
         "department": department,
         "location": job.get("normalized_location", job.get("location", "")),
-        "url": f"https://www.amazon.jobs{job.get('job_path', '')}",
+        "url": f"https://www.amazon.jobs{job_path}",
         "description": full_desc,
     }
 

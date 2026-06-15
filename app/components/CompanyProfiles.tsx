@@ -3,6 +3,14 @@
 import Link from "next/link"
 import type { CompanyProfile, SubAreaInsight, VerticalBreakdown, SocialImpactData } from "../types"
 import { toSlug } from "../lib/slug"
+import { SectionLabel, NarrativeBlock, type NarrativeTone } from "./ds"
+
+const TONE_DOT: Record<NarrativeTone, string> = {
+  "building":  "var(--accent-blue)",
+  "positive":  "var(--accent-green)",
+  "watch-out": "var(--accent-amber)",
+  "risk":      "var(--accent-red)",
+}
 
 // ── Helpers ───────────────────────────────────────────────────────────────────
 
@@ -46,15 +54,15 @@ function RadarChart({ breakdown, total, size = 220 }: {
         <path key={lvl} d={gPath(lvl)} fill="none" stroke={lvl === 1 ? "#e2e8f0" : "#f1f5f9"} strokeWidth={lvl === 1 ? 0.75 : 0.5} />
       ))}
       {RADAR_DIMS.map((_, i) => { const { x, y } = pt(i, 1); return <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke="#e2e8f0" strokeWidth={0.75} /> })}
-      <path d={dPath} fill="rgba(99,102,241,0.09)" stroke="#6366f1" strokeWidth={1.75} strokeLinejoin="round" />
-      {values.map((v, i) => { const { x, y } = pt(i, v); return <circle key={i} cx={x} cy={y} r={2.75} fill="#6366f1" /> })}
+      <path d={dPath} fill="rgba(44, 77, 158, 0.10)" stroke="#2C4D9E" strokeWidth={1.75} strokeLinejoin="round" />
+      {values.map((v, i) => { const { x, y } = pt(i, v); return <circle key={i} cx={x} cy={y} r={2.75} fill="#2C4D9E" /> })}
       {RADAR_DIMS.map((d, i) => {
         const a = angle(i), lx = cx + lr * Math.cos(a), ly = cy + lr * Math.sin(a)
         const pct = Math.round(((breakdown[d.key] ?? 0) / total) * 100)
         return (
           <g key={d.key}>
-            <text x={lx} y={ly - 3.5} textAnchor="middle" dominantBaseline="middle" fontSize={7} fontWeight={500} fill="#64748b" fontFamily="ui-sans-serif, system-ui, sans-serif">{d.label}</text>
-            <text x={lx} y={ly + 3.5} textAnchor="middle" dominantBaseline="middle" fontSize={6.5} fill={pct > 0 ? "#94a3b8" : "#cbd5e1"} fontFamily="ui-sans-serif, system-ui, sans-serif">{pct > 0 ? `${pct}%` : "—"}</text>
+            <text x={lx} y={ly - 3.5} textAnchor="middle" dominantBaseline="middle" fontSize={7} fontWeight={500} fill="#4A5878" fontFamily="var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif">{d.label}</text>
+            <text x={lx} y={ly + 3.5} textAnchor="middle" dominantBaseline="middle" fontSize={6.5} fill={pct > 0 ? "#8E97AC" : "#BCC4D2"} fontFamily="var(--font-plex-mono), ui-monospace, monospace">{pct > 0 ? `${pct}%` : "—"}</text>
           </g>
         )
       })}
@@ -64,49 +72,69 @@ function RadarChart({ breakdown, total, size = 220 }: {
 
 // ── Bullet lists ──────────────────────────────────────────────────────────────
 
-function LLMBulletList({ label, bullets, accentClass, dotClass }: {
-  label: string; bullets: string[]; accentClass: string; dotClass: string
+function LLMBulletList({ label, bullets, tone }: {
+  label: string; bullets: string[]; tone: NarrativeTone
 }) {
   if (bullets.length === 0) return null
+  const dot = TONE_DOT[tone]
   return (
-    <div>
-      <p className={`text-[10px] font-semibold uppercase tracking-widest mb-3 ${accentClass}`}>{label}</p>
-      <ul className="space-y-2">
+    <NarrativeBlock tone={tone}>
+      <SectionLabel>{label}</SectionLabel>
+      <ul className="space-y-2 mt-1">
         {bullets.map((bullet, i) => (
           <li key={i} className="flex gap-2 items-start">
-            <span className={`mt-[6px] w-1.5 h-1.5 rounded-full shrink-0 ${dotClass}`} />
-            <span className="text-[13px] text-slate-700 leading-relaxed font-[450]">{bullet}</span>
+            <span
+              className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0"
+              style={{ background: dot }}
+            />
+            <span
+              className="text-[13px] leading-relaxed"
+              style={{ color: "var(--text-primary)" }}
+            >
+              {bullet}
+            </span>
           </li>
         ))}
       </ul>
-    </div>
+    </NarrativeBlock>
   )
 }
 
-function FallbackBulletList({ label, insights, accentClass, dotClass }: {
-  label: string; insights: SubAreaInsight[]; accentClass: string; dotClass: string
+function FallbackBulletList({ label, insights, tone }: {
+  label: string; insights: SubAreaInsight[]; tone: NarrativeTone
 }) {
   if (insights.length === 0) return null
+  const dot = TONE_DOT[tone]
   return (
-    <div>
-      <p className={`text-[10px] font-semibold uppercase tracking-widest mb-3 ${accentClass}`}>{label}</p>
-      <ul className="space-y-2.5">
+    <NarrativeBlock tone={tone}>
+      <SectionLabel>{label}</SectionLabel>
+      <ul className="space-y-2 mt-1">
         {insights.map((ins) => (
           <li key={ins.subArea} className="flex gap-2 items-start">
-            <span className={`mt-[6px] w-1.5 h-1.5 rounded-full shrink-0 ${dotClass}`} />
-            <div>
-              <span className="text-[13px] text-slate-700 font-medium leading-snug">
+            <span
+              className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0"
+              style={{ background: dot }}
+            />
+            <div className="text-[13px] leading-snug">
+              <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>
                 {formatSubArea(ins.subArea)}
               </span>
-              <span className="text-slate-400 text-[11px] ml-2 tabular-nums">{ins.count} roles</span>
+              <span
+                className="ml-2 tabular-nums font-mono text-[11px]"
+                style={{ color: "var(--text-tertiary)" }}
+              >
+                {ins.count} roles
+              </span>
               {ins.locations.length > 0 && (
-                <p className="text-[11px] text-slate-400 mt-0.5">{ins.locations.join("  ·  ")}</p>
+                <p className="text-[11px] mt-0.5" style={{ color: "var(--text-tertiary)" }}>
+                  {ins.locations.join("  ·  ")}
+                </p>
               )}
             </div>
           </li>
         ))}
       </ul>
-    </div>
+    </NarrativeBlock>
   )
 }
 
@@ -203,23 +231,37 @@ function WatchOut({ profile }: { profile: CompanyProfile }) {
   if (watchOuts.length === 0) return null
 
   return (
-    <div className="mt-4 pt-4 border-t border-slate-100">
-      <div className="flex items-center gap-2 mb-2.5">
-        <p className="text-[10px] font-semibold uppercase tracking-widest text-amber-600">
-          Watch Out
-        </p>
-        <span className="text-[10px] text-slate-300 italic">
-          — LLM asking: what might this hiring pattern signal?
-        </span>
-      </div>
-      <ul className="space-y-2.5">
-        {watchOuts.map((h, i) => (
-          <li key={i} className="flex gap-2 items-start">
-            <span className="mt-[5px] w-1.5 h-1.5 rounded-full bg-amber-400 shrink-0" />
-            <span className="text-[12.5px] text-slate-600 leading-relaxed">{h}</span>
-          </li>
-        ))}
-      </ul>
+    <div
+      className="mt-4 pt-4"
+      style={{ borderTop: "1px solid var(--border-subtle)" }}
+    >
+      <NarrativeBlock tone="watch-out">
+        <div className="flex items-center gap-2 mb-2">
+          <SectionLabel as="span">Watch Out</SectionLabel>
+          <span
+            className="text-[10px] italic"
+            style={{ color: "var(--text-tertiary)" }}
+          >
+            — LLM asking: what might this hiring pattern signal?
+          </span>
+        </div>
+        <ul className="space-y-2 mt-1">
+          {watchOuts.map((h, i) => (
+            <li key={i} className="flex gap-2 items-start">
+              <span
+                className="mt-[7px] w-1.5 h-1.5 rounded-full shrink-0"
+                style={{ background: TONE_DOT["watch-out"] }}
+              />
+              <span
+                className="text-[13px] leading-relaxed"
+                style={{ color: "var(--text-primary)" }}
+              >
+                {h}
+              </span>
+            </li>
+          ))}
+        </ul>
+      </NarrativeBlock>
     </div>
   )
 }
@@ -273,8 +315,8 @@ function VerticalRadar({ breakdown, total, size = 110 }: {
         <path key={lvl} d={gPath(lvl)} fill="none" stroke={lvl === 1 ? "#e2e8f0" : "#f1f5f9"} strokeWidth={lvl === 1 ? 0.75 : 0.5} />
       ))}
       {VERTICAL_RADAR_DIMS.map((_, i) => { const { x, y } = pt(i, 1); return <line key={i} x1={cx} y1={cy} x2={x} y2={y} stroke="#e2e8f0" strokeWidth={0.75} /> })}
-      <path d={dPath} fill="rgba(139,92,246,0.1)" stroke="#8b5cf6" strokeWidth={1.5} strokeLinejoin="round" />
-      {values.map((v, i) => { const { x, y } = pt(i, v); return <circle key={i} cx={x} cy={y} r={2.5} fill="#8b5cf6" /> })}
+      <path d={dPath} fill="rgba(199, 127, 46, 0.10)" stroke="#C77F2E" strokeWidth={1.5} strokeLinejoin="round" />
+      {values.map((v, i) => { const { x, y } = pt(i, v); return <circle key={i} cx={x} cy={y} r={2.5} fill="#C77F2E" /> })}
       {VERTICAL_RADAR_DIMS.map((d, i) => {
         const a = angle(i), lx = cx + lr * Math.cos(a), ly = cy + lr * Math.sin(a)
         const pct = total > 0 ? Math.round(((breakdown[d.key] ?? 0) / total) * 100) : 0
@@ -285,20 +327,20 @@ function VerticalRadar({ breakdown, total, size = 110 }: {
         return (
           <g key={d.key}>
             <text x={lx} y={hasTwo ? ly - 7 : ly - 3.5} textAnchor={anchor} dominantBaseline="middle"
-              fontSize={7} fontWeight={500} fill="#64748b"
-              fontFamily="ui-sans-serif, system-ui, sans-serif">
+              fontSize={7} fontWeight={500} fill="#4A5878"
+              fontFamily="var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif">
               {words[0]}
             </text>
             {hasTwo && (
               <text x={lx} y={ly - 0.5} textAnchor={anchor} dominantBaseline="middle"
-                fontSize={7} fontWeight={500} fill="#64748b"
-                fontFamily="ui-sans-serif, system-ui, sans-serif">
+                fontSize={7} fontWeight={500} fill="#4A5878"
+                fontFamily="var(--font-plex-sans), ui-sans-serif, system-ui, sans-serif">
                 {words.slice(1).join(" ")}
               </text>
             )}
             <text x={lx} y={hasTwo ? ly + 6 : ly + 3.5} textAnchor={anchor} dominantBaseline="middle"
-              fontSize={6.5} fill={pct > 0 ? "#94a3b8" : "#cbd5e1"}
-              fontFamily="ui-sans-serif, system-ui, sans-serif">
+              fontSize={6.5} fill={pct > 0 ? "#8E97AC" : "#BCC4D2"}
+              fontFamily="var(--font-plex-mono), ui-monospace, monospace">
               {pct > 0 ? `${pct}%` : "—"}
             </text>
           </g>
@@ -319,13 +361,23 @@ function VerticalBins({ verticalBreakdown, verticalBullets, company }: {
         const count   = verticalBreakdown[v] ?? 0
         const bullets = (verticalBullets[v] ?? []).map((b) => cleanBullet(b, company))
         return (
-          <div key={v} className="border-l border-violet-100 pl-2.5">
-            <div className="flex items-center gap-1 mb-1.5">
-              <span className="text-[10px] font-semibold text-slate-500 leading-tight">
+          <div
+            key={v}
+            className="pl-2.5"
+            style={{ borderLeft: "1px solid var(--border-subtle)" }}
+          >
+            <div className="flex items-center gap-1.5 mb-1.5">
+              <span
+                className="text-[10px] font-semibold uppercase tracking-widest"
+                style={{ color: "var(--text-secondary)" }}
+              >
                 {VERTICAL_LABELS[v]}
               </span>
               {count > 0 && (
-                <span className="text-[9px] text-violet-500 font-medium tabular-nums shrink-0">
+                <span
+                  className="text-[10px] font-mono tabular-nums shrink-0"
+                  style={{ color: "var(--accent-amber)" }}
+                >
                   {count}
                 </span>
               )}
@@ -333,14 +385,27 @@ function VerticalBins({ verticalBreakdown, verticalBullets, company }: {
             {bullets.length > 0 ? (
               <ul className="space-y-1">
                 {bullets.map((b, i) => (
-                  <li key={i} className="flex gap-2 items-start">
-                    <span className="mt-[6px] w-1.5 h-1.5 rounded-full bg-violet-400 shrink-0" />
-                    <span className="text-[11px] text-slate-600 leading-relaxed">{b}</span>
+                  <li key={i} className="flex gap-1.5 items-start">
+                    <span
+                      className="mt-[6px] w-1 h-1 rounded-full shrink-0"
+                      style={{ background: "var(--accent-amber)" }}
+                    />
+                    <span
+                      className="text-[11px] leading-relaxed"
+                      style={{ color: "var(--text-secondary)" }}
+                    >
+                      {b}
+                    </span>
                   </li>
                 ))}
               </ul>
             ) : (
-              <p className="text-[10.5px] text-slate-300">No data</p>
+              <p
+                className="text-[10.5px]"
+                style={{ color: "var(--text-tertiary)" }}
+              >
+                No data
+              </p>
             )}
           </div>
         )
@@ -365,29 +430,51 @@ function SocialImpactRow({ socialImpactData, socialImpactBullets }: {
   const catLabel = topCat ? (CAT_LABEL[topCat] ?? topCat) : null
 
   return (
-    <div className="mt-4 pt-4 border-t border-slate-100">
-      <p className="text-[10px] font-semibold uppercase tracking-widest text-teal-700 mb-1">
-        Social Impact Roles
-      </p>
-      <p className="text-[10px] text-slate-400 italic mb-2.5">
+    <div
+      className="mt-4 pt-4"
+      style={{ borderTop: "1px solid var(--border-subtle)" }}
+    >
+      <SectionLabel>Social Impact Roles</SectionLabel>
+      <p
+        className="text-[11px] italic mb-2.5"
+        style={{ color: "var(--text-tertiary)" }}
+      >
         Defined as: roles whose primary purpose directly serves the public — AI policy, civic tech, humanitarian work, public health or education access
       </p>
       {count === 0 ? (
-        <p className="text-[11.5px] text-slate-400 italic">
+        <p
+          className="text-[12px] italic"
+          style={{ color: "var(--text-tertiary)" }}
+        >
           No social impact roles identified in current hiring data
         </p>
       ) : (
         <>
-          <p className="text-[11.5px] text-slate-500 mb-2">
-            <span className="font-semibold text-slate-700">{pct > 0 ? `${pct}%` : `${count}`} of roles</span>
-            {catLabel && <> · concentrated in <span className="font-medium">{catLabel}</span></>}
+          <p
+            className="text-[12px] mb-2"
+            style={{ color: "var(--text-secondary)" }}
+          >
+            <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>
+              {pct > 0 ? `${pct}%` : `${count}`} of roles
+            </span>
+            {catLabel && (
+              <> · concentrated in <span style={{ fontWeight: 500, color: "var(--text-primary)" }}>{catLabel}</span></>
+            )}
           </p>
           {socialImpactBullets.length > 0 && (
             <ul className="space-y-1.5">
               {socialImpactBullets.map((b, i) => (
                 <li key={i} className="flex gap-2 items-start">
-                  <span className="mt-[5px] w-1.5 h-1.5 rounded-full bg-teal-400 shrink-0" />
-                  <span className="text-[12px] text-slate-600 leading-relaxed">{b}</span>
+                  <span
+                    className="mt-[6px] w-1.5 h-1.5 rounded-full shrink-0"
+                    style={{ background: "var(--accent-green)" }}
+                  />
+                  <span
+                    className="text-[12px] leading-relaxed"
+                    style={{ color: "var(--text-secondary)" }}
+                  >
+                    {b}
+                  </span>
                 </li>
               ))}
             </ul>
@@ -412,15 +499,42 @@ function CompanyRow({ profile }: { profile: CompanyProfile }) {
   const showVertical = totalVertical > 0 || hasAnyBullets
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 border-l-[3px] border-l-indigo-200 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-6 py-5">
+    <div
+      className="rounded-xl px-6 py-5"
+      style={{
+        background: "var(--bg-surface)",
+        border: "1px solid var(--border-subtle)",
+        borderLeft: "2px solid var(--accent-blue)",
+        boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
+      }}
+    >
       {/* Header — company name + role count + CTA */}
       <div className="flex items-center justify-between mb-5">
-        <span className="text-[17px] font-semibold text-slate-900 tracking-tight">{DISPLAY_NAMES[company] ?? company}</span>
+        <span
+          style={{
+            fontSize: 18,
+            fontWeight: 600,
+            letterSpacing: "-0.01em",
+            color: "var(--text-primary)",
+            lineHeight: 1.2,
+          }}
+        >
+          {DISPLAY_NAMES[company] ?? company}
+        </span>
         <div className="flex items-center gap-3">
-          <span className="text-xs text-slate-400 tabular-nums">{total.toLocaleString()} roles</span>
+          <span
+            className="text-xs font-mono tabular-nums"
+            style={{ color: "var(--text-tertiary)" }}
+          >
+            {total.toLocaleString()} roles
+          </span>
           <Link
             href={`/company/${toSlug(company)}`}
-            className="inline-flex items-center gap-1 text-[11px] font-medium text-indigo-500 hover:text-indigo-700 bg-indigo-50 hover:bg-indigo-100 px-2.5 py-1 rounded-lg transition-colors"
+            className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-md transition-colors"
+            style={{
+              color: "var(--accent-blue)",
+              background: "var(--accent-blue-bg)",
+            }}
           >
             Full analysis
             <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
@@ -435,18 +549,21 @@ function CompanyRow({ profile }: { profile: CompanyProfile }) {
         <div className="shrink-0 mx-auto sm:mx-0 w-[220px] flex justify-center">
           <RadarChart breakdown={categoryBreakdown} total={total} size={220} />
         </div>
-        <div className="hidden sm:block w-px bg-slate-100 self-stretch" />
+        <div
+          className="hidden sm:block w-px self-stretch"
+          style={{ background: "var(--border-subtle)" }}
+        />
         <div className="flex-1 min-w-0 self-center">
           <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
             {hasLLM ? (
               <>
-                <LLMBulletList label="Building" bullets={llmSummary!.building} accentClass="text-indigo-600" dotClass="bg-indigo-400" />
-                <LLMBulletList label="Selling"  bullets={llmSummary!.selling}  accentClass="text-emerald-600" dotClass="bg-emerald-400" />
+                <LLMBulletList label="Building" bullets={llmSummary!.building} tone="building" />
+                <LLMBulletList label="Selling"  bullets={llmSummary!.selling}  tone="positive" />
               </>
             ) : (
               <>
-                <FallbackBulletList label="Building" insights={buildingInsights} accentClass="text-indigo-600" dotClass="bg-indigo-300" />
-                <FallbackBulletList label="Selling"  insights={sellingInsights}  accentClass="text-emerald-600" dotClass="bg-emerald-300" />
+                <FallbackBulletList label="Building" insights={buildingInsights} tone="building" />
+                <FallbackBulletList label="Selling"  insights={sellingInsights}  tone="positive" />
               </>
             )}
           </div>
@@ -456,17 +573,21 @@ function CompanyRow({ profile }: { profile: CompanyProfile }) {
 
       {/* Row 2: vertical radar | vertical bins — only when vertical data exists */}
       {showVertical && (
-        <div className="mt-4 pt-4 border-t border-slate-100 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+        <div
+          className="mt-4 pt-4 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start"
+          style={{ borderTop: "1px solid var(--border-subtle)" }}
+        >
           <div className="shrink-0 mx-auto sm:mx-0 w-[220px] flex justify-center items-start px-8">
             {totalVertical > 0 && (
               <VerticalRadar breakdown={verticalBreakdown} total={totalVertical} size={220} />
             )}
           </div>
-          <div className="hidden sm:block w-px bg-slate-100 self-stretch" />
+          <div
+          className="hidden sm:block w-px self-stretch"
+          style={{ background: "var(--border-subtle)" }}
+        />
           <div className="flex-1 min-w-0">
-            <p className="text-[10px] font-semibold uppercase tracking-widest text-violet-600 mb-3">
-              Vertical Focus
-            </p>
+            <SectionLabel>Vertical Focus</SectionLabel>
             <VerticalBins verticalBreakdown={verticalBreakdown} verticalBullets={verticalBullets} company={company} />
           </div>
         </div>

@@ -1,7 +1,8 @@
 "use client"
 
-import { useState, useMemo } from "react"
+import { Fragment, useState, useMemo } from "react"
 import type { Job, JobCategory } from "../types"
+import { StatusPill, type PillTone } from "./ds"
 
 const CATEGORY_LABELS: Record<string, string> = {
   engineering: "Engineering",
@@ -12,13 +13,13 @@ const CATEGORY_LABELS: Record<string, string> = {
   unclassified: "Unclassified",
 }
 
-const CATEGORY_COLORS: Record<string, string> = {
-  engineering: "bg-blue-100 text-blue-800",
-  sales_gtm: "bg-green-100 text-green-800",
-  research: "bg-purple-100 text-purple-800",
-  operations: "bg-yellow-100 text-yellow-800",
-  other: "bg-gray-100 text-gray-600",
-  unclassified: "bg-gray-100 text-gray-400",
+const CATEGORY_TONE: Record<string, PillTone> = {
+  engineering:  "blue",
+  research:     "amber",
+  sales_gtm:    "green",
+  operations:   "muted",
+  other:        "muted",
+  unclassified: "muted",
 }
 
 const DISPLAY_NAMES: Record<string, string> = {
@@ -109,12 +110,22 @@ export default function JobsTable({ jobs }: Props) {
           placeholder="Search roles..."
           value={search}
           onChange={(e) => setSearch(e.target.value)}
-          className="flex-1 min-w-[200px] px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="flex-1 min-w-[200px] px-3 py-2 text-sm rounded-md focus:outline-none"
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
+            color: "var(--text-primary)",
+          }}
         />
         <select
           value={filterCompany}
           onChange={(e) => setFilterCompany(e.target.value)}
-          className="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-3 py-2 text-sm rounded-md focus:outline-none"
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
+            color: "var(--text-primary)",
+          }}
         >
           <option value="all">All Companies</option>
           {companies.map((c) => (
@@ -124,7 +135,12 @@ export default function JobsTable({ jobs }: Props) {
         <select
           value={filterCategory}
           onChange={(e) => setFilterCategory(e.target.value)}
-          className="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-3 py-2 text-sm rounded-md focus:outline-none"
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
+            color: "var(--text-primary)",
+          }}
         >
           <option value="all">All Categories</option>
           {categories.map((c) => (
@@ -135,7 +151,12 @@ export default function JobsTable({ jobs }: Props) {
           <select
             value={filterVertical}
             onChange={(e) => setFilterVertical(e.target.value)}
-            className="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+            className="px-3 py-2 text-sm rounded-md focus:outline-none"
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
+            color: "var(--text-primary)",
+          }}
           >
             <option value="all">All Verticals</option>
             {verticals.map((v) => (
@@ -146,41 +167,91 @@ export default function JobsTable({ jobs }: Props) {
         <select
           value={filterSocial}
           onChange={(e) => setFilterSocial(e.target.value)}
-          className="px-3 py-2 text-sm border border-gray-200 rounded-lg bg-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+          className="px-3 py-2 text-sm rounded-md focus:outline-none"
+          style={{
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
+            color: "var(--text-primary)",
+          }}
         >
           <option value="all">All Roles</option>
           <option value="yes">Social Impact Only</option>
         </select>
-        <span className="self-center text-sm text-gray-500 whitespace-nowrap">
+        <span
+          className="self-center text-sm whitespace-nowrap font-mono tabular-nums"
+          style={{ color: "var(--text-secondary)" }}
+        >
           {filtered.length.toLocaleString()} roles
         </span>
         <button
           onClick={() => exportCSV(filtered)}
-          className="px-3 py-2 text-sm font-medium text-slate-600 border border-slate-200 rounded-lg bg-white hover:bg-slate-50 hover:border-slate-300 transition-colors whitespace-nowrap"
+          className="px-3 py-2 text-sm font-medium rounded-md transition-colors whitespace-nowrap"
+          style={{
+            color: "var(--text-secondary)",
+            background: "var(--bg-surface)",
+            border: "1px solid var(--border-subtle)",
+          }}
         >
           Export CSV
         </button>
       </div>
 
       {/* Table */}
-      <div className="rounded-xl border border-gray-200 overflow-hidden max-h-[560px] overflow-y-auto">
-        <table className="w-full text-sm">
-          <thead className="bg-gray-50 border-b border-gray-200 sticky top-0 z-10">
+      <div
+        className="rounded-lg overflow-hidden max-h-[560px] overflow-y-auto"
+        style={{ border: "1px solid var(--border-subtle)" }}
+      >
+        <table
+          className="w-full text-sm"
+          style={{
+            background: "var(--bg-surface)",
+            color: "var(--text-primary)",
+            borderCollapse: "collapse",
+          }}
+        >
+          <thead
+            className="sticky top-0 z-10"
+            style={{
+              background: "var(--bg-elevated)",
+              borderBottom: "1px solid var(--border-subtle)",
+            }}
+          >
             <tr>
-              <th className="text-left px-4 py-3 font-medium text-gray-600 w-[14%]">Company</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600 w-[24%]">Role</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600 w-[11%]">Category</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600 w-[13%]">Focus Area</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600 w-[12%]">Location</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600 w-[11%]">Vertical</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600 w-[7%]">Social</th>
-              <th className="text-left px-4 py-3 font-medium text-gray-600 w-[8%]"></th>
+              {[
+                ["Company",    "14%"],
+                ["Role",       "24%"],
+                ["Category",   "11%"],
+                ["Focus Area", "13%"],
+                ["Location",   "12%"],
+                ["Vertical",   "11%"],
+                ["Social",     "7%"],
+                ["",           "8%"],
+              ].map(([label, w], i) => (
+                <th
+                  key={i}
+                  className="text-left px-4 py-3"
+                  style={{
+                    width: w,
+                    fontSize: 11,
+                    fontWeight: 600,
+                    letterSpacing: "0.06em",
+                    textTransform: "uppercase",
+                    color: "var(--text-secondary)",
+                  }}
+                >
+                  {label}
+                </th>
+              ))}
             </tr>
           </thead>
-          <tbody className="divide-y divide-gray-100">
+          <tbody>
             {filtered.length === 0 && (
               <tr>
-                <td colSpan={8} className="px-4 py-10 text-center text-gray-400">
+                <td
+                  colSpan={8}
+                  className="px-4 py-10 text-center"
+                  style={{ color: "var(--text-tertiary)" }}
+                >
                   No roles found.
                 </td>
               </tr>
@@ -188,49 +259,64 @@ export default function JobsTable({ jobs }: Props) {
             {filtered.map((job) => {
               const cat = job.category ?? "unclassified"
               const isExpanded = expandedId === job.id
+              const cellStyle = {
+                padding: "11px 14px",
+                borderBottom: "1px solid var(--border-subtle)",
+                color: "var(--text-primary)",
+              } as const
               return (
-                <>
+                <Fragment key={job.id}>
                   <tr
                     key={job.id}
-                    className="hover:bg-gray-50 cursor-pointer transition-colors"
+                    className="cursor-pointer transition-colors hover:bg-[var(--bg-elevated)]"
                     onClick={() => setExpandedId(isExpanded ? null : job.id)}
                   >
-                    <td className="px-4 py-3 font-medium text-gray-800">{DISPLAY_NAMES[job.company] ?? job.company}</td>
-                    <td className="px-4 py-3 text-gray-700">{job.title}</td>
-                    <td className="px-4 py-3">
-                      <span className={`inline-block px-2 py-0.5 rounded-full text-xs font-medium ${CATEGORY_COLORS[cat] ?? "bg-gray-100 text-gray-500"}`}>
+                    <td style={{ ...cellStyle, fontWeight: 500 }}>
+                      {DISPLAY_NAMES[job.company] ?? job.company}
+                    </td>
+                    <td style={cellStyle}>{job.title}</td>
+                    <td style={cellStyle}>
+                      <StatusPill tone={CATEGORY_TONE[cat] ?? "muted"}>
                         {CATEGORY_LABELS[cat] ?? cat}
-                      </span>
+                      </StatusPill>
                     </td>
-                    <td className="px-4 py-3 text-gray-500 text-xs">{job.sub_area ?? "—"}</td>
-                    <td className="px-4 py-3 text-gray-500 text-xs">{job.location || "—"}</td>
-                    <td className="px-4 py-3">
+                    <td
+                      className="text-xs"
+                      style={{ ...cellStyle, color: "var(--text-secondary)" }}
+                    >
+                      {job.sub_area ?? "—"}
+                    </td>
+                    <td
+                      className="text-xs"
+                      style={{ ...cellStyle, color: "var(--text-secondary)" }}
+                    >
+                      {job.location || "—"}
+                    </td>
+                    <td style={cellStyle}>
                       {job.vertical ? (
-                        <span className="inline-block px-2 py-0.5 rounded-full text-xs font-medium bg-violet-50 text-violet-700 border border-violet-100">
+                        <StatusPill tone="amber">
                           {VERTICAL_LABELS[job.vertical] ?? job.vertical}
-                        </span>
+                        </StatusPill>
                       ) : (
-                        <span className="text-gray-300 text-xs">—</span>
+                        <span style={{ color: "var(--text-tertiary)" }} className="text-xs">—</span>
                       )}
                     </td>
-                    <td className="px-4 py-3">
+                    <td style={cellStyle}>
                       {job.social_impact ? (
-                        <span className="inline-flex items-center gap-1 text-xs font-medium text-emerald-700">
-                          <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 shrink-0" />
-                          Yes
-                        </span>
+                        <StatusPill tone="green">Yes</StatusPill>
                       ) : (
-                        <span className="text-gray-300 text-xs">—</span>
+                        <span style={{ color: "var(--text-tertiary)" }} className="text-xs">—</span>
                       )}
                     </td>
-                    <td className="px-4 py-3">
+                    <td style={cellStyle}>
                       {job.url && (
                         <a
                           href={job.url}
                           target="_blank"
                           rel="noopener noreferrer"
                           onClick={(e) => e.stopPropagation()}
-                          className="text-blue-600 hover:underline text-xs"
+                          className="text-xs hover:underline"
+                          style={{ color: "var(--accent-blue)" }}
                         >
                           View →
                         </a>
@@ -238,13 +324,29 @@ export default function JobsTable({ jobs }: Props) {
                     </td>
                   </tr>
                   {isExpanded && job.what && (
-                    <tr key={`${job.id}-expanded`} className="bg-blue-50">
+                    <tr
+                      key={`${job.id}-expanded`}
+                      style={{ background: "var(--accent-blue-bg)" }}
+                    >
                       <td colSpan={8} className="px-4 py-3">
-                        <p className="text-sm text-gray-700 mb-2">{job.what}</p>
+                        <p
+                          className="text-sm mb-2"
+                          style={{ color: "var(--text-primary)" }}
+                        >
+                          {job.what}
+                        </p>
                         {job.tags && job.tags.length > 0 && (
                           <div className="flex flex-wrap gap-1">
                             {job.tags.map((tag) => (
-                              <span key={tag} className="px-2 py-0.5 bg-white border border-gray-200 rounded text-xs text-gray-600">
+                              <span
+                                key={tag}
+                                className="px-2 py-0.5 rounded text-xs"
+                                style={{
+                                  background: "var(--bg-surface)",
+                                  border: "1px solid var(--border-subtle)",
+                                  color: "var(--text-secondary)",
+                                }}
+                              >
                                 {tag}
                               </span>
                             ))}
@@ -253,7 +355,7 @@ export default function JobsTable({ jobs }: Props) {
                       </td>
                     </tr>
                   )}
-                </>
+                </Fragment>
               )
             })}
           </tbody>

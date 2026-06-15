@@ -21,9 +21,12 @@ try:
 except ImportError:
     pass
 
-from summarizer import summarize_companies
+import anthropic
 
-JOBS_PATH = Path(__file__).parent.parent / "public" / "data" / "jobs.json"
+from summarizer import summarize_companies, generate_shift_narratives
+
+JOBS_PATH   = Path(__file__).parent.parent / "public" / "data" / "jobs.json"
+TRENDS_PATH = Path(__file__).parent.parent / "public" / "data" / "weekly_trends.json"
 
 
 def main() -> None:
@@ -43,6 +46,19 @@ def main() -> None:
     print(f"Loaded {len(jobs)} jobs from {path.name}")
 
     summaries = summarize_companies(jobs)
+
+    # Week-over-week shift narrative — needs the trends file written by
+    # track_changes.py (which must run before this step). Merged per company.
+    try:
+        with open(TRENDS_PATH) as f:
+            trends = json.load(f)
+        client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+        shifts = generate_shift_narratives(client, jobs, trends)
+        for company, bullets in shifts.items():
+            summaries.setdefault(company, {})["shift"] = bullets
+    except FileNotFoundError:
+        print(f"  [shift] {TRENDS_PATH.name} not found — run track_changes.py first; skipping shift narratives.")
+
     data["company_summaries"] = summaries
 
     with open(path, "w") as f:

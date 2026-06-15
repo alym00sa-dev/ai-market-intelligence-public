@@ -2,6 +2,13 @@ export type JobCategory = "engineering" | "sales_gtm" | "research" | "operations
 
 export type JobVertical = "health_rd" | "health_delivery" | "agriculture" | "education"
 
+export type JobTheme =
+  | "foundation_pretraining" | "post_training_rl" | "reasoning" | "multimodal"
+  | "agents_tool_use" | "interpretability" | "alignment_safety" | "evals_red_teaming"
+  | "security_misuse" | "biosecurity_cbrn" | "robotics_embodied"
+  | "training_infra_compute" | "inference_serving" | "data_pipeline"
+  | "product_app_layer" | "developer_platform"
+
 export type Job = {
   id: string
   company: string
@@ -13,7 +20,9 @@ export type Job = {
   category: JobCategory | null
   sub_area: string | null
   what: string | null
-  tags: string[]
+  theme?: JobTheme | null
+  themes_secondary?: JobTheme[]
+  tags?: string[]
   vertical?: JobVertical | null
   social_impact?: boolean
 }
@@ -48,6 +57,14 @@ export type CompanySummary_LLM = {
   selling: string[]
   vertical_bullets?: Record<string, string[]>
   social_impact_bullets?: string[]
+  shift?: string[]
+}
+
+// ── Weekly change tracking (from weekly_trends.json) ──────────────────────────
+
+export type CompanyChange = {
+  new: number
+  removed: number
 }
 
 export type VerticalBreakdown = Record<string, number>

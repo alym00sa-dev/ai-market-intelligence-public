@@ -6,22 +6,24 @@ import type { ModelsData, ModelRecord, RankedModel } from "../types"
 
 // ── Colors & helpers ──────────────────────────────────────────────────────────
 
+// Brand-aligned org colors. Kept in sync with StatsBar / CompanyComparison / HiringMap.
+// TODO: extract to app/lib/brand-colors.ts to remove cross-file duplication.
 const ORG_COLORS: Record<string, string> = {
-  "Anthropic":       "#c084fc",
-  "OpenAI":          "#34d399",
-  "Google":          "#60a5fa",
-  "Meta":            "#fb923c",
-  "Mistral":         "#f472b6",
-  "DeepSeek":        "#38bdf8",
-  "xAI":             "#a3e635",
-  "NVIDIA":          "#4ade80",
-  "Microsoft Azure": "#93c5fd",
-  "Amazon":          "#fbbf24",
-  "Cohere":          "#f87171",
-  "Alibaba":         "#e879f9",
+  "Anthropic":       "#D97757",   // brand coral
+  "OpenAI":          "#10A37F",   // brand green
+  "Google":          "#4285F4",   // Google blue
+  "Meta":            "#1877F2",   // Meta blue
+  "Mistral":         "#FF6B35",   // brand flame
+  "DeepSeek":        "#06B6D4",   // teal — distinct
+  "xAI":             "#1F1F1F",   // brand black
+  "NVIDIA":          "#76B900",   // NVIDIA green
+  "Microsoft Azure": "#00A4EF",   // Microsoft cyan
+  "Amazon":          "#FF9900",   // Amazon orange
+  "Cohere":          "#39594D",   // Cohere muted green
+  "Alibaba":         "#FF6A00",   // orange
 }
-const EXTRA_COLORS = ["#f43f5e", "#06b6d4", "#84cc16", "#6366f1", "#ec4899", "#14b8a6"]
-const DEFAULT_COLOR = "#94a3b8"
+const EXTRA_COLORS = ["#A855F7", "#76B900", "#2C4D9E", "#EF4444", "#14B8A6", "#6B5BC9"]
+const DEFAULT_COLOR = "#8E97AC"
 
 function orgColor(org: string) { return ORG_COLORS[org] ?? DEFAULT_COLOR }
 
@@ -84,11 +86,11 @@ function RefreshButton({ builtAt }: { builtAt: string | null }) {
         onClick={startRefresh} disabled={running}
         className={`flex items-center gap-2 px-3 py-1.5 rounded-lg text-sm font-medium transition-colors border ${
           running
-            ? "bg-slate-100 text-slate-400 border-slate-200 cursor-not-allowed"
-            : "bg-white text-slate-700 border-slate-200 hover:bg-slate-50 hover:border-slate-300"
+            ? "bg-[var(--bg-elevated)] text-[var(--text-tertiary)] border-[var(--border-subtle)] cursor-not-allowed"
+            : "bg-[var(--bg-surface)] text-[var(--text-primary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:border-[var(--border-medium)]"
         }`}
       >
-        <svg className={`w-3.5 h-3.5 ${running ? "animate-spin text-slate-400" : "text-slate-500"}`}
+        <svg className={`w-3.5 h-3.5 ${running ? "animate-spin text-[var(--text-tertiary)]" : "text-[var(--text-secondary)]"}`}
           fill="none" viewBox="0 0 24 24" stroke="currentColor">
           <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2}
             d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15" />
@@ -97,25 +99,25 @@ function RefreshButton({ builtAt }: { builtAt: string | null }) {
       </button>
       {status && (status.state === "done" || status.state === "error" || status.log.length > 1) && (
         <button onClick={() => setShowLog((v) => !v)}
-          className="text-xs text-slate-400 hover:text-slate-600 underline underline-offset-2">
+          className="text-xs text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] underline underline-offset-2">
           {showLog ? "hide log" : "show log"}
         </button>
       )}
       {showLog && status && (
-        <div className="fixed inset-x-4 bottom-4 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[480px] bg-slate-900 rounded-xl shadow-2xl border border-slate-700 p-4 z-50">
+        <div className="fixed inset-x-4 bottom-4 sm:inset-x-auto sm:right-6 sm:bottom-6 sm:w-[480px] bg-[var(--text-primary)] rounded-xl shadow-2xl border border-[var(--border-medium)] p-4 z-50">
           <div className="flex items-center justify-between mb-2">
-            <span className="text-xs font-mono text-slate-300 font-semibold">Refresh log</span>
-            <button onClick={() => setShowLog(false)} className="text-slate-500 hover:text-slate-300">
+            <span className="text-xs font-mono text-[var(--text-tertiary)] font-semibold">Refresh log</span>
+            <button onClick={() => setShowLog(false)} className="text-[var(--text-secondary)] hover:text-[var(--text-tertiary)]">
               <svg className="w-4 h-4" fill="none" viewBox="0 0 24 24" stroke="currentColor">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M6 18L18 6M6 6l12 12" />
               </svg>
             </button>
           </div>
           <div className="space-y-0.5 max-h-64 overflow-y-auto">
-            {status.log.map((line, i) => <p key={i} className="text-xs font-mono text-slate-400">{line}</p>)}
+            {status.log.map((line, i) => <p key={i} className="text-xs font-mono text-[var(--text-tertiary)]">{line}</p>)}
           </div>
-          {status.state === "error" && <p className="mt-2 text-xs text-red-400 font-mono">{status.error}</p>}
-          {status.state === "done"  && <p className="mt-2 text-xs text-green-400 font-mono">Complete — reloading…</p>}
+          {status.state === "error" && <p className="mt-2 text-xs text-[var(--accent-red)] font-mono">{status.error}</p>}
+          {status.state === "done"  && <p className="mt-2 text-xs text-[var(--accent-green)] font-mono">Complete — reloading…</p>}
         </div>
       )}
     </div>
@@ -126,20 +128,22 @@ function RefreshButton({ builtAt }: { builtAt: string | null }) {
 
 function MetadataStrip({ data: _data, builtAt }: { data: ModelsData; builtAt: string | null }) {
   return (
-    <div className="flex items-center flex-wrap gap-2 text-xs text-slate-400 mt-1">
-      <span>
+    <>
+      <div className="text-xs mt-2" style={{ color: "var(--text-tertiary)" }}>
         Data sourced from{" "}
-        <span className="text-slate-600 font-medium">Artificial Analysis</span>
-        {" "}and{" "}
-        <span className="text-slate-600 font-medium">LLM Stats</span>
-      </span>
+        <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>Artificial Analysis</span>
+        {" and "}
+        <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>LLM Stats</span>
+      </div>
       {builtAt && (
-        <>
-          <span className="text-slate-300">·</span>
-          <span>Last updated {builtAt}</span>
-        </>
+        <div
+          className="text-[11px] mt-1"
+          style={{ color: "var(--text-tertiary)" }}
+        >
+          Last updated {builtAt}
+        </div>
       )}
-    </div>
+    </>
   )
 }
 
@@ -155,36 +159,36 @@ function BestInClass({ models }: { models: ModelRecord[] }) {
     .sort((a,b) => b.intelligence_index! - a.intelligence_index!)
 
   const slots = [
-    { label: "Best Overall",    model: byIntel[0],  metric: "Intelligence", value: byIntel[0]?.intelligence_index,  accent: "#8b5cf6" },
-    { label: "Best Coding",     model: byCoding[0], metric: "Coding Index", value: byCoding[0]?.coding_index,       accent: "#3b82f6" },
-    { label: "Best Math",       model: byMath[0],   metric: "Math Index",   value: byMath[0]?.math_index,           accent: "#10b981" },
+    { label: "Best Overall",    model: byIntel[0],  metric: "Intelligence", value: byIntel[0]?.intelligence_index,  accent: "#C77F2E" },
+    { label: "Best Coding",     model: byCoding[0], metric: "Coding Index", value: byCoding[0]?.coding_index,       accent: "#2C4D9E" },
+    { label: "Best Math",       model: byMath[0],   metric: "Math Index",   value: byMath[0]?.math_index,           accent: "#2D8F66" },
     { label: "Best Value",      model: byValue[0],  metric: "Intel per $",
-      value: byValue[0] ? byValue[0].intelligence_index! / byValue[0].price_blended! : null, accent: "#f59e0b" },
-    { label: "Best Open Model", model: bestOpen[0], metric: "Intelligence", value: bestOpen[0]?.intelligence_index, accent: "#f97316", badge: true },
+      value: byValue[0] ? byValue[0].intelligence_index! / byValue[0].price_blended! : null, accent: "#C77F2E" },
+    { label: "Best Open Model", model: bestOpen[0], metric: "Intelligence", value: bestOpen[0]?.intelligence_index, accent: "#FF6B35", badge: true },
   ]
 
   return (
     <div className="grid grid-cols-2 sm:grid-cols-5 gap-3">
       {slots.map((s) => (
-        <div key={s.label} className="bg-white rounded-xl border border-slate-200/70 px-4 py-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+        <div key={s.label} className="bg-[var(--bg-surface)] rounded-xl border border-[var(--border-subtle)] px-4 py-3.5 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
           <div className="flex items-center gap-1.5 mb-2">
             <span className="w-1.5 h-1.5 rounded-full shrink-0" style={{ backgroundColor: s.accent }} />
-            <p className="text-[10px] font-semibold uppercase tracking-wider text-slate-400">{s.label}</p>
+            <p className="text-[10px] font-semibold uppercase tracking-wider text-[var(--text-tertiary)]">{s.label}</p>
           </div>
           <div className="flex items-center gap-1.5 mb-0.5">
-            <p className="text-sm font-semibold text-slate-900 truncate leading-tight" title={s.model?.name}>
+            <p className="text-sm font-semibold text-[var(--text-primary)] truncate leading-tight" title={s.model?.name}>
               {s.model?.name ?? "n/a"}
             </p>
             {s.badge && s.model && (
-              <span className="shrink-0 text-[9px] px-1 py-0.5 rounded bg-orange-50 text-orange-600 font-semibold leading-none border border-orange-100">OW</span>
+              <span className="shrink-0 text-[9px] px-1 py-0.5 rounded bg-[var(--accent-amber-bg)] text-[var(--accent-amber)] font-semibold leading-none border border-[var(--accent-amber-bg)]">OW</span>
             )}
           </div>
-          <p className="text-[11px] text-slate-400 truncate">{s.model?.org ?? ""}</p>
+          <p className="text-[11px] text-[var(--text-tertiary)] truncate">{s.model?.org ?? ""}</p>
           <div className="mt-2 flex items-baseline gap-1">
             <span className="text-lg font-bold tabular-nums" style={{ color: s.accent }}>
               {s.value != null ? s.value.toFixed(1) : "n/a"}
             </span>
-            <span className="text-[10px] text-slate-400">{s.metric}</span>
+            <span className="text-[10px] text-[var(--text-tertiary)]">{s.metric}</span>
           </div>
         </div>
       ))}
@@ -224,12 +228,12 @@ function SideLeaderboard({ models }: { models: ModelRecord[] }) {
     .slice(0, 25)
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_3px_rgba(0,0,0,0.04)] flex flex-col"
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_3px_rgba(0,0,0,0.04)] flex flex-col"
       style={{ maxHeight: "calc(100vh - 5.5rem)", overflowY: "hidden" }}>
-      <div className="px-4 pt-4 pb-3 border-b border-slate-100 shrink-0">
+      <div className="px-4 pt-4 pb-3 border-b border-[var(--border-subtle)] shrink-0">
         <div className="flex items-center justify-between mb-3">
-          <h3 className="text-sm font-semibold text-slate-800">Leaderboard</h3>
-          <Link href="/models/leaderboard" className="text-xs text-violet-600 hover:text-violet-700 font-medium">
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Leaderboard</h3>
+          <Link href="/models/leaderboard" className="text-xs text-[var(--accent-amber)] hover:text-[var(--accent-amber)] font-medium">
             See all →
           </Link>
         </div>
@@ -237,7 +241,7 @@ function SideLeaderboard({ models }: { models: ModelRecord[] }) {
           {SIDE_SORT_OPTS.map(o => (
             <button key={o.key} onClick={() => setSort(o.key)}
               className={`px-2 py-0.5 rounded-md text-[11px] font-medium transition-colors ${
-                sort === o.key ? "bg-violet-100 text-violet-700" : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
+                sort === o.key ? "bg-[var(--accent-amber-bg)] text-[var(--accent-amber)]" : "text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-base)]"
               }`}>
               {o.label}
             </button>
@@ -247,7 +251,7 @@ function SideLeaderboard({ models }: { models: ModelRecord[] }) {
           {(["all", "open", "closed"] as const).map(v => (
             <button key={v} onClick={() => setFilterOpen(v)}
               className={`px-2 py-0.5 rounded-md text-[11px] capitalize transition-colors ${
-                filterOpen === v ? "bg-slate-800 text-white" : "text-slate-400 hover:text-slate-600 hover:bg-slate-50"
+                filterOpen === v ? "bg-[var(--text-primary)] text-white" : "text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] hover:bg-[var(--bg-base)]"
               }`}>
               {v}
             </button>
@@ -260,25 +264,25 @@ function SideLeaderboard({ models }: { models: ModelRecord[] }) {
           const val = m[sort] as number
           const display = sort === "price_blended" ? fmtPrice(val) : fmt(val, sort === "tokens_per_sec" ? 0 : 1)
           return (
-            <div key={m.id} className="flex items-center gap-2.5 px-4 py-2.5 border-b border-slate-50 hover:bg-slate-50/70 transition-colors">
-              <span className="text-[11px] text-slate-400 w-5 shrink-0 tabular-nums text-right">{i + 1}</span>
+            <div key={m.id} className="flex items-center gap-2.5 px-4 py-2.5 border-b border-[var(--border-subtle)] hover:bg-[var(--bg-base)]/70 transition-colors">
+              <span className="text-[11px] text-[var(--text-tertiary)] w-5 shrink-0 tabular-nums text-right">{i + 1}</span>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-1.5">
-                  <span className="text-xs font-medium text-slate-800 truncate">{m.name}</span>
+                  <span className="text-xs font-medium text-[var(--text-primary)] truncate">{m.name}</span>
                   {m.open_weight === true && (
-                    <span className="shrink-0 text-[9px] px-1 py-0.5 rounded bg-violet-50 text-violet-600 font-semibold leading-none">OW</span>
+                    <span className="shrink-0 text-[9px] px-1 py-0.5 rounded bg-[var(--accent-amber-bg)] text-[var(--accent-amber)] font-semibold leading-none">OW</span>
                   )}
                 </div>
-                <p className="text-[10px] text-slate-400 truncate">{m.org}</p>
+                <p className="text-[10px] text-[var(--text-tertiary)] truncate">{m.org}</p>
               </div>
-              <span className="text-xs font-semibold tabular-nums text-slate-700 shrink-0">{display}</span>
+              <span className="text-xs font-semibold tabular-nums text-[var(--text-primary)] shrink-0">{display}</span>
             </div>
           )
         })}
       </div>
 
-      <div className="px-4 py-2.5 border-t border-slate-100 shrink-0">
-        <Link href="/models/leaderboard" className="block text-center text-xs text-violet-600 hover:text-violet-700 font-medium py-1">
+      <div className="px-4 py-2.5 border-t border-[var(--border-subtle)] shrink-0">
+        <Link href="/models/leaderboard" className="block text-center text-xs text-[var(--accent-amber)] hover:text-[var(--accent-amber)] font-medium py-1">
           View full leaderboard →
         </Link>
       </div>
@@ -289,11 +293,11 @@ function SideLeaderboard({ models }: { models: ModelRecord[] }) {
 // ── Graph 1: Top 25 Models Horizontal Bar Chart ───────────────────────────────
 
 const BAR_METRICS = [
-  { key: "intelligence_index" as const, color: "#8b5cf6", label: "Intelligence",
+  { key: "intelligence_index" as const, color: "#C77F2E", label: "Intelligence",
     desc: "Composite score measuring overall reasoning and language capability across diverse tasks. Source: Artificial Analysis (0–100 scale)." },
-  { key: "coding_index" as const, color: "#3b82f6", label: "Coding",
+  { key: "coding_index" as const, color: "#2C4D9E", label: "Coding",
     desc: "Performance across code generation, debugging, and software engineering benchmarks. Source: Artificial Analysis (0–100 scale)." },
-  { key: "math_index" as const, color: "#10b981", label: "Math",
+  { key: "math_index" as const, color: "#2D8F66", label: "Math",
     desc: "Mathematical reasoning covering algebra, calculus, and quantitative problem-solving. Source: Artificial Analysis (0–100 scale)." },
 ]
 
@@ -321,20 +325,20 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
   const toX = (v: number) => PAD_L + (v / maxScore) * plotW
   const xTicks = Array.from({ length: Math.ceil(maxScore / 10) + 1 }, (_, i) => i * 10).filter(t => t <= maxScore)
 
-  const barFill = (m: ModelRecord) => m.open_weight === true ? metric.color : "#94a3b8"
+  const barFill = (m: ModelRecord) => m.open_weight === true ? metric.color : "#8E97AC"
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-slate-700">Top 15 Models by Capability</h3>
-          <p className="text-xs text-slate-400 mt-0.5">{metric.desc}</p>
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Top 15 Models by Capability</h3>
+          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">{metric.desc}</p>
         </div>
         <div className="flex gap-1 shrink-0 mt-0.5">
           {BAR_METRICS.map(m => (
             <button key={m.key} onClick={() => setActiveKey(m.key)}
               className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
-                activeKey === m.key ? "text-white border-transparent" : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+                activeKey === m.key ? "text-white border-transparent" : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
               }`}
               style={activeKey === m.key ? { backgroundColor: m.color, borderColor: m.color } : {}}>
               {m.label}
@@ -344,12 +348,12 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
       </div>
 
       <div className="flex items-center gap-5 mt-2 mb-1">
-        <span className="flex items-center gap-1.5 text-xs text-slate-500">
+        <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
           <span className="w-3 h-2.5 rounded-sm inline-block" style={{ backgroundColor: metric.color }} />
           Open-weight
         </span>
-        <span className="flex items-center gap-1.5 text-xs text-slate-500">
-          <span className="w-3 h-2.5 rounded-sm inline-block bg-slate-300" />
+        <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+          <span className="w-3 h-2.5 rounded-sm inline-block bg-[var(--border-medium)]" />
           Closed / proprietary
         </span>
       </div>
@@ -361,9 +365,9 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
             return (
               <g key={t}>
                 <line x1={x} y1={PAD_T} x2={x} y2={axisY}
-                  stroke={t === 0 ? "#e2e8f0" : "#f1f5f9"} strokeWidth={1} />
+                  stroke={t === 0 ? "#DDE3EC" : "#EDF0F6"} strokeWidth={1} />
                 <text x={x} y={axisY + 14} textAnchor="middle"
-                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{t}</text>
+                  fontSize={9} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">{t}</text>
               </g>
             )
           })}
@@ -380,18 +384,18 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
                 onMouseLeave={() => setHovered(null)}
                 style={{ cursor: "default" }}>
                 {isHov && (
-                  <rect x={0} y={rowY} width={W} height={ROW_H} fill="#f8fafc" rx={2} />
+                  <rect x={0} y={rowY} width={W} height={ROW_H} fill="#F5F7FB" rx={2} />
                 )}
                 {/* Rank number */}
                 <text x={10} y={rowY + ROW_H / 2}
                   textAnchor="start" dominantBaseline="middle"
-                  fontSize={9} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                  fontSize={9} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
                   {i + 1}
                 </text>
                 {/* Model name */}
                 <text x={34} y={rowY + ROW_H / 2}
                   textAnchor="start" dominantBaseline="middle"
-                  fontSize={9} fill={isHov ? "#1e293b" : "#475569"}
+                  fontSize={9} fill={isHov ? "#0F1E3D" : "#4A5878"}
                   fontWeight={isHov ? 600 : 400}
                   fontFamily="ui-sans-serif, system-ui">
                   {truncate(m.name, 27)}
@@ -402,7 +406,7 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
                 {/* Score label */}
                 <text x={PAD_L + barW + 5} y={barY + BAR_H / 2}
                   dominantBaseline="middle" fontSize={9}
-                  fill={isHov ? "#334155" : "#94a3b8"}
+                  fill={isHov ? "#0F1E3D" : "#8E97AC"}
                   fontFamily="ui-sans-serif, system-ui">
                   {val.toFixed(1)}
                 </text>
@@ -411,12 +415,12 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
           })}
 
           {/* Y axis line */}
-          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={axisY} stroke="#94a3b8" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={axisY} stroke="#8E97AC" strokeWidth={1} />
           {/* X axis bottom line */}
-          <line x1={PAD_L} y1={axisY} x2={PAD_L + plotW} y2={axisY} stroke="#94a3b8" strokeWidth={1} />
+          <line x1={PAD_L} y1={axisY} x2={PAD_L + plotW} y2={axisY} stroke="#8E97AC" strokeWidth={1} />
           {/* X axis label — below tick numbers with clear separation */}
           <text x={PAD_L + plotW / 2} y={H - 8} textAnchor="middle"
-            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Score (0 to 100)</text>
+            fontSize={11} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">Score (0 to 100)</text>
         </svg>
       </div>
     </div>
@@ -427,9 +431,9 @@ function TopModelsBarChart({ models }: { models: ModelRecord[] }) {
 
 type MetricKey = "intelligence_index" | "coding_index" | "math_index"
 const METRIC_OPTS: { key: MetricKey; label: string; color: string; bg: string; text: string }[] = [
-  { key: "intelligence_index", label: "Intelligence", color: "#8b5cf6", bg: "bg-violet-100", text: "text-violet-700" },
-  { key: "coding_index",       label: "Coding",       color: "#3b82f6", bg: "bg-blue-100",   text: "text-blue-700"   },
-  { key: "math_index",         label: "Math",         color: "#10b981", bg: "bg-emerald-100",text: "text-emerald-700"},
+  { key: "intelligence_index", label: "Intelligence", color: "#C77F2E", bg: "bg-[var(--accent-amber-bg)]", text: "text-[var(--accent-amber)]" },
+  { key: "coding_index",       label: "Coding",       color: "#2C4D9E", bg: "bg-[var(--accent-blue-bg)]",   text: "text-[var(--accent-blue)]"   },
+  { key: "math_index",         label: "Math",         color: "#2D8F66", bg: "bg-[var(--accent-green-bg)]",text: "text-[var(--accent-green)]"},
 ]
 
 type FrontierPt = { date: string; v: number; model: ModelRecord }
@@ -516,17 +520,17 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
     const ty = y < 70 ? y + 8 : y - 62
     return (
       <g>
-        <rect x={tx} y={ty} width={150} height={54} rx={4} fill="#0f172a" fillOpacity={0.93} />
+        <rect x={tx} y={ty} width={150} height={54} rx={4} fill="#0F1E3D" fillOpacity={0.93} />
         <text x={tx + 7} y={ty + 14} fontSize={9} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
           {truncate(pt.model.name, 22)}
         </text>
-        <text x={tx + 7} y={ty + 26} fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+        <text x={tx + 7} y={ty + 26} fontSize={8} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">
           {pt.model.org}
         </text>
-        <text x={tx + 7} y={ty + 38} fontSize={8} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+        <text x={tx + 7} y={ty + 38} fontSize={8} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
           Score: {pt.v.toFixed(1)}
         </text>
-        <text x={tx + 7} y={ty + 49} fontSize={7.5} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
+        <text x={tx + 7} y={ty + 49} fontSize={7.5} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">
           Released {fmtDate(pt.date)}
         </text>
       </g>
@@ -534,11 +538,11 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-slate-700">Open vs. Closed Capability Over Time</h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Open vs. Closed Capability Over Time</h3>
+          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
             Best model score at each point in time. Each step marks a new state-of-the-art. Hover any dot to see which model set the record.
           </p>
         </div>
@@ -546,7 +550,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
           {METRIC_OPTS.map(o => (
             <button key={o.key} onClick={() => setMetric(o.key)}
               className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
-                metric === o.key ? "text-white border-transparent" : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+                metric === o.key ? "text-white border-transparent" : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
               }`}
               style={metric === o.key ? { backgroundColor: o.color, borderColor: o.color } : {}}>
               {o.label}
@@ -556,15 +560,15 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
       </div>
 
       <div className="flex items-center gap-6 mb-4">
-        <span className="flex items-center gap-2 text-xs text-slate-600">
+        <span className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
           <span className="w-6 h-0.5 inline-block rounded" style={{ backgroundColor: metricColor }} />
           Open-weight frontier
-          {lastOpen && <span className="text-slate-400 font-normal">({truncate(lastOpen.model.name, 18)})</span>}
+          {lastOpen && <span className="text-[var(--text-tertiary)] font-normal">({truncate(lastOpen.model.name, 18)})</span>}
         </span>
-        <span className="flex items-center gap-2 text-xs text-slate-600">
-          <span className="w-6 h-0.5 bg-slate-400 inline-block rounded" />
+        <span className="flex items-center gap-2 text-xs text-[var(--text-secondary)]">
+          <span className="w-6 h-0.5 bg-[var(--text-tertiary)] inline-block rounded" />
           Closed frontier
-          {lastClosed && <span className="text-slate-400 font-normal">({truncate(lastClosed.model.name, 18)})</span>}
+          {lastClosed && <span className="text-[var(--text-tertiary)] font-normal">({truncate(lastClosed.model.name, 18)})</span>}
         </span>
       </div>
 
@@ -574,9 +578,9 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
             const y = toY(v)
             return (
               <g key={v}>
-                <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
+                <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#EDF0F6" strokeWidth={1} />
                 <text x={PAD_L - 6} y={y} textAnchor="end" dominantBaseline="middle"
-                  fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{v}</text>
+                  fontSize={9} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">{v}</text>
               </g>
             )
           })}
@@ -585,23 +589,23 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
             return (
               <g key={date}>
                 {major
-                  ? <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#e2e8f0" strokeWidth={1} />
-                  : <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#f1f5f9" strokeWidth={1} strokeDasharray="3 3" />
+                  ? <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#DDE3EC" strokeWidth={1} />
+                  : <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#EDF0F6" strokeWidth={1} strokeDasharray="3 3" />
                 }
                 <text x={x} y={H - 6} textAnchor="middle"
                   fontSize={major ? 9 : 7.5} fontWeight={major ? 500 : 400}
-                  fill={major ? "#94a3b8" : "#b8c8d8"}
+                  fill={major ? "#8E97AC" : "#b8c8d8"}
                   fontFamily="ui-sans-serif, system-ui">{label}</text>
               </g>
             )
           })}
 
-          {closedPts.length > 0 && <path d={stepPath(closedPts)} fill="none" stroke="#94a3b8" strokeWidth={2.5} strokeLinejoin="round" />}
+          {closedPts.length > 0 && <path d={stepPath(closedPts)} fill="none" stroke="#8E97AC" strokeWidth={2.5} strokeLinejoin="round" />}
           {openPts.length  > 0 && <path d={stepPath(openPts)}  fill="none" stroke={metricColor} strokeWidth={2.5} strokeLinejoin="round" />}
 
           {closedPts.map((p, i) => (
             <circle key={`c${i}`} cx={toX(p.date)} cy={toY(p.v)} r={hovClosed === i ? 6 : 4.5}
-              fill="white" stroke="#94a3b8" strokeWidth={hovClosed === i ? 2 : 1.5}
+              fill="white" stroke="#8E97AC" strokeWidth={hovClosed === i ? 2 : 1.5}
               style={{ cursor: "pointer" }}
               onMouseEnter={() => setHovClosed(i)}
               onMouseLeave={() => setHovClosed(null)} />
@@ -616,7 +620,7 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
 
           {lastClosed && (
             <text x={PAD_L + plotW + 8} y={toY(lastClosed.v)} dominantBaseline="middle"
-              fontSize={8} fill="#64748b" fontWeight={600} fontFamily="ui-sans-serif, system-ui">
+              fontSize={8} fill="#4A5878" fontWeight={600} fontFamily="ui-sans-serif, system-ui">
               {truncate(lastClosed.model.name, 20)}
             </text>
           )}
@@ -629,8 +633,8 @@ function OpenVsClosedFrontier({ models }: { models: ModelRecord[] }) {
 
           {hovPt && <Tooltip pt={hovPt} />}
 
-          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
-          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#8E97AC" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#8E97AC" strokeWidth={1} />
         </svg>
       </div>
     </div>
@@ -768,11 +772,11 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
   })
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-slate-700">Model Release Timeline</h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Model Release Timeline</h3>
+          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
             {viewMode === "chart"
               ? "All models with capability scores plotted by release date vs. Intelligence Index, colored by organization. Hover for details."
               : "Release cadence for the top 10 labs by model count (2023 to present). Each dot is one model release. Hover for details."
@@ -784,8 +788,8 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
             <button key={v} onClick={() => { setViewMode(v); setHovered(null) }}
               className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
                 viewMode === v
-                  ? "bg-slate-800 text-white border-slate-800"
-                  : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+                  ? "bg-[var(--text-primary)] text-white border-[var(--text-primary)]"
+                  : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
               }`}>
               {v === "chart" ? "Chart" : "Swimlane"}
             </button>
@@ -797,28 +801,28 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
         <div className="mt-2 mb-3 relative" ref={dropdownRef}>
           <button
             onClick={() => setDropdownOpen(o => !o)}
-            className="flex items-center gap-2 px-3 py-1.5 text-xs border border-slate-200 rounded-lg bg-white hover:bg-slate-50 hover:border-slate-300 transition-colors"
+            className="flex items-center gap-2 px-3 py-1.5 text-xs border border-[var(--border-subtle)] rounded-lg bg-[var(--bg-surface)] hover:bg-[var(--bg-base)] hover:border-[var(--border-medium)] transition-colors"
           >
-            <span className="text-slate-600 font-medium">
+            <span className="text-[var(--text-secondary)] font-medium">
               {selectedOrgs == null
                 ? "All companies"
                 : selectedOrgs.size === 0
                   ? "No companies"
                   : `${selectedOrgs.size} of ${chartOrgs.length} companies`}
             </span>
-            <svg className={`w-3.5 h-3.5 text-slate-400 transition-transform ${dropdownOpen ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
+            <svg className={`w-3.5 h-3.5 text-[var(--text-tertiary)] transition-transform ${dropdownOpen ? "rotate-180" : ""}`} viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={2}>
               <path d="M6 9l6 6 6-6" />
             </svg>
           </button>
 
           {dropdownOpen && (
-            <div className="absolute top-full left-0 mt-1 w-56 bg-white border border-slate-200 rounded-xl shadow-lg z-20 overflow-hidden">
-              <div className="flex items-center gap-2 px-3 py-2 border-b border-slate-100">
+            <div className="absolute top-full left-0 mt-1 w-56 bg-[var(--bg-surface)] border border-[var(--border-subtle)] rounded-xl shadow-lg z-20 overflow-hidden">
+              <div className="flex items-center gap-2 px-3 py-2 border-b border-[var(--border-subtle)]">
                 <button onClick={() => setSelectedOrgs(null)}
-                  className="text-[11px] text-violet-500 hover:text-violet-700 font-medium transition-colors">All</button>
-                <span className="text-slate-200">·</span>
+                  className="text-[11px] text-[var(--accent-amber)] hover:text-[var(--accent-amber)] font-medium transition-colors">All</button>
+                <span className="text-[var(--border-medium)]">·</span>
                 <button onClick={() => setSelectedOrgs(new Set())}
-                  className="text-[11px] text-slate-400 hover:text-slate-600 font-medium transition-colors">None</button>
+                  className="text-[11px] text-[var(--text-tertiary)] hover:text-[var(--text-secondary)] font-medium transition-colors">None</button>
               </div>
               <div className="max-h-64 overflow-y-auto py-1">
                 {chartOrgs.map(org => {
@@ -826,8 +830,8 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
                   const color = orgColor(org)
                   return (
                     <button key={org} onClick={() => toggleOrg(org)}
-                      className="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-slate-50 transition-colors text-left">
-                      <span className={`w-3.5 h-3.5 rounded shrink-0 border flex items-center justify-center transition-colors ${selected ? "border-transparent" : "border-slate-300 bg-white"}`}
+                      className="w-full flex items-center gap-2.5 px-3 py-1.5 hover:bg-[var(--bg-base)] transition-colors text-left">
+                      <span className={`w-3.5 h-3.5 rounded shrink-0 border flex items-center justify-center transition-colors ${selected ? "border-transparent" : "border-[var(--border-medium)] bg-[var(--bg-surface)]"}`}
                         style={selected ? { backgroundColor: color } : {}}>
                         {selected && (
                           <svg className="w-2.5 h-2.5 text-white" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth={3}>
@@ -836,7 +840,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
                         )}
                       </span>
                       <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color }} />
-                      <span className="text-xs text-slate-700 truncate">{org}</span>
+                      <span className="text-xs text-[var(--text-primary)] truncate">{org}</span>
                     </button>
                   )
                 })}
@@ -853,9 +857,9 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
               const y = toChartY(v)
               return (
                 <g key={v}>
-                  <line x1={CPAD_L} y1={y} x2={CPAD_L + cPlotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
+                  <line x1={CPAD_L} y1={y} x2={CPAD_L + cPlotW} y2={y} stroke="#EDF0F6" strokeWidth={1} />
                   <text x={CPAD_L - 6} y={y} textAnchor="end" dominantBaseline="middle"
-                    fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">{Math.round(v)}</text>
+                    fontSize={10} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">{Math.round(v)}</text>
                 </g>
               )
             })}
@@ -864,13 +868,13 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
               return (
                 <g key={date}>
                   {major
-                    ? <line x1={x} y1={CPAD_T} x2={x} y2={CPAD_T + cPlotH} stroke="#e2e8f0" strokeWidth={1} />
-                    : <line x1={x} y1={CPAD_T} x2={x} y2={CPAD_T + cPlotH} stroke="#f1f5f9" strokeWidth={1} strokeDasharray="3 3" />
+                    ? <line x1={x} y1={CPAD_T} x2={x} y2={CPAD_T + cPlotH} stroke="#DDE3EC" strokeWidth={1} />
+                    : <line x1={x} y1={CPAD_T} x2={x} y2={CPAD_T + cPlotH} stroke="#EDF0F6" strokeWidth={1} strokeDasharray="3 3" />
                   }
                   <text x={x} y={CH - 6} textAnchor="middle"
                     fontSize={major ? 11 : 9}
                     fontWeight={major ? 500 : 400}
-                    fill={major ? "#94a3b8" : "#b8c8d8"}
+                    fill={major ? "#8E97AC" : "#b8c8d8"}
                     fontFamily="ui-sans-serif, system-ui">{label}</text>
                 </g>
               )
@@ -883,7 +887,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
               return (
                 <circle key={m.id} cx={cx} cy={cy} r={isHov ? 9 : 6}
                   fill={orgColor(m.org)} fillOpacity={isHov ? 1 : 0.7}
-                  stroke={isHov ? "#0f172a" : "white"} strokeWidth={isHov ? 1.5 : 1}
+                  stroke={isHov ? "#0F1E3D" : "white"} strokeWidth={isHov ? 1.5 : 1}
                   style={{ cursor: "pointer" }}
                   onMouseEnter={() => setHovered(m)}
                   onMouseLeave={() => setHovered(null)}
@@ -898,26 +902,26 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
               const ty = cy < 100 ? cy + 10 : cy - 100
               return (
                 <g>
-                  <rect x={tx} y={ty} width={235} height={90} rx={6} fill="#0f172a" fillOpacity={0.93} />
+                  <rect x={tx} y={ty} width={235} height={90} rx={6} fill="#0F1E3D" fillOpacity={0.93} />
                   <text x={tx + 12} y={ty + 22} fontSize={15} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
                     {truncate(hovered.name, 22)}
                   </text>
-                  <text x={tx + 12} y={ty + 41} fontSize={13} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
-                  <text x={tx + 12} y={ty + 62} fontSize={13} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                  <text x={tx + 12} y={ty + 41} fontSize={13} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
+                  <text x={tx + 12} y={ty + 62} fontSize={13} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
                     Intelligence: {hovered.intelligence_index.toFixed(1)}
                   </text>
-                  <text x={tx + 12} y={ty + 79} fontSize={12} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
+                  <text x={tx + 12} y={ty + 79} fontSize={12} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">
                     Released {fmtDate(hovered.release_date)}
                   </text>
                 </g>
               )
             })()}
 
-            <line x1={CPAD_L} y1={CPAD_T} x2={CPAD_L} y2={CPAD_T + cPlotH} stroke="#94a3b8" strokeWidth={1} />
-            <line x1={CPAD_L} y1={CPAD_T + cPlotH} x2={CPAD_L + cPlotW} y2={CPAD_T + cPlotH} stroke="#94a3b8" strokeWidth={1} />
+            <line x1={CPAD_L} y1={CPAD_T} x2={CPAD_L} y2={CPAD_T + cPlotH} stroke="#8E97AC" strokeWidth={1} />
+            <line x1={CPAD_L} y1={CPAD_T + cPlotH} x2={CPAD_L + cPlotW} y2={CPAD_T + cPlotH} stroke="#8E97AC" strokeWidth={1} />
             <text x={14} y={CPAD_T + cPlotH / 2} textAnchor="middle"
               transform={`rotate(-90, 14, ${CPAD_T + cPlotH / 2})`}
-              fontSize={9} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
+              fontSize={9} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
           </svg>
         </div>
       ) : (
@@ -928,12 +932,12 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
               return (
                 <g key={date}>
                   {major
-                    ? <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + topOrgs.length * ROW_H} stroke="#e2e8f0" strokeWidth={1} />
-                    : <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + topOrgs.length * ROW_H} stroke="#f1f5f9" strokeWidth={1} strokeDasharray="3 3" />
+                    ? <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + topOrgs.length * ROW_H} stroke="#DDE3EC" strokeWidth={1} />
+                    : <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + topOrgs.length * ROW_H} stroke="#EDF0F6" strokeWidth={1} strokeDasharray="3 3" />
                   }
                   <text x={x} y={swimH - 6} textAnchor="middle"
                     fontSize={major ? 11 : 9} fontWeight={major ? 500 : 400}
-                    fill={major ? "#64748b" : "#94a3b8"}
+                    fill={major ? "#4A5878" : "#8E97AC"}
                     fontFamily="ui-sans-serif, system-ui">{label}</text>
                 </g>
               )
@@ -949,13 +953,13 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
                     <rect x={PAD_L} y={rowY} width={swimW} height={ROW_H} fill="#fafafa" rx={0} />
                   )}
                   <line x1={PAD_L} y1={rowY + ROW_H} x2={PAD_L + swimW} y2={rowY + ROW_H}
-                    stroke="#f1f5f9" strokeWidth={1} />
+                    stroke="#EDF0F6" strokeWidth={1} />
                   <text x={PAD_L - 8} y={rowY + ROW_H / 2} textAnchor="end" dominantBaseline="middle"
-                    fontSize={9} fill="#475569" fontWeight={500} fontFamily="ui-sans-serif, system-ui">
+                    fontSize={9} fill="#4A5878" fontWeight={500} fontFamily="ui-sans-serif, system-ui">
                     {truncate(org, 16)}
                   </text>
                   <text x={PAD_L - 70} y={rowY + ROW_H / 2} textAnchor="middle" dominantBaseline="middle"
-                    fontSize={8} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+                    fontSize={8} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">
                     {orgModels.length}
                   </text>
                   {orgModels.map(m => {
@@ -965,7 +969,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
                     return (
                       <circle key={m.id} cx={x} cy={y} r={isHov ? 6 : 4}
                         fill={color} fillOpacity={isHov ? 1 : 0.7}
-                        stroke={isHov ? "#0f172a" : "white"} strokeWidth={isHov ? 1.5 : 1}
+                        stroke={isHov ? "#0F1E3D" : "white"} strokeWidth={isHov ? 1.5 : 1}
                         style={{ cursor: "pointer" }}
                         onMouseEnter={() => setHovered(m)}
                         onMouseLeave={() => setHovered(null)}
@@ -984,16 +988,16 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
               const ty = y - 68
               return (
                 <g>
-                  <rect x={tx} y={ty} width={195} height={68} rx={6} fill="#0f172a" fillOpacity={0.93} />
+                  <rect x={tx} y={ty} width={195} height={68} rx={6} fill="#0F1E3D" fillOpacity={0.93} />
                   <text x={tx + 10} y={ty + 18} fontSize={11} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
                     {truncate(hovered.name, 22)}
                   </text>
-                  <text x={tx + 10} y={ty + 33} fontSize={10} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
-                  <text x={tx + 10} y={ty + 48} fontSize={10} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                  <text x={tx + 10} y={ty + 33} fontSize={10} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">{hovered.org}</text>
+                  <text x={tx + 10} y={ty + 48} fontSize={10} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
                     Released: {fmtDate(hovered.release_date)}
                   </text>
                   {hovered.intelligence_index != null && (
-                    <text x={tx + 10} y={ty + 62} fontSize={9.5} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
+                    <text x={tx + 10} y={ty + 62} fontSize={9.5} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">
                       Intelligence: {hovered.intelligence_index.toFixed(1)}
                     </text>
                   )}
@@ -1002,7 +1006,7 @@ function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
             })()}
 
             <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + topOrgs.length * ROW_H}
-              stroke="#94a3b8" strokeWidth={1} />
+              stroke="#8E97AC" strokeWidth={1} />
           </svg>
         </div>
       )}
@@ -1053,7 +1057,7 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
   const yTicks = Array.from({ length: 9 }, (_, i) => parseFloat((minI + i * iStep).toFixed(1))).filter(t => t <= maxI + 0.1)
 
   const dotColor = (m: ModelRecord) =>
-    viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#94a3b8")
+    viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#8E97AC")
 
   const uniqueOrgs = viewMode === "by-company"
     ? [...new Set(topByCompany.map(m => m.org))].sort()
@@ -1061,11 +1065,11 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
 
   const inner_ = inner
   return (
-    <div className={inner_ ? "px-5 py-4" : "bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4"}>
+    <div className={inner_ ? "px-5 py-4" : "bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4"}>
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-slate-700">Capability vs. Cost</h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Capability vs. Cost</h3>
+          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
             {viewMode === "open-closed"
               ? "Top 10 open-weight and top 10 closed models. Cost on X axis (log scale, blended per 1M tokens); Intelligence Index on Y axis. Hover a dot for details."
               : "Top 30 models with pricing data, colored by company. Cost on X axis (log scale); Intelligence Index on Y axis. Hover a dot for details."
@@ -1076,31 +1080,31 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
           <button onClick={() => setViewMode("open-closed")}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
               viewMode === "open-closed"
-                ? "bg-slate-800 text-white border-slate-800"
-                : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+                ? "bg-[var(--text-primary)] text-white border-[var(--text-primary)]"
+                : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
             }`}>Open / Closed</button>
           <button onClick={() => setViewMode("by-company")}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
               viewMode === "by-company"
-                ? "bg-slate-800 text-white border-slate-800"
-                : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+                ? "bg-[var(--text-primary)] text-white border-[var(--text-primary)]"
+                : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
             }`}>By Company</button>
         </div>
       </div>
 
       {viewMode === "open-closed" ? (
         <div className="flex items-center gap-5 mt-3 mb-2">
-          <span className="flex items-center gap-1.5 text-xs text-slate-600">
-            <span className="w-2.5 h-2.5 rounded-full bg-violet-400 inline-block" /> Open-weight (top 10)
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-amber)] inline-block" /> Open-weight (top 10)
           </span>
-          <span className="flex items-center gap-1.5 text-xs text-slate-600">
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-400 inline-block" /> Closed (top 10)
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-tertiary)] inline-block" /> Closed (top 10)
           </span>
         </div>
       ) : (
         <div className="flex flex-wrap gap-x-4 gap-y-1.5 mt-3 mb-2">
           {uniqueOrgs.map(org => (
-            <span key={org} className="flex items-center gap-1.5 text-xs text-slate-600">
+            <span key={org} className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
               <span className="w-2.5 h-2.5 rounded-full inline-block shrink-0" style={{ backgroundColor: orgColor(org) }} />
               {org}
             </span>
@@ -1115,9 +1119,9 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
             if (y < PAD_T - 2 || y > PAD_T + plotH + 2) return null
             return (
               <g key={t}>
-                <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
+                <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#EDF0F6" strokeWidth={1} />
                 <text x={PAD_L - 5} y={y} textAnchor="end" dominantBaseline="middle"
-                  fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">{t}</text>
+                  fontSize={10} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">{t}</text>
               </g>
             )
           })}
@@ -1126,9 +1130,9 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
             if (x < PAD_L - 2 || x > PAD_L + plotW + 2) return null
             return (
               <g key={t}>
-                <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#f8fafc" strokeWidth={1} />
+                <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#F5F7FB" strokeWidth={1} />
                 <text x={x} y={H - PAD_B + 14} textAnchor="middle"
-                  fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">
+                  fontSize={10} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">
                   ${t < 1 ? t.toFixed(t < 0.01 ? 3 : 2) : t}
                 </text>
               </g>
@@ -1142,7 +1146,7 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
               <g key={m.id}>
                 <circle cx={x} cy={y} r={isHov ? 7 : 5}
                   fill={dotColor(m)} fillOpacity={isHov ? 1 : 0.8}
-                  stroke={isHov ? "#0f172a" : "white"} strokeWidth={isHov ? 1.5 : 1}
+                  stroke={isHov ? "#0F1E3D" : "white"} strokeWidth={isHov ? 1.5 : 1}
                   style={{ cursor: "pointer" }}
                   onMouseEnter={() => setHovered(m)}
                   onMouseLeave={() => setHovered(null)} />
@@ -1156,17 +1160,17 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
             const ty = y < 110 ? y + 10 : y - 110
             return (
               <g>
-                <rect x={tx} y={ty} width={265} height={104} rx={6} fill="#0f172a" fillOpacity={0.93} />
+                <rect x={tx} y={ty} width={265} height={104} rx={6} fill="#0F1E3D" fillOpacity={0.93} />
                 <text x={tx + 14} y={ty + 24} fontSize={16} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
                   {truncate(hovered.name, 24)}
                 </text>
-                <text x={tx + 14} y={ty + 44} fontSize={14} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 44} fontSize={14} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">
                   {hovered.org} {hovered.open_weight ? "(open)" : "(closed)"}
                 </text>
-                <text x={tx + 14} y={ty + 68} fontSize={14} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 68} fontSize={14} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
                   Intelligence: {hovered.intelligence_index?.toFixed(1)}
                 </text>
-                <text x={tx + 14} y={ty + 88} fontSize={13} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 88} fontSize={13} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
                   Price: {fmtPrice(hovered.price_blended)} per 1M tokens
                 </text>
               </g>
@@ -1174,13 +1178,13 @@ function CostScatter({ models, inner }: { models: ModelRecord[]; inner?: boolean
           })()}
 
           <text x={PAD_L + plotW / 2} y={H - 8} textAnchor="middle"
-            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Price per 1M tokens (log scale)</text>
+            fontSize={11} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">Price per 1M tokens (log scale)</text>
           <text x={14} y={PAD_T + plotH / 2} textAnchor="middle"
             transform={`rotate(-90, 14, ${PAD_T + plotH / 2})`}
-            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
+            fontSize={11} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
 
-          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
-          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#8E97AC" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#8E97AC" strokeWidth={1} />
         </svg>
       </div>
     </div>
@@ -1228,7 +1232,7 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
   const xTicks = Array.from({ length: 10 }, (_, i) => parseFloat((minI + i * xStep).toFixed(1))).filter(t => t <= maxI + 0.1)
 
   const dotColor = (m: ModelRecord) =>
-    viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#94a3b8")
+    viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#8E97AC")
 
   const uniqueOrgs = viewMode === "by-company"
     ? [...new Set(topByCompany.map(m => m.org))].sort()
@@ -1236,11 +1240,11 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
 
   const inner_ = inner
   return (
-    <div className={inner_ ? "px-5 py-4" : "bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4"}>
+    <div className={inner_ ? "px-5 py-4" : "bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4"}>
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
-          <h3 className="text-sm font-semibold text-slate-700">Speed vs. Intelligence</h3>
-          <p className="text-xs text-slate-400 mt-0.5">
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Speed vs. Intelligence</h3>
+          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
             {viewMode === "open-closed"
               ? "Top 10 open-weight and top 10 closed models by Intelligence Index. Output speed in tokens per second. Hover a dot for details."
               : "Top 30 models with speed data, colored by company. Hover a dot for details."
@@ -1251,31 +1255,31 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
           <button onClick={() => setViewMode("open-closed")}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
               viewMode === "open-closed"
-                ? "bg-slate-800 text-white border-slate-800"
-                : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+                ? "bg-[var(--text-primary)] text-white border-[var(--text-primary)]"
+                : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
             }`}>Open / Closed</button>
           <button onClick={() => setViewMode("by-company")}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
               viewMode === "by-company"
-                ? "bg-slate-800 text-white border-slate-800"
-                : "text-slate-400 border-slate-200 hover:bg-slate-50 hover:text-slate-600"
+                ? "bg-[var(--text-primary)] text-white border-[var(--text-primary)]"
+                : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
             }`}>By Company</button>
         </div>
       </div>
 
       {viewMode === "open-closed" ? (
         <div className="flex items-center gap-5 mt-3 mb-2">
-          <span className="flex items-center gap-1.5 text-xs text-slate-600">
-            <span className="w-2.5 h-2.5 rounded-full bg-violet-400 inline-block" /> Open-weight (top 10)
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-amber)] inline-block" /> Open-weight (top 10)
           </span>
-          <span className="flex items-center gap-1.5 text-xs text-slate-600">
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-400 inline-block" /> Closed (top 10)
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-tertiary)] inline-block" /> Closed (top 10)
           </span>
         </div>
       ) : (
         <div className="flex flex-wrap gap-x-4 gap-y-1.5 mt-3 mb-2">
           {uniqueOrgs.map(org => (
-            <span key={org} className="flex items-center gap-1.5 text-xs text-slate-600">
+            <span key={org} className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
               <span className="w-2.5 h-2.5 rounded-full inline-block shrink-0" style={{ backgroundColor: orgColor(org) }} />
               {org}
             </span>
@@ -1290,9 +1294,9 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
             if (y < PAD_T - 2 || y > PAD_T + plotH + 2) return null
             return (
               <g key={t}>
-                <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#f1f5f9" strokeWidth={1} />
+                <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#EDF0F6" strokeWidth={1} />
                 <text x={PAD_L - 5} y={y} textAnchor="end" dominantBaseline="middle"
-                  fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">{t}</text>
+                  fontSize={10} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">{t}</text>
               </g>
             )
           })}
@@ -1300,9 +1304,9 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
             const x = toX(t)
             return (
               <g key={t}>
-                <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#f8fafc" strokeWidth={1} />
+                <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#F5F7FB" strokeWidth={1} />
                 <text x={x} y={H - PAD_B + 14} textAnchor="middle"
-                  fontSize={10} fill="#64748b" fontFamily="ui-sans-serif, system-ui">{t}</text>
+                  fontSize={10} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">{t}</text>
               </g>
             )
           })}
@@ -1314,7 +1318,7 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
               <g key={m.id}>
                 <circle cx={x} cy={y} r={isHov ? 7 : 5}
                   fill={dotColor(m)} fillOpacity={isHov ? 1 : 0.8}
-                  stroke={isHov ? "#0f172a" : "white"} strokeWidth={isHov ? 1.5 : 1}
+                  stroke={isHov ? "#0F1E3D" : "white"} strokeWidth={isHov ? 1.5 : 1}
                   style={{ cursor: "pointer" }}
                   onMouseEnter={() => setHovered(m)}
                   onMouseLeave={() => setHovered(null)} />
@@ -1328,17 +1332,17 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
             const ty = y < 110 ? y + 10 : y - 110
             return (
               <g>
-                <rect x={tx} y={ty} width={265} height={104} rx={6} fill="#0f172a" fillOpacity={0.93} />
+                <rect x={tx} y={ty} width={265} height={104} rx={6} fill="#0F1E3D" fillOpacity={0.93} />
                 <text x={tx + 14} y={ty + 24} fontSize={16} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">
                   {truncate(hovered.name, 24)}
                 </text>
-                <text x={tx + 14} y={ty + 44} fontSize={14} fill="#94a3b8" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 44} fontSize={14} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">
                   {hovered.org} {hovered.open_weight ? "(open)" : "(closed)"}
                 </text>
-                <text x={tx + 14} y={ty + 68} fontSize={14} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 68} fontSize={14} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
                   Intelligence: {hovered.intelligence_index?.toFixed(1)}
                 </text>
-                <text x={tx + 14} y={ty + 88} fontSize={13} fill="#cbd5e1" fontFamily="ui-sans-serif, system-ui">
+                <text x={tx + 14} y={ty + 88} fontSize={13} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
                   Speed: {hovered.tokens_per_sec?.toFixed(0)} tokens/sec
                 </text>
               </g>
@@ -1346,13 +1350,13 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
           })()}
 
           <text x={PAD_L + plotW / 2} y={H - 8} textAnchor="middle"
-            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
+            fontSize={11} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">Intelligence Index</text>
           <text x={14} y={PAD_T + plotH / 2} textAnchor="middle"
             transform={`rotate(-90, 14, ${PAD_T + plotH / 2})`}
-            fontSize={11} fill="#64748b" fontFamily="ui-sans-serif, system-ui">Output speed (tokens per second)</text>
+            fontSize={11} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">Output speed (tokens per second)</text>
 
-          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
-          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#94a3b8" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#8E97AC" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#8E97AC" strokeWidth={1} />
         </svg>
       </div>
     </div>
@@ -1364,8 +1368,8 @@ function SpeedVsIntelligence({ models, inner }: { models: ModelRecord[]; inner?:
 function MetricStat({ label, value }: { label: string; value: string }) {
   return (
     <div>
-      <div className="text-xs text-slate-400 leading-tight">{label}</div>
-      <div className="text-base font-semibold text-slate-800 mt-0.5 tabular-nums">{value}</div>
+      <div className="text-xs text-[var(--text-tertiary)] leading-tight">{label}</div>
+      <div className="text-base font-semibold text-[var(--text-primary)] mt-0.5 tabular-nums">{value}</div>
     </div>
   )
 }
@@ -1391,13 +1395,13 @@ function ScatterSection({ models }: { models: ModelRecord[] }) {
   const closedPrice = avg(top10Closed.filter(m => m.price_blended != null && m.price_blended > 0).map(m => m.price_blended!))
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] overflow-hidden">
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] overflow-hidden">
       {/* Metrics header */}
-      <div className="px-5 py-4 grid grid-cols-2 gap-6 divide-x divide-slate-200 bg-slate-50">
+      <div className="px-5 py-4 grid grid-cols-2 gap-6 divide-x divide-slate-200 bg-[var(--bg-base)]">
         <div>
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-violet-400 shrink-0" />
-            <span className="text-xs font-semibold text-slate-700">Open-weight — top 10</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-amber)] shrink-0" />
+            <span className="text-xs font-semibold text-[var(--text-primary)]">Open-weight — top 10</span>
           </div>
           <div className="grid grid-cols-3 gap-4">
             <MetricStat label="Avg Intelligence" value={openIntel != null ? openIntel.toFixed(1) : "n/a"} />
@@ -1407,8 +1411,8 @@ function ScatterSection({ models }: { models: ModelRecord[] }) {
         </div>
         <div className="pl-6">
           <div className="flex items-center gap-2 mb-3">
-            <span className="w-2.5 h-2.5 rounded-full bg-slate-400 shrink-0" />
-            <span className="text-xs font-semibold text-slate-700">Closed — top 10</span>
+            <span className="w-2.5 h-2.5 rounded-full bg-[var(--text-tertiary)] shrink-0" />
+            <span className="text-xs font-semibold text-[var(--text-primary)]">Closed — top 10</span>
           </div>
           <div className="grid grid-cols-3 gap-4">
             <MetricStat label="Avg Intelligence" value={closedIntel != null ? closedIntel.toFixed(1) : "n/a"} />
@@ -1417,7 +1421,7 @@ function ScatterSection({ models }: { models: ModelRecord[] }) {
           </div>
         </div>
       </div>
-      <div className="border-t border-slate-100" />
+      <div className="border-t border-[var(--border-subtle)]" />
       <div className="grid grid-cols-2 divide-x divide-slate-100">
         <CostScatter models={models} inner />
         <SpeedVsIntelligence models={models} inner />
@@ -1445,16 +1449,16 @@ function GeographyChart({ models }: { models: ModelRecord[] }) {
   const maxTotal = Math.max(...sorted.map(d => d.total), 1)
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
-      <h3 className="text-sm font-semibold text-slate-700">Geographic Distribution</h3>
-      <p className="text-xs text-slate-400 mt-0.5">Models by country of origin, split by open-weight vs. proprietary.</p>
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
+      <h3 className="text-sm font-semibold text-[var(--text-primary)]">Geographic Distribution</h3>
+      <p className="text-xs text-[var(--text-tertiary)] mt-0.5">Models by country of origin, split by open-weight vs. proprietary.</p>
 
       <div className="flex items-center gap-4 mt-3 mb-4">
-        <span className="flex items-center gap-1.5 text-xs text-slate-500">
-          <span className="w-2.5 h-2.5 rounded-sm bg-slate-300 inline-block" /> Closed / proprietary
+        <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+          <span className="w-2.5 h-2.5 rounded-sm bg-[var(--border-medium)] inline-block" /> Closed / proprietary
         </span>
-        <span className="flex items-center gap-1.5 text-xs text-slate-500">
-          <span className="w-2.5 h-2.5 rounded-sm bg-violet-400 inline-block" /> Open-weight
+        <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+          <span className="w-2.5 h-2.5 rounded-sm bg-[var(--accent-amber)] inline-block" /> Open-weight
         </span>
       </div>
 
@@ -1464,22 +1468,22 @@ function GeographyChart({ models }: { models: ModelRecord[] }) {
           const openW   = (d.open   / maxTotal) * 100
           return (
             <div key={d.country} className="flex items-center gap-3">
-              <span className="text-xs text-slate-600 w-32 shrink-0 text-right font-medium">{d.country}</span>
-              <div className="flex-1 flex rounded overflow-hidden h-6 bg-slate-50">
+              <span className="text-xs text-[var(--text-secondary)] w-32 shrink-0 text-right font-medium">{d.country}</span>
+              <div className="flex-1 flex rounded overflow-hidden h-6 bg-[var(--bg-base)]">
                 {d.closed > 0 && (
-                  <div className="bg-slate-200 flex items-center justify-center text-[10px] font-medium text-slate-500 shrink-0"
+                  <div className="bg-[var(--bg-subtle)] flex items-center justify-center text-[10px] font-medium text-[var(--text-secondary)] shrink-0"
                     style={{ width: `${closedW}%` }}>
                     {closedW > 7 ? d.closed : ""}
                   </div>
                 )}
                 {d.open > 0 && (
-                  <div className="bg-violet-300 flex items-center justify-center text-[10px] font-medium text-violet-700 shrink-0"
+                  <div className="bg-[var(--accent-amber)]/50 flex items-center justify-center text-[10px] font-medium text-[var(--accent-amber)] shrink-0"
                     style={{ width: `${openW}%` }}>
                     {openW > 7 ? d.open : ""}
                   </div>
                 )}
               </div>
-              <span className="text-xs font-semibold text-slate-700 w-8 tabular-nums text-right">{d.total}</span>
+              <span className="text-xs font-semibold text-[var(--text-primary)] w-8 tabular-nums text-right">{d.total}</span>
             </div>
           )
         })}
@@ -1502,9 +1506,9 @@ function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
   const tabLabel = (k: string) => k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
-      <h3 className="text-sm font-semibold text-slate-700">TrueSkill Domain Rankings</h3>
-      <p className="text-xs text-slate-400 mt-0.5">
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
+      <h3 className="text-sm font-semibold text-[var(--text-primary)]">TrueSkill Domain Rankings</h3>
+      <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
         Rankings from pairwise head-to-head comparisons across {tabs.length} domains (source: LLM Stats).
         A higher score means the model consistently outperformed peers in that domain.
         Bar widths show the relative performance gap within the selected domain only.
@@ -1515,8 +1519,8 @@ function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
           <button key={tab} onClick={() => setActive(tab)}
             className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
               active === tab
-                ? "bg-violet-600 text-white shadow-sm"
-                : "bg-slate-100 text-slate-500 hover:bg-slate-200 hover:text-slate-700"
+                ? "bg-[var(--accent-amber)] text-white shadow-sm"
+                : "bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:bg-[var(--bg-subtle)] hover:text-[var(--text-primary)]"
             }`}>
             {tabLabel(tab)}
           </button>
@@ -1529,24 +1533,24 @@ function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
           const barPct = Math.max(8, Math.round(rel * 100))
           return (
             <div key={m.model_id} className="flex items-center gap-3">
-              <span className="text-[11px] tabular-nums text-slate-400 w-5 text-right shrink-0 font-semibold">{m.rank}</span>
+              <span className="text-[11px] tabular-nums text-[var(--text-tertiary)] w-5 text-right shrink-0 font-semibold">{m.rank}</span>
               <div className="flex-1 min-w-0">
                 <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-medium text-slate-800 truncate">{m.model_name}</span>
+                  <span className="text-xs font-medium text-[var(--text-primary)] truncate">{m.model_name}</span>
                   {m.open_weight && (
-                    <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded-full bg-violet-50 text-violet-600 font-medium border border-violet-100">open</span>
+                    <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded-full bg-[var(--accent-amber-bg)] text-[var(--accent-amber)] font-medium border border-[var(--accent-amber-bg)]">open</span>
                   )}
                   {m.min_input_price != null && m.min_input_price > 0 && (
-                    <span className="shrink-0 text-[10px] text-slate-400 ml-auto tabular-nums">
+                    <span className="shrink-0 text-[10px] text-[var(--text-tertiary)] ml-auto tabular-nums">
                       ${(m.min_input_price / 1_000_000).toFixed(2)}/1M
                     </span>
                   )}
                 </div>
-                <div className="h-1.5 bg-slate-100 rounded-full overflow-hidden">
-                  <div className="h-full bg-violet-500 rounded-full" style={{ width: `${barPct}%` }} />
+                <div className="h-1.5 bg-[var(--bg-elevated)] rounded-full overflow-hidden">
+                  <div className="h-full bg-[var(--accent-amber)] rounded-full" style={{ width: `${barPct}%` }} />
                 </div>
               </div>
-              <span className="text-[11px] tabular-nums text-slate-500 w-12 text-right shrink-0 font-mono">
+              <span className="text-[11px] tabular-nums text-[var(--text-secondary)] w-12 text-right shrink-0 font-mono">
                 {m.score.toFixed(3)}
               </span>
             </div>
@@ -1562,9 +1566,19 @@ function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
 export default function FrontierModels({ data, builtAt }: { data: ModelsData; builtAt: string | null }) {
   return (
     <div className="w-full">
-      <div className="flex items-start justify-between gap-4 mb-4">
+      <div className="flex items-start justify-between gap-4 mb-6">
         <div>
-          <h1 className="text-xl font-semibold text-slate-900 tracking-tight">Frontier Model Tracking</h1>
+          <h1
+            style={{
+              fontSize: 28,
+              fontWeight: 600,
+              letterSpacing: "-0.015em",
+              color: "var(--text-primary)",
+              lineHeight: 1.15,
+            }}
+          >
+            Model Benchmarks
+          </h1>
           <MetadataStrip data={data} builtAt={builtAt} />
         </div>
         <RefreshButton builtAt={builtAt} />
@@ -1572,7 +1586,7 @@ export default function FrontierModels({ data, builtAt }: { data: ModelsData; bu
 
       <div className="flex gap-6 items-start">
         {/* LEFT: sticky leaderboard sidebar */}
-        <div className="w-72 xl:w-80 shrink-0 sticky top-[3.75rem]">
+        <div className="w-72 xl:w-80 shrink-0 sticky top-[88px]">
           <SideLeaderboard models={data.models} />
         </div>
 

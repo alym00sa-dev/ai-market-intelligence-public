@@ -1,13 +1,5 @@
 import type { Job } from "../types"
-
-const CATEGORY_COLORS: Record<string, string> = {
-  engineering:  "bg-blue-500",
-  sales_gtm:    "bg-emerald-500",
-  research:     "bg-violet-500",
-  operations:   "bg-amber-400",
-  other:        "bg-slate-300",
-  unclassified: "bg-slate-200",
-}
+import { SectionLabel, StatusPill, type PillTone } from "./ds"
 
 const CATEGORY_LABELS: Record<string, string> = {
   engineering:  "Engineering",
@@ -18,37 +10,69 @@ const CATEGORY_LABELS: Record<string, string> = {
   unclassified: "Unclassified",
 }
 
+const CATEGORY_TONE: Record<string, PillTone> = {
+  engineering:  "blue",
+  research:     "amber",
+  sales_gtm:    "green",
+  operations:   "muted",
+  other:        "muted",
+  unclassified: "muted",
+}
+
+const CATEGORY_COLOR: Record<string, string> = {
+  engineering:  "var(--accent-blue)",
+  research:     "var(--accent-amber)",
+  sales_gtm:    "var(--accent-green)",
+  operations:   "#6B5BC9",                // muted indigo — distinct from Other
+  other:        "#BCC4D2",                // light slate
+  unclassified: "var(--border-subtle)",
+}
+
+const CATEGORY_ORDER = ["engineering", "research", "sales_gtm", "operations", "other", "unclassified"]
+
 const DISPLAY_NAMES: Record<string, string> = {
   "Amazon AGI":         "Amazon",
   "Microsoft Research": "Microsoft",
   "Google DeepMind":    "Google",
 }
 
-const COMPANY_COLORS: Record<string, string> = {
-  "Anthropic":     "#6366f1",
-  "OpenAI":        "#10b981",
-  "Google":        "#3b82f6",
-  "xAI":           "#f59e0b",
-  "Mistral AI":    "#ec4899",
-  "Cohere":        "#8b5cf6",
-  "NVIDIA":        "#22c55e",
-  "Amazon":        "#f97316",
-  "Microsoft":     "#0ea5e9",
-  "Inflection AI": "#06b6d4",
-  "Stability AI":  "#a855f7",
-  "Moonshot AI":   "#ef4444",
-  "ByteDance":     "#f43f5e",
+// Brand-aligned company colors. Used to tint leader cards so it reads
+// at-a-glance who's winning each bucket.
+const COMPANY_COLOR: Record<string, string> = {
+  "Anthropic":     "#D97757",
+  "OpenAI":        "#10A37F",
+  "Google":        "#4285F4",
+  "xAI":           "#1F1F1F",
+  "Meta":          "#1877F2",
+  "Microsoft":     "#00A4EF",
+  "Amazon":        "#FF9900",
+  "NVIDIA":        "#76B900",
+  "Mistral AI":    "#FF6B35",
+  "Cohere":        "#39594D",
+  "Inflection AI": "#06B6D4",
+  "Stability AI":  "#A855F7",
+  "Moonshot AI":   "#EF4444",
+  "ByteDance":     "#F43F5E",
 }
 
 function displayName(raw: string): string {
   return DISPLAY_NAMES[raw] ?? raw
 }
 
-function companyColor(raw: string): string {
-  return COMPANY_COLORS[displayName(raw)] ?? "#94a3b8"
+function companyColor(name: string): string {
+  return COMPANY_COLOR[name] ?? "var(--accent-blue)"
 }
 
-// ── Who's Leading the Charge ──────────────────────────────────────────────────
+// Add alpha to a hex color → rgba string. Falls back to css var unchanged.
+function tint(color: string, alpha: number): string {
+  if (color.startsWith("#") && color.length === 7) {
+    const r = parseInt(color.slice(1, 3), 16)
+    const g = parseInt(color.slice(3, 5), 16)
+    const b = parseInt(color.slice(5, 7), 16)
+    return `rgba(${r}, ${g}, ${b}, ${alpha})`
+  }
+  return color
+}
 
 type LeaderBucket = {
   label: string
@@ -88,8 +112,6 @@ function computeLeaders(jobs: Job[]): LeaderBucket[] {
   })
 }
 
-// ── Main component ────────────────────────────────────────────────────────────
-
 type Props = {
   totalJobs: number
   companyCount: number
@@ -97,81 +119,103 @@ type Props = {
   scrapedAt?: string | null
 }
 
-export default function StatsBar({ totalJobs, companyCount, jobs, scrapedAt }: Props) {
+export default function StatsBar({ totalJobs, jobs }: Props) {
   const byCategory: Record<string, number> = {}
   jobs.forEach((job) => {
     const cat = job.category ?? "unclassified"
     byCategory[cat] = (byCategory[cat] ?? 0) + 1
   })
 
-  const categoryOrder = ["engineering", "research", "sales_gtm", "operations", "other", "unclassified"]
-  const active = categoryOrder.filter((c) => byCategory[c] > 0)
-
+  const active = CATEGORY_ORDER.filter((c) => (byCategory[c] ?? 0) > 0)
   const leaders = computeLeaders(jobs).filter((b) => b.hasData)
 
   return (
-    <div>
-      {/* Single dark card: breakdown bar + who's leading */}
-      <div className="bg-slate-900 rounded-2xl px-6 py-5 space-y-5">
-        {/* Breakdown bar */}
-        <div>
-          <div className="flex rounded-full overflow-hidden h-2 mb-3">
-            {active.map((cat) => (
-              <div
-                key={cat}
-                className={CATEGORY_COLORS[cat] ?? "bg-slate-300"}
-                style={{ width: `${(byCategory[cat] / totalJobs) * 100}%` }}
-                title={`${CATEGORY_LABELS[cat]}: ${byCategory[cat]}`}
-              />
-            ))}
-          </div>
-          <div className="flex flex-wrap gap-x-5 gap-y-1.5">
-            {active.map((cat) => {
-              const pct = Math.round((byCategory[cat] / totalJobs) * 100)
-              return (
-                <span key={cat} className="inline-flex items-center gap-1.5 text-[11px]">
-                  <span className={`inline-block w-2 h-2 rounded-full ${CATEGORY_COLORS[cat] ?? "bg-slate-300"}`} />
-                  <span className="text-slate-400">{CATEGORY_LABELS[cat]}</span>
-                  <span className="text-white font-medium tabular-nums">{pct}%</span>
-                  <span className="text-slate-600">·</span>
-                  <span className="text-slate-400 tabular-nums">{byCategory[cat].toLocaleString()}</span>
+    <div className="space-y-8 py-2">
+
+      {/* Category breakdown — centered, no card */}
+      <div className="flex flex-col items-center gap-3">
+        <SectionLabel className="text-center">Hiring Breakdown</SectionLabel>
+
+        <div className="flex rounded-full overflow-hidden h-2 w-full max-w-[1400px]">
+          {active.map((cat) => (
+            <div
+              key={cat}
+              title={`${CATEGORY_LABELS[cat]}: ${byCategory[cat]}`}
+              style={{
+                background: CATEGORY_COLOR[cat],
+                width: `${(byCategory[cat] / totalJobs) * 100}%`,
+              }}
+            />
+          ))}
+        </div>
+
+        <div className="flex flex-wrap justify-center gap-2 w-full max-w-[1400px]">
+          {active.map((cat) => {
+            const count = byCategory[cat]
+            const pct = Math.round((count / totalJobs) * 100)
+            return (
+              <StatusPill key={cat} tone={CATEGORY_TONE[cat] ?? "muted"}>
+                {CATEGORY_LABELS[cat] ?? cat}
+                <span
+                  className="font-mono"
+                  style={{ marginLeft: 6, opacity: 0.7, letterSpacing: "0.02em" }}
+                >
+                  {pct}%
                 </span>
+              </StatusPill>
+            )
+          })}
+        </div>
+      </div>
+
+      {leaders.length > 0 && (
+        <div className="flex flex-col items-center gap-3">
+          <SectionLabel className="text-center">Who&rsquo;s Leading the Charge</SectionLabel>
+          <div
+            className="grid gap-4 w-full max-w-[1400px]"
+            style={{ gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))" }}
+          >
+            {leaders.map(({ label, leader, count }) => {
+              const color = companyColor(leader)
+              return (
+                <div
+                  key={label}
+                  className="flex flex-col gap-1 rounded-lg px-3 py-2.5"
+                  style={{
+                    background: tint(color, 0.10),
+                    border: `1px solid ${tint(color, 0.25)}`,
+                  }}
+                >
+                  <span
+                    className="text-[10px] font-semibold uppercase tracking-widest"
+                    style={{ color: "var(--text-tertiary)" }}
+                  >
+                    {label}
+                  </span>
+                  <div className="flex items-center gap-1.5">
+                    <span
+                      className="w-2 h-2 rounded-full shrink-0"
+                      style={{ background: color }}
+                    />
+                    <span
+                      className="text-[13px] font-medium truncate"
+                      style={{ color: "var(--text-primary)" }}
+                    >
+                      {leader}
+                    </span>
+                  </div>
+                  <span
+                    className="font-mono text-[18px] tabular-nums leading-none"
+                    style={{ color, fontWeight: 600 }}
+                  >
+                    {count}
+                  </span>
+                </div>
               )
             })}
           </div>
         </div>
-
-        {/* Divider */}
-        {leaders.length > 0 && <div className="border-t border-white/10" />}
-
-        {/* Who's leading the charge */}
-        {leaders.length > 0 && (
-          <div>
-            <p className="text-[11px] font-semibold uppercase tracking-widest text-slate-500 mb-3">
-              Who&rsquo;s leading the charge
-            </p>
-            <div className="flex gap-2.5">
-              {leaders.map(({ label, leader, count }) => {
-                const color = companyColor(leader)
-                return (
-                  <div
-                    key={label}
-                    className="flex-1 flex flex-col gap-2 rounded-xl px-4 py-3.5 border border-white/10 hover:border-white/20 transition-colors"
-                    style={{ backgroundColor: `${color}18` }}
-                  >
-                    <span className="text-[10px] font-semibold uppercase tracking-wider text-slate-500 truncate">{label}</span>
-                    <div className="flex items-center gap-1.5">
-                      <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: color }} />
-                      <span className="text-[12px] font-semibold text-white truncate">{leader}</span>
-                    </div>
-                    <span className="text-[22px] font-bold tabular-nums leading-none" style={{ color }}>{count}</span>
-                  </div>
-                )
-              })}
-            </div>
-          </div>
-        )}
-      </div>
+      )}
     </div>
   )
 }

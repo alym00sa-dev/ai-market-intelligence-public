@@ -22,28 +22,29 @@ function displayName(raw: string): string {
 }
 
 const COMPANY_COLORS: Record<string, string> = {
-  "Anthropic":  "#6366f1",
-  "OpenAI":     "#10b981",
-  "Google":     "#3b82f6",
-  "xAI":        "#f59e0b",
-  "Mistral AI": "#ec4899",
-  "Cohere":     "#8b5cf6",
-  "NVIDIA":     "#22c55e",
-  "Amazon":     "#f97316",
-  "Microsoft":  "#0ea5e9",
-  "Inflection AI": "#06b6d4",
-  "Stability AI":  "#a855f7",
-  "Moonshot AI":   "#ef4444",
-  "ByteDance":     "#f43f5e",
+  "Anthropic":     "#D97757",
+  "OpenAI":        "#10A37F",
+  "Google":        "#4285F4",
+  "xAI":           "#1F1F1F",
+  "Meta":          "#1877F2",
+  "Microsoft":     "#00A4EF",
+  "Amazon":        "#FF9900",
+  "NVIDIA":        "#76B900",
+  "Mistral AI":    "#FF6B35",
+  "Cohere":        "#39594D",
+  "Inflection AI": "#06B6D4",
+  "Stability AI":  "#A855F7",
+  "Moonshot AI":   "#EF4444",
+  "ByteDance":     "#F43F5E",
 }
 
 const CATEGORY_COLORS: Record<string, string> = {
-  engineering:    "#6366f1",
-  research:       "#8b5cf6",
-  sales_gtm:      "#10b981",
-  operations:     "#f59e0b",
-  other:          "#94a3b8",
-  unclassified:   "#cbd5e1",
+  engineering:    "#2C4D9E",   // accent-blue
+  research:       "#C77F2E",   // accent-amber
+  sales_gtm:      "#2D8F66",   // accent-green
+  operations:     "#6B5BC9",   // muted indigo
+  other:          "#BCC4D2",
+  unclassified:   "#DDE3EC",
 }
 const CATEGORY_LABELS: Record<string, string> = {
   engineering: "Engineering", research: "Research", sales_gtm: "Sales / GTM",
@@ -51,17 +52,35 @@ const CATEGORY_LABELS: Record<string, string> = {
 }
 
 const VERTICAL_COLORS: Record<string, string> = {
-  health_rd:       "#ef4444",
-  health_delivery: "#f97316",
-  agriculture:     "#22c55e",
-  education:       "#3b82f6",
+  health_rd:       "#B83A3A",   // safety/red family
+  health_delivery: "#D97757",   // coral
+  agriculture:     "#2D8F66",   // green
+  education:       "#2C4D9E",   // navy
 }
 const VERTICAL_LABELS: Record<string, string> = {
   health_rd: "Health R&D", health_delivery: "Health Delivery",
   agriculture: "Agriculture", education: "Education",
 }
 
-type ViewMode = "company" | "role" | "vertical"
+const THEME_COLORS: Record<string, string> = {
+  foundation_pretraining: "#2C4D9E", post_training_rl: "#C77F2E", reasoning: "#7C3AED",
+  multimodal: "#0EA5E9", agents_tool_use: "#2D8F66", interpretability: "#DB2777",
+  alignment_safety: "#B83A3A", evals_red_teaming: "#D97706", security_misuse: "#475569",
+  biosecurity_cbrn: "#16A34A", robotics_embodied: "#9333EA", training_infra_compute: "#1F2A5A",
+  inference_serving: "#0891B2", data_pipeline: "#65A30D", product_app_layer: "#E11D48",
+  developer_platform: "#0D9488",
+}
+const THEME_LABELS: Record<string, string> = {
+  foundation_pretraining: "Pretraining", post_training_rl: "Post-training/RL", reasoning: "Reasoning",
+  multimodal: "Multimodal", agents_tool_use: "Agents/Tool-use", interpretability: "Interpretability",
+  alignment_safety: "Alignment & Safety", evals_red_teaming: "Evals/Red-teaming", security_misuse: "Security/Misuse",
+  biosecurity_cbrn: "Biosecurity/CBRN", robotics_embodied: "Robotics/Embodied", training_infra_compute: "Training Infra",
+  inference_serving: "Inference/Serving", data_pipeline: "Data Pipeline", product_app_layer: "Product/App",
+  developer_platform: "Developer Platform",
+}
+
+type ViewMode = "company" | "role" | "vertical" | "theme"
+type DeepColor = "company" | "role" | "theme"
 
 // ── GeoJSON builder ───────────────────────────────────────────────────────────
 
@@ -80,6 +99,7 @@ function buildClusters(jobs: Job[], mode: ViewMode): JobCluster[] {
 
   for (const job of jobs) {
     if (mode === "vertical" && !job.vertical) continue
+    if (mode === "theme" && !job.theme) continue
     const coords = cityCoords(job.location)
     if (!coords) continue
 
@@ -87,13 +107,15 @@ function buildClusters(jobs: Job[], mode: ViewMode): JobCluster[] {
     const rawKey =
       mode === "company"  ? job.company :
       mode === "role"     ? (job.category ?? "unclassified") :
+      mode === "theme"    ? (job.theme ?? "none") :
                             (job.vertical ?? "none")
     const colorKey = mode === "company" ? displayName(rawKey) : rawKey
 
     const color =
-      mode === "company"  ? (COMPANY_COLORS[colorKey] ?? "#94a3b8") :
-      mode === "role"     ? (CATEGORY_COLORS[colorKey] ?? "#94a3b8") :
-                            (VERTICAL_COLORS[colorKey] ?? "#cbd5e1")
+      mode === "company"  ? (COMPANY_COLORS[colorKey] ?? "#8E97AC") :
+      mode === "role"     ? (CATEGORY_COLORS[colorKey] ?? "#8E97AC") :
+      mode === "theme"    ? (THEME_COLORS[colorKey] ?? "#8E97AC") :
+                            (VERTICAL_COLORS[colorKey] ?? "#DDE3EC")
 
     const key = `${city}::${colorKey}`
     if (!groups[key]) {
@@ -156,12 +178,13 @@ function colorExpression(mode: ViewMode): maplibregl.ExpressionSpecification {
   const entries =
     mode === "company"  ? Object.entries(COMPANY_COLORS) :
     mode === "role"     ? Object.entries(CATEGORY_COLORS) :
+    mode === "theme"    ? Object.entries(THEME_COLORS) :
                           Object.entries(VERTICAL_COLORS)
 
   return [
     "match", ["get", "colorKey"],
     ...entries.flatMap(([k, v]) => [k, v]),
-    "#94a3b8",
+    "#8E97AC",
   ] as unknown as maplibregl.ExpressionSpecification
 }
 
@@ -178,8 +201,17 @@ function Legend({
 }) {
   if (options.length === 0) return null
   return (
-    <div className="absolute bottom-8 left-3 z-10 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/80 shadow-sm px-3 py-2.5 max-w-[260px]">
-      <p className="text-[9px] font-semibold uppercase tracking-widest text-slate-400 mb-2">
+    <div
+      className="absolute bottom-8 left-3 z-10 backdrop-blur-sm rounded-xl shadow-sm px-3 py-2.5 max-w-[260px]"
+      style={{
+        background: "rgba(255, 255, 255, 0.92)",
+        border: "1px solid var(--border-subtle)",
+      }}
+    >
+      <p
+        className="text-[9px] font-semibold uppercase tracking-widest mb-2"
+        style={{ color: "var(--text-tertiary)" }}
+      >
         Click to filter
       </p>
       <div className="flex flex-wrap gap-x-3 gap-y-1.5">
@@ -201,7 +233,10 @@ function Legend({
                   boxShadow: active ? `0 0 0 2px white, 0 0 0 3px ${color}` : "none",
                 }}
               />
-              <span className={`text-[10px] font-medium ${active ? "text-slate-900" : "text-slate-600"}`}>
+              <span
+                className="text-[10px] font-medium"
+                style={{ color: active ? "var(--text-primary)" : "var(--text-secondary)" }}
+              >
                 {label}
               </span>
             </button>
@@ -224,27 +259,27 @@ function buildGroupSection(props: Record<string, unknown>, showCity: boolean, pi
   const header = showCity
     ? `<div style="display:flex;align-items:center;gap:8px;margin-bottom:6px;">
         <span style="width:9px;height:9px;border-radius:50%;background:${color};flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:13px;font-weight:600;color:#1e293b;">${city}</span>
-        <span style="margin-left:auto;font-size:11px;color:#94a3b8;white-space:nowrap;">${count} role${count !== 1 ? "s" : ""}</span>
+        <span style="font-size:13px;font-weight:600;color:#0F1E3D;">${city}</span>
+        <span style="margin-left:auto;font-size:11px;color:#8E97AC;white-space:nowrap;">${count} role${count !== 1 ? "s" : ""}</span>
       </div>`
-    : `<div style="display:flex;align-items:center;gap:7px;padding-top:10px;margin-top:10px;border-top:1px solid #e2e8f0;">
+    : `<div style="display:flex;align-items:center;gap:7px;padding-top:10px;margin-top:10px;border-top:1px solid #DDE3EC;">
         <span style="width:8px;height:8px;border-radius:50%;background:${color};flex-shrink:0;display:inline-block;"></span>
-        <span style="font-size:12px;font-weight:600;color:#334155;">${colorKey}</span>
-        <span style="margin-left:auto;font-size:10px;color:#94a3b8;white-space:nowrap;">${count} role${count !== 1 ? "s" : ""}</span>
+        <span style="font-size:12px;font-weight:600;color:#4A5878;">${colorKey}</span>
+        <span style="margin-left:auto;font-size:10px;color:#8E97AC;white-space:nowrap;">${count} role${count !== 1 ? "s" : ""}</span>
       </div>`
 
   const limit = pinned ? samples.length : 3
   const jobRows = samples.slice(0, limit).map((j) => `
-    <div style="padding-top:6px;margin-top:6px;border-top:1px solid #f8fafc;">
-      <div style="font-size:11px;font-weight:500;color:#1e293b;line-height:1.3;">${j.title}</div>
-      <div style="font-size:10px;color:#94a3b8;margin-top:1px;">${j.company}</div>
-      ${j.what ? `<div style="font-size:10px;color:#64748b;margin-top:3px;line-height:1.4;">${j.what.slice(0, 120)}${j.what.length > 120 ? "…" : ""}</div>` : ""}
-      ${j.url ? `<a href="${j.url}" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#6366f1;text-decoration:none;display:inline-block;margin-top:3px;">View posting →</a>` : ""}
+    <div style="padding-top:6px;margin-top:6px;border-top:1px solid #EDF0F6;">
+      <div style="font-size:11px;font-weight:500;color:#0F1E3D;line-height:1.3;">${j.title}</div>
+      <div style="font-size:10px;color:#8E97AC;margin-top:1px;">${j.company}</div>
+      ${j.what ? `<div style="font-size:10px;color:#4A5878;margin-top:3px;line-height:1.4;">${j.what.slice(0, 120)}${j.what.length > 120 ? "…" : ""}</div>` : ""}
+      ${j.url ? `<a href="${j.url}" target="_blank" rel="noopener noreferrer" style="font-size:10px;color:#2C4D9E;text-decoration:none;display:inline-block;margin-top:3px;">View posting →</a>` : ""}
     </div>
   `).join("")
 
   const more = !pinned && count > 3
-    ? `<div style="font-size:10px;color:#94a3b8;padding-top:5px;margin-top:5px;">+${count - 3} more — click dot to expand</div>`
+    ? `<div style="font-size:10px;color:#8E97AC;padding-top:5px;margin-top:5px;">+${count - 3} more — click dot to expand</div>`
     : ""
 
   return `${header}${jobRows}${more}`
@@ -255,7 +290,7 @@ function buildPopupHTML(allProps: Record<string, unknown>[], pinned = false): st
   const totalCount = allProps.reduce((s, p) => s + (p.count as number), 0)
 
   const cityHeader = allProps.length > 1
-    ? `<div style="font-size:12px;font-weight:600;color:#64748b;margin-bottom:4px;">📍 ${city} · ${totalCount} total roles</div>`
+    ? `<div style="font-size:12px;font-weight:600;color:#4A5878;margin-bottom:4px;">📍 ${city} · ${totalCount} total roles</div>`
     : ""
 
   const sections = allProps.map((p, i) => buildGroupSection(p, i === 0 && allProps.length === 1, pinned)).join("")
@@ -274,46 +309,81 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
   const [mode, setMode]       = useState<ViewMode>("company")
   const [mapReady, setMapReady] = useState(false)
   const [filters, setFilters] = useState<Set<string>>(new Set())
+  const [deepColor, setDeepColor] = useState<DeepColor>("company")
+  const [subFilters, setSubFilters] = useState<Set<string>>(new Set())
 
-  // Clear filters when switching modes
-  useEffect(() => { setFilters(new Set()) }, [mode])
+  // Deep-dive: once one OR MORE companies are filtered in company mode, you can recolor
+  // the filtered set by role/theme (the cross-cut the siloed modes can't show) while
+  // keeping the multi-company filter intact. deepColor="company" = normal company colors.
+  const focusMode = mode === "company" && filters.size >= 1
+  const colorBy: ViewMode = focusMode ? deepColor : mode
 
-  function toggleFilter(key: string) {
-    setFilters((prev) => {
+  // Clear filters when switching top-level modes; clear sub-filters when focus changes.
+  useEffect(() => { setFilters(new Set()); setDeepColor("company") }, [mode])
+  useEffect(() => { setSubFilters(new Set()) }, [deepColor, focusMode])
+
+  function makeToggle(setter: React.Dispatch<React.SetStateAction<Set<string>>>) {
+    return (key: string) => setter((prev) => {
       const next = new Set(prev)
       if (next.has(key)) next.delete(key)
       else next.add(key)
       return next
     })
   }
+  const toggleFilter = makeToggle(setFilters)
+  const toggleSubFilter = makeToggle(setSubFilters)
 
+  // Jobs in the currently-filtered companies (pool for role/theme sub-breakdowns).
+  const companyPool = useMemo(
+    () => (filters.size > 0 ? jobs.filter((j) => filters.has(displayName(j.company))) : jobs),
+    [jobs, filters],
+  )
+
+  // Legend reflects the active coloring dimension. In a role/theme deep-dive it shows
+  // the sub-categories (and filters them); otherwise it shows + filters companies.
   const filterOptions = useMemo(() => {
-    if (mode === "company") {
+    if (colorBy === "company") {
       const seen = [...new Set(jobs.map((j) => displayName(j.company)))].sort()
-      return seen.map((c) => ({ key: c, label: c, color: COMPANY_COLORS[c] ?? "#94a3b8" }))
+      return seen.map((c) => ({ key: c, label: c, color: COMPANY_COLORS[c] ?? "#8E97AC" }))
     }
-    if (mode === "role") {
-      const seen = new Set<string>(jobs.map((j) => j.category ?? "unclassified"))
-      return Object.keys(CATEGORY_COLORS)
-        .filter((k) => seen.has(k))
+    if (colorBy === "role") {
+      const seen = new Set<string>(companyPool.map((j) => j.category ?? "unclassified"))
+      return Object.keys(CATEGORY_COLORS).filter((k) => seen.has(k))
         .map((k) => ({ key: k, label: CATEGORY_LABELS[k] ?? k, color: CATEGORY_COLORS[k] }))
     }
+    if (colorBy === "theme") {
+      const seen = new Set<string>(companyPool.filter((j) => j.theme).map((j) => j.theme as string))
+      return Object.keys(THEME_COLORS).filter((k) => seen.has(k))
+        .map((k) => ({ key: k, label: THEME_LABELS[k] ?? k, color: THEME_COLORS[k] }))
+    }
     const seen = new Set<string>(jobs.filter((j) => j.vertical).map((j) => j.vertical as string))
-    return Object.keys(VERTICAL_COLORS)
-      .filter((k) => seen.has(k))
+    return Object.keys(VERTICAL_COLORS).filter((k) => seen.has(k))
       .map((k) => ({ key: k, label: VERTICAL_LABELS[k] ?? k, color: VERTICAL_COLORS[k] }))
-  }, [mode, jobs])
+  }, [colorBy, jobs, companyPool])
 
   const filteredJobs = useMemo(() => {
-    if (filters.size === 0) return jobs
-    return jobs.filter((job) => {
-      if (mode === "company") return filters.has(displayName(job.company))
-      if (mode === "role")    return filters.has(job.category ?? "unclassified")
-      return job.vertical != null && filters.has(job.vertical as string)
-    })
-  }, [jobs, filters, mode])
+    let result = jobs
+    // Primary filter is always by company in company mode (multi-select).
+    if (filters.size > 0) {
+      result = result.filter((job) => {
+        if (mode === "company") return filters.has(displayName(job.company))
+        if (mode === "role")    return filters.has(job.category ?? "unclassified")
+        if (mode === "theme")   return job.theme != null && filters.has(job.theme)
+        return job.vertical != null && filters.has(job.vertical as string)
+      })
+    }
+    // Deep-dive sub-filter on the role/theme dimension.
+    if (focusMode && (colorBy === "role" || colorBy === "theme") && subFilters.size > 0) {
+      result = result.filter((job) => {
+        if (colorBy === "role")  return subFilters.has(job.category ?? "unclassified")
+        return job.theme != null && subFilters.has(job.theme)
+      })
+    }
+    return result
+  }, [jobs, filters, mode, focusMode, subFilters, colorBy])
 
-  const clusters = buildClusters(filteredJobs, mode)
+  const clusters = buildClusters(filteredJobs, colorBy)
+  const legendIsSub = focusMode && (colorBy === "role" || colorBy === "theme")
 
   // ── Init map ────────────────────────────────────────────────────────────────
   useEffect(() => {
@@ -453,8 +523,8 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
     const src = map.getSource("jobs") as maplibregl.GeoJSONSource | undefined
     if (!src) return
     src.setData(clustersToGeoJSON(clusters) as GeoJSON.FeatureCollection)
-    map.setPaintProperty("jobs-circles", "circle-color", colorExpression(mode))
-  }, [mode, filters, mapReady, clusters])
+    map.setPaintProperty("jobs-circles", "circle-color", colorExpression(colorBy))
+  }, [colorBy, mapReady, clusters])
 
   const tabs: { key: ViewMode; label: string }[] = [
     { key: "company",  label: "By Company" },
@@ -470,32 +540,96 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
       <div ref={containerRef} className="w-full h-full" />
 
       {/* Mode tabs overlay — top left */}
-      <div className="absolute top-3 left-3 z-10 flex items-center gap-1 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/80 shadow-sm px-2 py-1.5">
-        {tabs.map((t) => (
-          <button
-            key={t.key}
-            onClick={() => setMode(t.key)}
-            className={`px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors ${
-              mode === t.key
-                ? "bg-slate-900 text-white"
-                : "text-slate-500 hover:text-slate-700 hover:bg-slate-100"
-            }`}
-          >
-            {t.label}
-          </button>
-        ))}
+      <div
+        className="absolute top-3 left-3 z-10 flex items-center gap-1 backdrop-blur-sm rounded-xl shadow-sm px-2 py-1.5"
+        style={{
+          background: "rgba(255, 255, 255, 0.92)",
+          border: "1px solid var(--border-subtle)",
+        }}
+      >
+        {tabs.map((t) => {
+          const active = mode === t.key
+          return (
+            <button
+              key={t.key}
+              onClick={() => setMode(t.key)}
+              className="px-2.5 py-1 rounded-lg text-[11px] font-medium transition-colors"
+              style={
+                active
+                  ? { background: "var(--accent-blue)", color: "#FFFFFF" }
+                  : { background: "transparent", color: "var(--text-secondary)" }
+              }
+            >
+              {t.label}
+            </button>
+          )
+        })}
       </div>
 
       {/* Role count overlay — top right */}
-      <div className="absolute top-3 right-12 z-10 bg-white/90 backdrop-blur-sm rounded-xl border border-slate-200/80 shadow-sm px-3 py-1.5">
-        <span className="text-[11px] text-slate-500 tabular-nums">
+      <div
+        className="absolute top-3 right-12 z-10 backdrop-blur-sm rounded-xl shadow-sm px-3 py-1.5"
+        style={{
+          background: "rgba(255, 255, 255, 0.92)",
+          border: "1px solid var(--border-subtle)",
+        }}
+      >
+        <span
+          className="text-[11px] font-mono tabular-nums"
+          style={{ color: "var(--text-secondary)" }}
+        >
           {totalShown.toLocaleString()} roles · {clusters.length} locations
-          {mode === "vertical" && <span className="ml-1 text-violet-500"> (vertical only)</span>}
+          {mode === "vertical" && (
+            <span className="ml-1" style={{ color: "var(--accent-amber)" }}>
+              {" "}(vertical only)
+            </span>
+          )}
         </span>
       </div>
 
-      {/* Legend overlay — bottom left (doubles as filter) */}
-      <Legend options={filterOptions} filters={filters} onToggle={toggleFilter} />
+      {/* Deep-dive sub-toggle — appears once one or more companies are filtered */}
+      {focusMode && (
+        <div
+          className="absolute top-14 left-3 z-10 flex items-center gap-2 backdrop-blur-sm rounded-xl shadow-sm px-2.5 py-1.5"
+          style={{ background: "rgba(255, 255, 255, 0.92)", border: "1px solid var(--border-subtle)" }}
+        >
+          <span className="text-[11px] font-semibold" style={{ color: "var(--text-primary)" }}>
+            {filters.size} {filters.size === 1 ? "company" : "companies"}
+          </span>
+          <span className="text-[10px]" style={{ color: "var(--text-tertiary)" }}>color by</span>
+          {(["company", "role", "theme"] as DeepColor[]).map((dc) => {
+            const active = deepColor === dc
+            const label = dc === "company" ? "Company" : dc === "role" ? "Role" : "Theme"
+            return (
+              <button
+                key={dc}
+                onClick={() => setDeepColor(dc)}
+                className="px-2 py-0.5 rounded-md text-[10px] font-medium transition-colors"
+                style={active
+                  ? { background: "var(--accent-blue)", color: "#FFFFFF" }
+                  : { background: "transparent", color: "var(--text-secondary)" }}
+              >
+                {label}
+              </button>
+            )
+          })}
+          <button
+            onClick={() => { setFilters(new Set()); setDeepColor("company") }}
+            className="ml-1 text-[12px] leading-none"
+            style={{ color: "var(--text-tertiary)" }}
+            title="Clear company filter"
+          >
+            ✕
+          </button>
+        </div>
+      )}
+
+      {/* Legend overlay — bottom left (doubles as filter; in a role/theme deep-dive it filters the sub-dimension) */}
+      <Legend
+        options={filterOptions}
+        filters={legendIsSub ? subFilters : filters}
+        onToggle={legendIsSub ? toggleSubFilter : toggleFilter}
+      />
     </div>
   )
 }

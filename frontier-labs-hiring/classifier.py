@@ -1,11 +1,18 @@
 """
 Claude-powered job classifier.
 
-Sends batches of job titles + departments to Claude Haiku and returns:
-  - category:  engineering | sales_gtm | research | operations | other
-  - sub_area:  specific focus area
-  - what:      one sentence on what they're building or selling
-  - tags:      3–5 keyword tags
+Sends batches of job titles + departments + descriptions to Claude and returns:
+  - category:          engineering | research | sales_gtm | operations
+  - sub_area:          specific org function (controlled vocab per category)
+  - what:              one specific sentence on what they build / sell / research
+  - theme:             primary capability/agenda theme (controlled vocab) or null
+  - themes_secondary:  0–2 additional themes (controlled vocab)
+
+`theme` is the strategic-signal dimension: a controlled vocabulary of frontier-AI
+capability areas that we trend week-over-week to detect hiring-agenda shifts
+(e.g. biosecurity → pretraining). It applies mainly to engineering/research roles;
+most sales/ops roles are theme=null. Freeform tags were removed — their 3.5k-string
+uncontrolled vocabulary was unusable for aggregation.
 """
 
 import json
@@ -19,58 +26,92 @@ BATCH_SIZE = 25
 MODEL = "claude-haiku-4-5-20251001"
 API_TIMEOUT = 60  # seconds per request
 
+# ── Controlled theme vocabulary (the signal axis) ─────────────────────────────
+# Keep in sync with track_changes.py / the dashboard. Adding a theme is additive;
+# renaming one breaks week-over-week continuity, so treat the list as stable.
+THEMES = [
+    "foundation_pretraining", "post_training_rl", "reasoning", "multimodal",
+    "agents_tool_use", "interpretability", "alignment_safety", "evals_red_teaming",
+    "security_misuse", "biosecurity_cbrn", "robotics_embodied",
+    "training_infra_compute", "inference_serving", "data_pipeline",
+    "product_app_layer", "developer_platform",
+]
+
 SYSTEM_PROMPT = """You are an expert analyst of AI industry hiring patterns.
 You classify job listings from frontier AI companies with precision."""
 
 CLASSIFICATION_PROMPT = """Classify each of these job listings from AI companies.
 
-## Categories and allowed sub_areas
+## 1. category + sub_area (the org function)
 
 **engineering** — building technical systems
-  sub_areas:
-  - software_engineering: product engineers, backend/frontend/full-stack SWEs, systems engineers, ML-adjacent SWEs, devops, SRE
-  - platform_infra: compute infrastructure, data centers, GPU clusters, networking, cloud platform, data pipelines, ETL
+  - software_engineering: product/backend/frontend/full-stack SWEs, systems, devops, SRE
+  - platform_infra: compute infrastructure, data centers, GPU clusters, networking, cloud, data pipelines
   - hardware: silicon, chips, TPU/GPU design, FPGA, devices, robotics hardware, semiconductor
   - security: security engineering, GRC, infosec, vulnerability research
-  - product_management: product managers (technical or outbound), program managers embedded in product/eng
+  - product_management: product managers (technical or outbound), PMs embedded in product/eng
 
 **research** — scientific investigation
-  sub_areas:
-  - research: ALL research roles — AI/ML researchers, research scientists, applied scientists, research engineers, safety/alignment researchers, data scientists doing research
+  - research: ALL research roles — AI/ML researchers, research scientists, applied scientists, research engineers, safety/alignment researchers
 
 **sales_gtm** — revenue generation
-  sub_areas:
   - sales: account executives, field sales, sales reps, sales development, sales management
-  - solutions: solutions architects, solutions engineers, applied AI engineers (technical pre/post-sales)
+  - solutions: solutions architects/engineers, applied AI engineers (technical pre/post-sales)
   - business_development: BD reps, partnerships, channel, ecosystem, international expansion
   - marketing: marketing, content, brand, demand gen, PR, communications (external-facing)
-  - customer_success: customer success managers, account managers, customer support, onboarding
+  - customer_success: customer success/account managers, customer support, onboarding
 
 **operations** — keeping the org running
-  sub_areas:
-  - program_management: technical program managers, project managers, operations program managers
+  - program_management: technical program managers, project managers, ops program managers
   - finance: finance, accounting, FP&A, tax, treasury, investor relations
   - legal: legal counsel, compliance, contracts, regulatory
   - hr: recruiting, HR, people ops, talent acquisition, compensation
   - facilities: facilities, real estate, data center operations, supply chain, procurement, construction
-  - design: product design, UX, brand design, visual design, creative direction
+  - design: product design, UX, brand/visual design, creative direction
   - trust_safety: trust & safety, content moderation, abuse, safeguards, enforcement operations
-  - policy: government affairs, public policy, external affairs, internal communications (not PR/marketing)
+  - policy: government affairs, public policy, external affairs, internal communications
+
+## 2. theme (the capability/agenda signal — THIS IS THE IMPORTANT PART)
+
+Pick the PRIMARY theme that best captures the technical capability or research
+agenda the role advances, plus up to 2 secondary themes. Use null when no theme
+fits (true for most sales/ops and generic roles). Read the title AND description
+carefully — distinguish e.g. pretraining from post-training, alignment from product trust&safety.
+
+  - foundation_pretraining: pretraining base/foundation models, scaling laws, large training runs, pretraining data curation, tokenization
+  - post_training_rl: RLHF, RL, fine-tuning, preference optimization, instruction tuning, reward modeling, alignment-via-training
+  - reasoning: reasoning capability, chain-of-thought, RL for reasoning, math/code reasoning, test-time compute
+  - multimodal: vision, image generation, audio, speech, video, multimodal models
+  - agents_tool_use: agentic systems, tool use, computer use, autonomous agents, function calling, agent frameworks
+  - interpretability: mechanistic interpretability, model internals, transparency research
+  - alignment_safety: AI alignment & safety research, scalable oversight, honesty/harmlessness (research — NOT product trust&safety ops)
+  - evals_red_teaming: evaluations, benchmarks, capability measurement, dangerous-capability evals, red teaming
+  - security_misuse: model/cyber security, misuse & threat intelligence, adversarial robustness
+  - biosecurity_cbrn: biological/chemical/nuclear/radiological risk, bio safety, CBRN safeguards
+  - robotics_embodied: robotics, embodied AI, world models, physical AI, manipulation
+  - training_infra_compute: training infrastructure, GPU/TPU clusters, data centers, networking, distributed training, accelerators
+  - inference_serving: inference optimization, model serving, latency/throughput, kernels, compilers, quantization
+  - data_pipeline: data engineering for training, annotation/labeling, RL environments, synthetic data
+  - product_app_layer: applied product features and end-user apps built on top of models (e.g. coding agents, chat apps)
+  - developer_platform: API, SDK, developer tools, platform for external developers
+
+## 3. what
+One SPECIFIC sentence on what they build / sell / research. Name the concrete
+system, model, customer, or research area. Avoid generic phrases like "AI systems"
+or "ML models" — say what kind (e.g. "low-latency inference serving for the API",
+"mechanistic interpretability of transformer circuits", "enterprise sales to healthcare").
 
 ## Rules
-- Every job must be assigned one of the four categories above — there is no "other" category
-- sub_area must be one of the allowed values listed under the assigned category
-- For sales_gtm: "what" = what product/service they sell and to whom
-- For engineering: "what" = what system or product they build
-- For research: "what" = what they research
-- For operations: "what" = what function they support
+- Exactly one of the four categories. sub_area must be from that category's list.
+- theme + each secondary theme must be from the theme list above, or theme=null.
+- themes_secondary is a (possibly empty) list; do not repeat the primary theme in it.
 
 Jobs to classify:
 {job_list}
 
 Respond with ONLY a valid JSON array in the same order as the input — no markdown, no explanation:
 [
-  {{"category": "...", "sub_area": "...", "what": "...", "tags": ["...", "..."]}},
+  {{"category": "...", "sub_area": "...", "what": "...", "theme": "... or null", "themes_secondary": ["..."]}},
   ...
 ]"""
 
@@ -94,11 +135,30 @@ def classify_jobs(jobs: list[dict]) -> list[dict]:
     return classified
 
 
+_THEME_SET = set(THEMES)
+
+
+def _sanitize(result: dict) -> dict:
+    """Coerce theme fields to the controlled vocabulary; drop anything invalid."""
+    theme = result.get("theme")
+    if theme not in _THEME_SET:
+        theme = None
+    secondary = [t for t in (result.get("themes_secondary") or [])
+                 if t in _THEME_SET and t != theme]
+    return {
+        "category": result.get("category", "other"),
+        "sub_area": result.get("sub_area", "unknown"),
+        "what": result.get("what", ""),
+        "theme": theme,
+        "themes_secondary": secondary[:2],
+    }
+
+
 def _classify_batch(client: anthropic.Anthropic, batch: list[dict]) -> list[dict]:
     job_list = "\n".join(
         f"{idx + 1}. [{job['company']}] {job['title']}"
         + (f" — {job['department']}" if job.get("department") else "")
-        + (f"\n   {job['description'][:400]}" if job.get("description") else "")
+        + (f"\n   {job['description'][:700]}" if job.get("description") else "")
         for idx, job in enumerate(batch)
     )
 
@@ -120,11 +180,12 @@ def _classify_batch(client: anthropic.Anthropic, batch: list[dict]) -> list[dict
         if len(results) != len(batch):
             raise ValueError(f"Expected {len(batch)} results, got {len(results)}")
 
-        return results
+        return [_sanitize(r) for r in results]
 
     except Exception as e:
         print(f"    [classifier] error: {e}. Using defaults.")
         return [
-            {"category": "other", "sub_area": "unknown", "what": "Classification failed.", "tags": []}
+            {"category": "other", "sub_area": "unknown", "what": "Classification failed.",
+             "theme": None, "themes_secondary": []}
             for _ in batch
         ]

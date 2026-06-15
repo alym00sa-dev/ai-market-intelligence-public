@@ -1,16 +1,20 @@
 """Ashby public job board scraper.
 
-Ashby embeds all job postings as a JSON array inside a `"jobPostings":[...]`
-key that's serialised directly into the page HTML (hydration data).
-We locate that key, extract the array with bracket counting, then parse each
-posting. Individual job descriptions are fetched concurrently via the
-Ashby posting API.
+Primary path uses Ashby's official public posting API:
+    GET https://api.ashbyhq.com/posting-api/job-board/{board_id}?includeCompensation=true
+which returns every listed posting as clean JSON — including `descriptionPlain`
+and `jobUrl` — so no per-job enrichment is needed.
+
+This endpoint is reliable from datacenter IPs. The older approach of scraping
+the `jobs.ashbyhq.com/{board}` HTML page (parsing the embedded `"jobPostings":[...]`
+hydration blob) is kept as a fallback, because that frontend is Cloudflare-protected
+and returns an empty/challenge page from CI runners — which silently yielded zero
+jobs for OpenAI/Cohere/Moonshot.
 """
 
 import html as html_module
 import json
 import re
-import time
 from concurrent.futures import ThreadPoolExecutor, as_completed
 
 import requests
@@ -21,12 +25,13 @@ HEADERS = {
         "AppleWebKit/537.36 (KHTML, like Gecko) "
         "Chrome/124.0.0.0 Safari/537.36"
     ),
-    "Accept": "text/html,application/xhtml+xml,*/*;q=0.9",
+    "Accept": "application/json, text/html;q=0.9, */*;q=0.8",
     "Accept-Encoding": "gzip, deflate",
 }
 
+API_BASE       = "https://api.ashbyhq.com/posting-api/job-board"
 MAX_DESC_CHARS = 1500
-DESC_WORKERS   = 10  # concurrent description fetches
+DESC_WORKERS   = 10  # concurrent description fetches (fallback path only)
 
 
 def _strip_html(raw: str) -> str:
@@ -38,12 +43,76 @@ def _strip_html(raw: str) -> str:
 
 
 def fetch_jobs(board_id: str) -> list[dict]:
+    """Fetch all listed jobs for an Ashby board.
+
+    Tries the official posting API first; falls back to HTML scraping only if
+    the API yields nothing (e.g. board renamed or endpoint unavailable).
+    """
+    jobs = _fetch_from_api(board_id)
+    if jobs:
+        return jobs
+
+    print(f"    [ashby] API returned no jobs for {board_id!r}; falling back to HTML scrape...")
+    return _fetch_from_html(board_id)
+
+
+# ── Primary: public posting API ──────────────────────────────────────────────
+
+def _fetch_from_api(board_id: str) -> list[dict]:
+    url = f"{API_BASE}/{board_id}?includeCompensation=true"
+    try:
+        resp = requests.get(url, headers=HEADERS, timeout=30)
+        resp.raise_for_status()
+        data = resp.json()
+    except Exception as e:
+        print(f"    [ashby] API request failed for {board_id!r}: {e}")
+        return []
+
+    postings = data.get("jobs", [])
+    jobs = []
+    for p in postings:
+        if not p.get("isListed", True):
+            continue
+
+        desc = (p.get("descriptionPlain") or "").strip()
+        if not desc:
+            desc = _strip_html(p.get("descriptionHtml") or "")
+
+        jobs.append({
+            "id":          p.get("id") or p.get("jobId") or "",
+            "title":       p.get("title") or "",
+            "department":  p.get("department") or p.get("team") or "",
+            "location":    _location(p),
+            "url":         p.get("jobUrl") or f"https://jobs.ashbyhq.com/{board_id}/{p.get('id', '')}",
+            "description": desc[:MAX_DESC_CHARS],
+        })
+
+    print(f"    [ashby] {len(jobs)} jobs via API ({board_id})", flush=True)
+    return jobs
+
+
+def _location(p: dict) -> str:
+    """Primary location, with secondary locations appended when present."""
+    primary = p.get("location") or ""
+    secondary = [s.get("location") for s in (p.get("secondaryLocations") or []) if s.get("location")]
+    parts = [primary] + secondary
+    return ", ".join([x for x in parts if x])
+
+
+# ── Fallback: HTML hydration-blob scrape ─────────────────────────────────────
+
+def _fetch_from_html(board_id: str) -> list[dict]:
     url = f"https://jobs.ashbyhq.com/{board_id}"
-    resp = requests.get(url, headers=HEADERS, timeout=30)
-    resp.raise_for_status()
-    resp.encoding = "utf-8"  # Ashby pages are UTF-8; don't let requests guess wrong
+    try:
+        resp = requests.get(url, headers={**HEADERS, "Accept": "text/html,application/xhtml+xml,*/*;q=0.9"}, timeout=30)
+        resp.raise_for_status()
+        resp.encoding = "utf-8"  # Ashby pages are UTF-8; don't let requests guess wrong
+    except Exception as e:
+        print(f"    [ashby] HTML fallback failed for {board_id!r}: {e}")
+        return []
+
     jobs = _extract_job_postings(resp.text, board_id)
-    print(f"    [ashby] {len(jobs)} listings found, fetching descriptions...")
+    print(f"    [ashby] {len(jobs)} listings found via HTML, fetching descriptions...")
     jobs = _enrich_descriptions(jobs, board_id)
     return jobs
 

@@ -39,3 +39,13 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+# python
+__pycache__/
+*.pyc
+
+# claude code (local)
+.claude/
+
+# pipeline staging output (review locally, promote to public/data manually)
+frontier-labs-hiring/staging/

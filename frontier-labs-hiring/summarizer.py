@@ -18,7 +18,10 @@ Output schema:
 """
 
 import os
+import re
 import time
+from collections import Counter
+
 import anthropic
 
 GENERATE_MODEL = "claude-opus-4-6"
@@ -27,104 +30,126 @@ REVISE_MODEL   = "claude-opus-4-6"
 
 # ── Stage 1: Generate ─────────────────────────────────────────────────────────
 
-BUILDING_PROMPT = """\
-You are a market-intelligence analyst reading hiring signals. Below are job postings \
-from the engineering and research teams at {company} ({count} roles). Each line is a \
-role title followed by what that person will build or research.
+# Shared style contract — applied to every narrative section. The goal is SIGNALS:
+# what the company is plausibly doing and where it may be heading, inferred from what
+# the roles are *for* (their descriptions) — NOT a headcount readout, and NOT
+# overconfident prophecy.
+_STYLE = """\
+Each bullet states what the hiring data OBSERVABLY shows, and teases the signal out of \
+those facts. Grounded and checkable — not speculation, not prophecy, not hedging.
+- GROUND every claim in the postings themselves — role types, focus areas, scale, \
+  notable combinations. If you couldn't point to the specific roles that prove it, do \
+  not write it. Read the DESCRIPTIONS, not just titles.
+- TEASE OUT THE SIGNAL: don't merely list which teams exist — make the striking pattern \
+  salient. What is unusually concentrated, unusually broad, an unexpected combination, \
+  built in-house vs. outsourced, or newly present? Name what's notable about the makeup, \
+  drawn from the facts.
+- Do NOT hedge with "suggests / appears / points to / likely / consistent with" — those \
+  read as unverifiable. State plainly what the roles show. And do NOT editorialize into \
+  claims about strategy, intent, or the future that a reader couldn't check against the \
+  postings ("this means they'll dominate…", "a bet that…"). Let the signal stand on the facts.
+- ONE signal per bullet — one idea. A brief grounded list that supports it is fine.
+- ANCHOR each bullet with the number of roles (or scale) behind the signal, so its \
+  weight is clear — e.g. "10+ roles", "a handful of roles", "just two hires", "a single \
+  role". Use the counts from the theme tally / the roles you're citing; this is how the \
+  reader gauges importance. Counts support the signal — they are not the headline.
+- Plain, accessible language. No markdown, no "Theme:" labels. ~30–40 words."""
 
+
+BUILDING_PROMPT = """\
+You are a market-intelligence analyst reading hiring signals. Below are {count} \
+engineering/research roles at {company}, each as "title: what they do | desc: …". \
+Read the DESCRIPTIONS closely — the signal is in what the work is actually for.
+
+For light context, a tally of the capability themes these roles map to (use it only to \
+orient yourself on where the concentration sits — do NOT recite these counts):
+{theme_summary}
+
+ROLES:
 {job_lines}
 
-Write 4-5 bullet points describing what {company} is actively building or researching. \
-Rules:
-- Be specific and substantive — name the actual systems, models, pipelines, or research \
-  areas you can infer from the titles and descriptions (e.g. "RLHF and constitutional AI \
-  alignment pipeline", "low-latency inference serving for API at scale", "multimodal \
-  vision-language pre-training").
-- Include scale or concentration signals where evident \
-  (e.g. "heavy investment in...", "dominant technical bet on...", "growing team of...").
-- Do NOT write generic phrases like "AI systems", "machine learning models", or \
-  "large language models" without specifics. Every bullet must name something concrete.
-- Do NOT start with "the company is". Start each bullet with the specific thing itself.
-- Only name a product, team, partner, or technology if it appears in the job postings.
-- Each bullet: one full, specific sentence, 20–30 words.
+Write 5–7 bullets on what {company} is building or researching, and the signal in the \
+makeup of those roles.
+{style}
 
-Output ONLY a plain bullet list, nothing else. Example of the specificity level we want:
-- Inference serving infrastructure for sub-100ms API latency, with dedicated compiler \
-  and kernel optimization teams scaling across AWS multi-region
-- Constitutional AI and RLHF alignment pipeline staffed with 20+ researchers focused \
-  on honesty, harmlessness, and interpretability
-- Agentic product layer (Claude Code, tool use) with prompt engineering and eval systems \
-  built by a dedicated applied-AI team"""
+Output ONLY a plain bullet list. Examples of the tone (grounded + signal teased + role count anchored, no hedging — NOT the content):
+- Reinforcement learning is the most heavily staffed area — 10+ roles spanning velocity tooling, performance, training environments, and cybersecurity — reaching well beyond alignment tuning into core capability work.
+- A dozen data-center electrical, mechanical, and cooling engineering roles are building physical compute in-house, rather than only renting capacity from cloud partners.
+- Interpretability and honesty sit apart from product-safety work as a narrow bench of just two roles — a dedicated line on understanding model internals, separate from shipping guardrails."""
 
 SELLING_PROMPT = """\
-You are a market-intelligence analyst reading hiring signals. Below are job postings \
-from the sales and go-to-market teams at {company} ({count} roles). Each line is a \
-role title followed by what that person will sell or drive commercially.
+You are a market-intelligence analyst reading hiring signals. Below are {count} \
+sales/go-to-market roles at {company}, each as "title: what they sell/drive | desc: …". \
+Read the DESCRIPTIONS — the signal is who they're really selling to and how.
 
 {job_lines}
 
-Write 3-4 bullet points describing what {company} is selling, to whom, and through \
-what motion. Rules:
-- Name actual products or tiers being sold (API, Enterprise plan, cloud partnership, \
-  specific vertical solution) — not just "AI products".
-- Name specific customer segments visible in the titles \
-  (Fortune 500, developers, healthcare, financial services, government, SMB, EMEA, etc.).
-- Describe the GTM motion where visible (direct enterprise sales, PLG, channel, \
-  solutions engineering-led, etc.).
-- If geographic expansion is visible (specific language speakers, regional AE titles), \
-  name it explicitly.
-- Only name a product, geography, vertical, or partner if it appears in the job postings.
-- Each bullet: one full, specific sentence, 20–30 words.
+Write 4–6 bullets on what {company} is selling, to whom, and through what motion — and \
+the signal in it. Isolate one product, segment, motion, or geography per bullet.
+{style}
 
-Output ONLY a plain bullet list, nothing else. Example of the specificity level we want:
-- Claude API and Enterprise tier sold to Fortune 500 and regulated industries \
-  (healthcare, finance, government) via direct field sales
-- Solutions engineering-led expansion into developer ecosystems with dedicated \
-  solutions architects per vertical
-- Active EMEA buildout with French, German, and Spanish-speaking account executives \
-  targeting enterprise customers in EU markets"""
+Output ONLY a plain bullet list. Examples of the tone (grounded + signal teased + role count anchored, no hedging — NOT the content):
+- A dedicated bench of 8+ federal, defense, and state/local account executives staffs the public sector as a core market here — not handled opportunistically through general enterprise sales.
+- Solutions architects and applied-AI engineers are hired alongside account executives across a dozen+ roles, pairing technical deployment support with deals — an integration-led motion, not transactional selling.
+- Five French-, German-, and Spanish-speaking account executives staff an active EMEA build-out, selling to EU enterprise buyers in their local markets."""
 
 
 VERTICAL_PROMPT = """\
-You are a market-intelligence analyst reading hiring signals. Below are {count} job \
-postings at {company} that focus specifically on the {vertical_label} vertical. \
-Each line is a role title followed by what that person will build or sell.
+You are a market-intelligence analyst reading hiring signals. Below are {count} roles \
+at {company} focused specifically on the {vertical_label} vertical, each as \
+"title: what they build or sell".
 
 {job_lines}
 
-Write UP TO 3 bullet points describing what is being built, sold, or deployed in the \
-{vertical_label} space. Only write a bullet if the job data genuinely supports a \
-distinct, specific insight — do NOT write bullets to fill space. 1 strong bullet is \
-better than 3 weak ones. Rules:
-- Do NOT start with "{company} is" or mention the company name. Start each bullet \
-  with the specific thing itself (e.g. "Dedicated Health AI product with full-stack \
-  engineering..." or "Direct sales motion into healthcare and life sciences via...").
-- Be specific and grounded in the job evidence — name actual systems, products, \
-  customer types, or capabilities mentioned in the postings.
-- Only name a product, technology, or customer type if it appears in the job postings.
-- Do NOT write generic phrases. Every bullet must name something concrete.
-- Each bullet: one full, specific sentence, 20–30 words.
+Write UP TO 3 bullets on what is being built, sold, or deployed in {vertical_label}. \
+Only write a bullet if the roles genuinely support a distinct insight — 1 strong bullet \
+beats 3 weak ones. Do NOT start with "{company}".
+{style}
 
-Output ONLY a plain bullet list, nothing else.\
+Output ONLY a plain bullet list.\
 """
 
 SOCIAL_IMPACT_PROMPT = """\
-You are a market-intelligence analyst. Below are {count} job postings at {company} \
-flagged as social impact roles — broadly defined to include any work where the primary \
-beneficiary is the public, a public institution, or an underserved community. This \
-includes traditional social impact (policy, civic tech, humanitarian, public health/\
-education access) AND beneficial AI deployment work that may not fit the traditional \
-mold — nonprofit/NGO partnerships, academic programs, government-as-beneficiary roles, \
-or any initiative where {company}'s explicit purpose is societal benefit over revenue.
+You are a market-intelligence analyst. Below are {count} roles at {company} flagged as \
+social impact — work whose primary beneficiary is the public, a public institution, or \
+an underserved community. This spans traditional social impact (policy, civic tech, \
+humanitarian, public health/education access) AND beneficial-AI deployment (nonprofit/NGO \
+partnerships, academic programs, government-as-beneficiary) where the explicit purpose is \
+societal benefit over revenue.
 
 {job_lines}
 
-Write 2-3 bullets describing the trends and patterns across these roles — what {company} \
-is doing, who benefits, and what the dominant thrust is. Let the insight flow naturally; \
-do not use labels like "Who is served:" or "Dominant theme:". \
-Be specific to the job evidence. 20-30 words each.
+Write 2–3 bullets on the dominant thrust — what {company} is doing and who benefits.
+{style}
 
 Output ONLY a plain bullet list.\
+"""
+
+
+SHIFT_PROMPT = """\
+You are a market-intelligence analyst tracking how a frontier AI lab's hiring \
+focus is SHIFTING week over week. Read the data and call the directional signal.
+
+Company: {company}
+Window: last week ({prev_week}) → this week ({curr_week})
+Net role change: +{new} opened, −{removed} closed.
+
+Capability-theme momentum (role-count change this week — "new" opened minus "closed"):
+{theme_delta_block}
+
+A sample of the NEW roles opened this week (title — what — theme):
+{new_roles_block}
+
+Write 1–2 short bullets naming where {company} is shifting hiring emphasis —
+toward and/or away from which capabilities — grounded ONLY in the data above.
+- Lead with the strongest directional signal (biggest theme swings).
+- Name the specific themes (e.g. "leaning into reasoning and post-training RL while
+  pulling back on trust & safety").
+- If the week's change is small or noisy, say so plainly in ONE line — do not
+  manufacture a trend.
+- Do NOT invent products, numbers, or specifics not present above. 20–30 words each.
+
+Output ONLY a plain bullet list, nothing else.\
 """
 
 
@@ -195,30 +220,56 @@ Output ONLY the revised bullet text, no bullet prefix, no explanation.\
 
 # ── Helpers ───────────────────────────────────────────────────────────────────
 
-def _format_lines(jobs: list[dict], max_jobs: int) -> str:
-    with_what    = [j for j in jobs if j.get("what") and not j["what"].startswith("Classification failed")]
-    without_what = [j for j in jobs if not j.get("what") or j["what"].startswith("Classification failed")]
-    ordered = (with_what + without_what)[:max_jobs]
+def _has_what(j: dict) -> bool:
+    w = j.get("what") or ""
+    return bool(w) and not w.startswith("Classification failed")
+
+
+def _format_lines(jobs: list[dict], max_jobs: int, desc_chars: int = 240) -> str:
+    """One line per role: title + the distilled `what` + a description snippet.
+
+    The description snippet is what lets the analyst infer what the work is actually
+    FOR (the signal), so we include it alongside the one-line `what`. `what`-bearing
+    roles are listed first so they survive the max_jobs cut.
+    """
+    ordered = sorted(jobs, key=lambda j: not _has_what(j))[:max_jobs]
 
     lines = []
     for j in ordered:
-        line = f"- {j['title']}"
-        if j.get("what") and not j["what"].startswith("Classification failed"):
+        line = f"- {j.get('title', '')}"
+        if _has_what(j):
             line += f": {j['what']}"
-        elif j.get("description"):
-            snippet = j["description"][:150].replace("\n", " ")
-            line += f": {snippet}"
+        desc = (j.get("description") or "").replace("\n", " ").strip()
+        if desc:
+            line += f" | desc: {desc[:desc_chars]}"
         lines.append(line)
     return "\n".join(lines)
 
 
+def _theme_summary(jobs: list[dict]) -> str:
+    """Compact 'label: count' tally of primary themes, ranked, for prompt grounding.
+
+    Returns a placeholder line when theme data isn't present yet (pre-reclassify),
+    so the prompt still works against older jobs.json files.
+    """
+    counts = Counter(j["theme"] for j in jobs if j.get("theme"))
+    if not counts:
+        return "  (theme data not yet available — ground bullets in the role list below)"
+    return "\n".join(f"  {THEME_LABELS.get(t, t)}: {n}" for t, n in counts.most_common())
+
+
 def _parse_bullets(text: str) -> list[str]:
-    bullets = [
-        line.lstrip("-•* ").strip()
-        for line in text.splitlines()
-        if line.strip().startswith(("-", "•", "*"))
-    ]
-    return [b for b in bullets if b]
+    bullets = []
+    for line in text.splitlines():
+        if not line.strip().startswith(("-", "•", "*")):
+            continue
+        b = line.lstrip("-•* ").strip()
+        # Strip leftover markdown emphasis (e.g. a bolded lead-in: "**Leaning in:**")
+        b = b.replace("**", "").replace("__", "")
+        b = re.sub(r"\s+", " ", b).strip()
+        if b:
+            bullets.append(b)
+    return bullets
 
 
 def _generate(client: anthropic.Anthropic, prompt: str, company: str, section: str) -> list[str]:
@@ -334,6 +385,96 @@ def _verify_and_revise(
     return final
 
 
+# ── Shift narrative (week-over-week hiring-focus signal) ─────────────────────
+
+# Friendly labels for the controlled theme vocabulary (keep in sync with classifier.THEMES).
+THEME_LABELS = {
+    "foundation_pretraining": "pretraining", "post_training_rl": "post-training/RL",
+    "reasoning": "reasoning", "multimodal": "multimodal", "agents_tool_use": "agents/tool-use",
+    "interpretability": "interpretability", "alignment_safety": "alignment & safety",
+    "evals_red_teaming": "evals/red-teaming", "security_misuse": "security/misuse",
+    "biosecurity_cbrn": "biosecurity/CBRN", "robotics_embodied": "robotics/embodied",
+    "training_infra_compute": "training infra/compute", "inference_serving": "inference/serving",
+    "data_pipeline": "data pipeline", "product_app_layer": "product/app layer",
+    "developer_platform": "developer platform",
+}
+
+
+def _theme_delta_block(curr: dict, prev: dict) -> tuple[str, bool]:
+    """Build a human-readable theme-momentum block from two weeks' theme dists.
+
+    Returns (text, has_signal). has_signal is False when nothing moved.
+    """
+    curr_t = (curr.get("new_dist", {}).get("theme", {}))
+    rem_t  = (curr.get("removed_dist", {}).get("theme", {}))
+    keys = set(curr_t) | set(rem_t)
+    rows = []
+    for k in keys:
+        net = curr_t.get(k, 0) - rem_t.get(k, 0)
+        if net == 0:
+            continue
+        label = THEME_LABELS.get(k, k)
+        rows.append((net, f"  {label}: {'+' if net > 0 else ''}{net} (opened {curr_t.get(k,0)}, closed {rem_t.get(k,0)})"))
+    rows.sort(key=lambda r: -abs(r[0]))
+    if not rows:
+        return "  (no net theme movement)", False
+    return "\n".join(r[1] for r in rows), True
+
+
+def generate_shift_narratives(
+    client: anthropic.Anthropic,
+    jobs: list[dict],
+    trends: dict,
+) -> dict[str, list[str]]:
+    """Per-company 1–2 bullet narrative on week-over-week hiring-focus shifts.
+
+    Reads the latest two weeks of weekly_trends.json. Returns {company: [bullets]}.
+    Skips the baseline week (no prior to compare) and companies with no net change.
+    """
+    weeks = trends.get("weeks", [])
+    if len(weeks) < 2:
+        print("  [shift] <2 weeks of trends or baseline only — skipping shift narratives.")
+        return {}
+
+    curr, prev = weeks[-1], weeks[-2]
+    curr_week, prev_week = curr.get("week", "?"), prev.get("week", "?")
+
+    # New-role examples per company (from this run's is_new jobs).
+    new_by_company: dict[str, list[dict]] = {}
+    for j in jobs:
+        if j.get("is_new"):
+            new_by_company.setdefault(j.get("company", ""), []).append(j)
+
+    out: dict[str, list[str]] = {}
+    for company, stats in curr.get("by_company", {}).items():
+        new_n = stats.get("new", 0)
+        removed_n = stats.get("removed", 0)
+        if new_n == 0 and removed_n == 0:
+            continue
+
+        prev_stats = prev.get("by_company", {}).get(company, {})
+        delta_block, has_signal = _theme_delta_block(stats, {"dist": prev_stats.get("dist", {})})
+
+        new_lines = []
+        for j in (new_by_company.get(company, [])[:25]):
+            theme = j.get("theme") or "—"
+            what = (j.get("what") or "")[:90]
+            new_lines.append(f"  - {j.get('title','')[:50]} — {what} — [{theme}]")
+        new_block = "\n".join(new_lines) if new_lines else "  (none)"
+
+        prompt = SHIFT_PROMPT.format(
+            company=company, prev_week=prev_week, curr_week=curr_week,
+            new=new_n, removed=removed_n,
+            theme_delta_block=delta_block, new_roles_block=new_block,
+        )
+        bullets = _generate(client, prompt, company, "shift")
+        if bullets:
+            out[company] = bullets
+            print(f"  [shift] {company}: {len(bullets)} bullet(s)")
+
+    return out
+
+
 # ── Main export ───────────────────────────────────────────────────────────────
 
 def summarize_companies(
@@ -390,6 +531,7 @@ def summarize_companies(
             print(f"    → generating building bullets (Opus)...")
             draft = _generate(client, BUILDING_PROMPT.format(
                 company=company, count=len(building_jobs), job_lines=b_lines,
+                theme_summary=_theme_summary(building_jobs), style=_STYLE,
             ), company, "building")
             time.sleep(1)
 
@@ -403,7 +545,7 @@ def summarize_companies(
 
             print(f"    → generating selling bullets (Opus)...")
             draft = _generate(client, SELLING_PROMPT.format(
-                company=company, count=len(selling_jobs), job_lines=s_lines,
+                company=company, count=len(selling_jobs), job_lines=s_lines, style=_STYLE,
             ), company, "selling")
             time.sleep(1)
 
@@ -434,7 +576,7 @@ def summarize_companies(
                 print(f"    → generating {v_label} vertical bullets ({len(v_jobs)} jobs, Opus)...")
                 draft = _generate(client, VERTICAL_PROMPT.format(
                     company=company, count=len(v_jobs),
-                    vertical_label=v_label, job_lines=v_lines,
+                    vertical_label=v_label, job_lines=v_lines, style=_STYLE,
                 ), company, f"vertical_{v_key}")
                 time.sleep(1)
 
@@ -455,7 +597,7 @@ def summarize_companies(
                 si_lines = _format_lines(si_jobs, max_jobs=40)
                 print(f"    → generating social impact bullets ({len(si_jobs)} jobs, Opus)...")
                 draft = _generate(client, SOCIAL_IMPACT_PROMPT.format(
-                    company=company, count=len(si_jobs), job_lines=si_lines,
+                    company=company, count=len(si_jobs), job_lines=si_lines, style=_STYLE,
                 ), company, "social_impact")
                 time.sleep(1)
 

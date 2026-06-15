@@ -3,70 +3,69 @@
 import { useState, useRef, useEffect } from "react"
 import Link from "next/link"
 import { usePathname } from "next/navigation"
-
-const DATA_SOURCES = [
-  { label: "Hiring Signals",          href: "/",          available: true  },
-  { label: "Safety Track Record",     href: "/rep-risk",  available: true  },
-  { label: "Frontier Model Tracking", href: "/models",    available: true  },
-]
+import { views } from "../views.config"
 
 export default function Navbar() {
-  const [open, setOpen] = useState(false)
-  const ref = useRef<HTMLDivElement>(null)
   const pathname = usePathname()
-
-  const activeSource = DATA_SOURCES.find((s) =>
-    s.href === "/" ? pathname === "/" || pathname.startsWith("/company") : pathname.startsWith(s.href)
-  ) ?? DATA_SOURCES[0]
+  const [signalsOpen, setSignalsOpen] = useState(false)
+  const signalsRef = useRef<HTMLDivElement>(null)
 
   useEffect(() => {
-    function handleClick(e: MouseEvent) {
-      if (ref.current && !ref.current.contains(e.target as Node)) {
-        setOpen(false)
+    function onPointerDown(e: MouseEvent) {
+      if (signalsRef.current && !signalsRef.current.contains(e.target as Node)) {
+        setSignalsOpen(false)
       }
     }
-    document.addEventListener("mousedown", handleClick)
-    return () => document.removeEventListener("mousedown", handleClick)
+    document.addEventListener("mousedown", onPointerDown)
+    return () => document.removeEventListener("mousedown", onPointerDown)
   }, [])
 
+  useEffect(() => {
+    function onKey(e: KeyboardEvent) {
+      if (e.key === "Escape") setSignalsOpen(false)
+    }
+    document.addEventListener("keydown", onKey)
+    return () => document.removeEventListener("keydown", onKey)
+  }, [])
+
+  const activeView = views.find((v) =>
+    v.href === "/"
+      ? pathname === "/" || pathname.startsWith("/company")
+      : pathname.startsWith(v.href)
+  )
+  const isSignalsActive = !!activeView
+
   return (
-    <nav className="sticky top-0 z-50 bg-[#0a0a0f]/95 backdrop-blur-sm text-white px-4 sm:px-6 h-14 flex items-center justify-between border-b border-white/[0.06]">
-      {/* Brand */}
-      <div className="flex items-center gap-2.5">
-        <span className="font-semibold text-sm tracking-tight">AI Market Intelligence</span>
-      </div>
+    <nav className="navbar">
+      <Link href="/" className="navbar-brand">
+        <span>AI Market Intelligence</span>
+      </Link>
 
-      {/* Right side */}
-      <div className="flex items-center gap-3">
-        {/* Data source dropdown */}
-        <div className="relative" ref={ref}>
+      <div className="navbar-items">
+        <div ref={signalsRef} style={{ position: "relative" }}>
           <button
-            onClick={() => setOpen((v) => !v)}
-            className="flex items-center gap-2 text-sm bg-gray-800 hover:bg-gray-700 px-3 py-1.5 rounded-lg transition-colors border border-gray-700"
+            type="button"
+            onClick={() => setSignalsOpen((v) => !v)}
+            className={`navbar-item ${isSignalsActive ? "is-active" : ""}`}
+            aria-expanded={signalsOpen}
+            aria-haspopup="true"
           >
-            <span>{activeSource.label}</span>
-            <svg
-              className={`w-3.5 h-3.5 text-gray-400 transition-transform ${open ? "rotate-180" : ""}`}
-              fill="none" viewBox="0 0 24 24" stroke="currentColor"
-            >
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-            </svg>
+            <span>Signals</span>
+            <span className={`navbar-caret ${signalsOpen ? "is-open" : ""}`}>▾</span>
           </button>
-
-          {open && (
-            <div className="absolute right-0 mt-1.5 w-56 bg-gray-900 rounded-lg shadow-xl border border-gray-700 py-1 z-50">
-              {DATA_SOURCES.map((source) => {
-                const isActive = source.href === activeSource.href
+          {signalsOpen && (
+            <div className="navbar-dropdown" role="menu">
+              {views.map((v) => {
+                const isActive = activeView?.href === v.href
                 return (
                   <Link
-                    key={source.label}
-                    href={source.href}
-                    onClick={() => setOpen(false)}
-                    className={`flex items-center gap-2 px-3 py-2 text-sm transition-colors ${
-                      isActive ? "text-white bg-gray-800" : "text-gray-300 hover:bg-gray-800 hover:text-white"
-                    }`}
+                    key={v.href}
+                    href={v.href}
+                    onClick={() => setSignalsOpen(false)}
+                    className={`navbar-dropdown-item ${isActive ? "is-active" : ""}`}
+                    role="menuitem"
                   >
-                    {source.label}
+                    <span>{v.label}</span>
                   </Link>
                 )
               })}

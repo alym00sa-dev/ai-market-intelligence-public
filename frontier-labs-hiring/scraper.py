@@ -11,13 +11,24 @@ Output:
 """
 
 import argparse
+import hashlib
 import json
 import os
 import sys
 import time
-import uuid
 from datetime import datetime, timezone
 from pathlib import Path
+
+
+def _stable_id(company: str, job: dict) -> str:
+    """Deterministic fallback ID for sources that don't supply a stable one.
+
+    Must be reproducible run-to-run (a random UUID would make every such job look
+    "new" every week and break change tracking). Prefer the job URL; fall back to
+    a company/title/location fingerprint.
+    """
+    basis = job.get("url") or f"{company}|{job.get('title', '')}|{job.get('location', '')}"
+    return "h" + hashlib.sha1(basis.encode("utf-8")).hexdigest()[:16]
 
 
 def checkpoint(msg: str) -> None:
@@ -37,6 +48,8 @@ import sources.greenhouse as greenhouse
 import sources.lever as lever
 import sources.ashby as ashby
 import sources.workday as workday
+import sources.bytedance as bytedance
+import sources.tencent as tencent
 import sources.html_scraper as html_scraper
 import sources.playwright_scraper as playwright_scraper
 
@@ -58,6 +71,10 @@ def scrape_company(company: dict) -> list[dict]:
             raw_jobs = ashby.fetch_jobs(company["board_id"])
         elif source == "workday":
             raw_jobs = workday.fetch_jobs(company["tenant"], company["board"])
+        elif source == "bytedance":
+            raw_jobs = bytedance.fetch_jobs(company.get("ai_filter", []))
+        elif source == "tencent":
+            raw_jobs = tencent.fetch_jobs(company.get("ai_filter", []))
         elif source == "playwright":
             raw_jobs = playwright_scraper.fetch_jobs(company["scraper"], company.get("ai_filter", []))
         elif source == "html":
@@ -72,16 +89,20 @@ def scrape_company(company: dict) -> list[dict]:
     # Attach company name + stable ID prefix to each job
     jobs = []
     for job in raw_jobs:
-        job_id = job.get("id") or str(uuid.uuid4())
+        job_id = job.get("id") or _stable_id(name, job)
         jobs.append({
             "id": f"{source}-{name.lower().replace(' ', '-')}-{job_id}",
             "company": name,
-            "title": job.get("title", "").strip(),
-            "department": job.get("department", "").strip(),
-            "location": job.get("location", "").strip(),
-            "url": job.get("url", ""),
+            # Use `or ""` rather than dict.get defaults: a key can be present
+            # with an explicit None value (e.g. Amazon jobs with no department),
+            # which dict.get would happily return — then .strip() crashes and
+            # takes the whole run down with it.
+            "title": (job.get("title") or "").strip(),
+            "department": (job.get("department") or "").strip(),
+            "location": (job.get("location") or "").strip(),
+            "url": job.get("url") or "",
             "source": source,
-            "description": job.get("description", ""),
+            "description": job.get("description") or "",
             # Classification fields — filled in later
             "category": None,
             "sub_area": None,
@@ -121,7 +142,12 @@ def main():
     all_jobs = []
     for i, company in enumerate(companies, 1):
         print(f"\n  [{i}/{len(companies)}] {company['name']}...", flush=True)
-        jobs = scrape_company(company)
+        try:
+            jobs = scrape_company(company)
+        except Exception as e:
+            # Never let one company's bad data abort the whole weekly run.
+            print(f"  ERROR: {company['name']} crashed during scrape/normalize: {e}", flush=True)
+            jobs = []
         all_jobs.extend(jobs)
         print(f"  Running total: {len(all_jobs)} jobs", flush=True)
         time.sleep(1)

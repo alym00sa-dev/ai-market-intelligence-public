@@ -31,18 +31,6 @@ COMPANIES = [
         "careers_url": "https://x.ai/careers",
     },
     {
-        "name": "Inflection AI",
-        "source": "greenhouse",
-        "board_id": "inflectionai",
-        "careers_url": "https://inflection.ai/careers",
-    },
-    {
-        "name": "Stability AI",
-        "source": "greenhouse",
-        "board_id": "stabilityai",
-        "careers_url": "https://stability.ai/careers",
-    },
-    {
         "name": "Mistral AI",
         "source": "lever",
         "board_id": "mistral",
@@ -69,39 +57,33 @@ COMPANIES = [
 
     {
         "name": "NVIDIA",
-        "source": "playwright",
-        "scraper": "nvidia",
+        "source": "workday",
+        "tenant": "nvidia",
+        "board": "NVIDIAExternalCareerSite",
         "careers_url": "https://nvidia.wd5.myworkdayjobs.com/NVIDIAExternalCareerSite",
-        "ai_filter": [],
     },
 
     # ── Tier 2: HTML + Playwright scrapers ───────────────────────────────────
     {
-        "name": "Meta AI",
-        "source": "playwright",
-        "scraper": "meta",
-        "careers_url": "https://www.metacareers.com/jobs",
-        "ai_filter": [
-            "Artificial Intelligence", "Machine Learning", "AI Research", "GenAI",
-            "AI enterprise sales", "AI solutions", "AI partnerships", "AI go-to-market",
-        ],
-    },
-    {
         "name": "ByteDance",
-        "source": "playwright",
-        "scraper": "bytedance",
+        "source": "bytedance",
         "careers_url": "https://jobs.bytedance.com/en/position",
+        # Keywords are unioned (deduped) against ByteDance's public search API to
+        # capture all AI-tagged roles, incl. Chinese-language Doubao / 大模型 posts.
         "ai_filter": [
-            "AI", "Machine Learning", "LLM", "Doubao",
+            "AI", "Machine Learning", "LLM", "Doubao", "大模型", "deep learning",
             "AI sales", "enterprise AI", "AI partnerships", "AI business development",
         ],
     },
     {
-        "name": "SenseTime",
-        "source": "html",
-        "scraper": "sensetime",
-        "careers_url": "https://joinus.sensetime.com/en",
-        "ai_filter": [],
+        "name": "Tencent",
+        "source": "tencent",
+        "careers_url": "https://careers.tencent.com/",
+        # Focused AI keywords (unioned/deduped) to pull Hunyuan + AI roles across
+        # business groups without dragging in Tencent's full conglomerate hiring.
+        "ai_filter": [
+            "AI", "machine learning", "large model", "LLM", "Hunyuan", "deep learning",
+        ],
     },
     {
         "name": "Amazon AGI",
@@ -109,16 +91,6 @@ COMPANIES = [
         "scraper": "amazon",
         "careers_url": "https://www.amazon.jobs/en/search",
         "ai_filter": [],
-    },
-    {
-        "name": "Apple ML Research",
-        "source": "playwright",
-        "scraper": "apple",
-        "careers_url": "https://jobs.apple.com/en-us/search",
-        "ai_filter": [
-            "machine learning", "AI research", "language model",
-            "AI enterprise", "AI sales", "AI solutions",
-        ],
     },
     {
         "name": "Microsoft Research",

@@ -17,7 +17,7 @@ const ORG_COLORS: Record<string, string> = {
   "Cohere":          "#f87171",
   "Alibaba":         "#e879f9",
 }
-function orgColor(org: string) { return ORG_COLORS[org] ?? "#94a3b8" }
+function orgColor(org: string) { return ORG_COLORS[org] ?? "#8E97AC" }
 
 function fmt(n: number | null, dec = 1) { return n == null ? "—" : n.toFixed(dec) }
 function fmtPrice(n: number | null) {
@@ -95,33 +95,33 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
     return (
       <th
         onClick={() => handleSort(col.key)}
-        className="px-3 py-2.5 text-left text-xs font-medium text-slate-500 cursor-pointer hover:text-slate-700 whitespace-nowrap select-none border-b border-slate-100"
+        className="px-3 py-2.5 text-left text-xs font-medium text-[var(--text-secondary)] cursor-pointer hover:text-[var(--text-primary)] whitespace-nowrap select-none border-b border-[var(--border-subtle)]"
       >
         <span className="flex items-center gap-1">
           {col.label}
-          {active && <span className="text-violet-500 font-bold">{sortAsc ? "↑" : "↓"}</span>}
+          {active && <span className="text-[var(--accent-amber)] font-bold">{sortAsc ? "↑" : "↓"}</span>}
         </span>
       </th>
     )
   }
 
   return (
-    <div className="bg-white rounded-2xl border border-slate-200/70 shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_3px_rgba(0,0,0,0.04)]">
       {/* Filters */}
-      <div className="px-5 py-4 border-b border-slate-100 flex flex-wrap items-center gap-3">
+      <div className="px-5 py-4 border-b border-[var(--border-subtle)] flex flex-wrap items-center gap-3">
         <input
           type="search"
           placeholder="Search model or org…"
           value={search}
           onChange={e => setSearch(e.target.value)}
-          className="text-sm border border-slate-200 rounded-lg px-3 py-1.5 text-slate-700 bg-white placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-300 w-56"
+          className="text-sm border border-[var(--border-subtle)] rounded-lg px-3 py-1.5 text-[var(--text-primary)] bg-[var(--bg-surface)] placeholder-slate-400 focus:outline-none focus:ring-2 focus:ring-violet-300 w-56"
         />
 
-        <div className="flex rounded-lg border border-slate-200 overflow-hidden text-xs">
+        <div className="flex rounded-lg border border-[var(--border-subtle)] overflow-hidden text-xs">
           {(["all", "open", "closed"] as const).map(v => (
             <button key={v} onClick={() => setFilterOpen(v)}
               className={`px-3 py-1.5 capitalize transition-colors ${
-                filterOpen === v ? "bg-violet-600 text-white" : "text-slate-500 hover:bg-slate-50"
+                filterOpen === v ? "bg-[var(--accent-amber)] text-white" : "text-[var(--text-secondary)] hover:bg-[var(--bg-base)]"
               }`}>
               {v}
             </button>
@@ -131,7 +131,7 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
         <select
           value={filterOrg}
           onChange={e => setFilterOrg(e.target.value)}
-          className="text-xs border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-600 bg-white focus:outline-none focus:ring-2 focus:ring-violet-300"
+          className="text-xs border border-[var(--border-subtle)] rounded-lg px-2.5 py-1.5 text-[var(--text-secondary)] bg-[var(--bg-surface)] focus:outline-none focus:ring-2 focus:ring-violet-300"
         >
           <option value="all">All orgs</option>
           {orgs.map(o => <option key={o} value={o}>{o}</option>)}
@@ -140,13 +140,13 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
         <select
           value={filterCountry}
           onChange={e => setFilterCountry(e.target.value)}
-          className="text-xs border border-slate-200 rounded-lg px-2.5 py-1.5 text-slate-600 bg-white focus:outline-none focus:ring-2 focus:ring-violet-300"
+          className="text-xs border border-[var(--border-subtle)] rounded-lg px-2.5 py-1.5 text-[var(--text-secondary)] bg-[var(--bg-surface)] focus:outline-none focus:ring-2 focus:ring-violet-300"
         >
           <option value="all">All countries</option>
           {countries.map(c => <option key={c} value={c}>{c}</option>)}
         </select>
 
-        <span className="ml-auto text-xs text-slate-400 tabular-nums">{filtered.length} models</span>
+        <span className="ml-auto text-xs text-[var(--text-tertiary)] tabular-nums">{filtered.length} models</span>
       </div>
 
       {/* Table */}
@@ -154,42 +154,42 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
         <table className="w-full text-sm">
           <thead>
             <tr>
-              <th className="px-3 py-2.5 text-left text-xs font-medium text-slate-500 w-8 border-b border-slate-100">#</th>
-              <th className="px-3 py-2.5 text-left text-xs font-medium text-slate-500 border-b border-slate-100">Model</th>
-              <th className="px-3 py-2.5 text-left text-xs font-medium text-slate-500 border-b border-slate-100">Org</th>
-              <th className="px-3 py-2.5 text-left text-xs font-medium text-slate-500 border-b border-slate-100 whitespace-nowrap">Country</th>
+              <th className="px-3 py-2.5 text-left text-xs font-medium text-[var(--text-secondary)] w-8 border-b border-[var(--border-subtle)]">#</th>
+              <th className="px-3 py-2.5 text-left text-xs font-medium text-[var(--text-secondary)] border-b border-[var(--border-subtle)]">Model</th>
+              <th className="px-3 py-2.5 text-left text-xs font-medium text-[var(--text-secondary)] border-b border-[var(--border-subtle)]">Org</th>
+              <th className="px-3 py-2.5 text-left text-xs font-medium text-[var(--text-secondary)] border-b border-[var(--border-subtle)] whitespace-nowrap">Country</th>
               {COLUMNS.map(col => <Th key={col.key} col={col} />)}
             </tr>
           </thead>
           <tbody className="divide-y divide-slate-50">
             {filtered.map((m, i) => (
-              <tr key={m.id} className="hover:bg-slate-50/70 transition-colors">
-                <td className="px-3 py-2 text-xs text-slate-400 tabular-nums">{i + 1}</td>
+              <tr key={m.id} className="hover:bg-[var(--bg-base)]/70 transition-colors">
+                <td className="px-3 py-2 text-xs text-[var(--text-tertiary)] tabular-nums">{i + 1}</td>
                 <td className="px-3 py-2">
                   <div className="flex items-center gap-2">
-                    <span className="text-xs font-medium text-slate-800 max-w-[220px] truncate" title={m.name}>{m.name}</span>
+                    <span className="text-xs font-medium text-[var(--text-primary)] max-w-[220px] truncate" title={m.name}>{m.name}</span>
                     {m.open_weight === true && (
-                      <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-violet-50 text-violet-600 font-medium">open</span>
+                      <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded bg-[var(--accent-amber-bg)] text-[var(--accent-amber)] font-medium">open</span>
                     )}
                   </div>
                 </td>
                 <td className="px-3 py-2">
-                  <span className="flex items-center gap-1.5 text-xs text-slate-600">
+                  <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
                     <span className="w-2 h-2 rounded-full shrink-0" style={{ backgroundColor: orgColor(m.org) }} />
                     {m.org}
                   </span>
                 </td>
-                <td className="px-3 py-2 text-xs text-slate-500 whitespace-nowrap">{m.country || "—"}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-700 font-medium">{fmt(m.intelligence_index)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-600">{fmt(m.coding_index)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-600">{fmt(m.math_index)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-500">{fmt(m.gpqa)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-500">{fmt(m.hle)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-500">{fmt(m.mmlu_pro)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-500">{fmt(m.livecodebench)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-600">{fmtPrice(m.price_blended)}</td>
-                <td className="px-3 py-2 text-xs tabular-nums text-slate-500">{fmt(m.tokens_per_sec, 0)}</td>
-                <td className="px-3 py-2 text-xs text-slate-400">{fmtDate(m.release_date)}</td>
+                <td className="px-3 py-2 text-xs text-[var(--text-secondary)] whitespace-nowrap">{m.country || "—"}</td>
+                <td className="px-3 py-2 text-xs tabular-nums text-[var(--text-primary)] font-medium">{fmt(m.intelligence_index)}</td>
+                <td className="px-3 py-2 text-xs tabular-nums text-[var(--text-secondary)]">{fmt(m.coding_index)}</td>
+                <td className="px-3 py-2 text-xs tabular-nums text-[var(--text-secondary)]">{fmt(m.math_index)}</td>
+                <td className="px-3 py-2 text-xs tabular-nums text-[var(--text-secondary)]">{fmt(m.gpqa)}</td>
+                <td className="px-3 py-2 text-xs tabular-nums text-[var(--text-secondary)]">{fmt(m.hle)}</td>
+                <td className="px-3 py-2 text-xs tabular-nums text-[var(--text-secondary)]">{fmt(m.mmlu_pro)}</td>
+                <td className="px-3 py-2 text-xs tabular-nums text-[var(--text-secondary)]">{fmt(m.livecodebench)}</td>
+                <td className="px-3 py-2 text-xs tabular-nums text-[var(--text-secondary)]">{fmtPrice(m.price_blended)}</td>
+                <td className="px-3 py-2 text-xs tabular-nums text-[var(--text-secondary)]">{fmt(m.tokens_per_sec, 0)}</td>
+                <td className="px-3 py-2 text-xs text-[var(--text-tertiary)]">{fmtDate(m.release_date)}</td>
               </tr>
             ))}
           </tbody>
@@ -197,7 +197,7 @@ export default function FullLeaderboard({ models }: { models: ModelRecord[] }) {
       </div>
 
       {filtered.length === 0 && (
-        <div className="px-6 py-12 text-center text-sm text-slate-400">No models match your filters.</div>
+        <div className="px-6 py-12 text-center text-sm text-[var(--text-tertiary)]">No models match your filters.</div>
       )}
     </div>
   )
