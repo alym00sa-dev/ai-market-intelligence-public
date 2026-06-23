@@ -66,16 +66,28 @@ def fetch_jobs(ai_filter: list[str] | None = None) -> list[dict]:
                 "recruitment_id_list": [],
             }
             data = None
-            for attempt in range(3):
+            for attempt in range(5):
                 try:
                     resp = session.post(API_URL, json=payload, timeout=30)
                     resp.raise_for_status()
                     data = resp.json()
-                    break
                 except Exception as e:
                     wait = 4 * (attempt + 1)
                     print(f"    [bytedance] kw={kw!r} offset={offset} attempt {attempt+1} failed: {e}. Retry in {wait}s")
                     time.sleep(wait)
+                    data = None
+                    continue
+                # Soft-throttle guard: ByteDance returns HTTP 200 with an empty list when
+                # rate-limited. A broad keyword being empty on page 1 is the tell — retry
+                # with backoff rather than accepting 0 (this is what dropped AI→0 before).
+                dd = data.get("data") or {}
+                if offset == 0 and not (dd.get("job_post_list") or []) and attempt < 4:
+                    wait = 6 * (attempt + 1)
+                    print(f"    [bytedance] kw={kw!r} empty on page 1 (attempt {attempt+1}) — likely throttled, retry in {wait}s")
+                    time.sleep(wait)
+                    data = None
+                    continue
+                break
             if data is None:
                 break
 

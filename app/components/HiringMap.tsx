@@ -334,9 +334,12 @@ export default function HiringMap({ jobs }: { jobs: Job[] }) {
   const toggleSubFilter = makeToggle(setSubFilters)
 
   // Jobs in the currently-filtered companies (pool for role/theme sub-breakdowns).
+  // Only narrow to filtered companies during the company deep-dive. In role/vertical
+  // mode `filters` holds role/vertical keys (not company names), so filtering jobs by
+  // company here would yield an empty pool and make the legend vanish.
   const companyPool = useMemo(
-    () => (filters.size > 0 ? jobs.filter((j) => filters.has(displayName(j.company))) : jobs),
-    [jobs, filters],
+    () => (focusMode ? jobs.filter((j) => filters.has(displayName(j.company))) : jobs),
+    [jobs, filters, focusMode],
   )
 
   // Legend reflects the active coloring dimension. In a role/theme deep-dive it shows
