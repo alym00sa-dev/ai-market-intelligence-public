@@ -4,6 +4,11 @@ import type { JobsData, CompanyChange } from "./types"
 import HiringView from "./components/HiringView"
 import { computeCompanyProfiles } from "./lib/profiles"
 
+// Render on-demand instead of statically prerendering. The jobs dataset (~17k rows)
+// serializes well past Vercel's 19 MB ISR prerender cap when baked into a static page
+// (it gets embedded in both the HTML and the RSC payload). Dynamic rendering streams it.
+export const dynamic = "force-dynamic"
+
 function loadJobs(): JobsData {
   const filePath = path.join(process.cwd(), "public", "data", "jobs.json")
   try {
@@ -50,8 +55,12 @@ export default function Page() {
       })
     : null
 
-  // Strip descriptions — only used during classification, not in the UI (~13 MB saved)
-  data.jobs.forEach((j) => { delete (j as Record<string, unknown>).description })
+  // Strip fields the UI never reads — descriptions (used only for classification, ~33 MB)
+  // plus the change-tracking bookkeeping — to keep the client payload lean.
+  data.jobs.forEach((j) => {
+    const r = j as Record<string, unknown>
+    delete r.description; delete r.first_seen; delete r.last_seen; delete r.is_new
+  })
 
   const profiles = computeCompanyProfiles(data)
   const changes = loadChanges()
