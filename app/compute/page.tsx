@@ -1,15 +1,12 @@
 import fs from "fs"
 import path from "path"
+import { feature } from "topojson-client"
+import type { Topology } from "topojson-specification"
+import type { FeatureCollection, Geometry } from "geojson"
+import countries110m from "world-atlas/countries-110m.json"
 import ComputeConnectivityView, {
-  type BreakdownData,
+  type ReadinessMetric,
 } from "../components/ComputeConnectivityView"
-
-type GeoJSONFeature = {
-  type: "Feature"
-  properties: Record<string, unknown> | null
-  geometry: unknown
-}
-type GeoJSONFC = { features: GeoJSONFeature[] }
 
 function safeReadJSON<T>(rel: string, fallback: T): T {
   try {
@@ -20,93 +17,74 @@ function safeReadJSON<T>(rel: string, fallback: T): T {
   }
 }
 
-/** Build per-country derived metrics from the cable + data-center geometry files. */
-function computeDerived(): Record<string, { cableCount: number; dcActive: number; dcConstruction: number; activeMW: number; pipelineMW: number }> {
-  const cables   = safeReadJSON<GeoJSONFC>("cables.geojson", { features: [] })
-  const dcs      = safeReadJSON<GeoJSONFC>("data-centers.geojson", { features: [] })
+type ConnectivityCountry = {
+  country: string; code: string
+  mobile_own?: number; smartphone?: number; daily_internet?: number; internet_3mo?: number
+  digital_payment?: number; literacy?: number; internet_men?: number; internet_women?: number
+}
+type GovtechCountry = { country: string; code: string; values: Record<string, string> }
 
-  const out: Record<string, { cableCount: number; dcActive: number; dcConstruction: number; activeMW: number; pipelineMW: number }> = {}
-  const bump = (country: string, patch: Partial<{ cableCount: number; dcActive: number; dcConstruction: number; activeMW: number; pipelineMW: number }>) => {
-    const key = country.trim()
-    if (!out[key]) out[key] = { cableCount: 0, dcActive: 0, dcConstruction: 0, activeMW: 0, pipelineMW: 0 }
-    if (patch.cableCount)     out[key].cableCount     += patch.cableCount
-    if (patch.dcActive)       out[key].dcActive       += patch.dcActive
-    if (patch.dcConstruction) out[key].dcConstruction += patch.dcConstruction
-    if (patch.activeMW)       out[key].activeMW       += patch.activeMW
-    if (patch.pipelineMW)     out[key].pipelineMW     += patch.pipelineMW
-  }
+// Data country name → name as it appears in world-atlas countries-110m.
+const NAME_TO_ATLAS: Record<string, string> = { DRC: "Dem. Rep. Congo" }
 
-  // Cables — count distinct countries each cable touches.
-  for (const f of cables.features) {
-    const lps = (f.properties?.landing_points ?? []) as Array<{ country?: string }>
-    const touchedCountries = new Set(lps.map((lp) => (lp?.country ?? "").trim()).filter(Boolean))
-    for (const c of touchedCountries) bump(c, { cableCount: 1 })
-  }
+// The selectable metrics that can color the readiness choropleth. `key` is the
+// feature property the map reads; min/max are filled in from the data below.
+const METRIC_DEFS: Omit<ReadinessMetric, "min" | "max">[] = [
+  { key: "internet_3mo",    label: "Internet use",        unit: "%",   goodHigh: true  },
+  { key: "smartphone",      label: "Smartphone adoption", unit: "%",   goodHigh: true  },
+  { key: "mobile_own",      label: "Mobile ownership",    unit: "%",   goodHigh: true  },
+  { key: "digital_payment", label: "Digital payments",    unit: "%",   goodHigh: true  },
+  { key: "literacy",        label: "Adult literacy",      unit: "%",   goodHigh: true  },
+  { key: "gender_gap",      label: "Internet gender gap", unit: "pts", goodHigh: false },
+  { key: "gtmi",            label: "GovTech Maturity",    unit: "",    goodHigh: true  },
+]
 
-  // Data centers — bucket by status.
-  for (const f of dcs.features) {
-    const p = f.properties ?? {}
-    const country = String(p.country ?? "").trim()
-    if (!country) continue
-    const status = String(p.status ?? "")
-    const power  = Number(p.power_mw ?? 0)
-    if (status === "active") {
-      bump(country, { dcActive: 1, activeMW: power })
-    } else if (status === "under_construction" || status === "planned") {
-      bump(country, { dcConstruction: 1, pipelineMW: power })
+export default function ComputePage() {
+  const connectRaw = safeReadJSON<{ countries: ConnectivityCountry[] }>("connectivity-metrics.json", { countries: [] })
+  const govtechRaw = safeReadJSON<{ countries: GovtechCountry[] }>("govtech.json", { countries: [] })
+  const gtmiByCode = Object.fromEntries(
+    govtechRaw.countries.map((c) => [c.code, parseFloat(c.values?.["GTMI Score"] ?? "") || null]),
+  )
+
+  // Per-country readiness props, keyed by the world-atlas country name.
+  type Props = Record<string, number | string | boolean | null>
+  const byAtlasName: Record<string, Props> = {}
+  for (const c of connectRaw.countries) {
+    const gap = c.internet_men != null && c.internet_women != null ? +(c.internet_men - c.internet_women).toFixed(1) : null
+    const atlasName = NAME_TO_ATLAS[c.country] ?? c.country
+    byAtlasName[atlasName] = {
+      name: c.country, iso3: c.code, hasData: true,
+      internet_3mo: c.internet_3mo ?? null, smartphone: c.smartphone ?? null,
+      mobile_own: c.mobile_own ?? null, digital_payment: c.digital_payment ?? null,
+      literacy: c.literacy ?? null, daily_internet: c.daily_internet ?? null,
+      internet_men: c.internet_men ?? null, internet_women: c.internet_women ?? null,
+      gender_gap: gap, gtmi: gtmiByCode[c.code] ?? null,
     }
   }
 
-  return out
-}
+  // Metric min/max across the data countries (drives the color ramp domain).
+  const metrics: ReadinessMetric[] = METRIC_DEFS.map((m) => {
+    const vals = Object.values(byAtlasName)
+      .map((p) => p[m.key])
+      .filter((v): v is number => typeof v === "number")
+    return { ...m, min: vals.length ? Math.min(...vals) : 0, max: vals.length ? Math.max(...vals) : 1 }
+  })
 
-export default function ComputePage() {
-  // Country tables (from the HTML reference extraction).
-  type GovtechCountry = {
-    country: string
-    code:    string
-    values:  Record<string, string>
-  }
-  type ConnectivityCountry = {
-    country:        string
-    code:           string
-    mobile_own?:    number
-    smartphone?:    number
-    daily_mobile?:  number
-    daily_internet?: number
-    digital_payment?: number
-    mobile_women?:  number
-    mobile_men?:    number
-    internet_women?: number
-    internet_men?:  number
-    literacy?:      number
-    internet_3mo?:  number
-  }
-
-  const govtechRaw = safeReadJSON<{ countries: GovtechCountry[] }>("govtech.json", { countries: [] })
-  const connectRaw = safeReadJSON<{ countries: ConnectivityCountry[] }>("connectivity-metrics.json", { countries: [] })
-
-  const govtechByCountry  = Object.fromEntries(govtechRaw.countries.map((c) => [c.country, c]))
-  const connectByCountry  = Object.fromEntries(connectRaw.countries.map((c) => [c.country, c]))
-  const derivedByCountry  = computeDerived()
-
-  // Country-name aliases: data-center / cable / connectivity sources sometimes
-  // disagree on punctuation/short forms. Map data-source name → our display name.
-  const ALIAS: Record<string, string> = {
-    "Congo, Dem. Rep.": "DRC",
-    "Democratic Republic of the Congo": "DRC",
-    "Côte d'Ivoire":    "Ivory Coast",
-  }
-  const breakdown: BreakdownData = {
-    govtechByCountry,
-    connectByCountry,
-    derivedByCountry,
-    aliases: ALIAS,
+  // World country polygons → attach readiness props to the ones we have data for.
+  const topo = countries110m as unknown as Topology
+  const fc = feature(topo, topo.objects.countries) as unknown as FeatureCollection<Geometry, Record<string, unknown>>
+  const readinessGeo: FeatureCollection<Geometry, Props> = {
+    type: "FeatureCollection",
+    features: fc.features.map((f) => {
+      const nm = String(f.properties?.name ?? "")
+      const props = byAtlasName[nm] ?? { name: nm, hasData: false }
+      return { type: "Feature", geometry: f.geometry, properties: props }
+    }),
   }
 
   return (
     <div className="min-h-screen flex flex-col">
-      <ComputeConnectivityView breakdown={breakdown} />
+      <ComputeConnectivityView readinessGeo={readinessGeo} metrics={metrics} />
     </div>
   )
 }

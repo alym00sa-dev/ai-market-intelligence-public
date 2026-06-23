@@ -270,9 +270,11 @@ function filterIncidentsByDate(
   to: Date,
 ): RepRiskIncident[] {
   return incidents.filter(inc => {
-    if (!inc.date) return false
-    const d = new Date(inc.date)
-    if (isNaN(d.getTime())) return false
+    const d = inc.date ? new Date(inc.date) : null
+    // Dateless / unparseable incidents can't be placed in a specific window, but they
+    // ARE part of "all time" (from == null). This keeps the snapshot's all-time score
+    // consistent with the top-of-page score, which counts every incident.
+    if (!d || isNaN(d.getTime())) return from == null
     if (from && d < from) return false
     if (d > to) return false
     return true

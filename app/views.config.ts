@@ -7,5 +7,5 @@ export const views: ViewEntry[] = [
   { label: "Frontier Hiring",       href: "/"         },
   { label: "Model Benchmarks",      href: "/models"   },
   { label: "Safety Track Record",   href: "/safety"   },
-  { label: "Compute & Connectivity", href: "/compute"  },
+  { label: "Compute & Connectivity Map", href: "/compute"  },
 ]

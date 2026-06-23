@@ -127,6 +127,33 @@ export type ModelsData = {
   rankings: Record<string, { category: string; ranked_at: string; models: RankedModel[] }>
 }
 
+// ── Speech (ASR / TTS) ────────────────────────────────────────────────────────
+
+export type AsrModel = {
+  rank: number
+  model: string
+  creator: string | null
+  url: string
+  avg_wer: number
+  rtfx: number | null
+  datasets: Record<string, number>
+}
+
+export type TtsModel = {
+  rank: number | null
+  model: string
+  slug?: string
+  creator: string | null
+  elo: number | null
+  ci95?: string
+}
+
+export type SpeechData = {
+  built_at: string
+  asr: { source: string; metric: string; count: number; models: AsrModel[] }
+  tts: { source: string; metric: string; count: number; models: TtsModel[] }
+}
+
 // ── Compute Distribution ──────────────────────────────────────────────────────
 
 export type ConfidenceEntry = { name: string; confidence: string }

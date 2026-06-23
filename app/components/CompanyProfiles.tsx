@@ -1,9 +1,10 @@
 "use client"
 
-import Link from "next/link"
+import { useState } from "react"
+// NOTE: `Link` (next/link) + `toSlug` imports removed while the "Full analysis" link
+// is commented out below. Re-add both when restoring the company analysis view.
 import type { CompanyProfile, SubAreaInsight, VerticalBreakdown, SocialImpactData } from "../types"
-import { toSlug } from "../lib/slug"
-import { SectionLabel, NarrativeBlock, type NarrativeTone } from "./ds"
+import { SectionLabel, NarrativeBlock, DownloadableChart, type NarrativeTone } from "./ds"
 
 const TONE_DOT: Record<NarrativeTone, string> = {
   "building":  "var(--accent-blue)",
@@ -21,6 +22,10 @@ function formatSubArea(raw: string): string {
 const DISPLAY_NAMES: Record<string, string> = {
   "Microsoft Research": "Microsoft",
   "Amazon AGI":         "Amazon",
+}
+
+function slugify(s: string): string {
+  return s.toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/(^-|-$)/g, "")
 }
 
 // ── Radar chart ───────────────────────────────────────────────────────────────
@@ -421,66 +426,51 @@ const CAT_LABEL: Record<string, string> = {
   operations: "Operations", other: "Other", unclassified: "Other",
 }
 
-function SocialImpactRow({ socialImpactData, socialImpactBullets }: {
-  socialImpactData: SocialImpactData
-  socialImpactBullets: string[]
-}) {
+// Vertical (stacked) social-impact breakdown: headline % + per-category counts.
+function SocialBreakdown({ socialImpactData }: { socialImpactData: SocialImpactData }) {
   const { count, pct, byCategory } = socialImpactData
-  const topCat = Object.entries(byCategory).sort((a, b) => b[1] - a[1])[0]?.[0]
-  const catLabel = topCat ? (CAT_LABEL[topCat] ?? topCat) : null
-
   return (
-    <div
-      className="mt-4 pt-4"
-      style={{ borderTop: "1px solid var(--border-subtle)" }}
-    >
-      <SectionLabel>Social Impact Roles</SectionLabel>
-      <p
-        className="text-[11px] italic mb-2.5"
-        style={{ color: "var(--text-tertiary)" }}
-      >
-        Defined as: roles whose primary purpose directly serves the public — AI policy, civic tech, humanitarian work, public health or education access
-      </p>
+    <div className="min-w-[150px]">
+      <SectionLabel>Social Impact</SectionLabel>
       {count === 0 ? (
-        <p
-          className="text-[12px] italic"
-          style={{ color: "var(--text-tertiary)" }}
-        >
-          No social impact roles identified in current hiring data
-        </p>
+        <p className="text-[12px] italic mt-1" style={{ color: "var(--text-tertiary)" }}>None identified</p>
       ) : (
         <>
-          <p
-            className="text-[12px] mb-2"
-            style={{ color: "var(--text-secondary)" }}
-          >
-            <span style={{ color: "var(--text-primary)", fontWeight: 600 }}>
-              {pct > 0 ? `${pct}%` : `${count}`} of roles
-            </span>
-            {catLabel && (
-              <> · concentrated in <span style={{ fontWeight: 500, color: "var(--text-primary)" }}>{catLabel}</span></>
-            )}
+          <p className="mt-1" style={{ color: "var(--text-secondary)", fontSize: 12 }}>
+            <span className="font-mono tabular-nums" style={{ color: "var(--text-primary)", fontWeight: 600, fontSize: 20 }}>
+              {pct > 0 ? `${pct}%` : count}
+            </span>{" "}of roles
           </p>
-          {socialImpactBullets.length > 0 && (
-            <ul className="space-y-1.5">
-              {socialImpactBullets.map((b, i) => (
-                <li key={i} className="flex gap-2 items-start">
-                  <span
-                    className="mt-[6px] w-1.5 h-1.5 rounded-full shrink-0"
-                    style={{ background: "var(--accent-green)" }}
-                  />
-                  <span
-                    className="text-[12px] leading-relaxed"
-                    style={{ color: "var(--text-secondary)" }}
-                  >
-                    {b}
-                  </span>
-                </li>
-              ))}
-            </ul>
-          )}
+          <div className="mt-2 space-y-1">
+            {Object.entries(byCategory).sort((a, b) => b[1] - a[1]).map(([cat, n]) => (
+              <div key={cat} className="flex items-center justify-between gap-5">
+                <span className="text-[11px]" style={{ color: "var(--text-secondary)" }}>{CAT_LABEL[cat] ?? cat}</span>
+                <span className="text-[11px] font-mono tabular-nums" style={{ color: "var(--accent-green)", fontWeight: 600 }}>{n}</span>
+              </div>
+            ))}
+          </div>
         </>
       )}
+    </div>
+  )
+}
+
+// Social-impact narrative (expanded only): definition + LLM bullets.
+function SocialNarrative({ count, bullets }: { count: number; bullets: string[] }) {
+  if (count === 0 || bullets.length === 0) return null
+  return (
+    <div>
+      <p className="text-[11px] italic mb-2" style={{ color: "var(--text-tertiary)" }}>
+        Social impact = roles whose primary purpose directly serves the public — AI policy, civic tech, humanitarian work, public health or education access
+      </p>
+      <ul className="space-y-1.5">
+        {bullets.map((b, i) => (
+          <li key={i} className="flex gap-2 items-start">
+            <span className="mt-[6px] w-1.5 h-1.5 rounded-full shrink-0" style={{ background: "var(--accent-green)" }} />
+            <span className="text-[12px] leading-relaxed" style={{ color: "var(--text-secondary)" }}>{b}</span>
+          </li>
+        ))}
+      </ul>
     </div>
   )
 }
@@ -490,6 +480,8 @@ function SocialImpactRow({ socialImpactData, socialImpactBullets }: {
 function CompanyRow({ profile }: { profile: CompanyProfile }) {
   const { company, total, categoryBreakdown, buildingInsights, sellingInsights,
           llmSummary, verticalBreakdown, socialImpactData } = profile
+  const [expanded, setExpanded] = useState(false)
+
   const hasLLM = llmSummary && (llmSummary.building.length > 0 || llmSummary.selling.length > 0)
   const verticalBullets = llmSummary?.vertical_bullets ?? {}
   const socialImpactBullets = llmSummary?.social_impact_bullets ?? []
@@ -498,9 +490,12 @@ function CompanyRow({ profile }: { profile: CompanyProfile }) {
   const hasAnyBullets = VERTICAL_ORDER.some((v) => (verticalBullets[v] ?? []).length > 0)
   const showVertical = totalVertical > 0 || hasAnyBullets
 
+  const fileBase = slugify(DISPLAY_NAMES[company] ?? company)
+
   return (
     <div
-      className="rounded-xl px-6 py-5"
+      id={fileBase}
+      className="rounded-xl px-6 py-5 scroll-mt-4"
       style={{
         background: "var(--bg-surface)",
         border: "1px solid var(--border-subtle)",
@@ -508,93 +503,106 @@ function CompanyRow({ profile }: { profile: CompanyProfile }) {
         boxShadow: "0 1px 3px rgba(0, 0, 0, 0.04)",
       }}
     >
-      {/* Header — company name + role count + CTA */}
-      <div className="flex items-center justify-between mb-5">
-        <span
-          style={{
-            fontSize: 18,
-            fontWeight: 600,
-            letterSpacing: "-0.01em",
-            color: "var(--text-primary)",
-            lineHeight: 1.2,
-          }}
-        >
-          {DISPLAY_NAMES[company] ?? company}
-        </span>
-        <div className="flex items-center gap-3">
-          <span
-            className="text-xs font-mono tabular-nums"
-            style={{ color: "var(--text-tertiary)" }}
+      {/* Header — click to expand/collapse */}
+      <button
+        type="button"
+        onClick={() => setExpanded((v) => !v)}
+        className="w-full flex items-center justify-between gap-3"
+      >
+        <span className="flex items-center gap-2">
+          <svg
+            className="w-3.5 h-3.5 transition-transform shrink-0"
+            style={{ color: "var(--text-tertiary)", transform: expanded ? "rotate(90deg)" : "none" }}
+            fill="none" viewBox="0 0 24 24" stroke="currentColor"
           >
+            <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
+          </svg>
+          <span style={{ fontSize: 18, fontWeight: 600, letterSpacing: "-0.01em", color: "var(--text-primary)", lineHeight: 1.2 }}>
+            {DISPLAY_NAMES[company] ?? company}
+          </span>
+        </span>
+        <span className="flex items-center gap-3">
+          <span className="text-xs font-mono tabular-nums" style={{ color: "var(--text-tertiary)" }}>
             {total.toLocaleString()} roles
           </span>
-          <Link
-            href={`/company/${toSlug(company)}`}
-            className="inline-flex items-center gap-1 text-[11px] font-medium px-2.5 py-1 rounded-md transition-colors"
-            style={{
-              color: "var(--accent-blue)",
-              background: "var(--accent-blue-bg)",
-            }}
-          >
-            Full analysis
-            <svg className="w-3 h-3" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-              <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M9 5l7 7-7 7" />
-            </svg>
-          </Link>
-        </div>
-      </div>
+          <span className="text-[10px] font-semibold uppercase tracking-wider" style={{ color: "var(--accent-blue)" }}>
+            {expanded ? "Less" : "Details"}
+          </span>
+        </span>
+      </button>
 
-      {/* Row 1: category radar | building/selling + watchout */}
-      <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
-        <div className="shrink-0 mx-auto sm:mx-0 w-[220px] flex justify-center">
-          <RadarChart breakdown={categoryBreakdown} total={total} size={220} />
+      {!expanded ? (
+        /* Collapsed: one row — both spider graphs + vertical social breakdown */
+        <div className={`mt-4 grid grid-cols-1 gap-6 items-center justify-items-center ${totalVertical > 0 ? "sm:grid-cols-3" : "sm:grid-cols-2"}`}>
+          <DownloadableChart filename={`${fileBase}-role-mix.png`}>
+            <RadarChart breakdown={categoryBreakdown} total={total} size={230} />
+          </DownloadableChart>
+          {totalVertical > 0 && (
+            <DownloadableChart filename={`${fileBase}-verticals.png`}>
+              <VerticalRadar breakdown={verticalBreakdown} total={totalVertical} size={230} />
+            </DownloadableChart>
+          )}
+          <SocialBreakdown socialImpactData={socialImpactData} />
         </div>
-        <div
-          className="hidden sm:block w-px self-stretch"
-          style={{ background: "var(--border-subtle)" }}
-        />
-        <div className="flex-1 min-w-0 self-center">
-          <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
-            {hasLLM ? (
-              <>
-                <LLMBulletList label="Building" bullets={llmSummary!.building} tone="building" />
-                <LLMBulletList label="Selling"  bullets={llmSummary!.selling}  tone="positive" />
-              </>
-            ) : (
-              <>
-                <FallbackBulletList label="Building" insights={buildingInsights} tone="building" />
-                <FallbackBulletList label="Selling"  insights={sellingInsights}  tone="positive" />
-              </>
-            )}
+      ) : (
+        /* Expanded: original form — spider graph on the left of each row, bullets beside */
+        <div className="mt-4 space-y-4">
+          {/* Row 1: category radar | building/selling + watchout */}
+          <div className="flex flex-col sm:flex-row gap-6 sm:gap-8 items-start">
+            <div className="shrink-0 mx-auto sm:mx-0 w-[220px] flex justify-center">
+              <DownloadableChart filename={`${fileBase}-role-mix.png`}>
+                <RadarChart breakdown={categoryBreakdown} total={total} size={220} />
+              </DownloadableChart>
+            </div>
+            <div className="hidden sm:block w-px self-stretch" style={{ background: "var(--border-subtle)" }} />
+            <div className="flex-1 min-w-0 self-center">
+              <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                {hasLLM ? (
+                  <>
+                    <LLMBulletList label="Building" bullets={llmSummary!.building} tone="building" />
+                    <LLMBulletList label="Selling"  bullets={llmSummary!.selling}  tone="positive" />
+                  </>
+                ) : (
+                  <>
+                    <FallbackBulletList label="Building" insights={buildingInsights} tone="building" />
+                    <FallbackBulletList label="Selling"  insights={sellingInsights}  tone="positive" />
+                  </>
+                )}
+              </div>
+              <WatchOut profile={profile} />
+            </div>
           </div>
-          <WatchOut profile={profile} />
-        </div>
-      </div>
 
-      {/* Row 2: vertical radar | vertical bins — only when vertical data exists */}
-      {showVertical && (
-        <div
-          className="mt-4 pt-4 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start"
-          style={{ borderTop: "1px solid var(--border-subtle)" }}
-        >
-          <div className="shrink-0 mx-auto sm:mx-0 w-[220px] flex justify-center items-start px-8">
-            {totalVertical > 0 && (
-              <VerticalRadar breakdown={verticalBreakdown} total={totalVertical} size={220} />
-            )}
-          </div>
-          <div
-          className="hidden sm:block w-px self-stretch"
-          style={{ background: "var(--border-subtle)" }}
-        />
-          <div className="flex-1 min-w-0">
-            <SectionLabel>Vertical Focus</SectionLabel>
-            <VerticalBins verticalBreakdown={verticalBreakdown} verticalBullets={verticalBullets} company={company} />
+          {/* Row 2: vertical radar | vertical bins */}
+          {showVertical && (
+            <div className="pt-4 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+              <div className="shrink-0 mx-auto sm:mx-0 w-[220px] flex justify-center items-start">
+                {totalVertical > 0 && (
+                  <DownloadableChart filename={`${fileBase}-verticals.png`}>
+                    <VerticalRadar breakdown={verticalBreakdown} total={totalVertical} size={220} />
+                  </DownloadableChart>
+                )}
+              </div>
+              <div className="hidden sm:block w-px self-stretch" style={{ background: "var(--border-subtle)" }} />
+              <div className="flex-1 min-w-0">
+                <SectionLabel>Vertical Focus</SectionLabel>
+                <VerticalBins verticalBreakdown={verticalBreakdown} verticalBullets={verticalBullets} company={company} />
+              </div>
+            </div>
+          )}
+
+          {/* Social impact — breakdown left | narrative right */}
+          <div className="pt-4 flex flex-col sm:flex-row gap-6 sm:gap-8 items-start" style={{ borderTop: "1px solid var(--border-subtle)" }}>
+            <div className="shrink-0 w-[220px] flex justify-center sm:justify-start">
+              <SocialBreakdown socialImpactData={socialImpactData} />
+            </div>
+            <div className="hidden sm:block w-px self-stretch" style={{ background: "var(--border-subtle)" }} />
+            <div className="flex-1 min-w-0">
+              <SocialNarrative count={socialImpactData.count} bullets={socialImpactBullets} />
+            </div>
           </div>
         </div>
       )}
-
-      {/* Social impact — full width below both rows */}
-      <SocialImpactRow socialImpactData={socialImpactData} socialImpactBullets={socialImpactBullets} />
     </div>
   )
 }
@@ -604,12 +612,10 @@ function CompanyRow({ profile }: { profile: CompanyProfile }) {
 export default function CompanyProfiles({ profiles }: { profiles: CompanyProfile[] }) {
   if (profiles.length === 0) return null
   return (
-    <div>
-      <div className="space-y-3">
-        {profiles.map((p) => (
-          <CompanyRow key={p.company} profile={p} />
-        ))}
-      </div>
+    <div className="space-y-3">
+      {profiles.map((p) => (
+        <CompanyRow key={p.company} profile={p} />
+      ))}
     </div>
   )
 }

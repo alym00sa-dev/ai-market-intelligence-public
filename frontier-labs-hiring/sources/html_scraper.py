@@ -321,34 +321,44 @@ def scrape_amazon(ai_filter: list[str]) -> list[dict]:
     total = None
 
     while True:
-        try:
-            resp = requests.get(
-                search_url,
-                params={"base_query": "AI", "result_limit": PAGE_SIZE, "offset": offset},
-                headers=HEADERS,
-                timeout=30,
-            )
-            resp.raise_for_status()
-            data = resp.json()
-            if total is None:
-                total = data.get("hits", 0)
-                print(f"    [amazon] {total} total hits for 'AI'", flush=True)
-            batch = data.get("jobs", [])
-            if not batch:
+        # Retry the same offset on transient failures (connection resets / throttling)
+        # rather than abandoning the whole company on the first hiccup.
+        data = None
+        for attempt in range(5):
+            try:
+                resp = requests.get(
+                    search_url,
+                    params={"base_query": "AI", "result_limit": PAGE_SIZE, "offset": offset},
+                    headers=HEADERS,
+                    timeout=30,
+                )
+                resp.raise_for_status()
+                data = resp.json()
                 break
-            for job in batch:
-                jid = str(job.get("id", ""))
-                if jid and jid not in seen:
-                    seen.add(jid)
-                    jobs.append(_amazon_job(job))
-            offset += len(batch)
-            print(f"    [amazon] fetched {offset}/{total}, unique so far: {len(jobs)}", flush=True)
-            if offset >= total:
-                break
-            time.sleep(0.5)
-        except Exception as e:
-            print(f"    [amazon] error at offset={offset}: {e}")
+            except Exception as e:
+                wait = 4 * (attempt + 1)
+                print(f"    [amazon] offset={offset} attempt {attempt+1} failed: {e}. Retry in {wait}s", flush=True)
+                time.sleep(wait)
+        if data is None:
+            print(f"    [amazon] giving up at offset={offset} after retries (have {len(jobs)})", flush=True)
             break
+
+        if total is None:
+            total = data.get("hits", 0)
+            print(f"    [amazon] {total} total hits for 'AI'", flush=True)
+        batch = data.get("jobs", [])
+        if not batch:
+            break
+        for job in batch:
+            jid = str(job.get("id", ""))
+            if jid and jid not in seen:
+                seen.add(jid)
+                jobs.append(_amazon_job(job))
+        offset += len(batch)
+        print(f"    [amazon] fetched {offset}/{total}, unique so far: {len(jobs)}", flush=True)
+        if offset >= total:
+            break
+        time.sleep(0.6)
 
     return jobs
 

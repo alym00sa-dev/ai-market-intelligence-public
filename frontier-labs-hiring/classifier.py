@@ -120,7 +120,9 @@ def classify_jobs(jobs: list[dict]) -> list[dict]:
     """
     Enriches each job dict with: category, sub_area, what, tags.
     """
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    # Generous SDK-level retries/timeout: a multi-hour run over a flaky network
+    # otherwise drops whole batches to "other" on a single transient connection error.
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=6, timeout=120.0)
     classified = []
 
     for i in range(0, len(jobs), BATCH_SIZE):
@@ -136,17 +138,29 @@ def classify_jobs(jobs: list[dict]) -> list[dict]:
 
 
 _THEME_SET = set(THEMES)
+_CATEGORIES = {"engineering", "research", "sales_gtm", "operations"}
+# Known leaks where the model put a sub_area/theme/typo in the category field.
+_CATEGORY_FIX = {
+    "product_management": "engineering",
+    "data_pipeline": "engineering",
+    "sales_gtmo": "sales_gtm",
+}
 
 
 def _sanitize(result: dict) -> dict:
-    """Coerce theme fields to the controlled vocabulary; drop anything invalid."""
+    """Coerce category + theme fields to their controlled vocabularies."""
+    cat = result.get("category", "other")
+    cat = _CATEGORY_FIX.get(cat, cat)
+    if cat not in _CATEGORIES:
+        cat = "other"
+
     theme = result.get("theme")
     if theme not in _THEME_SET:
         theme = None
     secondary = [t for t in (result.get("themes_secondary") or [])
                  if t in _THEME_SET and t != theme]
     return {
-        "category": result.get("category", "other"),
+        "category": cat,
         "sub_area": result.get("sub_area", "unknown"),
         "what": result.get("what", ""),
         "theme": theme,
@@ -162,30 +176,40 @@ def _classify_batch(client: anthropic.Anthropic, batch: list[dict]) -> list[dict
         for idx, job in enumerate(batch)
     )
 
-    try:
-        message = client.messages.create(
-            model=MODEL,
-            max_tokens=4096,
-            system=SYSTEM_PROMPT,
-            messages=[{"role": "user", "content": CLASSIFICATION_PROMPT.format(job_list=job_list)}],
-        )
-        raw = message.content[0].text.strip()
+    # Retry transient failures (connection errors / timeouts / occasional off-by-one
+    # counts) with backoff before falling back to defaults. Without this, a single
+    # network blip turns 25 jobs into "other"/"Classification failed".
+    last_err: Exception | None = None
+    for attempt in range(5):
+        try:
+            message = client.messages.create(
+                model=MODEL,
+                max_tokens=4096,
+                system=SYSTEM_PROMPT,
+                messages=[{"role": "user", "content": CLASSIFICATION_PROMPT.format(job_list=job_list)}],
+            )
+            raw = message.content[0].text.strip()
 
-        # Strip markdown fences if present
-        raw = re.sub(r"^```[a-z]*\n?", "", raw)
-        raw = raw.rstrip("`").strip()
+            # Strip markdown fences if present
+            raw = re.sub(r"^```[a-z]*\n?", "", raw)
+            raw = raw.rstrip("`").strip()
 
-        results = json.loads(raw)
+            results = json.loads(raw)
 
-        if len(results) != len(batch):
-            raise ValueError(f"Expected {len(batch)} results, got {len(results)}")
+            if len(results) != len(batch):
+                raise ValueError(f"Expected {len(batch)} results, got {len(results)}")
 
-        return [_sanitize(r) for r in results]
+            return [_sanitize(r) for r in results]
 
-    except Exception as e:
-        print(f"    [classifier] error: {e}. Using defaults.")
-        return [
-            {"category": "other", "sub_area": "unknown", "what": "Classification failed.",
-             "theme": None, "themes_secondary": []}
-            for _ in batch
-        ]
+        except Exception as e:
+            last_err = e
+            wait = 5 * (attempt + 1)
+            print(f"    [classifier] attempt {attempt + 1} failed: {e}. Retry in {wait}s")
+            time.sleep(wait)
+
+    print(f"    [classifier] giving up after retries: {last_err}. Using defaults.")
+    return [
+        {"category": "other", "sub_area": "unknown", "what": "Classification failed.",
+         "theme": None, "themes_secondary": []}
+        for _ in batch
+    ]

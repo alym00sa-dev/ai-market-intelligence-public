@@ -1,6 +1,6 @@
 import fs from "fs"
 import path from "path"
-import type { ModelsData } from "../types"
+import type { ModelsData, SpeechData } from "../types"
 import FrontierModels from "../components/FrontierModels"
 
 function loadModels(): ModelsData | null {
@@ -13,8 +13,18 @@ function loadModels(): ModelsData | null {
   }
 }
 
+function loadSpeech(): SpeechData | null {
+  const filePath = path.join(process.cwd(), "public", "data", "speech.json")
+  try {
+    return JSON.parse(fs.readFileSync(filePath, "utf-8")) as SpeechData
+  } catch {
+    return null
+  }
+}
+
 export default function ModelsPage() {
   const data = loadModels()
+  const speech = loadSpeech()
 
   const builtAt = data?.built_at
     ? new Date(data.built_at).toLocaleString("en-US", {
@@ -46,7 +56,7 @@ export default function ModelsPage() {
             </code>
           </div>
         ) : (
-          <FrontierModels data={data} builtAt={builtAt} />
+          <FrontierModels data={data} speech={speech} builtAt={builtAt} />
         )}
       </div>
     </div>

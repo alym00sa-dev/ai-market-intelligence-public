@@ -112,34 +112,50 @@ def format_job(job: dict) -> str:
 def _call_batch(client: anthropic.Anthropic, prompt: str, batch: list[dict], default: dict) -> list[dict]:
     jobs_block = "\n".join(f"{i+1}. {format_job(j)}" for i, j in enumerate(batch))
     full_prompt = prompt.format(jobs_block=jobs_block)
-    try:
-        resp = client.messages.create(
-            model=MODEL,
-            max_tokens=1200,
-            messages=[{"role": "user", "content": full_prompt}],
-        )
-        text = resp.content[0].text.strip()
-        if text.startswith("```"):
-            text = text.split("```")[1]
-            if text.startswith("json"):
-                text = text[4:]
-        return json.loads(text.strip())
-    except Exception as e:
-        print(f"  [batch error] {e}")
-        return [{"id": j["id"], **default} for j in batch]
+    # Retry transient failures (connection errors / timeouts) before defaulting —
+    # otherwise a single network blip defaults a whole batch to null/false, which is
+    # what blanked Anthropic's verticals (its early batches hit a connection storm).
+    last_err: Exception | None = None
+    for attempt in range(5):
+        try:
+            resp = client.messages.create(
+                model=MODEL,
+                max_tokens=1200,
+                messages=[{"role": "user", "content": full_prompt}],
+            )
+            text = resp.content[0].text.strip()
+            if text.startswith("```"):
+                text = text.split("```")[1]
+                if text.startswith("json"):
+                    text = text[4:]
+            return json.loads(text.strip())
+        except Exception as e:
+            last_err = e
+            wait = 5 * (attempt + 1)
+            print(f"  [batch attempt {attempt + 1} failed] {e}. Retry in {wait}s")
+            time.sleep(wait)
+    print(f"  [batch error] giving up after retries: {last_err}")
+    return [{"id": j["id"], **default} for j in batch]
 
 
 # ── Keyword safety net (catches signal lost in the 'what' summary) ────────────
 
+# Title/department keyword backstop for the LLM. Ordered so the more specific health
+# buckets win before the generic ones. Broadened after the first run blanked obvious
+# roles ("Life Sciences" → health_rd, "Higher Education" → education).
 KEYWORD_VERTICALS: list[tuple[list[str], str]] = [
-    (["weather", "weather prediction", "climate model", "climate ai", "climate tech",
-      "precision farm", "crop science", "agri", "food tech", "irrigation"], "agriculture"),
-    (["drug discovery", "genomics", "biomedical", "medical imaging", "clinical research",
-      "radiology", "pathology ai"], "health_rd"),
+    (["weather", "climate model", "climate ai", "climate tech", "climate modeling",
+      "precision farm", "crop science", "crop ", "agri", "agricultur", "food tech",
+      "irrigation", "farming"], "agriculture"),
+    (["drug discovery", "genomic", "biomedical", "medical imaging", "clinical research",
+      "radiology", "pathology", "life science", "life-science", "biolog", "biotech",
+      "drug development", "therapeutic", "molecul", "protein", "oncolog", "pharma"], "health_rd"),
     (["ehr", "electronic health record", "telehealth", "clinical decision", "patient-facing",
-      "hospital system", "healthcare operation"], "health_delivery"),
-    (["edtech", "k-12", "curriculum", "tutoring", "learning platform", "academic access",
-      "higher education ai"], "education"),
+      "patient ", "hospital", "healthcare operation", "health system", "health-system",
+      "care delivery", "medical record"], "health_delivery"),
+    (["edtech", "ed-tech", "k-12", "k12", "curriculum", "tutoring", "learning platform",
+      "academic", "higher education", "education", "university", "universities", "school",
+      "student", "teacher", "classroom", "learning science"], "education"),
 ]
 
 def keyword_safety_net(jobs: list[dict]) -> int:
@@ -230,7 +246,7 @@ def run(verticals_only: bool = False, social_only: bool = False) -> None:
     if not api_key:
         raise SystemExit("ANTHROPIC_API_KEY not set")
 
-    client = anthropic.Anthropic(api_key=api_key)
+    client = anthropic.Anthropic(api_key=api_key, max_retries=6, timeout=120.0)
 
     with open(JOBS_PATH) as f:
         data = json.load(f)

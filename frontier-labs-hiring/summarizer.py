@@ -495,7 +495,7 @@ def summarize_companies(
         print("  [summarizer] ANTHROPIC_API_KEY not set — skipping.")
         return {}
 
-    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"])
+    client = anthropic.Anthropic(api_key=os.environ["ANTHROPIC_API_KEY"], max_retries=6, timeout=120.0)
 
     by_company: dict[str, list[dict]] = {}
     for job in jobs:

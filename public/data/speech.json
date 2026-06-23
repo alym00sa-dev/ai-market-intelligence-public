@@ -1,0 +1,2217 @@
+{
+  "built_at": "2026-06-17T02:07:51.782912+00:00",
+  "asr": {
+    "source": "https://huggingface.co/spaces/hf-audio/open_asr_leaderboard",
+    "metric": "Average WER (lower is better)",
+    "count": 96,
+    "models": [
+      {
+        "model": "microsoft/azure-speech-05-2026",
+        "creator": "microsoft",
+        "url": "http://aka.ms/llm-speech",
+        "avg_wer": 5.32,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 8.29,
+          "Earnings22": 7.94,
+          "Gigaspeech": 8.79,
+          "LS Clean": 1.53,
+          "LS Other": 2.84,
+          "SPGISpeech": 2.59,
+          "Voxpopuli": 5.28
+        },
+        "rank": 1
+      },
+      {
+        "model": "ibm-granite/granite-speech-4.1-2b",
+        "creator": "ibm-granite",
+        "url": "https://huggingface.co/ibm-granite/granite-speech-4.1-2b",
+        "avg_wer": 5.65,
+        "rtfx": 231.29,
+        "datasets": {
+          "AMI": 8.09,
+          "Earnings22": 8.37,
+          "Gigaspeech": 9.8,
+          "LS Clean": 1.33,
+          "LS Other": 2.5,
+          "SPGISpeech": 3.78,
+          "Voxpopuli": 5.7
+        },
+        "rank": 2
+      },
+      {
+        "model": "ibm-granite/granite-speech-4.1-2b-nar",
+        "creator": "ibm-granite",
+        "url": "https://huggingface.co/ibm-granite/granite-speech-4.1-2b-nar",
+        "avg_wer": 5.7,
+        "rtfx": 879.12,
+        "datasets": {
+          "AMI": 8.03,
+          "Earnings22": 8.44,
+          "Gigaspeech": 10.16,
+          "LS Clean": 1.28,
+          "LS Other": 2.77,
+          "SPGISpeech": 3.33,
+          "Voxpopuli": 5.86
+        },
+        "rank": 3
+      },
+      {
+        "model": "zoom/scribe_v1",
+        "creator": "zoom",
+        "url": "https://developers.zoom.us/docs/ai-services/scribe/",
+        "avg_wer": 5.8,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 10.03,
+          "Earnings22": 9.53,
+          "Gigaspeech": 9.61,
+          "LS Clean": 1.63,
+          "LS Other": 2.81,
+          "SPGISpeech": 1.59,
+          "Voxpopuli": 5.37
+        },
+        "rank": 4
+      },
+      {
+        "model": "bosonai/higgs-audio-v3-8b-stt-v2",
+        "creator": "bosonai",
+        "url": "https://huggingface.co/bosonai/higgs-audio-v3-8b-stt-v2",
+        "avg_wer": 5.81,
+        "rtfx": 75.66,
+        "datasets": {
+          "AMI": 10.07,
+          "Earnings22": 8.79,
+          "Gigaspeech": 8.5,
+          "LS Clean": 1.27,
+          "LS Other": 2.43,
+          "SPGISpeech": 3.6,
+          "Voxpopuli": 6.01
+        },
+        "rank": 5
+      },
+      {
+        "model": "CohereLabs/cohere-transcribe-03-2026",
+        "creator": "CohereLabs",
+        "url": "https://huggingface.co/CohereLabs/cohere-transcribe-03-2026",
+        "avg_wer": 5.84,
+        "rtfx": 524.88,
+        "datasets": {
+          "AMI": 8.13,
+          "Earnings22": 10.86,
+          "Gigaspeech": 9.34,
+          "LS Clean": 1.25,
+          "LS Other": 2.37,
+          "SPGISpeech": 3.08,
+          "Voxpopuli": 5.87
+        },
+        "rank": 6
+      },
+      {
+        "model": "ibm-granite/granite-4.0-1b-speech",
+        "creator": "ibm-granite",
+        "url": "https://huggingface.co/ibm-granite/granite-4.0-1b-speech",
+        "avg_wer": 5.87,
+        "rtfx": 280.02,
+        "datasets": {
+          "AMI": 8.44,
+          "Earnings22": 8.48,
+          "Gigaspeech": 10.14,
+          "LS Clean": 1.42,
+          "LS Other": 2.85,
+          "SPGISpeech": 3.89,
+          "Voxpopuli": 5.84
+        },
+        "rank": 7
+      },
+      {
+        "model": "nvidia/canary-qwen-2.5b",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/canary-qwen-2.5b",
+        "avg_wer": 6.05,
+        "rtfx": 418.28,
+        "datasets": {
+          "AMI": 10.19,
+          "Earnings22": 10.45,
+          "Gigaspeech": 9.43,
+          "LS Clean": 1.61,
+          "LS Other": 3.1,
+          "SPGISpeech": 1.9,
+          "Voxpopuli": 5.66
+        },
+        "rank": 8
+      },
+      {
+        "model": "reson8/resonant-1",
+        "creator": "reson8",
+        "url": "https://docs.reson8.dev/api/speech-to-text/prerecorded/",
+        "avg_wer": 6.06,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 11.06,
+          "Earnings22": 9.13,
+          "Gigaspeech": 8.99,
+          "LS Clean": 1.33,
+          "LS Other": 2.51,
+          "SPGISpeech": 3.04,
+          "Voxpopuli": 6.39
+        },
+        "rank": 9
+      },
+      {
+        "model": "ibm-granite/granite-speech-3.3-8b",
+        "creator": "ibm-granite",
+        "url": "https://huggingface.co/ibm-granite/granite-speech-3.3-8b",
+        "avg_wer": 6.07,
+        "rtfx": 145.42,
+        "datasets": {
+          "AMI": 8.98,
+          "Earnings22": 9.42,
+          "Gigaspeech": 10.19,
+          "LS Clean": 1.43,
+          "LS Other": 2.86,
+          "SPGISpeech": 3.91,
+          "Voxpopuli": 5.72
+        },
+        "rank": 10
+      },
+      {
+        "model": "reson8/resonant-1-flash",
+        "creator": "reson8",
+        "url": "https://docs.reson8.dev/api/speech-to-text/prerecorded/",
+        "avg_wer": 6.07,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 11.01,
+          "Earnings22": 9.14,
+          "Gigaspeech": 9.0,
+          "LS Clean": 1.33,
+          "LS Other": 2.53,
+          "SPGISpeech": 3.05,
+          "Voxpopuli": 6.41
+        },
+        "rank": 11
+      },
+      {
+        "model": "Qwen/Qwen3-ASR-1.7B",
+        "creator": "Qwen",
+        "url": "https://huggingface.co/Qwen/Qwen3-ASR-1.7B",
+        "avg_wer": 6.25,
+        "rtfx": 147.93,
+        "datasets": {
+          "AMI": 10.56,
+          "Earnings22": 10.25,
+          "Gigaspeech": 8.74,
+          "LS Clean": 1.63,
+          "LS Other": 3.4,
+          "SPGISpeech": 2.84,
+          "Voxpopuli": 6.35
+        },
+        "rank": 12
+      },
+      {
+        "model": "elevenlabs/scribe_v2",
+        "creator": "elevenlabs",
+        "url": "https://elevenlabs.io/speech-to-text",
+        "avg_wer": 6.32,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 11.86,
+          "Earnings22": 9.43,
+          "Gigaspeech": 9.11,
+          "LS Clean": 1.54,
+          "LS Other": 2.83,
+          "SPGISpeech": 2.68,
+          "Voxpopuli": 6.8
+        },
+        "rank": 13
+      },
+      {
+        "model": "ibm-granite/granite-speech-3.3-2b",
+        "creator": "ibm-granite",
+        "url": "https://huggingface.co/ibm-granite/granite-speech-3.3-2b",
+        "avg_wer": 6.35,
+        "rtfx": 270.57,
+        "datasets": {
+          "AMI": 8.9,
+          "Earnings22": 10.25,
+          "Gigaspeech": 10.69,
+          "LS Clean": 1.53,
+          "LS Other": 3.26,
+          "SPGISpeech": 3.87,
+          "Voxpopuli": 5.93
+        },
+        "rank": 14
+      },
+      {
+        "model": "nvidia/parakeet-tdt-0.6b-v2",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/parakeet-tdt-0.6b-v2",
+        "avg_wer": 6.44,
+        "rtfx": 3386.02,
+        "datasets": {
+          "AMI": 11.16,
+          "Earnings22": 11.15,
+          "Gigaspeech": 9.74,
+          "LS Clean": 1.69,
+          "LS Other": 3.19,
+          "SPGISpeech": 2.17,
+          "Voxpopuli": 5.95
+        },
+        "rank": 15
+      },
+      {
+        "model": "microsoft/Phi-4-multimodal-instruct",
+        "creator": "microsoft",
+        "url": "http://aka.ms/llm-speech",
+        "avg_wer": 6.46,
+        "rtfx": 151.1,
+        "datasets": {
+          "AMI": 11.09,
+          "Earnings22": 10.16,
+          "Gigaspeech": 9.33,
+          "LS Clean": 1.69,
+          "LS Other": 3.82,
+          "SPGISpeech": 3.06,
+          "Voxpopuli": 6.04
+        },
+        "rank": 16
+      },
+      {
+        "model": "smallestai/pulse",
+        "creator": "smallestai",
+        "url": "https://smallest.ai/speech-to-text",
+        "avg_wer": 6.51,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 11.18,
+          "Earnings22": 11.09,
+          "Gigaspeech": 9.83,
+          "LS Clean": 1.84,
+          "LS Other": 3.32,
+          "SPGISpeech": 2.23,
+          "Voxpopuli": 6.05
+        },
+        "rank": 17
+      },
+      {
+        "model": "assemblyai/universal-3-pro",
+        "creator": "assemblyai",
+        "url": "https://www.assemblyai.com/docs/getting-started/universal-3-pro",
+        "avg_wer": 6.66,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 13.85,
+          "Earnings22": 10.9,
+          "Gigaspeech": 9.14,
+          "LS Clean": 1.53,
+          "LS Other": 2.7,
+          "SPGISpeech": 1.68,
+          "Voxpopuli": 6.83
+        },
+        "rank": 18
+      },
+      {
+        "model": "aquavoice/avalon-v1-en",
+        "creator": "aquavoice",
+        "url": "https://aquavoice.com/blog/introducing-avalon",
+        "avg_wer": 6.69,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 11.58,
+          "Earnings22": 11.37,
+          "Gigaspeech": 9.52,
+          "LS Clean": 1.68,
+          "LS Other": 3.28,
+          "SPGISpeech": 2.1,
+          "Voxpopuli": 7.33
+        },
+        "rank": 19
+      },
+      {
+        "model": "nvidia/canary-1b-flash",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/canary-1b-flash",
+        "avg_wer": 6.81,
+        "rtfx": 1045.75,
+        "datasets": {
+          "AMI": 13.11,
+          "Earnings22": 12.77,
+          "Gigaspeech": 9.85,
+          "LS Clean": 1.48,
+          "LS Other": 2.87,
+          "SPGISpeech": 1.95,
+          "Voxpopuli": 5.63
+        },
+        "rank": 20
+      },
+      {
+        "model": "nvidia/parakeet-tdt-0.6b-v3",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/parakeet-tdt-0.6b-v3",
+        "avg_wer": 6.82,
+        "rtfx": 3332.74,
+        "datasets": {
+          "AMI": 11.39,
+          "Earnings22": 11.19,
+          "Gigaspeech": 9.57,
+          "LS Clean": 1.92,
+          "LS Other": 3.59,
+          "SPGISpeech": 3.98,
+          "Voxpopuli": 6.09
+        },
+        "rank": 21
+      },
+      {
+        "model": "kyutai/stt-2.6b-en",
+        "creator": "kyutai",
+        "url": "https://huggingface.co/kyutai/stt-2.6b-en",
+        "avg_wer": 6.83,
+        "rtfx": 88.37,
+        "datasets": {
+          "AMI": 12.17,
+          "Earnings22": 10.99,
+          "Gigaspeech": 9.81,
+          "LS Clean": 1.7,
+          "LS Other": 4.32,
+          "SPGISpeech": 2.03,
+          "Voxpopuli": 6.79
+        },
+        "rank": 22
+      },
+      {
+        "model": "google/chirp_2",
+        "creator": "google",
+        "url": "https://docs.cloud.google.com/speech-to-text/docs/models/chirp-2",
+        "avg_wer": 6.88,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 8.91,
+          "Earnings22": 12.67,
+          "Gigaspeech": 9.8,
+          "LS Clean": 2.29,
+          "LS Other": 5.06,
+          "SPGISpeech": 2.4,
+          "Voxpopuli": 7.03
+        },
+        "rank": 23
+      },
+      {
+        "model": "nvidia/canary-1b",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/canary-1b",
+        "avg_wer": 6.92,
+        "rtfx": 235.34,
+        "datasets": {
+          "AMI": 13.9,
+          "Earnings22": 12.19,
+          "Gigaspeech": 10.12,
+          "LS Clean": 1.48,
+          "LS Other": 2.93,
+          "SPGISpeech": 2.06,
+          "Voxpopuli": 5.79
+        },
+        "rank": 24
+      },
+      {
+        "model": "Qwen/Qwen3-ASR-0.6B",
+        "creator": "Qwen",
+        "url": "https://huggingface.co/Qwen/Qwen3-ASR-0.6B",
+        "avg_wer": 6.93,
+        "rtfx": 166.23,
+        "datasets": {
+          "AMI": 11.66,
+          "Earnings22": 11.06,
+          "Gigaspeech": 9.14,
+          "LS Clean": 2.13,
+          "LS Other": 4.45,
+          "SPGISpeech": 3.03,
+          "Voxpopuli": 7.07
+        },
+        "rank": 25
+      },
+      {
+        "model": "mistralai/Voxtral-Small-24B-2507",
+        "creator": "mistralai",
+        "url": "https://huggingface.co/mistralai/Voxtral-Small-24B-2507",
+        "avg_wer": 7.06,
+        "rtfx": 54.09,
+        "datasets": {
+          "AMI": 15.27,
+          "Earnings22": 10.5,
+          "Gigaspeech": 9.81,
+          "LS Clean": 1.59,
+          "LS Other": 3.26,
+          "SPGISpeech": 2.02,
+          "Voxpopuli": 6.96
+        },
+        "rank": 26
+      },
+      {
+        "model": "google/chirp_3",
+        "creator": "google",
+        "url": "https://docs.cloud.google.com/speech-to-text/docs/models/chirp-3",
+        "avg_wer": 7.17,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 11.8,
+          "Earnings22": 10.58,
+          "Gigaspeech": 9.67,
+          "LS Clean": 2.04,
+          "LS Other": 4.58,
+          "SPGISpeech": 3.98,
+          "Voxpopuli": 7.52
+        },
+        "rank": 27
+      },
+      {
+        "model": "nyrahealth/CrisperWhisper",
+        "creator": "nyrahealth",
+        "url": "https://huggingface.co/nyrahealth/CrisperWhisper",
+        "avg_wer": 7.17,
+        "rtfx": 84.05,
+        "datasets": {
+          "AMI": 8.71,
+          "Earnings22": 12.89,
+          "Gigaspeech": 10.24,
+          "LS Clean": 1.82,
+          "LS Other": 4.0,
+          "SPGISpeech": 2.7,
+          "Voxpopuli": 9.82
+        },
+        "rank": 28
+      },
+      {
+        "model": "usefulsensors/moonshine-streaming-medium",
+        "creator": "usefulsensors",
+        "url": "https://huggingface.co/usefulsensors/moonshine-streaming-medium",
+        "avg_wer": 7.18,
+        "rtfx": 448.15,
+        "datasets": {
+          "AMI": 10.68,
+          "Earnings22": 11.92,
+          "Gigaspeech": 9.46,
+          "LS Clean": 2.09,
+          "LS Other": 5.0,
+          "SPGISpeech": 2.58,
+          "Voxpopuli": 8.54
+        },
+        "rank": 29
+      },
+      {
+        "model": "elevenlabs/scribe_v1",
+        "creator": "elevenlabs",
+        "url": "https://elevenlabs.io/speech-to-text",
+        "avg_wer": 7.4,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 14.43,
+          "Earnings22": 12.14,
+          "Gigaspeech": 9.66,
+          "LS Clean": 1.79,
+          "LS Other": 3.31,
+          "SPGISpeech": 3.3,
+          "Voxpopuli": 7.2
+        },
+        "rank": 30
+      },
+      {
+        "model": "nvidia/canary-180m-flash",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/canary-180m-flash",
+        "avg_wer": 7.48,
+        "rtfx": 1233.58,
+        "datasets": {
+          "AMI": 14.86,
+          "Earnings22": 12.33,
+          "Gigaspeech": 10.51,
+          "LS Clean": 1.73,
+          "LS Other": 4.35,
+          "SPGISpeech": 2.26,
+          "Voxpopuli": 6.35
+        },
+        "rank": 31
+      },
+      {
+        "model": "soundsgoodai/Zipformer-transducer-XL-290M",
+        "creator": "soundsgoodai",
+        "url": "https://huggingface.co/soundsgoodai/Zipformer-transducer-XL-290M",
+        "avg_wer": 7.48,
+        "rtfx": 69.6,
+        "datasets": {
+          "AMI": 15.97,
+          "Earnings22": 9.47,
+          "Gigaspeech": 10.88,
+          "LS Clean": 2.08,
+          "LS Other": 5.04,
+          "SPGISpeech": 2.11,
+          "Voxpopuli": 6.82
+        },
+        "rank": 32
+      },
+      {
+        "model": "nvidia/parakeet-tdt-1.1b",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/parakeet-tdt-1.1b",
+        "avg_wer": 7.5,
+        "rtfx": 2390.61,
+        "datasets": {
+          "AMI": 15.87,
+          "Earnings22": 14.49,
+          "Gigaspeech": 9.52,
+          "LS Clean": 1.4,
+          "LS Other": 2.6,
+          "SPGISpeech": 3.16,
+          "Voxpopuli": 5.49
+        },
+        "rank": 33
+      },
+      {
+        "model": "speechmatics/enhanced",
+        "creator": "speechmatics",
+        "url": "https://docs.speechmatics.com/speech-to-text/batch/quickstart",
+        "avg_wer": 7.53,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 14.47,
+          "Earnings22": 12.26,
+          "Gigaspeech": 9.5,
+          "LS Clean": 2.1,
+          "LS Other": 4.6,
+          "SPGISpeech": 3.06,
+          "Voxpopuli": 6.71
+        },
+        "rank": 34
+      },
+      {
+        "model": "mistralai/Voxtral-Mini-3B-2507",
+        "creator": "mistralai",
+        "url": "https://huggingface.co/mistralai/Voxtral-Mini-3B-2507",
+        "avg_wer": 7.53,
+        "rtfx": 109.86,
+        "datasets": {
+          "AMI": 16.3,
+          "Earnings22": 10.69,
+          "Gigaspeech": 10.24,
+          "LS Clean": 1.88,
+          "LS Other": 4.1,
+          "SPGISpeech": 2.37,
+          "Voxpopuli": 7.14
+        },
+        "rank": 35
+      },
+      {
+        "model": "nvidia/canary-1b-v2",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/canary-1b-v2",
+        "avg_wer": 7.56,
+        "rtfx": 749.0,
+        "datasets": {
+          "AMI": 16.01,
+          "Earnings22": 11.79,
+          "Gigaspeech": 10.82,
+          "LS Clean": 2.18,
+          "LS Other": 3.56,
+          "SPGISpeech": 2.28,
+          "Voxpopuli": 6.25
+        },
+        "rank": 36
+      },
+      {
+        "model": "nvidia/parakeet-rnnt-1.1b",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/parakeet-rnnt-1.1b",
+        "avg_wer": 7.59,
+        "rtfx": 2053.15,
+        "datasets": {
+          "AMI": 17.01,
+          "Earnings22": 13.94,
+          "Gigaspeech": 9.89,
+          "LS Clean": 1.45,
+          "LS Other": 2.5,
+          "SPGISpeech": 2.93,
+          "Voxpopuli": 5.44
+        },
+        "rank": 37
+      },
+      {
+        "model": "zai-org/GLM-ASR-Nano-2512",
+        "creator": "zai-org",
+        "url": "https://huggingface.co/zai-org/GLM-ASR-Nano-2512",
+        "avg_wer": 7.59,
+        "rtfx": 145.28,
+        "datasets": {
+          "AMI": 16.15,
+          "Earnings22": 11.08,
+          "Gigaspeech": 9.73,
+          "LS Clean": 2.15,
+          "LS Other": 4.42,
+          "SPGISpeech": 2.08,
+          "Voxpopuli": 7.54
+        },
+        "rank": 38
+      },
+      {
+        "model": "revai/fusion",
+        "creator": "revai",
+        "url": "https://docs.rev.ai/api/asynchronous/get-started/",
+        "avg_wer": 7.73,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 10.93,
+          "Earnings22": 12.09,
+          "Gigaspeech": 9.41,
+          "LS Clean": 2.88,
+          "LS Other": 6.23,
+          "SPGISpeech": 4.05,
+          "Voxpopuli": 8.53
+        },
+        "rank": 39
+      },
+      {
+        "model": "distil-whisper/distil-large-v3.5",
+        "creator": "distil-whisper",
+        "url": "https://huggingface.co/distil-whisper/distil-large-v3.5",
+        "avg_wer": 7.73,
+        "rtfx": 202.03,
+        "datasets": {
+          "AMI": 14.63,
+          "Earnings22": 11.29,
+          "Gigaspeech": 9.84,
+          "LS Clean": 2.37,
+          "LS Other": 5.04,
+          "SPGISpeech": 2.87,
+          "Voxpopuli": 8.04
+        },
+        "rank": 40
+      },
+      {
+        "model": "efficient-speech/lite-whisper-large-v3-acc",
+        "creator": "efficient-speech",
+        "url": "https://huggingface.co/efficient-speech/lite-whisper-large-v3-acc",
+        "avg_wer": 7.74,
+        "rtfx": 117.8,
+        "datasets": {
+          "AMI": 16.1,
+          "Earnings22": 11.04,
+          "Gigaspeech": 10.1,
+          "LS Clean": 2.0,
+          "LS Other": 3.91,
+          "SPGISpeech": 2.89,
+          "Voxpopuli": 8.11
+        },
+        "rank": 41
+      },
+      {
+        "model": "espnet/owsm_ctc_v4_1B",
+        "creator": "espnet",
+        "url": "https://huggingface.co/espnet/owsm_ctc_v4_1B",
+        "avg_wer": 7.85,
+        "rtfx": 453.97,
+        "datasets": {
+          "AMI": 13.1,
+          "Earnings22": 13.66,
+          "Gigaspeech": 10.83,
+          "LS Clean": 2.59,
+          "LS Other": 4.89,
+          "SPGISpeech": 2.55,
+          "Voxpopuli": 7.35
+        },
+        "rank": 42
+      },
+      {
+        "model": "nvidia/parakeet-ctc-1.1b",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/parakeet-ctc-1.1b",
+        "avg_wer": 7.95,
+        "rtfx": 2728.52,
+        "datasets": {
+          "AMI": 15.67,
+          "Earnings22": 13.75,
+          "Gigaspeech": 10.28,
+          "LS Clean": 1.83,
+          "LS Other": 3.51,
+          "SPGISpeech": 4.02,
+          "Voxpopuli": 6.56
+        },
+        "rank": 43
+      },
+      {
+        "model": "openai/whisper-large-v3",
+        "creator": "openai",
+        "url": "https://huggingface.co/openai/whisper-large-v3",
+        "avg_wer": 7.95,
+        "rtfx": 145.51,
+        "datasets": {
+          "AMI": 15.95,
+          "Earnings22": 11.29,
+          "Gigaspeech": 10.02,
+          "LS Clean": 2.01,
+          "LS Other": 3.91,
+          "SPGISpeech": 2.94,
+          "Voxpopuli": 9.54
+        },
+        "rank": 44
+      },
+      {
+        "model": "efficient-speech/lite-whisper-large-v3",
+        "creator": "efficient-speech",
+        "url": "https://huggingface.co/efficient-speech/lite-whisper-large-v3",
+        "avg_wer": 7.96,
+        "rtfx": 115.83,
+        "datasets": {
+          "AMI": 16.9,
+          "Earnings22": 11.55,
+          "Gigaspeech": 10.26,
+          "LS Clean": 2.1,
+          "LS Other": 4.4,
+          "SPGISpeech": 2.85,
+          "Voxpopuli": 7.67
+        },
+        "rank": 45
+      },
+      {
+        "model": "nvidia/parakeet-tdt_ctc-110m",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/parakeet-tdt_ctc-110m",
+        "avg_wer": 7.98,
+        "rtfx": 5345.14,
+        "datasets": {
+          "AMI": 15.89,
+          "Earnings22": 12.37,
+          "Gigaspeech": 10.52,
+          "LS Clean": 2.4,
+          "LS Other": 5.22,
+          "SPGISpeech": 2.54,
+          "Voxpopuli": 6.9
+        },
+        "rank": 46
+      },
+      {
+        "model": "nvidia/parakeet-rnnt-0.6b",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/parakeet-rnnt-0.6b",
+        "avg_wer": 8.02,
+        "rtfx": 2815.72,
+        "datasets": {
+          "AMI": 17.4,
+          "Earnings22": 14.66,
+          "Gigaspeech": 10.01,
+          "LS Clean": 1.62,
+          "LS Other": 3.02,
+          "SPGISpeech": 3.32,
+          "Voxpopuli": 6.08
+        },
+        "rank": 47
+      },
+      {
+        "model": "distil-whisper/distil-large-v3",
+        "creator": "distil-whisper",
+        "url": "https://huggingface.co/distil-whisper/distil-large-v3",
+        "avg_wer": 8.04,
+        "rtfx": 214.42,
+        "datasets": {
+          "AMI": 15.16,
+          "Earnings22": 11.79,
+          "Gigaspeech": 10.08,
+          "LS Clean": 2.54,
+          "LS Other": 5.19,
+          "SPGISpeech": 3.27,
+          "Voxpopuli": 8.25
+        },
+        "rank": 48
+      },
+      {
+        "model": "efficient-speech/lite-whisper-large-v3-turbo-acc",
+        "creator": "efficient-speech",
+        "url": "https://huggingface.co/efficient-speech/lite-whisper-large-v3-turbo-acc",
+        "avg_wer": 8.08,
+        "rtfx": 191.71,
+        "datasets": {
+          "AMI": 16.97,
+          "Earnings22": 11.53,
+          "Gigaspeech": 10.21,
+          "LS Clean": 2.15,
+          "LS Other": 4.6,
+          "SPGISpeech": 2.93,
+          "Voxpopuli": 8.17
+        },
+        "rank": 49
+      },
+      {
+        "model": "mistralai/Voxtral-Mini-4B-Realtime-2602",
+        "creator": "mistralai",
+        "url": "https://huggingface.co/mistralai/Voxtral-Mini-4B-Realtime-2602",
+        "avg_wer": 8.24,
+        "rtfx": 93.32,
+        "datasets": {
+          "AMI": 17.07,
+          "Earnings22": 11.84,
+          "Gigaspeech": 10.38,
+          "LS Clean": 2.08,
+          "LS Other": 5.52,
+          "SPGISpeech": 2.42,
+          "Voxpopuli": 8.34
+        },
+        "rank": 50
+      },
+      {
+        "model": "nvidia/parakeet-ctc-0.6b",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/parakeet-ctc-0.6b",
+        "avg_wer": 8.25,
+        "rtfx": 4281.53,
+        "datasets": {
+          "AMI": 16.46,
+          "Earnings22": 14.26,
+          "Gigaspeech": 10.39,
+          "LS Clean": 1.88,
+          "LS Other": 3.8,
+          "SPGISpeech": 3.89,
+          "Voxpopuli": 7.07
+        },
+        "rank": 51
+      },
+      {
+        "model": "distil-whisper/distil-large-v2",
+        "creator": "distil-whisper",
+        "url": "https://huggingface.co/distil-whisper/distil-large-v2",
+        "avg_wer": 8.36,
+        "rtfx": 202.95,
+        "datasets": {
+          "AMI": 14.67,
+          "Earnings22": 12.19,
+          "Gigaspeech": 10.32,
+          "LS Clean": 2.94,
+          "LS Other": 6.84,
+          "SPGISpeech": 3.3,
+          "Voxpopuli": 8.24
+        },
+        "rank": 52
+      },
+      {
+        "model": "openai/whisper-large-v2",
+        "creator": "openai",
+        "url": "https://huggingface.co/openai/whisper-large-v2",
+        "avg_wer": 8.4,
+        "rtfx": 144.45,
+        "datasets": {
+          "AMI": 16.74,
+          "Earnings22": 12.05,
+          "Gigaspeech": 10.67,
+          "LS Clean": 2.83,
+          "LS Other": 5.14,
+          "SPGISpeech": 3.87,
+          "Voxpopuli": 7.48
+        },
+        "rank": 53
+      },
+      {
+        "model": "usefulsensors/moonshine-streaming-small",
+        "creator": "usefulsensors",
+        "url": "https://huggingface.co/usefulsensors/moonshine-streaming-small",
+        "avg_wer": 8.42,
+        "rtfx": 566.33,
+        "datasets": {
+          "AMI": 12.53,
+          "Earnings22": 13.55,
+          "Gigaspeech": 10.4,
+          "LS Clean": 2.49,
+          "LS Other": 6.78,
+          "SPGISpeech": 3.19,
+          "Voxpopuli": 9.98
+        },
+        "rank": 54
+      },
+      {
+        "model": "openai/whisper-large-v3-turbo",
+        "creator": "openai",
+        "url": "https://huggingface.co/openai/whisper-large-v3-turbo",
+        "avg_wer": 8.44,
+        "rtfx": 200.19,
+        "datasets": {
+          "AMI": 16.13,
+          "Earnings22": 11.63,
+          "Gigaspeech": 10.14,
+          "LS Clean": 2.1,
+          "LS Other": 4.24,
+          "SPGISpeech": 2.97,
+          "Voxpopuli": 11.87
+        },
+        "rank": 55
+      },
+      {
+        "model": "microsoft/VibeVoice-ASR-HF",
+        "creator": "microsoft",
+        "url": "http://aka.ms/llm-speech",
+        "avg_wer": 8.51,
+        "rtfx": 51.8,
+        "datasets": {
+          "AMI": 17.2,
+          "Earnings22": 13.17,
+          "Gigaspeech": 9.67,
+          "LS Clean": 2.2,
+          "LS Other": 5.51,
+          "SPGISpeech": 3.8,
+          "Voxpopuli": 8.01
+        },
+        "rank": 56
+      },
+      {
+        "model": "openai/whisper-large",
+        "creator": "openai",
+        "url": "https://huggingface.co/openai/whisper-large",
+        "avg_wer": 8.52,
+        "rtfx": 143.76,
+        "datasets": {
+          "AMI": 16.73,
+          "Earnings22": 12.91,
+          "Gigaspeech": 10.76,
+          "LS Clean": 2.73,
+          "LS Other": 5.54,
+          "SPGISpeech": 3.2,
+          "Voxpopuli": 7.76
+        },
+        "rank": 57
+      },
+      {
+        "model": "espnet/owsm_ctc_v3.1_1B",
+        "creator": "espnet",
+        "url": "https://huggingface.co/espnet/owsm_ctc_v3.1_1B",
+        "avg_wer": 8.57,
+        "rtfx": 502.02,
+        "datasets": {
+          "AMI": 15.61,
+          "Earnings22": 13.74,
+          "Gigaspeech": 11.88,
+          "LS Clean": 2.35,
+          "LS Other": 5.15,
+          "SPGISpeech": 2.87,
+          "Voxpopuli": 8.4
+        },
+        "rank": 58
+      },
+      {
+        "model": "revai/machine",
+        "creator": "revai",
+        "url": "https://docs.rev.ai/api/asynchronous/get-started/",
+        "avg_wer": 8.64,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 10.99,
+          "Earnings22": 12.69,
+          "Gigaspeech": 9.78,
+          "LS Clean": 4.44,
+          "LS Other": 8.86,
+          "SPGISpeech": 4.17,
+          "Voxpopuli": 9.57
+        },
+        "rank": 59
+      },
+      {
+        "model": "openai/whisper-medium.en",
+        "creator": "openai",
+        "url": "https://huggingface.co/openai/whisper-medium.en",
+        "avg_wer": 8.66,
+        "rtfx": 182.13,
+        "datasets": {
+          "AMI": 16.68,
+          "Earnings22": 12.63,
+          "Gigaspeech": 11.03,
+          "LS Clean": 3.02,
+          "LS Other": 5.85,
+          "SPGISpeech": 3.33,
+          "Voxpopuli": 8.06
+        },
+        "rank": 60
+      },
+      {
+        "model": "espnet/owsm_ctc_v3.2_ft_1B",
+        "creator": "espnet",
+        "url": "https://huggingface.co/espnet/owsm_ctc_v3.2_ft_1B",
+        "avg_wer": 8.68,
+        "rtfx": 339.4,
+        "datasets": {
+          "AMI": 16.64,
+          "Earnings22": 13.65,
+          "Gigaspeech": 11.79,
+          "LS Clean": 2.63,
+          "LS Other": 5.29,
+          "SPGISpeech": 2.73,
+          "Voxpopuli": 8.02
+        },
+        "rank": 61
+      },
+      {
+        "model": "facebook/omniASR-LLM-7B-v2",
+        "creator": "facebook",
+        "url": "https://github.com/facebookresearch/omnilingual-asr?tab=readme-ov-file#model-architectures",
+        "avg_wer": 8.71,
+        "rtfx": 65.97,
+        "datasets": {
+          "AMI": 20.73,
+          "Earnings22": 13.48,
+          "Gigaspeech": 11.15,
+          "LS Clean": 1.66,
+          "LS Other": 3.64,
+          "SPGISpeech": 3.65,
+          "Voxpopuli": 6.69
+        },
+        "rank": 62
+      },
+      {
+        "model": "efficient-speech/lite-whisper-large-v3-fast",
+        "creator": "efficient-speech",
+        "url": "https://huggingface.co/efficient-speech/lite-whisper-large-v3-fast",
+        "avg_wer": 8.77,
+        "rtfx": 120.76,
+        "datasets": {
+          "AMI": 19.87,
+          "Earnings22": 12.48,
+          "Gigaspeech": 10.66,
+          "LS Clean": 2.25,
+          "LS Other": 5.19,
+          "SPGISpeech": 3.15,
+          "Voxpopuli": 7.79
+        },
+        "rank": 63
+      },
+      {
+        "model": "nvidia/stt_en_conformer_ctc_large",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/stt_en_conformer_ctc_large",
+        "avg_wer": 8.88,
+        "rtfx": 4295.01,
+        "datasets": {
+          "AMI": 15.95,
+          "Earnings22": 15.99,
+          "Gigaspeech": 11.6,
+          "LS Clean": 2.05,
+          "LS Other": 4.15,
+          "SPGISpeech": 5.57,
+          "Voxpopuli": 6.83
+        },
+        "rank": 64
+      },
+      {
+        "model": "google/chirp",
+        "creator": "google",
+        "url": "https://cloud.google.com/blog/products/ai-machine-learning/bringing-power-large-models-google-clouds-speech-api",
+        "avg_wer": 8.93,
+        "rtfx": null,
+        "datasets": {
+          "AMI": 15.9,
+          "Earnings22": 13.25,
+          "Gigaspeech": 10.31,
+          "LS Clean": 3.53,
+          "LS Other": 6.38,
+          "SPGISpeech": 4.23,
+          "Voxpopuli": 8.92
+        },
+        "rank": 65
+      },
+      {
+        "model": "speechbrain/asr-conformer-largescaleasr",
+        "creator": "speechbrain",
+        "url": "https://huggingface.co/speechbrain/asr-conformer-largescaleasr",
+        "avg_wer": 8.98,
+        "rtfx": 42.16,
+        "datasets": {
+          "AMI": 19.6,
+          "Earnings22": 14.71,
+          "Gigaspeech": 11.36,
+          "LS Clean": 1.95,
+          "LS Other": 4.24,
+          "SPGISpeech": 4.11,
+          "Voxpopuli": 6.89
+        },
+        "rank": 66
+      },
+      {
+        "model": "distil-whisper/distil-small.en",
+        "creator": "distil-whisper",
+        "url": "https://huggingface.co/distil-whisper/distil-small.en",
+        "avg_wer": 9.14,
+        "rtfx": 331.89,
+        "datasets": {
+          "AMI": 16.16,
+          "Earnings22": 13.15,
+          "Gigaspeech": 10.87,
+          "LS Clean": 3.48,
+          "LS Other": 7.73,
+          "SPGISpeech": 3.82,
+          "Voxpopuli": 8.79
+        },
+        "rank": 67
+      },
+      {
+        "model": "openai/whisper-small.en",
+        "creator": "openai",
+        "url": "https://huggingface.co/openai/whisper-small.en",
+        "avg_wer": 9.24,
+        "rtfx": 268.91,
+        "datasets": {
+          "AMI": 17.93,
+          "Earnings22": 12.97,
+          "Gigaspeech": 11.35,
+          "LS Clean": 3.05,
+          "LS Other": 7.25,
+          "SPGISpeech": 3.6,
+          "Voxpopuli": 8.5
+        },
+        "rank": 68
+      },
+      {
+        "model": "fixie-ai/ultravox-v0_6-llama-3_1-8b",
+        "creator": "fixie-ai",
+        "url": "https://huggingface.co/fixie-ai/ultravox-v0_6-llama-3_1-8b",
+        "avg_wer": 9.29,
+        "rtfx": 6.22,
+        "datasets": {
+          "AMI": 21.53,
+          "Earnings22": 15.35,
+          "Gigaspeech": 9.82,
+          "LS Clean": 2.11,
+          "LS Other": 4.35,
+          "SPGISpeech": 3.63,
+          "Voxpopuli": 8.24
+        },
+        "rank": 69
+      },
+      {
+        "model": "distil-whisper/distil-medium.en",
+        "creator": "distil-whisper",
+        "url": "https://huggingface.co/distil-whisper/distil-medium.en",
+        "avg_wer": 9.33,
+        "rtfx": 279.73,
+        "datasets": {
+          "AMI": 16.12,
+          "Earnings22": 12.99,
+          "Gigaspeech": 11.3,
+          "LS Clean": 3.69,
+          "LS Other": 8.35,
+          "SPGISpeech": 3.83,
+          "Voxpopuli": 9.0
+        },
+        "rank": 70
+      },
+      {
+        "model": "abr-ai/niagara-38m-batch.en",
+        "creator": "abr-ai",
+        "url": "https://huggingface.co/abr-ai/niagara-38m-batch.en",
+        "avg_wer": 9.36,
+        "rtfx": 2623.39,
+        "datasets": {
+          "AMI": 15.87,
+          "Earnings22": 12.09,
+          "Gigaspeech": 12.56,
+          "LS Clean": 3.84,
+          "LS Other": 9.35,
+          "SPGISpeech": 3.1,
+          "Voxpopuli": 8.73
+        },
+        "rank": 71
+      },
+      {
+        "model": "nvidia/stt_en_fastconformer_ctc_large",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/stt_en_fastconformer_ctc_large",
+        "avg_wer": 9.57,
+        "rtfx": 6399.25,
+        "datasets": {
+          "AMI": 18.61,
+          "Earnings22": 18.81,
+          "Gigaspeech": 12.17,
+          "LS Clean": 1.93,
+          "LS Other": 4.04,
+          "SPGISpeech": 5.06,
+          "Voxpopuli": 6.34
+        },
+        "rank": 72
+      },
+      {
+        "model": "nvidia/stt_en_fastconformer_transducer_large",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/stt_en_fastconformer_transducer_large",
+        "avg_wer": 9.71,
+        "rtfx": 4097.43,
+        "datasets": {
+          "AMI": 19.09,
+          "Earnings22": 19.41,
+          "Gigaspeech": 12.31,
+          "LS Clean": 1.8,
+          "LS Other": 3.97,
+          "SPGISpeech": 4.97,
+          "Voxpopuli": 6.45
+        },
+        "rank": 73
+      },
+      {
+        "model": "usefulsensors/moonshine-base",
+        "creator": "usefulsensors",
+        "url": "https://huggingface.co/usefulsensors/moonshine-base",
+        "avg_wer": 10.61,
+        "rtfx": 565.97,
+        "datasets": {
+          "AMI": 17.49,
+          "Earnings22": 16.85,
+          "Gigaspeech": 12.08,
+          "LS Clean": 3.38,
+          "LS Other": 8.15,
+          "SPGISpeech": 5.46,
+          "Voxpopuli": 10.84
+        },
+        "rank": 74
+      },
+      {
+        "model": "nvidia/stt_en_conformer_transducer_small",
+        "creator": "nvidia",
+        "url": "https://catalog.ngc.nvidia.com/orgs/nvidia/teams/nemo/models/stt_en_conformer_transducer_small",
+        "avg_wer": 10.84,
+        "rtfx": 3714.36,
+        "datasets": {
+          "AMI": 20.28,
+          "Earnings22": 18.13,
+          "Gigaspeech": 13.7,
+          "LS Clean": 2.77,
+          "LS Other": 6.47,
+          "SPGISpeech": 6.63,
+          "Voxpopuli": 7.87
+        },
+        "rank": 75
+      },
+      {
+        "model": "abr-ai/niagara-19m-batch.en",
+        "creator": "abr-ai",
+        "url": "https://huggingface.co/abr-ai/niagara-19m-batch.en",
+        "avg_wer": 11.01,
+        "rtfx": 2840.17,
+        "datasets": {
+          "AMI": 18.86,
+          "Earnings22": 14.52,
+          "Gigaspeech": 13.99,
+          "LS Clean": 4.81,
+          "LS Other": 11.19,
+          "SPGISpeech": 3.77,
+          "Voxpopuli": 9.92
+        },
+        "rank": 76
+      },
+      {
+        "model": "abr-ai/asr-19m-v2-en-32b",
+        "creator": "abr-ai",
+        "url": "https://huggingface.co/abr-ai/asr-19m-v2-en-32b",
+        "avg_wer": 11.05,
+        "rtfx": 2862.63,
+        "datasets": {
+          "AMI": 18.76,
+          "Earnings22": 13.53,
+          "Gigaspeech": 15.44,
+          "LS Clean": 4.66,
+          "LS Other": 11.16,
+          "SPGISpeech": 3.94,
+          "Voxpopuli": 9.88
+        },
+        "rank": 77
+      },
+      {
+        "model": "openai/whisper-base.en",
+        "creator": "openai",
+        "url": "https://huggingface.co/openai/whisper-base.en",
+        "avg_wer": 11.1,
+        "rtfx": 320.67,
+        "datasets": {
+          "AMI": 21.13,
+          "Earnings22": 15.09,
+          "Gigaspeech": 12.83,
+          "LS Clean": 4.25,
+          "LS Other": 10.35,
+          "SPGISpeech": 4.26,
+          "Voxpopuli": 9.76
+        },
+        "rank": 78
+      },
+      {
+        "model": "facebook/omniASR-CTC-7B-v2",
+        "creator": "facebook",
+        "url": "https://github.com/facebookresearch/omnilingual-asr?tab=readme-ov-file#model-architectures",
+        "avg_wer": 11.28,
+        "rtfx": 267.43,
+        "datasets": {
+          "AMI": 23.86,
+          "Earnings22": 17.11,
+          "Gigaspeech": 15.37,
+          "LS Clean": 2.56,
+          "LS Other": 5.6,
+          "SPGISpeech": 6.07,
+          "Voxpopuli": 8.39
+        },
+        "rank": 79
+      },
+      {
+        "model": "nvidia/stt_en_conformer_ctc_small",
+        "creator": "nvidia",
+        "url": "https://huggingface.co/nvidia/stt_en_conformer_ctc_small",
+        "avg_wer": 11.73,
+        "rtfx": 5686.9,
+        "datasets": {
+          "AMI": 20.43,
+          "Earnings22": 18.84,
+          "Gigaspeech": 14.46,
+          "LS Clean": 3.59,
+          "LS Other": 7.92,
+          "SPGISpeech": 7.8,
+          "Voxpopuli": 9.07
+        },
+        "rank": 80
+      },
+      {
+        "model": "usefulsensors/moonshine-streaming-tiny",
+        "creator": "usefulsensors",
+        "url": "https://huggingface.co/usefulsensors/moonshine-streaming-tiny",
+        "avg_wer": 12.84,
+        "rtfx": 847.2,
+        "datasets": {
+          "AMI": 19.02,
+          "Earnings22": 20.19,
+          "Gigaspeech": 13.9,
+          "LS Clean": 4.5,
+          "LS Other": 12.1,
+          "SPGISpeech": 6.16,
+          "Voxpopuli": 14.02
+        },
+        "rank": 81
+      },
+      {
+        "model": "usefulsensors/moonshine-tiny",
+        "creator": "usefulsensors",
+        "url": "https://huggingface.co/usefulsensors/moonshine-tiny",
+        "avg_wer": 13.65,
+        "rtfx": 753.06,
+        "datasets": {
+          "AMI": 22.84,
+          "Earnings22": 20.73,
+          "Gigaspeech": 14.21,
+          "LS Clean": 4.55,
+          "LS Other": 11.68,
+          "SPGISpeech": 7.43,
+          "Voxpopuli": 14.11
+        },
+        "rank": 82
+      },
+      {
+        "model": "openai/whisper-tiny.en",
+        "creator": "openai",
+        "url": "https://huggingface.co/openai/whisper-tiny.en",
+        "avg_wer": 13.78,
+        "rtfx": 348.12,
+        "datasets": {
+          "AMI": 24.24,
+          "Earnings22": 19.12,
+          "Gigaspeech": 14.08,
+          "LS Clean": 5.66,
+          "LS Other": 15.45,
+          "SPGISpeech": 5.93,
+          "Voxpopuli": 12.0
+        },
+        "rank": 83
+      },
+      {
+        "model": "speechbrain/asr-wav2vec2-librispeech",
+        "creator": "speechbrain",
+        "url": "https://huggingface.co/speechbrain/asr-wav2vec2-librispeech",
+        "avg_wer": 15.31,
+        "rtfx": 451.18,
+        "datasets": {
+          "AMI": 32.05,
+          "Earnings22": 28.52,
+          "Gigaspeech": 16.92,
+          "LS Clean": 1.77,
+          "LS Other": 3.83,
+          "SPGISpeech": 10.39,
+          "Voxpopuli": 13.72
+        },
+        "rank": 84
+      },
+      {
+        "model": "facebook/wav2vec2-large-960h-lv60-self",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/wav2vec2-large-960h-lv60-self",
+        "avg_wer": 22.19,
+        "rtfx": 509.32,
+        "datasets": {
+          "AMI": 36.77,
+          "Earnings22": 31.68,
+          "Gigaspeech": 23.94,
+          "LS Clean": 11.13,
+          "LS Other": 12.42,
+          "SPGISpeech": 17.94,
+          "Voxpopuli": 21.42
+        },
+        "rank": 85
+      },
+      {
+        "model": "facebook/mms-1b-all",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/mms-1b-all",
+        "avg_wer": 23.26,
+        "rtfx": 230.79,
+        "datasets": {
+          "AMI": 42.02,
+          "Earnings22": 31.17,
+          "Gigaspeech": 26.44,
+          "LS Clean": 12.63,
+          "LS Other": 15.99,
+          "SPGISpeech": 16.95,
+          "Voxpopuli": 17.63
+        },
+        "rank": 86
+      },
+      {
+        "model": "facebook/hubert-xlarge-ls960-ft",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/hubert-xlarge-ls960-ft",
+        "avg_wer": 23.51,
+        "rtfx": 361.32,
+        "datasets": {
+          "AMI": 39.11,
+          "Earnings22": 36.13,
+          "Gigaspeech": 24.74,
+          "LS Clean": 11.3,
+          "LS Other": 12.22,
+          "SPGISpeech": 18.58,
+          "Voxpopuli": 22.47
+        },
+        "rank": 87
+      },
+      {
+        "model": "facebook/hubert-large-ls960-ft",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/hubert-large-ls960-ft",
+        "avg_wer": 23.66,
+        "rtfx": 495.86,
+        "datasets": {
+          "AMI": 39.72,
+          "Earnings22": 35.24,
+          "Gigaspeech": 25.01,
+          "LS Clean": 11.35,
+          "LS Other": 12.75,
+          "SPGISpeech": 18.86,
+          "Voxpopuli": 22.7
+        },
+        "rank": 88
+      },
+      {
+        "model": "facebook/wav2vec2-large-robust-ft-libri-960h",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/wav2vec2-large-robust-ft-libri-960h",
+        "avg_wer": 23.86,
+        "rtfx": 503.81,
+        "datasets": {
+          "AMI": 37.75,
+          "Earnings22": 36.22,
+          "Gigaspeech": 25.12,
+          "LS Clean": 11.84,
+          "LS Other": 13.76,
+          "SPGISpeech": 19.03,
+          "Voxpopuli": 23.27
+        },
+        "rank": 89
+      },
+      {
+        "model": "facebook/data2vec-audio-large-960h",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/data2vec-audio-large-960h",
+        "avg_wer": 24.26,
+        "rtfx": 470.15,
+        "datasets": {
+          "AMI": 40.51,
+          "Earnings22": 37.82,
+          "Gigaspeech": 24.8,
+          "LS Clean": 11.4,
+          "LS Other": 12.94,
+          "SPGISpeech": 18.49,
+          "Voxpopuli": 23.86
+        },
+        "rank": 90
+      },
+      {
+        "model": "facebook/wav2vec2-conformer-rope-large-960h-ft",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/wav2vec2-conformer-rope-large-960h-ft",
+        "avg_wer": 24.34,
+        "rtfx": 607.87,
+        "datasets": {
+          "AMI": 42.47,
+          "Earnings22": 37.52,
+          "Gigaspeech": 25.0,
+          "LS Clean": 11.34,
+          "LS Other": 12.54,
+          "SPGISpeech": 18.87,
+          "Voxpopuli": 22.61
+        },
+        "rank": 91
+      },
+      {
+        "model": "facebook/wav2vec2-conformer-rel-pos-large-960h-ft",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/wav2vec2-conformer-rel-pos-large-960h-ft",
+        "avg_wer": 24.37,
+        "rtfx": 522.46,
+        "datasets": {
+          "AMI": 42.39,
+          "Earnings22": 38.33,
+          "Gigaspeech": 24.96,
+          "LS Clean": 11.2,
+          "LS Other": 12.44,
+          "SPGISpeech": 18.85,
+          "Voxpopuli": 22.39
+        },
+        "rank": 92
+      },
+      {
+        "model": "facebook/wav2vec2-large-960h",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/wav2vec2-large-960h",
+        "avg_wer": 27.9,
+        "rtfx": 516.58,
+        "datasets": {
+          "AMI": 42.66,
+          "Earnings22": 43.75,
+          "Gigaspeech": 27.74,
+          "LS Clean": 12.81,
+          "LS Other": 15.46,
+          "SPGISpeech": 22.82,
+          "Voxpopuli": 30.09
+        },
+        "rank": 93
+      },
+      {
+        "model": "facebook/data2vec-audio-base-960h",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/data2vec-audio-base-960h",
+        "avg_wer": 29.56,
+        "rtfx": 648.14,
+        "datasets": {
+          "AMI": 47.27,
+          "Earnings22": 49.56,
+          "Gigaspeech": 29.78,
+          "LS Clean": 12.13,
+          "LS Other": 15.48,
+          "SPGISpeech": 25.46,
+          "Voxpopuli": 27.25
+        },
+        "rank": 94
+      },
+      {
+        "model": "facebook/wav2vec2-base-960h",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/wav2vec2-base-960h",
+        "avg_wer": 30.6,
+        "rtfx": 686.0,
+        "datasets": {
+          "AMI": 45.56,
+          "Earnings22": 48.47,
+          "Gigaspeech": 30.85,
+          "LS Clean": 12.53,
+          "LS Other": 16.72,
+          "SPGISpeech": 27.56,
+          "Voxpopuli": 32.48
+        },
+        "rank": 95
+      },
+      {
+        "model": "facebook/mms-1b-fl102",
+        "creator": "facebook",
+        "url": "https://huggingface.co/facebook/mms-1b-fl102",
+        "avg_wer": 40.86,
+        "rtfx": 234.42,
+        "datasets": {
+          "AMI": 86.78,
+          "Earnings22": 51.87,
+          "Gigaspeech": 42.42,
+          "LS Clean": 22.07,
+          "LS Other": 28.7,
+          "SPGISpeech": 26.21,
+          "Voxpopuli": 27.97
+        },
+        "rank": 96
+      }
+    ]
+  },
+  "tts": {
+    "source": "https://artificialanalysis.ai",
+    "metric": "ELO (higher is better)",
+    "count": 71,
+    "models": [
+      {
+        "model": "Realtime TTS 1.5 Max",
+        "slug": "realtime-tts-1-5-max",
+        "creator": "Inworld",
+        "elo": 1212,
+        "rank": 1,
+        "ci95": "-19/19"
+      },
+      {
+        "model": "Gemini 3.1 Flash TTS",
+        "slug": "gemini-3-1-tts",
+        "creator": "Google",
+        "elo": 1206,
+        "rank": 2,
+        "ci95": "-18/18"
+      },
+      {
+        "model": "Eleven v3",
+        "slug": "eleven-v3",
+        "creator": "ElevenLabs",
+        "elo": 1179,
+        "rank": 3,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "Speech 2.8 HD",
+        "slug": "speech-2-8-hd",
+        "creator": "MiniMax",
+        "elo": 1165,
+        "rank": 4,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "Inworld TTS 1 Max",
+        "slug": "inworld-tts-1-max",
+        "creator": "Inworld",
+        "elo": 1164,
+        "rank": 5,
+        "ci95": "-19/19"
+      },
+      {
+        "model": "Realtime TTS 1.5 Mini",
+        "slug": "realtime-tts-1-5-mini",
+        "creator": "Inworld",
+        "elo": 1159,
+        "rank": 6,
+        "ci95": "-16/16"
+      },
+      {
+        "model": "Step TTS 2 (Mar 2026)",
+        "slug": "step-tts-2-mar-2026",
+        "creator": "StepFun",
+        "elo": 1153,
+        "rank": 7,
+        "ci95": "-20/20"
+      },
+      {
+        "model": "Speech 2.8 Turbo",
+        "slug": "speech-2-8-turbo",
+        "creator": "MiniMax",
+        "elo": 1149,
+        "rank": 8,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "Speech 2.6 HD",
+        "slug": "speech-2.6-hd",
+        "creator": "MiniMax",
+        "elo": 1133,
+        "rank": 9,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "Speech 2.6 Turbo",
+        "slug": "speech-2.6-turbo",
+        "creator": "MiniMax",
+        "elo": 1131,
+        "rank": 10,
+        "ci95": "-11/11"
+      },
+      {
+        "model": "Fish Audio S2 Pro",
+        "slug": "fish-audio-s2-pro",
+        "creator": "Fish Audio",
+        "elo": 1130,
+        "rank": 11,
+        "ci95": "-24/24"
+      },
+      {
+        "model": "Inworld TTS 1",
+        "slug": "inworld-tts",
+        "creator": "Inworld",
+        "elo": 1120,
+        "rank": 12,
+        "ci95": "-17/17"
+      },
+      {
+        "model": "Speech-02-HD",
+        "slug": "speech-02-hd",
+        "creator": "MiniMax",
+        "elo": 1119,
+        "rank": 13,
+        "ci95": "-11/11"
+      },
+      {
+        "model": "Azure HD 2.5",
+        "slug": "azure-hd-2-5",
+        "creator": "Microsoft Azure",
+        "elo": 1116,
+        "rank": 14,
+        "ci95": "-23/23"
+      },
+      {
+        "model": "Multilingual v2",
+        "slug": "multilingual-v2",
+        "creator": "ElevenLabs",
+        "elo": 1108,
+        "rank": 15,
+        "ci95": "-8/8"
+      },
+      {
+        "model": "Speech-02-Turbo",
+        "slug": "speech-02-turbo",
+        "creator": "MiniMax",
+        "elo": 1101,
+        "rank": 16,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "Step Audio EditX (Mar 2026)",
+        "slug": "step-audio-editx-mar-2026",
+        "creator": "StepFun",
+        "elo": 1101,
+        "rank": 17,
+        "ci95": "-22/22"
+      },
+      {
+        "model": "TTS-1",
+        "slug": "tts-1",
+        "creator": "OpenAI",
+        "elo": 1101,
+        "rank": 18,
+        "ci95": "-8/8"
+      },
+      {
+        "model": "Turbo v2.5",
+        "slug": "turbo-v2-5",
+        "creator": "ElevenLabs",
+        "elo": 1099,
+        "rank": 19,
+        "ci95": "-8/8"
+      },
+      {
+        "model": "TTS-1 HD",
+        "slug": "tts-1-hd",
+        "creator": "OpenAI",
+        "elo": 1099,
+        "rank": 20,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "Flash v2.5",
+        "slug": "flash-v2-5",
+        "creator": "ElevenLabs",
+        "elo": 1089,
+        "rank": 21,
+        "ci95": "-9/9"
+      },
+      {
+        "model": "Gemini 2.5 Flash Lite TTS",
+        "slug": "gemini-2-5-flash-lite",
+        "creator": "Google",
+        "elo": 1079,
+        "rank": 22,
+        "ci95": "-14/14"
+      },
+      {
+        "model": "Sonic 3",
+        "slug": "sonic3",
+        "creator": "Cartesia",
+        "elo": 1069,
+        "rank": 23,
+        "ci95": "-13/13"
+      },
+      {
+        "model": "OpenAudio S1",
+        "slug": "openaudio-s1",
+        "creator": "Fish Audio",
+        "elo": 1065,
+        "rank": 24,
+        "ci95": "-11/11"
+      },
+      {
+        "model": "Magpie-Multilingual 357M (Feb 2026)",
+        "slug": "magpie-multilingual-357m-feb-2026",
+        "creator": "NVIDIA",
+        "elo": 1063,
+        "rank": 25,
+        "ci95": "-26/26"
+      },
+      {
+        "model": "Studio",
+        "slug": "studio",
+        "creator": "Google",
+        "elo": 1062,
+        "rank": 26,
+        "ci95": "-10/10"
+      },
+      {
+        "model": "T2A-01-HD",
+        "slug": "t2a-01-hd",
+        "creator": "MiniMax",
+        "elo": 1060,
+        "rank": 27,
+        "ci95": "-10/10"
+      },
+      {
+        "model": "SIMBA 1.6",
+        "slug": "simba-1-6",
+        "creator": "Speechify",
+        "elo": 1058,
+        "rank": 28,
+        "ci95": "-21/21"
+      },
+      {
+        "model": "Kokoro 82M v1.0",
+        "slug": "kokoro-82m-v1-0",
+        "creator": "Kokoro",
+        "elo": 1056,
+        "rank": 29,
+        "ci95": "-9/9"
+      },
+      {
+        "model": "Polly Generative",
+        "slug": "polly-generative",
+        "creator": "Amazon",
+        "elo": 1055,
+        "rank": 30,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "AsyncFlow V2, async",
+        "slug": "asyncflow-v2",
+        "creator": "async",
+        "elo": 1051,
+        "rank": 31,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "Maya1",
+        "slug": "maya-1",
+        "creator": "Maya Research",
+        "elo": 1051,
+        "rank": 32,
+        "ci95": "-13/13"
+      },
+      {
+        "model": "Azure Neural",
+        "slug": "azure-neural",
+        "creator": "Microsoft Azure",
+        "elo": 1049,
+        "rank": 33,
+        "ci95": "-8/8"
+      },
+      {
+        "model": "Sonic English (Oct 2024)",
+        "slug": "sonic-english-oct-24-",
+        "creator": "Cartesia",
+        "elo": 1046,
+        "rank": 34,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "Voxtral TTS",
+        "slug": "voxtral-tts",
+        "creator": "Mistral",
+        "elo": 1044,
+        "rank": 35,
+        "ci95": "-23/23"
+      },
+      {
+        "model": "Octave 2",
+        "slug": "ocateve-2",
+        "creator": "Hume AI",
+        "elo": 1044,
+        "rank": 36,
+        "ci95": "-14/14"
+      },
+      {
+        "model": "Polly Long-Form",
+        "slug": "polly-long-form",
+        "creator": "Amazon",
+        "elo": 1042,
+        "rank": 37,
+        "ci95": "-20/20"
+      },
+      {
+        "model": "Chirp 3: HD",
+        "slug": "chirp3-hd",
+        "creator": "Google",
+        "elo": 1041,
+        "rank": 38,
+        "ci95": "-13/13"
+      },
+      {
+        "model": "Chatterbox HD",
+        "slug": "chatterbox-hd",
+        "creator": "Resemble AI",
+        "elo": 1036,
+        "rank": 39,
+        "ci95": "-10/10"
+      },
+      {
+        "model": "Gemini 2.5 Flash TTS (Dec 2025)",
+        "slug": "gemini-2-5-flash-dec-2025",
+        "creator": "Google",
+        "elo": 1034,
+        "rank": 40,
+        "ci95": "-15/15"
+      },
+      {
+        "model": "Journey",
+        "slug": "journey",
+        "creator": "Google",
+        "elo": 1029,
+        "rank": 41,
+        "ci95": "-18/18"
+      },
+      {
+        "model": "SIMBA 1.0",
+        "slug": "simba",
+        "creator": "Speechify",
+        "elo": 1025,
+        "rank": 42,
+        "ci95": "-10/10"
+      },
+      {
+        "model": "MAI-Voice-1",
+        "slug": "mai-voice-1",
+        "creator": "Microsoft Azure",
+        "elo": 1024,
+        "rank": 43,
+        "ci95": "-23/23"
+      },
+      {
+        "model": "Gemini 2.5 Pro (Dec 2025)",
+        "slug": "gemini-2-5-pro-dec-2025",
+        "creator": "Google",
+        "elo": 1024,
+        "rank": 44,
+        "ci95": "-16/16"
+      },
+      {
+        "model": "T2A-01-Turbo",
+        "slug": "t2a-01-turbo",
+        "creator": "MiniMax",
+        "elo": 1022,
+        "rank": 45,
+        "ci95": "-10/10"
+      },
+      {
+        "model": "MiMo-V2-TTS",
+        "slug": "mimo-v2-tts",
+        "creator": "Xiaomi",
+        "elo": 1021,
+        "rank": 46,
+        "ci95": "-22/22"
+      },
+      {
+        "model": "Octave TTS",
+        "slug": "octave-tts",
+        "creator": "Hume AI",
+        "elo": 1019,
+        "rank": 47,
+        "ci95": "-10/10"
+      },
+      {
+        "model": "Lightning v3.1",
+        "slug": "lightning-v3-1",
+        "creator": "Smallest.ai",
+        "elo": 1015,
+        "rank": 48,
+        "ci95": "-26/26"
+      },
+      {
+        "model": "Fish Speech 1.5",
+        "slug": "fish-speech-1-5",
+        "creator": "Fish Audio",
+        "elo": 1014,
+        "rank": 49,
+        "ci95": "-10/10"
+      },
+      {
+        "model": "Chatterbox",
+        "slug": "chatterbox",
+        "creator": "Resemble AI",
+        "elo": 1007,
+        "rank": 50,
+        "ci95": "-10/10"
+      },
+      {
+        "model": "Magpie-Multilingual 357M",
+        "slug": "magpie-multilingual-357m",
+        "creator": "NVIDIA",
+        "elo": 1002,
+        "rank": 51,
+        "ci95": "-12/12"
+      },
+      {
+        "model": "Zonos-v0.1",
+        "slug": "zonos-v0-1",
+        "creator": "Zyphra",
+        "elo": 1000,
+        "rank": 52,
+        "ci95": "0/0"
+      },
+      {
+        "model": "Arcana v3",
+        "slug": "rime-arcana",
+        "creator": "Rime",
+        "elo": 975,
+        "rank": 53,
+        "ci95": "-30/30"
+      },
+      {
+        "model": "LMNT",
+        "slug": "lmnt",
+        "creator": "LMNT",
+        "elo": 967,
+        "rank": 54,
+        "ci95": "-11/11"
+      },
+      {
+        "model": "VibeVoice 7B",
+        "slug": "vibe-voice-7b",
+        "creator": "Microsoft Azure",
+        "elo": 960,
+        "rank": 55,
+        "ci95": "-18/18"
+      },
+      {
+        "model": "VibeVoice 1.5B",
+        "slug": "vibe-voice-1-5b",
+        "creator": "Microsoft Azure",
+        "elo": 958,
+        "rank": 56,
+        "ci95": "-16/16"
+      },
+      {
+        "model": "Murf Speech Gen 2",
+        "slug": "murf-speech-gen-2",
+        "creator": "Murf AI",
+        "elo": 956,
+        "rank": 57,
+        "ci95": "-9/9"
+      },
+      {
+        "model": "OpenVoice v2",
+        "slug": "openvoice-v2",
+        "creator": "OpenVoice",
+        "elo": 951,
+        "rank": 58,
+        "ci95": "-8/8"
+      },
+      {
+        "model": "Magpie Multilingual",
+        "slug": "magpie-mutlilingual",
+        "creator": "NVIDIA",
+        "elo": 946,
+        "rank": 59,
+        "ci95": "-19/19"
+      },
+      {
+        "model": "Neuphonic TTS",
+        "slug": "neuphonic",
+        "creator": "Neuphonic",
+        "elo": 938,
+        "rank": 60,
+        "ci95": "-19/19"
+      },
+      {
+        "model": "Qwen3 TTS",
+        "slug": "qwen3-tts-vc-realtime",
+        "creator": "Alibaba",
+        "elo": 936,
+        "rank": 61,
+        "ci95": "-16/16"
+      },
+      {
+        "model": "Qwen3 TTS Flash",
+        "slug": "qwen3-tts-flash",
+        "creator": "Alibaba",
+        "elo": 931,
+        "rank": 62,
+        "ci95": "-17/17"
+      },
+      {
+        "model": "XTTS v2",
+        "slug": "xtts-v2",
+        "creator": "Coqui",
+        "elo": 885,
+        "rank": 63,
+        "ci95": "-9/9"
+      },
+      {
+        "model": "StyleTTS 2",
+        "slug": "styletts-2",
+        "creator": "StyleTTS ",
+        "elo": 880,
+        "rank": 64,
+        "ci95": "-9/9"
+      },
+      {
+        "model": "WaveNet",
+        "slug": "wavenet",
+        "creator": "Google",
+        "elo": 872,
+        "rank": 65,
+        "ci95": "-8/8"
+      },
+      {
+        "model": "Polly Neural",
+        "slug": "polly-neural",
+        "creator": "Amazon",
+        "elo": 867,
+        "rank": 66,
+        "ci95": "-17/17"
+      },
+      {
+        "model": "Standard",
+        "slug": "standard",
+        "creator": "Google",
+        "elo": 844,
+        "rank": 67,
+        "ci95": "-8/8"
+      },
+      {
+        "model": "Neural2",
+        "slug": "neural2",
+        "creator": "Google",
+        "elo": 843,
+        "rank": 68,
+        "ci95": "-8/8"
+      },
+      {
+        "model": "Falcon (Beta)",
+        "slug": "falcon-beta",
+        "creator": "Murf AI",
+        "elo": 816,
+        "rank": 69,
+        "ci95": "-19/19"
+      },
+      {
+        "model": "Polly Standard",
+        "slug": "polly-standard",
+        "creator": "Amazon",
+        "elo": 801,
+        "rank": 70,
+        "ci95": "-13/13"
+      },
+      {
+        "model": "MetaVoice v1",
+        "slug": "metavoice-v1",
+        "creator": "MetaVoice",
+        "elo": 767,
+        "rank": 71,
+        "ci95": "-14/14"
+      }
+    ]
+  }
+}

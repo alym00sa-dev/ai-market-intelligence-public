@@ -567,35 +567,43 @@ def scrape_microsoft(ai_filter: list[str]) -> list[dict]:
             "start": fetched,
             "sort_by": "relevance",
         }
-        try:
-            resp = requests.get(BASE, params=params, headers=API_HEADERS, timeout=20)
-            resp.raise_for_status()
-            data = resp.json().get("data", {})
-            positions = data.get("positions", [])
-            if not positions:
+        data = None
+        for attempt in range(5):
+            try:
+                resp = requests.get(BASE, params=params, headers=API_HEADERS, timeout=20)
+                resp.raise_for_status()
+                data = resp.json().get("data", {})
                 break
-            for pos in positions:
-                jid = str(pos.get("id", ""))
-                if jid and jid not in seen:
-                    seen.add(jid)
-                    locs = pos.get("standardizedLocations") or pos.get("locations") or []
-                    jobs.append({
-                        "id": jid,
-                        "title": pos.get("name", ""),
-                        "department": pos.get("department", ""),
-                        "location": locs[0] if locs else "",
-                        "url": f"https://apply.careers.microsoft.com{pos.get('positionUrl', '')}",
-                    })
-            fetched += len(positions)
-            total = data.get("count", 0)
-            if fetched % 100 == 0:
-                print(f"    [microsoft] {fetched}/{total} fetched...", flush=True)
-            if fetched >= total:
-                break
-            time.sleep(0.3)
-        except Exception as e:
-            print(f"    [microsoft] error at start={fetched}: {e}")
+            except Exception as e:
+                wait = 4 * (attempt + 1)
+                print(f"    [microsoft] start={fetched} attempt {attempt+1} failed: {e}. Retry in {wait}s", flush=True)
+                time.sleep(wait)
+        if data is None:
+            print(f"    [microsoft] giving up at start={fetched} after retries (have {len(jobs)})", flush=True)
             break
+
+        positions = data.get("positions", [])
+        if not positions:
+            break
+        for pos in positions:
+            jid = str(pos.get("id", ""))
+            if jid and jid not in seen:
+                seen.add(jid)
+                locs = pos.get("standardizedLocations") or pos.get("locations") or []
+                jobs.append({
+                    "id": jid,
+                    "title": pos.get("name", ""),
+                    "department": pos.get("department", ""),
+                    "location": locs[0] if locs else "",
+                    "url": f"https://apply.careers.microsoft.com{pos.get('positionUrl', '')}",
+                })
+        fetched += len(positions)
+        total = data.get("count", 0)
+        if fetched % 100 == 0:
+            print(f"    [microsoft] {fetched}/{total} fetched...", flush=True)
+        if fetched >= total:
+            break
+        time.sleep(0.4)
 
     print(f"    [microsoft] {len(jobs)} unique jobs found", flush=True)
     return jobs
