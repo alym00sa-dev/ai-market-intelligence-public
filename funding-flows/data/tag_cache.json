@@ -1,0 +1,5330 @@
+{
+ "XI-IATI-EC_INTPA-2021-ACT-62451": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XI-IATI-EC_INTPA-2024-PC-37624": {
+  "ai": false,
+  "category": "other"
+ },
+ "XI-IATI-EC_INTPA-2025-PC-59629": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "US-GOV-1-7200AA21FA00044": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "US-GOV-1-72048624M00001": {
+  "ai": false,
+  "category": "other"
+ },
+ "NL-KVK-27378529-DHIF17I047": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "SE-0-SE-6-16647-16647A0101": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-6-16647-16647A0102": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-6-16647": {
+  "ai": false,
+  "category": "other"
+ },
+ "NL-KVK-27378529-PSS20ET01": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "NL-KVK-27378529-PST22ZA03": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "XI-IATI-EC_INTPA-2021-ACT-63035": {
+  "ai": false,
+  "category": "other"
+ },
+ "XI-IATI-EC_INTPA-2024-PC-37118": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-3-1-289152-37250": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109508-001": {
+  "ai": true,
+  "category": "other"
+ },
+ "DAC-1601-INV-068999": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "DAC-1601-INV-076358": {
+  "ai": true,
+  "category": "research"
+ },
+ "DAC-1601-INV-079165": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "DAC-1601-INV-087103": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "DAC-1601-INV-088245": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "DAC-1601-INV-092593": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "GB-GOV-1-301049-415": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "GB-GOV-1-301049-424": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "GB-GOV-1-301049-426": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "DAC-1601-INV-069370": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "DAC-1601-INV-069541": {
+  "ai": true,
+  "category": "financial_inclusion"
+ },
+ "DAC-1601-INV-074336": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "DAC-1601-INV-082653": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CH-4-2025-2025001820": {
+  "ai": false,
+  "category": "other"
+ },
+ "XI-IATI-EC_INTPA-2021-ACT-63539": {
+  "ai": false,
+  "category": "other"
+ },
+ "DAC-1601-INV-089894": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "DAC-1601-INV-091732": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "DAC-1601-INV-092506": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "DAC-1601-INV-097815": {
+  "ai": true,
+  "category": "other"
+ },
+ "XM-DAC-5-7-6615053": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "XI-IATI-EBRD-50753": {
+  "ai": true,
+  "category": "financial_inclusion"
+ },
+ "DAC-1601-INV-068716": {
+  "ai": true,
+  "category": "research"
+ },
+ "DAC-1601-INV-079239": {
+  "ai": true,
+  "category": "research"
+ },
+ "XI-IATI-EBRD-53507": {
+  "ai": true,
+  "category": "other"
+ },
+ "XI-IATI-EBRD-54767": {
+  "ai": true,
+  "category": "other"
+ },
+ "XI-IATI-EBRD-54896": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "XI-IATI-EBRD-55900": {
+  "ai": false,
+  "category": "other"
+ },
+ "XI-IATI-EBRD-57066": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "DAC-1601-INV-081890": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "DAC-1601-INV-092526": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "DAC-1601-INV-093985": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "DAC-1601-INV-091882": {
+  "ai": true,
+  "category": "research"
+ },
+ "DAC-1601-INV-095410": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "GB-GOV-1-400444-401": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "XI-IATI-EC_INTPA-2021-ACT-63077": {
+  "ai": false,
+  "category": "other"
+ },
+ "XI-IATI-EC_INTPA-2026-PC-76922": {
+  "ai": false,
+  "category": "other"
+ },
+ "XI-IATI-EC_INTPA-2026-PC-77114": {
+  "ai": false,
+  "category": "other"
+ },
+ "DE-1-202420081": {
+  "ai": false,
+  "category": "other"
+ },
+ "DAC-1601-INV-078558": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XI-IATI-EC_INTPA-2026-PC-61204": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XI-IATI-EC_INTPA-2023-ACT-62059": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-29-2014-4044-1": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-29-2014-4044": {
+  "ai": false,
+  "category": "other"
+ },
+ "DE-1-202407112": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-6-13388-13388A0101": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "SE-0-SE-6-13388-13388A0102": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "SE-0-SE-6-13388-13388A0103": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "SE-0-SE-6-13388": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "SE-0-SE-6-13023-13023A0101": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-6-13023-13023A0102": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-6-13023": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-109558-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109574-901": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109574-902": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109574-903": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "NO-BRC-971277882-QZA-21/0159-18": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "NO-BRC-971277882-QZA-21/0159-19": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "NO-BRC-971277882-QZA-21/0159-20": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "US-GOV-1-7200AA18CA00022": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-29-2015-03287-1": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "SE-0-SE-29-2015-03287": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-004635": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-082335": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-086119": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-097296": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "GB-GOV-1-300816-402": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-058957": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-071577": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-092396": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-092950": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-084276": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-086464": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-090035": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-096589": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-096246": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-004656": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-094095": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-096757": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-091193": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "GB-GOV-1-400191-401": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "GB-GOV-1-400191-402": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "GB-GOV-1-400191-403": {
+  "ai": true,
+  "category": "other"
+ },
+ "GB-GOV-1-400191": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "DAC-1601-INV-096273": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "DAC-1601-INV-098405": {
+  "ai": false,
+  "category": "other"
+ },
+ "GB-GOV-1-400868-401": {
+  "ai": true,
+  "category": "research"
+ },
+ "GB-GOV-1-400868": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-109282-001": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "SE-0-SE-29-2019-04253-1": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-29-2019-04253": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-29-2022-04411_1-1": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-29-2022-04411_1": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-29-2022-04411_2-1": {
+  "ai": false,
+  "category": "other"
+ },
+ "SE-0-SE-29-2022-04411_2": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-47015-16922_Bilateral_MississippiStateUniversity_WorldFish": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "XM-DAC-41302-IP24-GLO381": {
+  "ai": false,
+  "category": "other"
+ },
+ "DE-1-202315810": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-109745-001": {
+  "ai": true,
+  "category": "other"
+ },
+ "AU-5-INN013-ID": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "XM-DAC-41301-754855": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "GB-GOV-1-300358-413": {
+  "ai": true,
+  "category": "other"
+ },
+ "AU-5-INN013": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "AU-5-INO304": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "US-GOV-1-7200AA22FA00028": {
+  "ai": true,
+  "category": "other"
+ },
+ "US-GOV-1-7200AA23FA00005": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "US-GOV-1-7200AA23FA00018": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "US-GOV-1-7200AA24FA00005": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "US-GOV-1-7200AA24FA00021": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-41302-IP24-PHL104": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4124324": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4125284": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4127572": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2019-4141406": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2019-4142378": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2019-4145677": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2019-4147833": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2019-4152825": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4153158": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4153422": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4161477": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4162191": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4165305": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2019-4170401": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2019-4171419": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2019-4173426": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2019-4175032": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4175272": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2019-4175900": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4176145": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4177648": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4177715": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2019-4178885": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2019-4179319": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2019-4190815": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4200663": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4200936": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4203939": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4204095": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4204279": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4204478": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2019-4204818": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4205867": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4206231": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4207145": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2019-4207163": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4212459": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4215969": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4223497": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4233714": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4256738": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2019-4257612": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2019-4285579": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2019-4287727": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4287812": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4291056": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2019-4314176": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2019-4314211": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4314262": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4314319": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2019-4314373": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2019-4316103": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2019-4346160": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4368688": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4375652": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2019-4375716": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2019-4375826": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2019-4382128": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4382951": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4383124": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2019-4383597": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4383922": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4384005": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2019-4384214": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2019-4384286": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4384457": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4384478": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4384818": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2019-4385109": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4385279": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4386295": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4388763": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4389008": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4389018": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2019-4389027": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4389028": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4389423": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4389460": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2019-4389569": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2019-4389570": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2019-4389580": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4389588": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4389658": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4389666": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2019-4389669": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4389672": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2019-4390825": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4391144": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4391349": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4391845": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4392032": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4392218": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4392335": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4392345": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4392415": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4392444": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4392446": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4392453": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4392478": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4392510": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2019-4392604": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2019-4393427": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4393526": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4393536": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4394585": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4395010": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2019-4395017": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2019-4395052": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4402167": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4404282": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4405037": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4405928": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2020-4417311": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4423716": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2020-4429385": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2020-4433084": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2020-4436020": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2020-4438989": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2020-4441564": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2020-4441712": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4444345": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2020-4444455": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2020-4454040": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2020-4454227": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2020-4463839": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4467412": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4468662": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4476793": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2020-4490690": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2020-4496702": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4504334": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4504357": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4504393": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4504676": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4504856": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4504950": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4505125": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2020-4505429": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2020-4505465": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2020-4506146": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4506360": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4508620": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4510714": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4512389": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4512615": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4512644": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4514680": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2020-4517084": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4517252": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2020-4518073": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4520083": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4533046": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2020-4542133": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4549397": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4555399": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2020-4567573": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4586313": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2020-4586811": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2020-4586863": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2020-4587961": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4594008": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2020-4619759": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2020-4619852": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2020-4621880": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4621947": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4622015": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4622062": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2020-4622144": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4625714": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2020-4630055": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4679450": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4683947": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2020-4688378": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4694714": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2020-4695457": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2020-4695620": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4695707": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4696824": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4697111": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4697649": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4698396": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4698466": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4698472": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4698481": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4698577": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4698594": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4698939": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4698997": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4699072": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4699224": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2020-4699365": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4700209": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4700269": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4703074": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4703085": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4703090": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2020-4703092": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4703186": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4703207": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2020-4703405": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2020-4703482": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4703504": {
+  "ai": true,
+  "category": "financial_inclusion"
+ },
+ "CRS-2020-4703629": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4703630": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4703673": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4703677": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4703679": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4703680": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4703683": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4703687": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4703697": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2020-4703698": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4703716": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2020-4703718": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2020-4703760": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4705556": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4706515": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4706529": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4706557": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2020-4706575": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4707192": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2020-4707228": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4709042": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2020-4709223": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2020-4709387": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4709552": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4709575": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2020-4709714": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4709722": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2020-4709734": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2020-4709778": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4714233": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4719208": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4725517": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4736705": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4737653": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-4739378": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4740001": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4746149": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4752002": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4752143": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4759592": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4760115": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4767543": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4771171": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4774133": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4774146": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4777937": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4779538": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4780562": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4781645": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4789049": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4789114": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4789153": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4789159": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4789375": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4790220": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4790230": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4790612": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4790613": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4791071": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2021-4791339": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4791340": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4791527": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4793194": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4793749": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4793946": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4794009": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4794471": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4794495": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4794763": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4794994": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4795067": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4795097": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4795098": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4795429": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4795430": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-4795615": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4795672": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4795960": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4796036": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-4796038": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4796307": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2021-4796619": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4796621": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4796622": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4796680": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4796706": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4796731": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4797004": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4797052": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4797310": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4797375": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4797379": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4797401": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4797467": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4797472": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4797480": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4798063": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-4798090": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4798113": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4798128": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4798151": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4798500": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4798528": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4798529": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4798846": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4798856": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4798877": {
+  "ai": false,
+  "category": "education_skills"
+ },
+ "CRS-2021-4798977": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4798979": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4799030": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4799367": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4799417": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4799418": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4799444": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4809119": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4816303": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-4821609": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4824492": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-4825904": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4825939": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4826057": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-4826060": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4826862": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4826928": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4826973": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4827697": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4828281": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-4828777": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-4828938": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4829557": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4830613": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4831091": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4831231": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4831307": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4831694": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4831963": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4832503": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4833284": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4836146": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-4838050": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4838796": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4838798": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-4839148": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4839223": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4839406": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4849899": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4861110": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-4872485": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4883199": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4903215": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-4915221": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4927779": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-4978997": {
+  "ai": true,
+  "category": "financial_inclusion"
+ },
+ "CRS-2021-4982384": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-4982386": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2021-4982549": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-4982552": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-4983519": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-4993080": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-5018324": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-5018395": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-5019360": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-5019367": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-5019471": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-5019478": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-5020723": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-5024323": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-5026693": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-5079780": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5082216": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-5087518": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-5095899": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5096066": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5096073": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5096209": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5096306": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5097072": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-5097082": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2021-5097202": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5097318": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-5097489": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5098898": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5099004": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5099366": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5099370": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5100224": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-5102331": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-5102949": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-5103383": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-5103384": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-5103392": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2021-5103415": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-5103423": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2021-5103425": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-5103436": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-5103806": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-5103845": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-5104119": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-5105935": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2021-5106438": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5106490": {
+  "ai": false,
+  "category": null
+ },
+ "CRS-2021-5106568": {
+  "ai": false,
+  "category": null
+ },
+ "CRS-2021-5106625": {
+  "ai": false,
+  "category": null
+ },
+ "CRS-2021-5106740": {
+  "ai": false,
+  "category": null
+ },
+ "CRS-2021-5106766": {
+  "ai": false,
+  "category": null
+ },
+ "CRS-2021-5106908": {
+  "ai": false,
+  "category": null
+ },
+ "CRS-2021-5107997": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2021-5108190": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-5108316": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2021-5109081": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2021-5109592": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2021-5109593": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5114262": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2022-5116622": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5117886": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5117888": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5119727": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5133136": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5138662": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5141064": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5141322": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5141812": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5142617": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5145870": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5146739": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5147438": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5152764": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5155246": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5156567": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5159422": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5160070": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5160964": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5161165": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5164718": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5166646": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5181103": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5181846": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5193572": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5195211": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2022-5195528": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5195695": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5195783": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5195976": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5196047": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5196316": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5196504": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2022-5196569": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5196935": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5196947": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2022-5197380": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5197399": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5197401": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5197408": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5197981": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5198305": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5198336": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5198693": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5199584": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5199836": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5199848": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2022-5199849": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5199969": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2022-5200259": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5200424": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5200593": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5200596": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2022-5200679": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5200811": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5200813": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5200913": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5200958": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5201094": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5201106": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5201187": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5202451": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5202452": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5202635": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5202941": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5202956": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5203489": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5208577": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5210380": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5214152": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5216782": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5225171": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5225778": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2022-5225869": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5227050": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5229398": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5232420": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5234689": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5236461": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5236467": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5238530": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5238543": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5241686": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5241697": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5241729": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5241735": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5241750": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5245176": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5245473": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5245481": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5245495": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5245499": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5245553": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5245578": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5246777": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5251854": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5251860": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5251868": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5251956": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5251962": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5252020": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5252037": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5253126": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5257102": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5258286": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5260086": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5260121": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5260125": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5262961": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5286103": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5292765": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5300056": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5301104": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5318231": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5320260": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5321996": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5341907": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5342033": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5343509": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5343948": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5344623": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5344634": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5344637": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2022-5345641": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5346023": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5350289": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5363502": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5382021": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5382964": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5384093": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5388346": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5388565": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5393589": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5419929": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5429777": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2022-5443483": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5467691": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5467734": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5468202": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5468388": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5468611": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5469077": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5469157": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5469386": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5469399": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5469497": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5470219": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5470290": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5470294": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5470336": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5470805": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5471171": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5471938": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5471939": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5471955": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5472079": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5472081": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5472097": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5472627": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5473583": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5474888": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2022-5475225": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5476292": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5476480": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5476483": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5476494": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5476738": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5476742": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2022-5476755": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5476836": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5477146": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5477237": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5477515": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2022-5477551": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5478299": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5478684": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5480116": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5480130": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5480131": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2022-5480150": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5480152": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5480166": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5480282": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5480286": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2022-5480343": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2022-5481892": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5481986": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5482009": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5482575": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2022-5482612": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5482615": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2022-5482742": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5485017": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5487139": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5487849": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5487852": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5489415": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5490803": {
+  "ai": true,
+  "category": "financial_inclusion"
+ },
+ "CRS-2023-5506960": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5507274": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2023-5507493": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2023-5516796": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5517467": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2023-5519955": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5521905": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5526025": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2023-5531639": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5531860": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5532548": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5534232": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5542383": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5549881": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5553892": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5562816": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5562888": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5562905": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5563101": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5563268": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5563271": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5563290": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5563625": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5564032": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2023-5564066": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5564227": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2023-5564306": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5564471": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5564622": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5564834": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5565037": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5565933": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5565934": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2023-5565936": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5566264": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5567716": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5567741": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5567840": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5567944": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5568356": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5568513": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5568576": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2023-5568791": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5568938": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5568946": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5568981": {
+  "ai": true,
+  "category": "financial_inclusion"
+ },
+ "CRS-2023-5569106": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2023-5574583": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5576927": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5577303": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5578933": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5584158": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5584392": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5585254": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5595393": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5595759": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5596060": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5596541": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5598661": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5599180": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2023-5599756": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2023-5604591": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5604599": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5607987": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5608026": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5608251": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2023-5608344": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5608542": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5608577": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5613636": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5614048": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5619651": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5625217": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5626744": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5627105": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5627750": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5627778": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5629611": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5630544": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5634134": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5634159": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5634162": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5637991": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5638493": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5638528": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5639333": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5639351": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5640884": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5640941": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5640965": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5645199": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5645227": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5647099": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5647101": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5649217": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5655039": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5658916": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5662855": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5663193": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5681697": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5698008": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5699443": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2023-5709250": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5712964": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5715112": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2023-5718361": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5737558": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5739500": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5740198": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5741690": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5752610": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5782732": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5782782": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5782822": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5782883": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5783451": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5783576": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5783946": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5793559": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2023-5793768": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5793883": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5806172": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5807432": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5811720": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5824020": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2023-5860887": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5860905": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5860920": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5861325": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5861996": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5868075": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5868127": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5868302": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5868421": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2023-5868425": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5870682": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5870985": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5870997": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5871122": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5871976": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2023-5872176": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5872703": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5873111": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5873119": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5873178": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5873184": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5873192": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5873203": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5873214": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5873216": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5873220": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5873258": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5873276": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2023-5873300": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2023-5873312": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5873343": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5873344": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2023-5873351": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5873379": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5873390": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5873427": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2023-5873981": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5874609": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2023-5874870": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5874954": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5875132": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5875415": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5875430": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2023-5875499": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5875633": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2023-5875910": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2023-5876038": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5876100": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2023-5876115": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5878385": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5878735": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5878736": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5879131": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-5880399": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5880473": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5880595": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5880717": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5880883": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5881164": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5881214": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5882055": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-5883538": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-5884105": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5885044": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5885452": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5892962": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5895554": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5896382": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5898813": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5900779": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5901039": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5901288": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-5902050": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5902218": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5908067": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5909267": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5920976": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5921512": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5921795": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5925087": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5927844": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5929724": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5929809": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5932061": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5934121": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5934935": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5934967": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5937489": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5948456": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5948565": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-5951276": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5954076": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5954216": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5954458": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5954463": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5954464": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5954739": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5954813": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-5954998": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5955276": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-5955277": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5955290": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5955294": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5955296": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5955530": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5955672": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-5955929": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5955933": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5956039": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5956129": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-5956207": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5956232": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-5956233": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5956273": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5956275": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5956276": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5956827": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5956858": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5956871": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5956883": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5957006": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-5957012": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5957037": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5957076": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5957089": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-5957312": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5957324": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5957360": {
+  "ai": false,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5957597": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5957599": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5957710": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5957714": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-5958026": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5958142": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5958365": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-5958369": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5958376": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5958404": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5958416": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-5958589": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5958593": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5958816": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5959171": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5959476": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5959526": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5959831": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5960013": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5960017": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5960019": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5960332": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5960545": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5960628": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5960664": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-5960769": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5960810": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5960826": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5960977": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5961607": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5961745": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5961770": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5961821": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5961822": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5961844": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5963098": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5969653": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5970358": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5972623": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5973238": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5973437": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5974296": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5974308": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5974521": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5975534": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5985228": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5985257": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5985525": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5985655": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5986111": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5986367": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5987021": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5988518": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-5988547": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5988660": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5989104": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5989526": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5989560": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5989997": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-5990262": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5990636": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5990770": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5990984": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5991485": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5991830": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5991869": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-5992188": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5992583": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5992591": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5992599": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5992601": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5992603": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5992610": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5992618": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5992619": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5992621": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5992639": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5992640": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5992642": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5992650": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5992651": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-5992653": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5992663": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5992670": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5992932": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5993115": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5993273": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5993986": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5995580": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5996651": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5996757": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5997235": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5997262": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5997263": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5997268": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5997282": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5997307": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5997320": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-5997321": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-5997439": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5997441": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5997489": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-5997495": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-5998346": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-5998419": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-5998747": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6002259": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6005832": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6008357": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6008485": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6010400": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6016266": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6020981": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6029482": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6029538": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6031752": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6032427": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6032831": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6034435": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6034969": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6035836": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6035840": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6036633": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6036634": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6036837": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6038003": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6038628": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6042958": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6043311": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6043768": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6044166": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-6046545": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6050580": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-6052759": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6053827": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6053829": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6053830": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-6054160": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6054764": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6055197": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6055381": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6057077": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6059746": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6062110": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6065888": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6072045": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6085332": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6085676": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6086375": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6086763": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6087072": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6087225": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6087226": {
+  "ai": true,
+  "category": "financial_inclusion"
+ },
+ "CRS-2024-6087317": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6087682": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6087865": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6087962": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6088506": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6090390": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6092463": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6098729": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6136980": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6137018": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6137333": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6137407": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6137820": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6138054": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6138063": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-6138473": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6138497": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6138569": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6138571": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6138596": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-6138597": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6138598": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6138599": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6138600": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6138601": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6138605": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-6138670": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6138679": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6138692": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6139648": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6139840": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-6139841": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6148663": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6148717": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6148738": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6148742": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6149492": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6153018": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6155313": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6166610": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6167845": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6180198": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6186498": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6186603": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6186608": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6187474": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6200087": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6212284": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-6221844": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6225697": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6231275": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6231307": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6231349": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6231637": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6231649": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6231653": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6231993": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6232044": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-6232245": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6232266": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6232338": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6232345": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6232364": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6232380": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6232642": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6232649": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6232655": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6232665": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6232671": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6232679": {
+  "ai": true,
+  "category": "financial_inclusion"
+ },
+ "CRS-2024-6232687": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6232692": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6232695": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6232699": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6232854": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6232949": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6232964": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6232968": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6232993": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6232997": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6233097": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6233101": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6233112": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6233305": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6233668": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6233789": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6234472": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6234477": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6234498": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6234630": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6234926": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6234956": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6235169": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6235171": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6235179": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6235185": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6235190": {
+  "ai": true,
+  "category": "financial_inclusion"
+ },
+ "CRS-2024-6235213": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6235215": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6235216": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6235219": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6235547": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "CRS-2024-6235556": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6235636": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6235669": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6235673": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6235690": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6235786": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6235806": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6236127": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6236135": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6236142": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6236161": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6236174": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6236401": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6236429": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6236786": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6236855": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6236875": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6236964": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6236982": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237035": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237129": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237202": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237228": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6237238": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6237251": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237253": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6237278": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-6237436": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237457": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-6237462": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6237481": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-6237558": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237600": {
+  "ai": true,
+  "category": "agriculture_ai"
+ },
+ "CRS-2024-6237713": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237715": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237723": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237765": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6237852": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6237932": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6237955": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6238094": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6238130": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6238608": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6238810": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6238980": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6239214": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6239454": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6239460": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6239466": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6239545": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6239566": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6240532": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-6240580": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6241087": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6241374": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6241389": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6241696": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6241769": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6241793": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6241811": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6241820": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6241864": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6241873": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6241951": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6241979": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6241988": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6242037": {
+  "ai": true,
+  "category": "data_systems"
+ },
+ "CRS-2024-6242660": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6242870": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "CRS-2024-6243317": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6243482": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6244248": {
+  "ai": true,
+  "category": "other"
+ },
+ "CRS-2024-6244526": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6244566": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6244587": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6244623": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6244645": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6244647": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6244667": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6244743": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6244830": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "CRS-2024-6244833": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "CRS-2024-6244834": {
+  "ai": true,
+  "category": "research"
+ },
+ "CRS-2024-6244854": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6245001": {
+  "ai": false,
+  "category": "other"
+ },
+ "CRS-2024-6245532": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "CRS-2024-6246304": {
+  "ai": true,
+  "category": "education_skills"
+ }
+}
