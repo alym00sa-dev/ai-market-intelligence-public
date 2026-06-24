@@ -438,7 +438,7 @@ export function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
   })
 
   return (
-    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 pt-4 pb-9">
       <div className="flex items-start justify-between gap-4 mb-2">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">Model Release Timeline</h3>
@@ -682,10 +682,11 @@ export function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
 
 // ── Graph 4: Cost vs Intelligence (top 20 + by-company view) ─────────────────
 
-export function CostScatter({ models, inner, highlightIds }: { models: ModelRecord[]; inner?: boolean; highlightIds?: Set<string> }) {
+export function CostScatter({ models, inner, highlightIds, highlightColors, highlightLegend }: { models: ModelRecord[]; inner?: boolean; highlightIds?: Set<string>; highlightColors?: Record<string, string>; highlightLegend?: { color: string; label: string }[] }) {
   const [hovered, setHovered] = useState<ModelRecord | null>(null)
   const [viewMode, setViewMode] = useState<"open-closed" | "by-company">("open-closed")
   const hasFocus = !!(highlightIds && highlightIds.size)
+  const focalColor = (m: ModelRecord) => highlightColors?.[m.id] ?? "#2C4D9E"
 
   const topOpen = [...models]
     .filter(m => m.open_weight === true && m.intelligence_index != null && m.price_blended != null && m.price_blended > 0)
@@ -769,7 +770,15 @@ export function CostScatter({ models, inner, highlightIds }: { models: ModelReco
         </div>
       </div>
 
-      {viewMode === "open-closed" ? (
+      {hasFocus && highlightLegend ? (
+        <div className="flex flex-wrap items-center gap-4 mt-3 mb-2">
+          {highlightLegend.map((e) => (
+            <span key={e.label} className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+              <span className="w-2.5 h-2.5 rounded-full inline-block shrink-0" style={{ backgroundColor: e.color }} />{e.label}
+            </span>
+          ))}
+        </div>
+      ) : viewMode === "open-closed" ? (
         <div className="flex items-center gap-5 mt-3 mb-2">
           <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
             <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-amber)] inline-block" /> Open-weight (top 10)
@@ -821,12 +830,12 @@ export function CostScatter({ models, inner, highlightIds }: { models: ModelReco
             const isHov = hovered?.id === m.id
             const isFocal = hasFocus && highlightIds!.has(m.id)
             const dim = hasFocus && !isFocal
+            const col = isFocal ? focalColor(m) : dotColor(m)
             return (
               <g key={m.id}>
-                {isFocal && <circle cx={x} cy={y} r={12} fill={dotColor(m)} fillOpacity={0.18} />}
                 <circle cx={x} cy={y} r={isHov || isFocal ? 7 : 5}
-                  fill={dotColor(m)} fillOpacity={isHov ? 1 : dim ? 0.15 : isFocal ? 1 : 0.8}
-                  stroke={isFocal || isHov ? "#0F1E3D" : "white"} strokeWidth={isFocal || isHov ? 1.5 : 1}
+                  fill={col} fillOpacity={isHov ? 1 : dim ? 0.13 : isFocal ? 1 : 0.8}
+                  stroke={isFocal || isHov ? "#fff" : "white"} strokeWidth={isFocal || isHov ? 1.5 : 1}
                   style={{ cursor: "pointer" }}
                   onMouseEnter={() => setHovered(m)}
                   onMouseLeave={() => setHovered(null)} />
@@ -873,10 +882,11 @@ export function CostScatter({ models, inner, highlightIds }: { models: ModelReco
 
 // ── Graph 5: Speed vs Intelligence (top 20 + by-company view) ────────────────
 
-export function SpeedVsIntelligence({ models, inner, highlightIds }: { models: ModelRecord[]; inner?: boolean; highlightIds?: Set<string> }) {
+export function SpeedVsIntelligence({ models, inner, highlightIds, highlightColors, highlightLegend }: { models: ModelRecord[]; inner?: boolean; highlightIds?: Set<string>; highlightColors?: Record<string, string>; highlightLegend?: { color: string; label: string }[] }) {
   const [hovered, setHovered] = useState<ModelRecord | null>(null)
   const [viewMode, setViewMode] = useState<"open-closed" | "by-company">("open-closed")
   const hasFocus = !!(highlightIds && highlightIds.size)
+  const focalColor = (m: ModelRecord) => highlightColors?.[m.id] ?? "#2C4D9E"
 
   const topOpen = [...models]
     .filter(m => m.open_weight === true && m.intelligence_index != null && m.tokens_per_sec != null && m.tokens_per_sec > 0)
@@ -955,7 +965,15 @@ export function SpeedVsIntelligence({ models, inner, highlightIds }: { models: M
         </div>
       </div>
 
-      {viewMode === "open-closed" ? (
+      {hasFocus && highlightLegend ? (
+        <div className="flex flex-wrap items-center gap-4 mt-3 mb-2">
+          {highlightLegend.map((e) => (
+            <span key={e.label} className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+              <span className="w-2.5 h-2.5 rounded-full inline-block shrink-0" style={{ backgroundColor: e.color }} />{e.label}
+            </span>
+          ))}
+        </div>
+      ) : viewMode === "open-closed" ? (
         <div className="flex items-center gap-5 mt-3 mb-2">
           <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
             <span className="w-2.5 h-2.5 rounded-full bg-[var(--accent-amber)] inline-block" /> Open-weight (top 10)
@@ -1004,12 +1022,12 @@ export function SpeedVsIntelligence({ models, inner, highlightIds }: { models: M
             const isHov = hovered?.id === m.id
             const isFocal = hasFocus && highlightIds!.has(m.id)
             const dim = hasFocus && !isFocal
+            const col = isFocal ? focalColor(m) : dotColor(m)
             return (
               <g key={m.id}>
-                {isFocal && <circle cx={x} cy={y} r={12} fill={dotColor(m)} fillOpacity={0.18} />}
                 <circle cx={x} cy={y} r={isHov || isFocal ? 7 : 5}
-                  fill={dotColor(m)} fillOpacity={isHov ? 1 : dim ? 0.15 : isFocal ? 1 : 0.8}
-                  stroke={isFocal || isHov ? "#0F1E3D" : "white"} strokeWidth={isFocal || isHov ? 1.5 : 1}
+                  fill={col} fillOpacity={isHov ? 1 : dim ? 0.13 : isFocal ? 1 : 0.8}
+                  stroke="#fff" strokeWidth={isFocal || isHov ? 1.5 : 1}
                   style={{ cursor: "pointer" }}
                   onMouseEnter={() => setHovered(m)}
                   onMouseLeave={() => setHovered(null)} />
