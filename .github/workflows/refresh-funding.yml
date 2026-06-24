@@ -1,0 +1,45 @@
+name: Refresh Funding Flow Data
+
+on:
+  schedule:
+    - cron: "0 7 * * *"   # daily at 7am UTC (after models refresh)
+  workflow_dispatch:
+
+jobs:
+  refresh:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: write
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install dependencies
+        run: pip install requests python-dotenv anthropic
+
+      # IATI via d-portal is keyless. The tag cache (committed) means Claude only
+      # classifies activities it hasn't seen before, so daily runs are near-free.
+      - name: Fetch IATI AI candidates (d-portal, keyless)
+        run: python funding-flows/iati/fetch.py
+
+      - name: Tag with Claude (incremental)
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python funding-flows/tag.py
+
+      - name: Build funding.json
+        run: python funding-flows/build_funding_json.py
+
+      - name: Commit updated data
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/funding.json funding-flows/data/tag_cache.json
+          git diff --cached --quiet || git commit -m "chore: refresh funding flow data [skip ci]"
+          git push

@@ -41,8 +41,8 @@ export function DownloadableNode({
   const pos = corner === "br" ? "bottom-2 right-2" : "top-2 right-2"
   return (
     <div className={`relative ${className ?? ""}`}>
-      {/* Captured subtree */}
-      <div ref={ref}>{children}</div>
+      {/* Captured subtree (h-full so wrapped cards can stretch to equal heights) */}
+      <div ref={ref} className="h-full">{children}</div>
       {/* Button is a sibling (not captured) */}
       <button
         type="button"

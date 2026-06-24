@@ -8,4 +8,5 @@ export const views: ViewEntry[] = [
   { label: "Model Benchmarks",      href: "/models"   },
   { label: "Safety Track Record",   href: "/safety"   },
   { label: "Compute & Connectivity Map", href: "/compute"  },
+  { label: "Funding Flow",          href: "/funding"  },
 ]

@@ -308,3 +308,17 @@ export type RepRiskData = {
   labs: RepRiskLab[]
   lab_alignment_scores?: Record<string, LabAlignmentScore>
 }
+
+// ── Funding Flow (IATI / OECD CRS — AI-related aid) ───────────────────────────
+
+export type FundingData = {
+  built_at: number
+  source_note: string
+  totals: { usd: number; activities: number; donors: number; recipients: number; year_min: number | null; year_max: number | null }
+  by_recipient: { name: string; iso3: string | null; usd: number; activities: number }[]
+  by_donor: { donor: string; usd: number; activities: number }[]
+  by_sector: { code: string; usd: number }[]
+  by_year: { year: number; usd: number }[]
+  flows: { donor: string; recipient: string; usd: number }[]
+  activities: { id: string; title: string; donor: string; recipient: string; sector: string | null; ai_category: string | null; usd: number; year: number | null; source: string; url: string | null }[]
+}

@@ -49,3 +49,4 @@ __pycache__/
 
 # pipeline staging output (review locally, promote to public/data manually)
 frontier-labs-hiring/staging/
+funding-flows/data/crs_bulk.parquet
