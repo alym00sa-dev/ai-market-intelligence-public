@@ -1566,6 +1566,230 @@
     "source_url": "https://techmoran.com/2026/03/19/cassava-technologies-deploys-nvidia-powered-ai-factory-in-south-africa-plans-kenya-nigeria-egypt-launch/",
     "notes": "Planned expansion of Cassava's NVIDIA AI Factory model to Morocco."
    }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     70.06,
+     22.47
+    ]
+   },
+   "properties": {
+    "name": "Reliance\u2013NVIDIA AI Campus \u2014 Jamnagar",
+    "owner": "Reliance Intelligence / NVIDIA",
+    "users": "Reliance Intelligence / NVIDIA",
+    "country": "India",
+    "status": "under_construction",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://dcpulse.com/project/reliance-nvidia-jamnagar-3gw-ai-data-center",
+    "power_mw": 3000,
+    "notes": "First 120 MW live H2 2026; planned up to 3 GW (NVIDIA GB300), renewable-powered. Includes the Meta\u2013Reliance 168 MW facility."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     83.22,
+     17.69
+    ]
+   },
+   "properties": {
+    "name": "Adani\u2013Google AI Campus \u2014 Visakhapatnam",
+    "owner": "AdaniConneX / Google",
+    "users": "AdaniConneX / Google",
+    "country": "India",
+    "status": "under_construction",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://www.adani.com/newsroom/media-releases/adani-and-google-partner-to-build-indias-largest-data-centre-campus-in-visakhapatnam",
+    "power_mw": 1000,
+    "notes": "$15B, 1 GW \u2014 Google's largest AI hub outside the US; phased 2026\u20132030."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.39,
+     28.54
+    ]
+   },
+   "properties": {
+    "name": "Adani AI Data Center \u2014 Noida",
+    "owner": "AdaniConneX",
+    "users": "AdaniConneX",
+    "country": "India",
+    "status": "planned",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://techcrunch.com/2026/02/17/adani-pledges-100b-for-ai-data-centers-as-india-seeks-bigger-role-in-global-ai/",
+    "notes": "Part of Adani's $100B push from ~2 GW toward 5 GW of AI-ready capacity."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     78.49,
+     17.39
+    ]
+   },
+   "properties": {
+    "name": "Adani AI Data Center \u2014 Hyderabad",
+    "owner": "AdaniConneX",
+    "users": "AdaniConneX",
+    "country": "India",
+    "status": "planned",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://techcrunch.com/2026/02/17/adani-pledges-100b-for-ai-data-centers-as-india-seeks-bigger-role-in-global-ai/",
+    "notes": "Part of Adani's planned AI-ready data-center expansion."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     73.86,
+     18.52
+    ]
+   },
+   "properties": {
+    "name": "Adani AI Data Center \u2014 Pune",
+    "owner": "AdaniConneX",
+    "users": "AdaniConneX",
+    "country": "India",
+    "status": "planned",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://techcrunch.com/2026/02/17/adani-pledges-100b-for-ai-data-centers-as-india-seeks-bigger-role-in-global-ai/",
+    "notes": "Part of Adani's planned AI-ready data-center expansion."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     73.02,
+     19.03
+    ]
+   },
+   "properties": {
+    "name": "Yotta Shakti Cloud (NM1) \u2014 Navi Mumbai",
+    "owner": "Yotta",
+    "users": "Yotta",
+    "country": "India",
+    "status": "active",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://www.nvidia.com/en-us/case-studies/yotta-built-india-sovereign-ai-infrastructure-shakti-cloud/",
+    "notes": "Shakti Cloud \u2014 India's first sovereign AI infrastructure platform (NVIDIA), at the NM1 hyperscale campus."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     77.5,
+     28.47
+    ]
+   },
+   "properties": {
+    "name": "Yotta D1 \u2014 Greater Noida",
+    "owner": "Yotta",
+    "users": "Yotta",
+    "country": "India",
+    "status": "active",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://yotta.com/data-center-in-india/",
+    "notes": "North India hyperscale campus; part of Yotta's sovereign AI cloud footprint."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     80.22,
+     12.82
+    ]
+   },
+   "properties": {
+    "name": "Sify Chennai 02 \u2014 Siruseri",
+    "owner": "Sify",
+    "users": "Sify",
+    "country": "India",
+    "status": "active",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://www.sifytechnologies.com/data-center/chennai02-data-center/",
+    "power_mw": 26,
+    "notes": "AI-ready hyperscale campus; India's first NVIDIA DGX-Ready provider with liquid cooling (~25.9 MW IT)."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     67.01,
+     24.86
+    ]
+   },
+   "properties": {
+    "name": "Data Vault + Telenor AI Data Center \u2014 Karachi",
+    "owner": "Data Vault / Telenor Pakistan",
+    "users": "Data Vault / Telenor Pakistan",
+    "country": "Pakistan",
+    "status": "active",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://www.southasiainvestor.com/2025/12/pakistan-gets-its-first-ai-data-center.html",
+    "notes": "Pakistan's first dedicated AI data center; 3,000+ NVIDIA H100/H200 GPUs (GPU-as-a-service)."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     67.1,
+     24.93
+    ]
+   },
+   "properties": {
+    "name": "QGDC (Gul Ahmed) + Huawei \u2014 Karachi",
+    "owner": "Quantum Global / Huawei",
+    "users": "Quantum Global / Huawei",
+    "country": "Pakistan",
+    "status": "under_construction",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://www.dawn.com/news/2005546",
+    "notes": "Pakistan's largest Tier III data center; $230M; operational ~2027."
+   }
+  },
+  {
+   "type": "Feature",
+   "geometry": {
+    "type": "Point",
+    "coordinates": [
+     73.06,
+     33.68
+    ]
+   },
+   "properties": {
+    "name": "Mari Technologies \u2014 Islamabad",
+    "owner": "Mari Technologies",
+    "users": "Mari Technologies",
+    "country": "Pakistan",
+    "status": "under_construction",
+    "source": "Press reports (2025\u20132026)",
+    "source_url": "https://www.techpolicy.press/the-high-stakes-of-pakistans-push-for-ai-sovereignty/",
+    "power_mw": 5,
+    "notes": "5 MW Tier III facility (plus Karachi Tier IV planned); Islamabad site targeted for early 2026."
+   }
   }
  ]
 }
