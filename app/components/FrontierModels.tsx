@@ -2,13 +2,14 @@
 
 import { useState, useCallback } from "react"
 import Link from "next/link"
-import type { ModelsData, ModelRecord, RankedModel, SpeechData } from "../types"
+import type { ModelsData, ModelRecord, SpeechData } from "../types"
 import SpeechTab from "./SpeechTab"
+import CompareTab from "./CompareTab"
 import {
-  CostScatter, SpeedVsIntelligence, OpenVsClosedFrontier, ReleaseTimeline,
+  CostScatter, SpeedVsIntelligence, ReleaseTimeline,
   fmtPrice, truncate,
 } from "./models/charts"
-import { DownloadableChart } from "./ds/DownloadableChart"
+import { DownloadableNode } from "./ds/DownloadableNode"
 
 function fmt(n: number | null, dec = 1): string {
   if (n == null) return "n/a"
@@ -102,8 +103,10 @@ function MetadataStrip({ data: _data, builtAt }: { data: ModelsData; builtAt: st
       <div className="text-xs mt-2" style={{ color: "var(--text-tertiary)" }}>
         Data sourced from{" "}
         <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>Artificial Analysis</span>
-        {" and "}
+        {", "}
         <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>LLM Stats</span>
+        {", and "}
+        <span style={{ color: "var(--text-primary)", fontWeight: 500 }}>HuggingFace</span>
       </div>
       {builtAt && (
         <div
@@ -457,9 +460,9 @@ function ScatterSection({ models }: { models: ModelRecord[] }) {
         </div>
       </div>
       <div className="border-t border-[var(--border-subtle)]" />
-      <div className="grid grid-cols-2 divide-x divide-slate-100">
-        <DownloadableChart fill filename="cost-vs-intelligence.png"><CostScatter models={models} inner /></DownloadableChart>
-        <DownloadableChart fill filename="speed-vs-intelligence.png"><SpeedVsIntelligence models={models} inner /></DownloadableChart>
+      <div className="grid grid-cols-2 divide-x divide-slate-100 items-start">
+        <DownloadableNode corner="br" filename="cost-vs-intelligence.png"><CostScatter models={models} inner /></DownloadableNode>
+        <DownloadableNode corner="br" filename="speed-vs-intelligence.png"><SpeedVsIntelligence models={models} inner /></DownloadableNode>
       </div>
     </div>
   )
@@ -484,7 +487,7 @@ function GeographyChart({ models }: { models: ModelRecord[] }) {
   const maxTotal = Math.max(...sorted.map(d => d.total), 1)
 
   return (
-    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 pt-4 pb-9">
       <h3 className="text-sm font-semibold text-[var(--text-primary)]">Geographic Distribution</h3>
       <p className="text-xs text-[var(--text-tertiary)] mt-0.5">Models by country of origin, split by open-weight vs. proprietary.</p>
 
@@ -527,81 +530,13 @@ function GeographyChart({ models }: { models: ModelRecord[] }) {
   )
 }
 
-// ── TrueSkill Domain Rankings (bottom) ───────────────────────────────────────
-
-function DomainRankings({ rankings }: { rankings: ModelsData["rankings"] }) {
-  const tabs = Object.keys(rankings).filter(k => rankings[k]?.models?.length > 0).sort()
-  const [active, setActive] = useState(tabs[0] ?? "")
-
-  const ranked: RankedModel[] = rankings[active]?.models?.slice(0, 10) ?? []
-  const maxScore = ranked.length ? Math.max(...ranked.map(m => m.score)) : 1
-  const minScore = ranked.length ? Math.min(...ranked.map(m => m.score)) : 0
-  const range    = maxScore - minScore || 1
-
-  const tabLabel = (k: string) => k.replace(/_/g, " ").replace(/\b\w/g, c => c.toUpperCase())
-
-  return (
-    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
-      <h3 className="text-sm font-semibold text-[var(--text-primary)]">TrueSkill Domain Rankings</h3>
-      <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
-        Rankings from pairwise head-to-head comparisons across {tabs.length} domains (source: LLM Stats).
-        A higher score means the model consistently outperformed peers in that domain.
-        Bar widths show the relative performance gap within the selected domain only.
-      </p>
-
-      <div className="flex flex-wrap gap-1.5 mt-4 mb-5">
-        {tabs.map(tab => (
-          <button key={tab} onClick={() => setActive(tab)}
-            className={`px-3 py-1 rounded-full text-xs font-medium transition-colors ${
-              active === tab
-                ? "bg-[var(--accent-amber)] text-white shadow-sm"
-                : "bg-[var(--bg-elevated)] text-[var(--text-secondary)] hover:bg-[var(--bg-subtle)] hover:text-[var(--text-primary)]"
-            }`}>
-            {tabLabel(tab)}
-          </button>
-        ))}
-      </div>
-
-      <div className="space-y-3">
-        {ranked.map(m => {
-          const rel    = (m.score - minScore) / range
-          const barPct = Math.max(8, Math.round(rel * 100))
-          return (
-            <div key={m.model_id} className="flex items-center gap-3">
-              <span className="text-[11px] tabular-nums text-[var(--text-tertiary)] w-5 text-right shrink-0 font-semibold">{m.rank}</span>
-              <div className="flex-1 min-w-0">
-                <div className="flex items-center gap-2 mb-1">
-                  <span className="text-xs font-medium text-[var(--text-primary)] truncate">{m.model_name}</span>
-                  {m.open_weight && (
-                    <span className="shrink-0 text-[10px] px-1.5 py-0.5 rounded-full bg-[var(--accent-amber-bg)] text-[var(--accent-amber)] font-medium border border-[var(--accent-amber-bg)]">open</span>
-                  )}
-                  {m.min_input_price != null && m.min_input_price > 0 && (
-                    <span className="shrink-0 text-[10px] text-[var(--text-tertiary)] ml-auto tabular-nums">
-                      ${(m.min_input_price / 1_000_000).toFixed(2)}/1M
-                    </span>
-                  )}
-                </div>
-                <div className="h-1.5 bg-[var(--bg-elevated)] rounded-full overflow-hidden">
-                  <div className="h-full bg-[var(--accent-amber)] rounded-full" style={{ width: `${barPct}%` }} />
-                </div>
-              </div>
-              <span className="text-[11px] tabular-nums text-[var(--text-secondary)] w-12 text-right shrink-0 font-mono">
-                {m.score.toFixed(3)}
-              </span>
-            </div>
-          )
-        })}
-      </div>
-    </div>
-  )
-}
-
 // ── Main export ───────────────────────────────────────────────────────────────
 
-type ModelTab = "general" | "speech"
+type ModelTab = "general" | "speech" | "compare"
 const MODEL_TABS: { key: ModelTab; label: string }[] = [
   { key: "general", label: "General" },
   { key: "speech",  label: "Speech" },
+  { key: "compare", label: "Compare" },
 ]
 
 export default function FrontierModels({
@@ -666,20 +601,19 @@ export default function FrontierModels({
           {/* RIGHT: all content stacked */}
           <div className="flex-1 min-w-0 space-y-3">
             <BestInClass models={data.models} />
-            <DownloadableChart fill filename="top-models.png"><TopModelsBarChart models={data.models} /></DownloadableChart>
-            <DownloadableChart fill filename="open-vs-closed-frontier.png"><OpenVsClosedFrontier models={data.models} /></DownloadableChart>
-            <div className="grid grid-cols-2 gap-3">
-              <DownloadableChart fill filename="release-timeline.png"><ReleaseTimeline models={data.models} /></DownloadableChart>
-              <GeographyChart models={data.models} />
+            <DownloadableNode corner="br" filename="top-models.png"><TopModelsBarChart models={data.models} /></DownloadableNode>
+            <div className="grid grid-cols-2 gap-3 items-start">
+              <DownloadableNode corner="br" filename="release-timeline.png"><ReleaseTimeline models={data.models} /></DownloadableNode>
+              <DownloadableNode corner="br" filename="geographic-distribution.png"><GeographyChart models={data.models} /></DownloadableNode>
             </div>
             <ScatterSection models={data.models} />
-            <DomainRankings rankings={data.rankings} />
           </div>
         </div>
       )}
 
       {tab === "speech" && <SpeechTab speech={speech} />}
 
+      {tab === "compare" && <CompareTab models={data.models} rankings={data.rankings} speech={speech} />}
     </div>
   )
 }

@@ -31,7 +31,7 @@ const FIBER_LEGEND: { label: string; swatch: React.ReactNode }[] = [
   { label: "Fibre — dark",    swatch: <span className="inline-block w-4 h-[2px] rounded-full" style={{ background: "#E8A317", opacity: 0.4 }} /> },
   { label: "Fibre — planned", swatch: <span className="inline-block w-4 h-0" style={{ borderTop: "1.5px dashed #E8A317" }} /> },
   { label: "Landing point",   swatch: <span className="inline-block w-2 h-2 rounded-full" style={{ background: "#EF4444" }} /> },
-  { label: "Data center",     swatch: <span className="inline-block w-2 h-2 rounded-full" style={{ background: "#0FB5A6" }} /> },
+  { label: "Data center (AI)", swatch: <span className="inline-block w-2.5 h-2.5 rounded-full" style={{ background: "#7C3AED" }} /> },
 ]
 
 export default function ComputeConnectivityView({
@@ -52,8 +52,9 @@ export default function ComputeConnectivityView({
         Compute &amp; Connectivity Map
       </h1>
       <p className="text-[11px] mt-1.5 max-w-3xl" style={{ color: "var(--text-tertiary)", lineHeight: 1.5 }}>
-        Sources: submarine cables &amp; landing points — TeleGeography; terrestrial fibre — AfTerFibre / NSRC; data centers —
-        Epoch AI; connectivity — World Bank Global Findex 2024 &amp; GSMA Intelligence; readiness — World Bank GovTech Maturity Index 2025.
+        Sources: submarine cables &amp; landing points — TeleGeography; terrestrial fibre — AfTerFibre / NSRC; <br/> data centers —
+        Epoch AI; connectivity — World Bank Global Findex 2024 &amp; 
+        GSMA Intelligence; <br/>readiness — World Bank GovTech Maturity Index 2025.
       </p>
 
       {/* Center control row: Fiber | Readiness toggle (+ metric select) */}

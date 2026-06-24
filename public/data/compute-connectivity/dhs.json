@@ -1,0 +1,121 @@
+{
+ "source": "DHS Program (Demographic & Health Surveys) STATcompiler \u2014 latest survey per country",
+ "indicators": {
+  "HC_ELEC_H_ELC": "Households with electricity",
+  "HC_HEFF_H_CMP": "Households possessing a computer"
+ },
+ "countries": {
+  "BFA": {
+   "electricity": 23.6,
+   "electricity_year": 2021,
+   "computer": 8.0,
+   "computer_year": 2021
+  },
+  "COD": {
+   "electricity": 21.8,
+   "electricity_year": 2023,
+   "computer": 6.0,
+   "computer_year": 2023
+  },
+  "CMR": {
+   "electricity": 65.1,
+   "electricity_year": 2022,
+   "computer": 6.0,
+   "computer_year": 2022
+  },
+  "ETH": {
+   "electricity": 35.0,
+   "electricity_year": 2019,
+   "computer": 3.0,
+   "computer_year": 2019
+  },
+  "GHA": {
+   "electricity": 85.1,
+   "electricity_year": 2022,
+   "computer": 16.0,
+   "computer_year": 2022
+  },
+  "KEN": {
+   "electricity": 57.8,
+   "electricity_year": 2022,
+   "computer": 11.0,
+   "computer_year": 2022
+  },
+  "MLI": {
+   "electricity": 50.3,
+   "electricity_year": 2023,
+   "computer": 9.0,
+   "computer_year": 2023
+  },
+  "MWI": {
+   "electricity": 15.8,
+   "electricity_year": 2024,
+   "computer": 2.0,
+   "computer_year": 2024
+  },
+  "MOZ": {
+   "electricity": 35.9,
+   "electricity_year": 2022,
+   "computer": 7.0,
+   "computer_year": 2022
+  },
+  "NGA": {
+   "electricity": 55.2,
+   "electricity_year": 2024,
+   "computer": 9.0,
+   "computer_year": 2024
+  },
+  "NER": {
+   "electricity": 18.4,
+   "electricity_year": 2021,
+   "computer": 3.0,
+   "computer_year": 2021
+  },
+  "RWA": {
+   "electricity": 59.2,
+   "electricity_year": 2023,
+   "computer": 5.0,
+   "computer_year": 2023
+  },
+  "SEN": {
+   "electricity": 77.0,
+   "electricity_year": 2023,
+   "computer": 15.0,
+   "computer_year": 2023
+  },
+  "TCD": {
+   "electricity": 7.7,
+   "electricity_year": 2014
+  },
+  "TZA": {
+   "electricity": 36.4,
+   "electricity_year": 2022,
+   "computer": 3.0,
+   "computer_year": 2022
+  },
+  "UGA": {
+   "electricity": 43.2,
+   "electricity_year": 2024,
+   "computer": 4.0,
+   "computer_year": 2024
+  },
+  "ZAF": {
+   "electricity": 90.0,
+   "electricity_year": 2016,
+   "computer": 22.0,
+   "computer_year": 2016
+  },
+  "ZMB": {
+   "electricity": 36.0,
+   "electricity_year": 2024,
+   "computer": 10.0,
+   "computer_year": 2024
+  },
+  "ZWE": {
+   "electricity": 33.7,
+   "electricity_year": 2015,
+   "computer": 10.0,
+   "computer_year": 2015
+  }
+ }
+}
