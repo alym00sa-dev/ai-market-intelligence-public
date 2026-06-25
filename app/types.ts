@@ -320,5 +320,6 @@ export type FundingData = {
   by_sector: { code: string; usd: number }[]
   by_year: { year: number; usd: number }[]
   flows: { donor: string; recipient: string; usd: number }[]
-  activities: { id: string; title: string; donor: string; recipient: string; sector: string | null; ai_category: string | null; usd: number; year: number | null; source: string; url: string | null }[]
+  activities: { id: string; title: string; donor: string; recipient: string; sector: string | null; ai_category: string | null; usd: number; year: number | null; source: string; url: string | null; allocations: { name: string; iso3: string | null; usd: number }[] }[]
 }
+export type FundingActivity = FundingData["activities"][number]
