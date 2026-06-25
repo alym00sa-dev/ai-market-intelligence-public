@@ -26,7 +26,20 @@ export function DownloadableNode({
     if (!ref.current || busy) return
     setBusy(true)
     try {
-      const url = await toPng(ref.current, { pixelRatio: 2, backgroundColor: "#ffffff", cacheBust: true })
+      const url = await toPng(ref.current, {
+        pixelRatio: 2,
+        cacheBust: true,
+        // Transparent background — slide-ready PNG with no white box behind the rounded card.
+        backgroundColor: undefined,
+        // Strip interactive controls (metric/view toggles, fullscreen, reset, dropdowns)
+        // so the exported image is clean. Hidden/aria-hidden nodes are dropped too.
+        filter: (node: HTMLElement) => {
+          const tag = node.tagName
+          if (tag === "BUTTON" || tag === "SELECT" || tag === "INPUT") return false
+          if (node.dataset?.noExport === "true") return false
+          return true
+        },
+      })
       const a = document.createElement("a")
       a.href = url
       a.download = filename
