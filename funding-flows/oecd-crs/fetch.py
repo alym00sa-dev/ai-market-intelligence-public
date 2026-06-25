@@ -13,7 +13,7 @@ from oda_reader import bulk_download_crs
 DATA = os.path.join(os.path.dirname(__file__), "..", "data")
 PARQUET = os.path.join(DATA, "crs_bulk.parquet")
 OUT = os.path.join(DATA, "crs_raw.json")
-MIN_YEAR = 2019
+MIN_YEAR = 2023  # focus window: the LLM/AI inflection (2023+)
 
 AI_TERMS = ["artificial intelligence", " ai ", " ai-", "machine learning", "deep learning",
             "neural network", "large language model", " llm", "natural language processing",

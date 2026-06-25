@@ -9,6 +9,7 @@ HERE = os.path.dirname(__file__)
 SRC = os.path.join(HERE, "data", "tagged.json")
 OUT = os.path.join(HERE, "..", "public", "data", "funding.json")
 EUR_USD = 1.08  # approximate; IATI amounts are converted from EUR (CRS is already USD)
+YEAR_MIN, YEAR_MAX = 2023, 2026  # focus window: the LLM/AI inflection (2023+)
 
 # ISO2 → (ISO3, world-atlas display name) for recipient mapping / choropleth join.
 ISO = {
@@ -54,6 +55,9 @@ def main():
     out_acts = []
 
     for a in acts:
+        yr = a.get("year")
+        if not yr or not (YEAR_MIN <= yr <= YEAR_MAX):
+            continue  # only the 2023–2026 AI/LLM window
         usd = round(a["amount_usd"]) if a.get("amount_usd") is not None else round((a.get("amount_eur") or 0) * EUR_USD)
         donor = a["donor"] or "Unknown"
         recs = a.get("recipients") or []
@@ -79,7 +83,8 @@ def main():
         out_acts.append({"id": a["id"], "title": a["title"], "donor": donor,
                          "recipient": alloc[0][0] if len(alloc) == 1 else f"{len(alloc)} countries",
                          "sector": a.get("sector"), "ai_category": a.get("ai_category"),
-                         "usd": usd, "year": a.get("year"), "source": a["source"], "url": a.get("url")})
+                         "usd": usd, "year": a.get("year"), "source": a["source"], "url": a.get("url"),
+                         "allocations": [{"name": n, "iso3": i3, "usd": round(amt)} for (n, i3, amt) in alloc]})
 
     recips = sorted(({"name": k, "iso3": v.get("iso3"), "usd": round(v["usd"]), "activities": v["activities"]}
                      for k, v in by_recipient.items()), key=lambda x: -x["usd"])
