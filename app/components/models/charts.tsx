@@ -53,6 +53,19 @@ export function fmtDate(d: string | null): string {
   catch { return d }
 }
 export function truncate(s: string, n: number) { return s.length > n ? s.slice(0, n - 1) + "…" : s }
+
+// ── SLM vs LLM split (param-based: SLM = under 10B params, open or closed) ─────
+export const SLM_MAX = 10e9
+export const isSLM = (m: ModelRecord) => m.param_count != null && m.param_count < SLM_MAX
+export const isLLM = (m: ModelRecord) => !isSLM(m) // ≥10B, or params undisclosed
+export const SLM_COLOR = "#2D8F66", LLM_COLOR = "#2C4D9E"
+export function fmtParams(n: number | null): string {
+  if (n == null) return "—"
+  if (n >= 1e12) return `${(n / 1e12).toFixed(1).replace(/\.0$/, "")}T`
+  const b = n / 1e9
+  return `${(b >= 10 ? b.toFixed(0) : b.toFixed(1)).replace(/\.0$/, "")}B`
+}
+
 // ── Graph 2: Open vs Closed Frontier (hoverable) ──────────────────────────────
 
 type MetricKey = "intelligence_index" | "coding_index" | "math_index"
@@ -682,28 +695,33 @@ export function ReleaseTimeline({ models }: { models: ModelRecord[] }) {
 
 // ── Graph 4: Cost vs Intelligence (top 20 + by-company view) ─────────────────
 
-export function CostScatter({ models, inner, highlightIds, highlightColors, highlightLegend }: { models: ModelRecord[]; inner?: boolean; highlightIds?: Set<string>; highlightColors?: Record<string, string>; highlightLegend?: { color: string; label: string }[] }) {
+export function CostScatter({ models, inner, highlightIds, highlightColors, highlightLegend, slmLlm }: { models: ModelRecord[]; inner?: boolean; highlightIds?: Set<string>; highlightColors?: Record<string, string>; highlightLegend?: { color: string; label: string }[]; slmLlm?: boolean }) {
   const [hovered, setHovered] = useState<ModelRecord | null>(null)
   const [viewMode, setViewMode] = useState<"open-closed" | "by-company">("open-closed")
   const hasFocus = !!(highlightIds && highlightIds.size)
   const focalColor = (m: ModelRecord) => highlightColors?.[m.id] ?? "#2C4D9E"
 
+  const hasPrice = (m: ModelRecord) => m.intelligence_index != null && m.price_blended != null && m.price_blended > 0
+
   const topOpen = [...models]
-    .filter(m => m.open_weight === true && m.intelligence_index != null && m.price_blended != null && m.price_blended > 0)
+    .filter(m => m.open_weight === true && hasPrice(m))
     .sort((a, b) => b.intelligence_index! - a.intelligence_index!)
     .slice(0, 10)
 
   const topClosed = [...models]
-    .filter(m => m.open_weight !== true && m.intelligence_index != null && m.price_blended != null && m.price_blended > 0)
+    .filter(m => m.open_weight !== true && hasPrice(m))
     .sort((a, b) => b.intelligence_index! - a.intelligence_index!)
     .slice(0, 10)
 
   const topByCompany = [...models]
-    .filter(m => m.intelligence_index != null && m.price_blended != null && m.price_blended > 0)
+    .filter(m => hasPrice(m))
     .sort((a, b) => b.intelligence_index! - a.intelligence_index!)
     .slice(0, 30)
 
-  const plotBase = viewMode === "by-company" ? topByCompany : [...topOpen, ...topClosed]
+  const topSlm = [...models].filter(m => isSLM(m) && hasPrice(m)).sort((a, b) => b.intelligence_index! - a.intelligence_index!).slice(0, 10)
+  const topLlm = [...models].filter(m => isLLM(m) && hasPrice(m)).sort((a, b) => b.intelligence_index! - a.intelligence_index!).slice(0, 10)
+
+  const plotBase = slmLlm ? [...topSlm, ...topLlm] : viewMode === "by-company" ? topByCompany : [...topOpen, ...topClosed]
   // Force-include focal models even if they fall outside the top-N slice, so the
   // Compare tab can always spotlight the selected entity.
   const focalExtra = hasFocus
@@ -735,7 +753,8 @@ export function CostScatter({ models, inner, highlightIds, highlightColors, high
   const yTicks = Array.from({ length: 9 }, (_, i) => parseFloat((minI + i * iStep).toFixed(1))).filter(t => t <= maxI + 0.1)
 
   const dotColor = (m: ModelRecord) =>
-    viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#8E97AC")
+    slmLlm ? (isSLM(m) ? SLM_COLOR : LLM_COLOR)
+      : viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#8E97AC")
 
   const uniqueOrgs = viewMode === "by-company"
     ? [...new Set(topByCompany.map(m => m.org))].sort()
@@ -748,12 +767,15 @@ export function CostScatter({ models, inner, highlightIds, highlightColors, high
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">Capability vs. Cost</h3>
           <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
-            {viewMode === "open-closed"
+            {slmLlm
+              ? "Top 10 SLM (< 10B) and top 10 LLM (10B+ or undisclosed). Cost on X axis (log scale, blended per 1M tokens); Intelligence Index on Y axis. Hover a dot for details."
+              : viewMode === "open-closed"
               ? "Top 10 open-weight and top 10 closed models. Cost on X axis (log scale, blended per 1M tokens); Intelligence Index on Y axis. Hover a dot for details."
               : "Top 30 models with pricing data, colored by company. Cost on X axis (log scale); Intelligence Index on Y axis. Hover a dot for details."
             }
           </p>
         </div>
+        {!slmLlm && (
         <div className="flex gap-1 shrink-0">
           <button onClick={() => setViewMode("open-closed")}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
@@ -768,9 +790,19 @@ export function CostScatter({ models, inner, highlightIds, highlightColors, high
                 : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
             }`}>By Company</button>
         </div>
+        )}
       </div>
 
-      {hasFocus && highlightLegend ? (
+      {slmLlm ? (
+        <div className="flex items-center gap-5 mt-3 mb-2">
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+            <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: SLM_COLOR }} /> SLM &lt; 10B (top 10)
+          </span>
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+            <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: LLM_COLOR }} /> LLM 10B+ (top 10)
+          </span>
+        </div>
+      ) : hasFocus && highlightLegend ? (
         <div className="flex flex-wrap items-center gap-4 mt-3 mb-2">
           {highlightLegend.map((e) => (
             <span key={e.label} className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
@@ -854,7 +886,7 @@ export function CostScatter({ models, inner, highlightIds, highlightColors, high
                   {truncate(hovered.name, 24)}
                 </text>
                 <text x={tx + 14} y={ty + 44} fontSize={14} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">
-                  {hovered.org} {hovered.open_weight ? "(open)" : "(closed)"}
+                  {hovered.org} {slmLlm ? (hovered.param_count != null ? `· ${fmtParams(hovered.param_count)}` : "· size undisclosed") : (hovered.open_weight ? "(open)" : "(closed)")}
                 </text>
                 <text x={tx + 14} y={ty + 68} fontSize={14} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
                   Intelligence: {hovered.intelligence_index?.toFixed(1)}
@@ -882,28 +914,33 @@ export function CostScatter({ models, inner, highlightIds, highlightColors, high
 
 // ── Graph 5: Speed vs Intelligence (top 20 + by-company view) ────────────────
 
-export function SpeedVsIntelligence({ models, inner, highlightIds, highlightColors, highlightLegend }: { models: ModelRecord[]; inner?: boolean; highlightIds?: Set<string>; highlightColors?: Record<string, string>; highlightLegend?: { color: string; label: string }[] }) {
+export function SpeedVsIntelligence({ models, inner, highlightIds, highlightColors, highlightLegend, slmLlm }: { models: ModelRecord[]; inner?: boolean; highlightIds?: Set<string>; highlightColors?: Record<string, string>; highlightLegend?: { color: string; label: string }[]; slmLlm?: boolean }) {
   const [hovered, setHovered] = useState<ModelRecord | null>(null)
   const [viewMode, setViewMode] = useState<"open-closed" | "by-company">("open-closed")
   const hasFocus = !!(highlightIds && highlightIds.size)
   const focalColor = (m: ModelRecord) => highlightColors?.[m.id] ?? "#2C4D9E"
 
+  const hasSpeed = (m: ModelRecord) => m.intelligence_index != null && m.tokens_per_sec != null && m.tokens_per_sec > 0
+
   const topOpen = [...models]
-    .filter(m => m.open_weight === true && m.intelligence_index != null && m.tokens_per_sec != null && m.tokens_per_sec > 0)
+    .filter(m => m.open_weight === true && hasSpeed(m))
     .sort((a, b) => b.intelligence_index! - a.intelligence_index!)
     .slice(0, 10)
 
   const topClosed = [...models]
-    .filter(m => m.open_weight !== true && m.intelligence_index != null && m.tokens_per_sec != null && m.tokens_per_sec > 0)
+    .filter(m => m.open_weight !== true && hasSpeed(m))
     .sort((a, b) => b.intelligence_index! - a.intelligence_index!)
     .slice(0, 10)
 
   const topByCompany = [...models]
-    .filter(m => m.intelligence_index != null && m.tokens_per_sec != null && m.tokens_per_sec > 0)
+    .filter(m => hasSpeed(m))
     .sort((a, b) => b.intelligence_index! - a.intelligence_index!)
     .slice(0, 30)
 
-  const plotBase = viewMode === "by-company" ? topByCompany : [...topOpen, ...topClosed]
+  const topSlm = [...models].filter(m => isSLM(m) && hasSpeed(m)).sort((a, b) => b.intelligence_index! - a.intelligence_index!).slice(0, 10)
+  const topLlm = [...models].filter(m => isLLM(m) && hasSpeed(m)).sort((a, b) => b.intelligence_index! - a.intelligence_index!).slice(0, 10)
+
+  const plotBase = slmLlm ? [...topSlm, ...topLlm] : viewMode === "by-company" ? topByCompany : [...topOpen, ...topClosed]
   const focalExtra = hasFocus
     ? models.filter(m => highlightIds!.has(m.id) && m.intelligence_index != null && m.tokens_per_sec != null && m.tokens_per_sec > 0 && !plotBase.some(p => p.id === m.id))
     : []
@@ -930,7 +967,8 @@ export function SpeedVsIntelligence({ models, inner, highlightIds, highlightColo
   const xTicks = Array.from({ length: 10 }, (_, i) => parseFloat((minI + i * xStep).toFixed(1))).filter(t => t <= maxI + 0.1)
 
   const dotColor = (m: ModelRecord) =>
-    viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#8E97AC")
+    slmLlm ? (isSLM(m) ? SLM_COLOR : LLM_COLOR)
+      : viewMode === "by-company" ? orgColor(m.org) : (m.open_weight === true ? "#a78bfa" : "#8E97AC")
 
   const uniqueOrgs = viewMode === "by-company"
     ? [...new Set(topByCompany.map(m => m.org))].sort()
@@ -943,12 +981,15 @@ export function SpeedVsIntelligence({ models, inner, highlightIds, highlightColo
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">Speed vs. Intelligence</h3>
           <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
-            {viewMode === "open-closed"
+            {slmLlm
+              ? "Top 10 SLM (< 10B) and top 10 LLM (10B+ or undisclosed) by Intelligence Index. Output speed in tokens per second. Hover a dot for details."
+              : viewMode === "open-closed"
               ? "Top 10 open-weight and top 10 closed models by Intelligence Index. Output speed in tokens per second. Hover a dot for details."
               : "Top 30 models with speed data, colored by company. Hover a dot for details."
             }
           </p>
         </div>
+        {!slmLlm && (
         <div className="flex gap-1 shrink-0">
           <button onClick={() => setViewMode("open-closed")}
             className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
@@ -963,9 +1004,19 @@ export function SpeedVsIntelligence({ models, inner, highlightIds, highlightColo
                 : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
             }`}>By Company</button>
         </div>
+        )}
       </div>
 
-      {hasFocus && highlightLegend ? (
+      {slmLlm ? (
+        <div className="flex items-center gap-5 mt-3 mb-2">
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+            <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: SLM_COLOR }} /> SLM &lt; 10B (top 10)
+          </span>
+          <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+            <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: LLM_COLOR }} /> LLM 10B+ (top 10)
+          </span>
+        </div>
+      ) : hasFocus && highlightLegend ? (
         <div className="flex flex-wrap items-center gap-4 mt-3 mb-2">
           {highlightLegend.map((e) => (
             <span key={e.label} className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
@@ -1046,7 +1097,7 @@ export function SpeedVsIntelligence({ models, inner, highlightIds, highlightColo
                   {truncate(hovered.name, 24)}
                 </text>
                 <text x={tx + 14} y={ty + 44} fontSize={14} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">
-                  {hovered.org} {hovered.open_weight ? "(open)" : "(closed)"}
+                  {hovered.org} {slmLlm ? (hovered.param_count != null ? `· ${fmtParams(hovered.param_count)}` : "· size undisclosed") : (hovered.open_weight ? "(open)" : "(closed)")}
                 </text>
                 <text x={tx + 14} y={ty + 68} fontSize={14} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">
                   Intelligence: {hovered.intelligence_index?.toFixed(1)}

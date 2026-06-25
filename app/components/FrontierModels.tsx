@@ -7,7 +7,7 @@ import SpeechTab from "./SpeechTab"
 import CompareTab from "./CompareTab"
 import {
   CostScatter, SpeedVsIntelligence, ReleaseTimeline,
-  fmtPrice, truncate,
+  fmtPrice, truncate, isSLM, isLLM, fmtParams, SLM_COLOR, LLM_COLOR,
 } from "./models/charts"
 import { DownloadableNode } from "./ds/DownloadableNode"
 
@@ -530,6 +530,165 @@ function GeographyChart({ models }: { models: ModelRecord[] }) {
   )
 }
 
+// ── SLM vs LLM (SLM = under 10B params, open or closed; helpers in charts.tsx) ─
+
+// Viz 1: all SLMs — parameters (log) vs capability (Intelligence / Coding / Math), colored open vs closed.
+const SLM_OPEN = "#a78bfa", SLM_CLOSED = "#8E97AC"
+function SlmCapabilityChart({ models }: { models: ModelRecord[] }) {
+  const [hovered, setHovered] = useState<ModelRecord | null>(null)
+  const [activeKey, setActiveKey] = useState<typeof BAR_METRICS[number]["key"]>("intelligence_index")
+  const metric = BAR_METRICS.find(m => m.key === activeKey)!
+
+  const pts = [...models].filter(m => isSLM(m) && m.param_count != null && m[metric.key] != null)
+
+  const W = 820, H = 360, PAD_L = 52, PAD_B = 56, PAD_T = 16, PAD_R = 24
+  const plotW = W - PAD_L - PAD_R, plotH = H - PAD_T - PAD_B
+
+  const params = pts.map(m => m.param_count!)
+  const vals = pts.map(m => m[metric.key] as number)
+  const minP = pts.length ? Math.min(...params) : 0.5e9
+  const maxP = pts.length ? Math.max(...params) : 10e9
+  const logMin = Math.log10(minP), logMax = Math.log10(maxP)
+  const maxV = pts.length ? Math.min(100, Math.ceil(Math.max(...vals) / 5) * 5 + 5) : 100
+
+  const toX = (p: number) => PAD_L + ((Math.log10(p) - logMin) / (logMax - logMin || 1)) * plotW
+  const toY = (v: number) => PAD_T + (1 - v / maxV) * plotH
+
+  const xTicks = [0.5e9, 1e9, 1.5e9, 2e9, 3e9, 4e9, 5e9, 7e9, 8e9, 10e9].filter(t => t >= minP * 0.7 && t <= maxP * 1.4)
+  const yTicks = Array.from({ length: 6 }, (_, i) => Math.round((maxV / 5) * i))
+  const dotColor = (m: ModelRecord) => m.open_weight === true ? SLM_OPEN : SLM_CLOSED
+
+  return (
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] px-5 py-4">
+      <div className="flex items-start justify-between gap-4 mb-1">
+        <div className="flex-1 min-w-0">
+          <h3 className="text-sm font-semibold text-[var(--text-primary)]">Small Language Models (&lt; 10B parameters)</h3>
+          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">All {pts.length} sub-10B models: parameter count (X, log scale) vs. {metric.label} Index (Y). Hover a dot for details.</p>
+        </div>
+        <div className="flex gap-1 shrink-0 mt-0.5">
+          {BAR_METRICS.map(m => (
+            <button key={m.key} onClick={() => setActiveKey(m.key)}
+              className={`px-3 py-1 rounded-md text-xs font-medium transition-colors border ${
+                activeKey === m.key ? "text-white border-transparent" : "text-[var(--text-tertiary)] border-[var(--border-subtle)] hover:bg-[var(--bg-base)] hover:text-[var(--text-secondary)]"
+              }`}
+              style={activeKey === m.key ? { backgroundColor: m.color, borderColor: m.color } : {}}>
+              {m.label}
+            </button>
+          ))}
+        </div>
+      </div>
+
+      <div className="flex items-center gap-5 mt-3 mb-2">
+        <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+          <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: SLM_OPEN }} /> Open-weight
+        </span>
+        <span className="flex items-center gap-1.5 text-xs text-[var(--text-secondary)]">
+          <span className="w-2.5 h-2.5 rounded-full inline-block" style={{ backgroundColor: SLM_CLOSED }} /> Closed / proprietary
+        </span>
+      </div>
+
+      <div className="overflow-x-auto">
+        <svg width="100%" viewBox={`0 0 ${W} ${H}`} preserveAspectRatio="xMidYMid meet" className="overflow-visible">
+          {yTicks.map(t => {
+            const y = toY(t)
+            return (
+              <g key={t}>
+                <line x1={PAD_L} y1={y} x2={PAD_L + plotW} y2={y} stroke="#EDF0F6" strokeWidth={1} />
+                <text x={PAD_L - 6} y={y} textAnchor="end" dominantBaseline="middle" fontSize={10} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">{t}</text>
+              </g>
+            )
+          })}
+          {xTicks.map(t => {
+            const x = toX(t)
+            return (
+              <g key={t}>
+                <line x1={x} y1={PAD_T} x2={x} y2={PAD_T + plotH} stroke="#F5F7FB" strokeWidth={1} />
+                <text x={x} y={H - PAD_B + 14} textAnchor="middle" fontSize={10} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">{fmtParams(t)}</text>
+              </g>
+            )
+          })}
+          {pts.map(m => {
+            const x = toX(m.param_count!), y = toY(m[metric.key] as number)
+            const isHov = hovered?.id === m.id
+            return (
+              <circle key={m.id} cx={x} cy={y} r={isHov ? 7 : 5} fill={dotColor(m)} fillOpacity={isHov ? 1 : 0.8}
+                stroke="#fff" strokeWidth={isHov ? 1.5 : 1} style={{ cursor: "pointer" }}
+                onMouseEnter={() => setHovered(m)} onMouseLeave={() => setHovered(null)} />
+            )
+          })}
+          {hovered && hovered.param_count != null && (() => {
+            const x = toX(hovered.param_count), y = toY(hovered[metric.key] as number)
+            const tx = x > W * 0.68 ? x - 248 : x + 12
+            const ty = y < 100 ? y + 10 : y - 92
+            return (
+              <g>
+                <rect x={tx} y={ty} width={236} height={84} rx={6} fill="#0F1E3D" fillOpacity={0.93} />
+                <text x={tx + 14} y={ty + 24} fontSize={15} fontWeight={600} fill="white" fontFamily="ui-sans-serif, system-ui">{truncate(hovered.name, 24)}</text>
+                <text x={tx + 14} y={ty + 44} fontSize={13} fill="#8E97AC" fontFamily="ui-sans-serif, system-ui">{hovered.org} · {fmtParams(hovered.param_count)} {hovered.open_weight ? "(open)" : "(closed)"}</text>
+                <text x={tx + 14} y={ty + 66} fontSize={13} fill="#BCC4D2" fontFamily="ui-sans-serif, system-ui">{metric.label}: {(hovered[metric.key] as number).toFixed(1)}</text>
+              </g>
+            )
+          })()}
+          <text x={PAD_L + plotW / 2} y={H - 8} textAnchor="middle" fontSize={11} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">Parameters (log scale)</text>
+          <text x={14} y={PAD_T + plotH / 2} textAnchor="middle" transform={`rotate(-90, 14, ${PAD_T + plotH / 2})`} fontSize={11} fill="#4A5878" fontFamily="ui-sans-serif, system-ui">{metric.label} Index</text>
+          <line x1={PAD_L} y1={PAD_T} x2={PAD_L} y2={PAD_T + plotH} stroke="#8E97AC" strokeWidth={1} />
+          <line x1={PAD_L} y1={PAD_T + plotH} x2={PAD_L + plotW} y2={PAD_T + plotH} stroke="#8E97AC" strokeWidth={1} />
+        </svg>
+      </div>
+    </div>
+  )
+}
+
+// Viz 2: top 10 SLM vs top 10 LLM — metrics header + the two scatters (colored SLM/LLM),
+// mirroring the open/closed ScatterSection.
+function SlmVsLlmComparison({ models }: { models: ModelRecord[] }) {
+  const scored = models.filter(m => m.intelligence_index != null)
+  const top10Slm = [...scored].filter(isSLM).sort((a, b) => b.intelligence_index! - a.intelligence_index!).slice(0, 10)
+  const top10Llm = [...scored].filter(isLLM).sort((a, b) => b.intelligence_index! - a.intelligence_index!).slice(0, 10)
+  const avg = (arr: number[]) => arr.length ? arr.reduce((a, b) => a + b, 0) / arr.length : null
+  const stats = (g: ModelRecord[]) => ({
+    intel: avg(g.map(m => m.intelligence_index!)),
+    speed: avg(g.filter(m => m.tokens_per_sec != null && m.tokens_per_sec > 0).map(m => m.tokens_per_sec!)),
+    price: avg(g.filter(m => m.price_blended != null && m.price_blended > 0).map(m => m.price_blended!)),
+  })
+  const s = stats(top10Slm), l = stats(top10Llm)
+
+  return (
+    <div className="bg-[var(--bg-surface)] rounded-2xl border border-[var(--border-subtle)] shadow-[0_1px_4px_rgba(0,0,0,0.05)] overflow-hidden">
+      {/* Metrics header */}
+      <div className="px-5 py-4 grid grid-cols-2 gap-6 divide-x divide-slate-200 bg-[var(--bg-base)]">
+        <div>
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: SLM_COLOR }} />
+            <span className="text-xs font-semibold text-[var(--text-primary)]">SLM (&lt; 10B) — top 10</span>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            <MetricStat label="Avg Intelligence" value={s.intel != null ? s.intel.toFixed(1) : "n/a"} />
+            <MetricStat label="Avg Speed" value={s.speed != null ? `${s.speed.toFixed(0)} t/s` : "n/a"} />
+            <MetricStat label="Avg Price / 1M" value={s.price != null ? fmtPrice(s.price) : "n/a"} />
+          </div>
+        </div>
+        <div className="pl-6">
+          <div className="flex items-center gap-2 mb-3">
+            <span className="w-2.5 h-2.5 rounded-full shrink-0" style={{ backgroundColor: LLM_COLOR }} />
+            <span className="text-xs font-semibold text-[var(--text-primary)]">LLM (10B+) — top 10</span>
+          </div>
+          <div className="grid grid-cols-3 gap-4">
+            <MetricStat label="Avg Intelligence" value={l.intel != null ? l.intel.toFixed(1) : "n/a"} />
+            <MetricStat label="Avg Speed" value={l.speed != null ? `${l.speed.toFixed(0)} t/s` : "n/a"} />
+            <MetricStat label="Avg Price / 1M" value={l.price != null ? fmtPrice(l.price) : "n/a"} />
+          </div>
+        </div>
+      </div>
+      <div className="border-t border-[var(--border-subtle)]" />
+      <div className="grid grid-cols-2 divide-x divide-slate-100 items-start">
+        <DownloadableNode corner="br" filename="slm-vs-llm-cost.png"><CostScatter models={models} inner slmLlm /></DownloadableNode>
+        <DownloadableNode corner="br" filename="slm-vs-llm-speed.png"><SpeedVsIntelligence models={models} inner slmLlm /></DownloadableNode>
+      </div>
+    </div>
+  )
+}
+
 // ── Main export ───────────────────────────────────────────────────────────────
 
 type ModelTab = "general" | "speech" | "compare"
@@ -607,6 +766,8 @@ export default function FrontierModels({
               <DownloadableNode corner="br" filename="geographic-distribution.png"><GeographyChart models={data.models} /></DownloadableNode>
             </div>
             <ScatterSection models={data.models} />
+            <DownloadableNode corner="br" filename="slm-capability.png"><SlmCapabilityChart models={data.models} /></DownloadableNode>
+            <SlmVsLlmComparison models={data.models} />
           </div>
         </div>
       )}
