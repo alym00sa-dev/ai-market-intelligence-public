@@ -1,20 +1,20 @@
 {
- "built_at": 1782360471,
+ "built_at": 1782385814,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 525881457,
-  "activities": 534,
-  "donors": 62,
-  "recipients": 65,
+  "usd": 359997395,
+  "activities": 470,
+  "donors": 55,
+  "recipients": 58,
   "year_min": 2023,
-  "year_max": 2026
+  "year_max": 2024
  },
  "by_recipient": [
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 322945796,
-   "activities": 248
+   "usd": 209266974,
+   "activities": 218
   },
   {
    "name": "Argentina",
@@ -23,28 +23,22 @@
    "activities": 1
   },
   {
-   "name": "India",
-   "iso3": "IND",
-   "usd": 31796620,
-   "activities": 38
-  },
-  {
-   "name": "Ukraine",
-   "iso3": "UKR",
-   "usd": 30131816,
-   "activities": 5
-  },
-  {
    "name": "Kenya",
    "iso3": "KEN",
-   "usd": 28718500,
-   "activities": 29
+   "usd": 25555728,
+   "activities": 23
+  },
+  {
+   "name": "India",
+   "iso3": "IND",
+   "usd": 25377670,
+   "activities": 30
   },
   {
    "name": "South Africa",
    "iso3": "ZAF",
-   "usd": 14115987,
-   "activities": 22
+   "usd": 14006566,
+   "activities": 20
   },
   {
    "name": "Turkey",
@@ -53,28 +47,10 @@
    "activities": 8
   },
   {
-   "name": "Nigeria",
-   "iso3": "NGA",
-   "usd": 6851734,
-   "activities": 16
-  },
-  {
    "name": "Indonesia",
    "iso3": "IDN",
-   "usd": 5945523,
-   "activities": 7
-  },
-  {
-   "name": "Slovakia",
-   "iso3": "SVK",
-   "usd": 5400000,
-   "activities": 1
-  },
-  {
-   "name": "Zimbabwe",
-   "iso3": "ZWE",
-   "usd": 4107988,
-   "activities": 7
+   "usd": 5278477,
+   "activities": 6
   },
   {
    "name": "Philippines",
@@ -83,15 +59,21 @@
    "activities": 3
   },
   {
-   "name": "Rwanda",
-   "iso3": "RWA",
-   "usd": 2562853,
+   "name": "Nigeria",
+   "iso3": "NGA",
+   "usd": 3885296,
    "activities": 11
   },
   {
-   "name": "Bangladesh",
-   "iso3": "BGD",
-   "usd": 2181227,
+   "name": "Ukraine",
+   "iso3": "UKR",
+   "usd": 2423248,
+   "activities": 3
+  },
+  {
+   "name": "Zimbabwe",
+   "iso3": "ZWE",
+   "usd": 2155186,
    "activities": 6
   },
   {
@@ -101,10 +83,16 @@
    "activities": 1
   },
   {
+   "name": "Bangladesh",
+   "iso3": "BGD",
+   "usd": 1986772,
+   "activities": 5
+  },
+  {
    "name": "Senegal",
    "iso3": "SEN",
-   "usd": 2064762,
-   "activities": 7
+   "usd": 1912620,
+   "activities": 5
   },
   {
    "name": "Jordan",
@@ -125,12 +113,6 @@
    "activities": 2
   },
   {
-   "name": "Brazil",
-   "iso3": "BRA",
-   "usd": 1443837,
-   "activities": 8
-  },
-  {
    "name": "Vietnam",
    "iso3": "VNM",
    "usd": 1294529,
@@ -149,10 +131,10 @@
    "activities": 9
   },
   {
-   "name": "Ethiopia",
-   "iso3": "ETH",
-   "usd": 865906,
-   "activities": 6
+   "name": "Rwanda",
+   "iso3": "RWA",
+   "usd": 935389,
+   "activities": 4
   },
   {
    "name": "Uganda",
@@ -161,10 +143,10 @@
    "activities": 7
   },
   {
-   "name": "Ghana",
-   "iso3": "GHA",
-   "usd": 668914,
-   "activities": 5
+   "name": "Brazil",
+   "iso3": "BRA",
+   "usd": 684944,
+   "activities": 7
   },
   {
    "name": "C\u00f4te d'Ivoire",
@@ -203,22 +185,28 @@
    "activities": 5
   },
   {
+   "name": "Ghana",
+   "iso3": "GHA",
+   "usd": 438609,
+   "activities": 4
+  },
+  {
    "name": "Mali",
    "iso3": "MLI",
    "usd": 432263,
    "activities": 1
   },
   {
+   "name": "Ethiopia",
+   "iso3": "ETH",
+   "usd": 428267,
+   "activities": 4
+  },
+  {
    "name": "Pakistan",
    "iso3": "PAK",
    "usd": 377462,
    "activities": 6
-  },
-  {
-   "name": "Peru",
-   "iso3": "PER",
-   "usd": 340983,
-   "activities": 5
   },
   {
    "name": "Thailand",
@@ -275,16 +263,16 @@
    "activities": 3
   },
   {
+   "name": "Peru",
+   "iso3": "PER",
+   "usd": 146528,
+   "activities": 4
+  },
+  {
    "name": "Jamaica",
    "iso3": null,
    "usd": 130000,
    "activities": 1
-  },
-  {
-   "name": "Cambodia",
-   "iso3": "KHM",
-   "usd": 129904,
-   "activities": 4
   },
   {
    "name": "Burkina Faso",
@@ -329,12 +317,6 @@
    "activities": 3
   },
   {
-   "name": "Zambia",
-   "iso3": "ZMB",
-   "usd": 36890,
-   "activities": 1
-  },
-  {
    "name": "Serbia",
    "iso3": null,
    "usd": 36310,
@@ -347,45 +329,21 @@
    "activities": 1
   },
   {
-   "name": "Dem. Rep. Congo",
-   "iso3": "COD",
-   "usd": 23211,
-   "activities": 1
-  },
-  {
-   "name": "Cameroon",
-   "iso3": "CMR",
-   "usd": 18569,
-   "activities": 1
-  },
-  {
    "name": "Uzbekistan",
    "iso3": null,
    "usd": 12778,
    "activities": 1
   },
   {
+   "name": "Cambodia",
+   "iso3": "KHM",
+   "usd": 12537,
+   "activities": 2
+  },
+  {
    "name": "Dominican Republic",
    "iso3": null,
    "usd": 10103,
-   "activities": 1
-  },
-  {
-   "name": "Central African Rep.",
-   "iso3": "CAF",
-   "usd": 9284,
-   "activities": 1
-  },
-  {
-   "name": "Gabon",
-   "iso3": "GAB",
-   "usd": 9284,
-   "activities": 1
-  },
-  {
-   "name": "Chad",
-   "iso3": "TCD",
-   "usd": 9284,
    "activities": 1
   },
   {
@@ -410,13 +368,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 129139698,
-   "activities": 132
-  },
-  {
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "usd": 70740926,
-   "activities": 12
+   "usd": 87765500,
+   "activities": 94
   },
   {
    "donor": "Wellcome Trust",
@@ -434,11 +387,6 @@
    "activities": 26
   },
   {
-   "donor": "European Bank for Reconstruction and Development",
-   "usd": 35362715,
-   "activities": 4
-  },
-  {
    "donor": "United States",
    "usd": 24236377,
    "activities": 31
@@ -446,11 +394,6 @@
   {
    "donor": "EU Institutions",
    "usd": 17517349,
-   "activities": 3
-  },
-  {
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "usd": 17490940,
    "activities": 3
   },
   {
@@ -509,9 +452,9 @@
    "activities": 8
   },
   {
-   "donor": "U.S. Agency for International Development",
-   "usd": 2356661,
-   "activities": 4
+   "donor": "European Bank for Reconstruction and Development",
+   "usd": 2254147,
+   "activities": 1
   },
   {
    "donor": "Open Society Foundations",
@@ -542,11 +485,6 @@
    "donor": "Sweden",
    "usd": 710219,
    "activities": 2
-  },
-  {
-   "donor": "Australia Aid",
-   "usd": 667046,
-   "activities": 1
   },
   {
    "donor": "Swedish Postcode Lottery",
@@ -629,11 +567,6 @@
    "activities": 2
   },
   {
-   "donor": "Food and Agriculture Organization (FAO)",
-   "usd": 99948,
-   "activities": 1
-  },
-  {
    "donor": "Qatar",
    "usd": 70459,
    "activities": 2
@@ -659,11 +592,6 @@
    "activities": 3
   },
   {
-   "donor": "Netherlands Enterprise Agency",
-   "usd": 35640,
-   "activities": 1
-  },
-  {
    "donor": "Lithuania",
    "usd": 21628,
    "activities": 2
@@ -686,11 +614,6 @@
   {
    "donor": "Laudes Foundation",
    "usd": 10817,
-   "activities": 1
-  },
-  {
-   "donor": "Ministry of Foreign Affairs, Denmark",
-   "usd": 10135,
    "activities": 1
   },
   {
@@ -721,79 +644,66 @@
  ],
  "by_sector": [
   {
-   "code": "governance_policy",
-   "usd": 122217421
-  },
-  {
    "code": "research",
-   "usd": 100657155
+   "usd": 93430293
   },
   {
    "code": "health_ai",
-   "usd": 92841790
+   "usd": 66446718
   },
   {
    "code": "education_skills",
-   "usd": 85844052
+   "usd": 57098448
   },
   {
    "code": "agriculture_ai",
-   "usd": 45737684
+   "usd": 45637736
+  },
+  {
+   "code": "governance_policy",
+   "usd": 34624136
   },
   {
    "code": "data_systems",
-   "usd": 18968673
+   "usd": 18107172
   },
   {
    "code": "financial_inclusion",
-   "usd": 16548269
-  },
-  {
-   "code": "capacity_building",
-   "usd": 16400012
-  },
-  {
-   "code": "other",
-   "usd": 13871815
+   "usd": 14071899
   },
   {
    "code": "infrastructure_compute",
-   "usd": 12794586
+   "usd": 11368675
+  },
+  {
+   "code": "capacity_building",
+   "usd": 11079125
+  },
+  {
+   "code": "other",
+   "usd": 8133193
   }
  ],
  "by_year": [
   {
    "year": 2023,
-   "usd": 131862582
+   "usd": 119876386
   },
   {
    "year": 2024,
-   "usd": 346256210
-  },
-  {
-   "year": 2025,
-   "usd": 46056655
-  },
-  {
-   "year": 2026,
-   "usd": 1706010
+   "usd": 240121009
   }
  ],
  "flows": [
   {
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "usd": 76985314
-  },
-  {
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "usd": 68391458
-  },
-  {
    "donor": "Wellcome Trust",
    "recipient": "Global / multi-country",
    "usd": 55861088
+  },
+  {
+   "donor": "Gates Foundation",
+   "recipient": "Global / multi-country",
+   "usd": 49188890
   },
   {
    "donor": "Inter-American Development Bank",
@@ -806,34 +716,24 @@
    "usd": 33836259
   },
   {
-   "donor": "European Bank for Reconstruction and Development",
-   "recipient": "Ukraine",
-   "usd": 29962715
-  },
-  {
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "usd": 21109210
-  },
-  {
    "donor": "EU Institutions",
    "recipient": "Global / multi-country",
    "usd": 17517349
   },
   {
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "recipient": "Global / multi-country",
-   "usd": 17490940
-  },
-  {
    "donor": "Gates Foundation",
-   "recipient": "Kenya",
-   "usd": 14654715
+   "recipient": "India",
+   "usd": 14690260
   },
   {
    "donor": "United States",
    "recipient": "Global / multi-country",
    "usd": 12059056
+  },
+  {
+   "donor": "Gates Foundation",
+   "recipient": "Kenya",
+   "usd": 11651020
   },
   {
    "donor": "Denmark",
@@ -856,19 +756,9 @@
    "usd": 5407679
   },
   {
-   "donor": "European Bank for Reconstruction and Development",
-   "recipient": "Slovakia",
-   "usd": 5400000
-  },
-  {
    "donor": "Germany",
    "recipient": "South Africa",
    "usd": 5195051
-  },
-  {
-   "donor": "Gates Foundation",
-   "recipient": "Nigeria",
-   "usd": 5021200
   },
   {
    "donor": "Norway",
@@ -898,12 +788,17 @@
   {
    "donor": "Gates Foundation",
    "recipient": "South Africa",
-   "usd": 3786791
+   "usd": 3713010
   },
   {
    "donor": "Wellcome Trust",
    "recipient": "Indonesia",
    "usd": 3274886
+  },
+  {
+   "donor": "Gates Foundation",
+   "recipient": "Nigeria",
+   "usd": 3263620
   },
   {
    "donor": "United Kingdom",
@@ -926,9 +821,9 @@
    "usd": 2766063
   },
   {
-   "donor": "Gates Foundation",
-   "recipient": "Rwanda",
-   "usd": 2525064
+   "donor": "European Bank for Reconstruction and Development",
+   "recipient": "Ukraine",
+   "usd": 2254147
   },
   {
    "donor": "United States",
@@ -944,11 +839,6 @@
    "donor": "United States",
    "recipient": "Iraq",
    "usd": 2100000
-  },
-  {
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Zimbabwe",
-   "usd": 1952802
   },
   {
    "donor": "Germany",
@@ -979,28 +869,34 @@
    "donor": "Wellcome Trust",
    "recipient": "Senegal",
    "usd": 1544186
+  },
+  {
+   "donor": "United States",
+   "recipient": "Malawi",
+   "usd": 1524967
+  },
+  {
+   "donor": "Wellcome Trust",
+   "recipient": "Kenya",
+   "usd": 1369602
+  },
+  {
+   "donor": "United States",
+   "recipient": "Jordan",
+   "usd": 1299948
+  },
+  {
+   "donor": "Korea",
+   "recipient": "Kyrgyzstan",
+   "usd": 1246766
+  },
+  {
+   "donor": "Wellcome Trust",
+   "recipient": "South Africa",
+   "usd": 1241859
   }
  ],
  "activities": [
-  {
-   "id": "GB-GOV-1-400191-401",
-   "title": "AI4D- International Development Research Centre (IDRC) -Project Funds to support Outputs 1- 5",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "governance_policy",
-   "usd": 66822736,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191-401",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 66822736
-    }
-   ]
-  },
   {
    "id": "CRS-2024-6244566",
    "title": "Data as a foundation for AI innovation and global discovery research in the life sciences",
@@ -1040,25 +936,6 @@
    ]
   },
   {
-   "id": "XI-IATI-EBRD-57066",
-   "title": "Ukraine edtech Preply USD 20m",
-   "donor": "European Bank for Reconstruction and Development",
-   "recipient": "Ukraine",
-   "sector": "ICT",
-   "ai_category": "education_skills",
-   "usd": 18609880,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EBRD-57066",
-   "allocations": [
-    {
-     "name": "Ukraine",
-     "iso3": "UKR",
-     "usd": 18609880
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6155313",
    "title": "Multilateralism and Digitalisation II",
    "donor": "EU Institutions",
@@ -1078,25 +955,6 @@
    ]
   },
   {
-   "id": "XI-IATI-EC_INTPA-2021-ACT-62451",
-   "title": "Multilateralism and Digitalisation II",
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 17490940,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EC_INTPA-2021-ACT-62451",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 17490940
-    }
-   ]
-  },
-  {
    "id": "CRS-2023-5490803",
    "title": "Financing to PAYG sector",
    "donor": "Denmark",
@@ -1112,25 +970,6 @@
      "name": "Kenya",
      "iso3": "KEN",
      "usd": 10835365
-    }
-   ]
-  },
-  {
-   "id": "XI-IATI-EBRD-54896",
-   "title": "RLF - Preply (co-invest)",
-   "donor": "European Bank for Reconstruction and Development",
-   "recipient": "Ukraine",
-   "sector": "ICT",
-   "ai_category": "education_skills",
-   "usd": 9098688,
-   "year": 2023,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EBRD-54896",
-   "allocations": [
-    {
-     "name": "Ukraine",
-     "iso3": "UKR",
-     "usd": 9098688
     }
    ]
   },
@@ -1249,25 +1088,6 @@
    ]
   },
   {
-   "id": "XI-IATI-EBRD-54767",
-   "title": "VCIP-VD - Photoneo",
-   "donor": "European Bank for Reconstruction and Development",
-   "recipient": "Slovakia",
-   "sector": "ICT",
-   "ai_category": "other",
-   "usd": 5400000,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EBRD-54767",
-   "allocations": [
-    {
-     "name": "Slovakia",
-     "iso3": "SVK",
-     "usd": 5400000
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6010400",
    "title": "Feed the Future Innovation Lab for Crop Improvement",
    "donor": "United States",
@@ -1302,44 +1122,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 5013300
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-091193",
-   "title": "Safe Inference Algorithms for Drug Discovery",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 4622607,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-091193",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 4622607
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-084276",
-   "title": "Using AI to enhance mAb design for affordable access in LMICs",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 4578261,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-084276",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 4578261
     }
    ]
   },
@@ -1454,25 +1236,6 @@
      "name": "Philippines",
      "iso3": "PHL",
      "usd": 3931821
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-086464",
-   "title": "Validating AI systems to create new drugs to improve public health",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 3878289,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-086464",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 3878289
     }
    ]
   },
@@ -1762,25 +1525,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-069541",
-   "title": "Gender & AI Livelihoods (GAIL) Program",
-   "donor": "Gates Foundation",
-   "recipient": "Kenya",
-   "sector": "ICT",
-   "ai_category": "financial_inclusion",
-   "usd": 2476370,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-069541",
-   "allocations": [
-    {
-     "name": "Kenya",
-     "iso3": "KEN",
-     "usd": 2476370
-    }
-   ]
-  },
-  {
    "id": "CRS-2023-5568576",
    "title": "Wolkus Technology Solutions Private Limited (Fasal)",
    "donor": "United Kingdom",
@@ -1796,25 +1540,6 @@
      "name": "India",
      "iso3": "IND",
      "usd": 2444997
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-090035",
-   "title": "Mechanistic and machine learning modeling of blood count data",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 2428480,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-090035",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 2428480
     }
    ]
   },
@@ -1914,25 +1639,6 @@
    ]
   },
   {
-   "id": "GB-GOV-1-300816-402",
-   "title": "Nurture Zimbabwe: Neotree Technology Enabled Newborn Care and Research Project.",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Zimbabwe",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 1952802,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-300816-402",
-   "allocations": [
-    {
-     "name": "Zimbabwe",
-     "iso3": "ZWE",
-     "usd": 1952802
-    }
-   ]
-  },
-  {
    "id": "CRS-2023-5567944",
    "title": "NIHR Global Health Research Unit on Genomics and enabling data for Surveillance of Antimicrobial Resistance",
    "donor": "United Kingdom",
@@ -1948,25 +1654,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 1915985
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-091882",
-   "title": "Masakhane Echo Project",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "research",
-   "usd": 1854788,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-091882",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 1854788
     }
    ]
   },
@@ -2005,25 +1692,6 @@
      "name": "India",
      "iso3": "IND",
      "usd": 1808810
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-078558",
-   "title": "Support for IndiaAI Mission",
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 1791714,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-078558",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 1791714
     }
    ]
   },
@@ -2123,25 +1791,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-068716",
-   "title": "Support for Center for Responsible AI (CeRAI) at IIT Madras",
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "sector": "ICT",
-   "ai_category": "research",
-   "usd": 1655808,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-068716",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 1655808
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6232380",
    "title": "OpenAgriNet for AI Enabled Digital Farmer Services (FCDO-DF)",
    "donor": "Gates Foundation",
@@ -2157,25 +1806,6 @@
      "name": "India",
      "iso3": "IND",
      "usd": 1591120
-    }
-   ]
-  },
-  {
-   "id": "GB-GOV-1-400868-401",
-   "title": "Next GenAI Cures Platform",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "research",
-   "usd": 1557068,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400868-401",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 1557068
     }
    ]
   },
@@ -2332,25 +1962,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-089894",
-   "title": "A Digital Public Good to Support the Development of Responsible Chatbots",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 1499454,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-089894",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 1499454
-    }
-   ]
-  },
-  {
    "id": "CRS-2023-5517467",
    "title": "Land use and climate change",
    "donor": "Germany",
@@ -2404,25 +2015,6 @@
      "name": "South Africa",
      "iso3": "ZAF",
      "usd": 1428664
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-068999",
-   "title": "Developing a partner ecosystem for accelerating AI and DPI solutions",
-   "donor": "Gates Foundation",
-   "recipient": "Nigeria",
-   "sector": "ICT",
-   "ai_category": "infrastructure_compute",
-   "usd": 1425911,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-068999",
-   "allocations": [
-    {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 1425911
     }
    ]
   },
@@ -2503,25 +2095,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-079239",
-   "title": "Operationalizing Evaluation For Voice  & Language Related AI Usecases",
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "sector": "ICT",
-   "ai_category": "research",
-   "usd": 1262025,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-079239",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 1262025
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6085332",
    "title": "Leading University for International Cooperation(Kyrgyzstan)",
    "donor": "Korea",
@@ -2575,25 +2148,6 @@
      "name": "South Africa",
      "iso3": "ZAF",
      "usd": 1241859
-    }
-   ]
-  },
-  {
-   "id": "US-GOV-1-7200AA23FA00005",
-   "title": "Using Machine Learning to Reduce HIV Treatment Interruptions",
-   "donor": "U.S. Agency for International Development",
-   "recipient": "Nigeria",
-   "sector": "Business support / private sector",
-   "ai_category": "health_ai",
-   "usd": 1208858,
-   "year": 2023,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=US-GOV-1-7200AA23FA00005",
-   "allocations": [
-    {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 1208858
     }
    ]
   },
@@ -2693,74 +2247,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-081890",
-   "title": "Catalyzing Africa's AI Leadership",
-   "donor": "Gates Foundation",
-   "recipient": "7 countries",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 1045225,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-081890",
-   "allocations": [
-    {
-     "name": "Zambia",
-     "iso3": "ZMB",
-     "usd": 36890
-    },
-    {
-     "name": "South Africa",
-     "iso3": "ZAF",
-     "usd": 73781
-    },
-    {
-     "name": "Senegal",
-     "iso3": "SEN",
-     "usd": 61484
-    },
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 233639
-    },
-    {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 135264
-    },
-    {
-     "name": "Kenya",
-     "iso3": "KEN",
-     "usd": 393496
-    },
-    {
-     "name": "Ethiopia",
-     "iso3": "ETH",
-     "usd": 110671
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-071577",
-   "title": "Advancing global health drug formulation development using ML and AI",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 1025984,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-071577",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 1025984
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6038628",
    "title": "TRACE-TB Activity",
    "donor": "United States",
@@ -2799,25 +2285,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-096757",
-   "title": "LMIC Clinical Vignettes to enable Agentic Benchmarking",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 995158,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-096757",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 995158
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6232649",
    "title": "Data catalogue and marketplace for AI-ready training data",
    "donor": "Gates Foundation",
@@ -2837,25 +2304,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-058957",
-   "title": "AI-Driven Process Optimization of APIs in the Chemputer",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 975964,
-   "year": 2023,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-058957",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 975964
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-5960810",
    "title": "AI4D- International Development Research Centre (IDRC) -Project Funds to support Outputs 1- 5",
    "donor": "United Kingdom",
@@ -2871,63 +2319,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 970472
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-096273",
-   "title": "AI-Enabled Platform MVP for Accelerating Equitable Drug Development",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 934196,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-096273",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 934196
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-092396",
-   "title": "AI In-silico Rational Protein Design as Front End to Enzyme Engineering",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 928476,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-092396",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 928476
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-092950",
-   "title": "AI for De Novo Protein Design and Enzyme Engineering",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 928452,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-092950",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 928452
     }
    ]
   },
@@ -2985,25 +2376,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 899460
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-076358",
-   "title": "Data augmentation in low resource languages to improve AI model perf",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "research",
-   "usd": 897173,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-076358",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 897173
     }
    ]
   },
@@ -3122,25 +2494,6 @@
    ]
   },
   {
-   "id": "US-GOV-1-7200AA23FA00018",
-   "title": "Testing and Scaling an Artificial Intelligence-Based Functional Literacy Program",
-   "donor": "U.S. Agency for International Development",
-   "recipient": "Brazil",
-   "sector": "Business support / private sector",
-   "ai_category": "education_skills",
-   "usd": 758893,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=US-GOV-1-7200AA23FA00018",
-   "allocations": [
-    {
-     "name": "Brazil",
-     "iso3": "BRA",
-     "usd": 758893
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6149492",
    "title": "Digital and Artificial Intelligence Solutions for the Agriculture, Natural Resources, and Rural Development Sector",
    "donor": "Asian Development Bank",
@@ -3198,25 +2551,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-094095",
-   "title": "Deep Learning for Multimodal Integration of Proteomics Datasets",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 730704,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-094095",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 730704
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6243482",
    "title": "International Panel on the Information Environment",
    "donor": "Ford Foundation",
@@ -3270,25 +2604,6 @@
      "name": "Kenya",
      "iso3": "KEN",
      "usd": 678859
-    }
-   ]
-  },
-  {
-   "id": "AU-5-INO304",
-   "title": "UN Global Pulse",
-   "donor": "Australia Aid",
-   "recipient": "Indonesia",
-   "sector": "Statistical capacity building",
-   "ai_category": "data_systems",
-   "usd": 667046,
-   "year": 2023,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=AU-5-INO304",
-   "allocations": [
-    {
-     "name": "Indonesia",
-     "iso3": "IDN",
-     "usd": 667046
     }
    ]
   },
@@ -3540,25 +2855,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-069370",
-   "title": "Catalyzing the AI for Social Good Ecosystem in India",
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 510196,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-069370",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 510196
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6234630",
    "title": "Application of AI to FP Forecasting",
    "donor": "Gates Foundation",
@@ -3692,25 +2988,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-079165",
-   "title": "AI in Africa: C4IR Rwanda Summit",
-   "donor": "Gates Foundation",
-   "recipient": "Rwanda",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 495274,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-079165",
-   "allocations": [
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 495274
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6098729",
    "title": "Global Pulse Phase 2",
    "donor": "Australia",
@@ -3825,63 +3102,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-095410",
-   "title": "Support for Global India AI Summit",
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 464199,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-095410",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 464199
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-093985",
-   "title": "Artificial Intelligence (AI) for Social Good Secretariat",
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 460247,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-093985",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 460247
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-096246",
-   "title": "Enhancing PEARL LLM for Clinical Protocol and Synopsis Recommendations",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 451043,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-096246",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 451043
-    }
-   ]
-  },
-  {
    "id": "CRS-2023-5875499",
    "title": "to support the Distributed AI Research Institute's work on the discriminatory impacts of Artificial Intelligence and how to mitigate harm, to benefit both the global technical research community by creating technology that has a truly positive impact on society, as well as marginalized communities",
    "donor": "Open Society Foundations",
@@ -3939,45 +3159,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-092526",
-   "title": "AI for Development (AI4D) South South Collaboration Workshop",
-   "donor": "Gates Foundation",
-   "recipient": "5 countries",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 431705,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-092526",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 17268
-    },
-    {
-     "name": "Kenya",
-     "iso3": "KEN",
-     "usd": 133829
-    },
-    {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 94975
-    },
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 94975
-    },
-    {
-     "name": "Senegal",
-     "iso3": "SEN",
-     "usd": 90658
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6235215",
    "title": "Evaluation of LLMs in medical test prep and clinical performance",
    "donor": "Gates Foundation",
@@ -3993,25 +3174,6 @@
      "name": "South Africa",
      "iso3": "ZAF",
      "usd": 422620
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-087103",
-   "title": "Advancing DPI as a foundation for AI",
-   "donor": "Gates Foundation",
-   "recipient": "Rwanda",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 420236,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-087103",
-   "allocations": [
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 420236
     }
    ]
   },
@@ -4244,25 +3406,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-097815",
-   "title": "Accelerating AI Use Case Development in Key Sectors",
-   "donor": "Gates Foundation",
-   "recipient": "Ethiopia",
-   "sector": "ICT",
-   "ai_category": "other",
-   "usd": 326968,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-097815",
-   "allocations": [
-    {
-     "name": "Ethiopia",
-     "iso3": "ETH",
-     "usd": 326968
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6244743",
    "title": "Removing barriers to advanced imaging and machine learning-based analysis",
    "donor": "Wellcome Trust",
@@ -4472,25 +3615,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-092593",
-   "title": "Define the role of AI for DPI and provide recommendations to policymakers",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 276148,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-092593",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 276148
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6243317",
    "title": "Pulitzer Center on Crisis Reporting",
    "donor": "Ford Foundation",
@@ -4620,44 +3744,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 259440
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-096589",
-   "title": "TA : Innovation Challenge for Health AI Solutions",
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 257493,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-096589",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 257493
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-082335",
-   "title": "Automated M&E of CV for RDTs: Gen AI vs. Deep Learning Models",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 256989,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-082335",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 256989
     }
    ]
   },
@@ -4947,25 +4033,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-086119",
-   "title": "Support to Product Development Partners for new drug development",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 241316,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-086119",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 241316
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6237558",
    "title": "LLM-based architectures for secure, performant, and usable Clinical Trial",
    "donor": "Gates Foundation",
@@ -5023,25 +4090,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-092506",
-   "title": "Policy-to-Action Consultative Series",
-   "donor": "Gates Foundation",
-   "recipient": "Rwanda",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 232100,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-092506",
-   "allocations": [
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 232100
-    }
-   ]
-  },
-  {
    "id": "CRS-2023-5681697",
    "title": "Southeast Asia Quad Tech Summit STS",
    "donor": "United States",
@@ -5095,25 +4143,6 @@
      "name": "Vietnam",
      "iso3": "VNM",
      "usd": 230769
-    }
-   ]
-  },
-  {
-   "id": "GB-GOV-1-301049-415",
-   "title": "Partnership Fund: UK-Ghana ST&I Partnership: AI Strategy and Media Capacity Building Project",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Ghana",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 230305,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-301049-415",
-   "allocations": [
-    {
-     "name": "Ghana",
-     "iso3": "GHA",
-     "usd": 230305
     }
    ]
   },
@@ -5574,44 +4603,6 @@
    ]
   },
   {
-   "id": "US-GOV-1-7200AA24FA00005",
-   "title": "ARCED Foundation: Aureolin Research, Consultancy, and Expertise Development: Using Satellite Imagery to Reduce Air Pollution",
-   "donor": "U.S. Agency for International Development",
-   "recipient": "Bangladesh",
-   "sector": "Business support / private sector",
-   "ai_category": "data_systems",
-   "usd": 194455,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=US-GOV-1-7200AA24FA00005",
-   "allocations": [
-    {
-     "name": "Bangladesh",
-     "iso3": "BGD",
-     "usd": 194455
-    }
-   ]
-  },
-  {
-   "id": "US-GOV-1-7200AA24FA00021",
-   "title": "AI-based Entrepreneurship Training Pilot",
-   "donor": "U.S. Agency for International Development",
-   "recipient": "Peru",
-   "sector": "Business support / private sector",
-   "ai_category": "capacity_building",
-   "usd": 194455,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=US-GOV-1-7200AA24FA00021",
-   "allocations": [
-    {
-     "name": "Peru",
-     "iso3": "PER",
-     "usd": 194455
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6242037",
    "title": "for practical and resilient data systems in Uganda?s new cities",
    "donor": "William and Flora Hewlett Foundation",
@@ -5703,25 +4694,6 @@
      "name": "Sri Lanka",
      "iso3": "LKA",
      "usd": 186052
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-097296",
-   "title": "Ethics guidance for AI health innovators in Africa and India",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "governance_policy",
-   "usd": 185633,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-097296",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 185633
     }
    ]
   },
@@ -6391,25 +5363,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-088245",
-   "title": "Planning Grant for the Rwanda AI Scaling Hub",
-   "donor": "Gates Foundation",
-   "recipient": "Rwanda",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 128029,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-088245",
-   "allocations": [
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 128029
-    }
-   ]
-  },
-  {
    "id": "CRS-2023-5718361",
    "title": "Project on Research related to the potential introduction of AI and related technologies into rehabilitation programming activity in prison",
    "donor": "Japan",
@@ -6501,25 +5454,6 @@
      "name": "Colombia",
      "iso3": "COL",
      "usd": 124951
-    }
-   ]
-  },
-  {
-   "id": "GB-GOV-1-301049-424",
-   "title": "AI Governance and Policy Capacity Convenings between UK and Kenya",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Kenya",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 124012,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-301049-424",
-   "allocations": [
-    {
-     "name": "Kenya",
-     "iso3": "KEN",
-     "usd": 124012
     }
    ]
   },
@@ -6695,25 +5629,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-074336",
-   "title": "Sponsor Deep Learning Indaba conference",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "education_skills",
-   "usd": 107309,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-074336",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 107309
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6239214",
    "title": "Sponsor Deep Learning Indaba conference",
    "donor": "Gates Foundation",
@@ -6786,25 +5701,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 103083
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-082653",
-   "title": "Accelerating Local AI Innovation with Ecosystem Development",
-   "donor": "Gates Foundation",
-   "recipient": "Nigeria",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 101429,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-082653",
-   "allocations": [
-    {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 101429
     }
    ]
   },
@@ -6938,25 +5834,6 @@
      "name": "Bolivia",
      "iso3": "BOL",
      "usd": 100000
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-41301-754855",
-   "title": "TCPF: Machine learning for rice yield modelling",
-   "donor": "Food and Agriculture Organization (FAO)",
-   "recipient": "Cambodia",
-   "sector": "Statistical capacity building",
-   "ai_category": "agriculture_ai",
-   "usd": 99948,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-41301-754855",
-   "allocations": [
-    {
-     "name": "Cambodia",
-     "iso3": "KHM",
-     "usd": 99948
     }
    ]
   },
@@ -7128,50 +6005,6 @@
      "name": "C\u00f4te d'Ivoire",
      "iso3": "CIV",
      "usd": 95000
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-091732",
-   "title": "Advance learning and research on language AI at the DLI conference",
-   "donor": "Gates Foundation",
-   "recipient": "6 countries",
-   "sector": "ICT",
-   "ai_category": "education_skills",
-   "usd": 92845,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-091732",
-   "allocations": [
-    {
-     "name": "Dem. Rep. Congo",
-     "iso3": "COD",
-     "usd": 23211
-    },
-    {
-     "name": "Central African Rep.",
-     "iso3": "CAF",
-     "usd": 9284
-    },
-    {
-     "name": "Cameroon",
-     "iso3": "CMR",
-     "usd": 18569
-    },
-    {
-     "name": "Gabon",
-     "iso3": "GAB",
-     "usd": 9284
-    },
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 23211
-    },
-    {
-     "name": "Chad",
-     "iso3": "TCD",
-     "usd": 9284
     }
    ]
   },
@@ -8772,25 +7605,6 @@
    ]
   },
   {
-   "id": "NL-KVK-27378529-PST22ZA03",
-   "title": "Digital Skills Training for South-African Women",
-   "donor": "Netherlands Enterprise Agency",
-   "recipient": "South Africa",
-   "sector": "ICT",
-   "ai_category": "education_skills",
-   "usd": 35640,
-   "year": 2023,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=NL-KVK-27378529-PST22ZA03",
-   "allocations": [
-    {
-     "name": "South Africa",
-     "iso3": "ZAF",
-     "usd": 35640
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6005832",
    "title": "Artificial intelligence-based analysis of cough for tuberculosis and COVID-19 screening in Lima, Peru",
    "donor": "Canada",
@@ -9209,25 +8023,6 @@
    ]
   },
   {
-   "id": "GB-GOV-1-301049-426",
-   "title": "Techrun 2025-AI Digital and Sports Forum",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Kenya",
-   "sector": "ICT",
-   "ai_category": "education_skills",
-   "usd": 24930,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-301049-426",
-   "allocations": [
-    {
-     "name": "Kenya",
-     "iso3": "KEN",
-     "usd": 24930
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-5997320",
    "title": "Centre for Data Science and Artificial Intelligence: Multidisciplinary artificial intelligence laboratory / Centre pour la science des donn\u00e9es et l'intelligence artificielle \u2013 laboratoire multidisciplinaire d'IA",
    "donor": "Canada",
@@ -9566,25 +8361,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 19120
-    }
-   ]
-  },
-  {
-   "id": "GB-GOV-1-400444-401",
-   "title": "Gen AI for Gen Z: Inspiring new generation of AI creators",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Cambodia",
-   "sector": "ICT",
-   "ai_category": "education_skills",
-   "usd": 17419,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400444-401",
-   "allocations": [
-    {
-     "name": "Cambodia",
-     "iso3": "KHM",
-     "usd": 17419
     }
    ]
   },
@@ -9950,25 +8726,6 @@
    ]
   },
   {
-   "id": "GB-GOV-1-300358-413",
-   "title": "Geocomputation Research: Using satellite data and machine learning to detect urban damage during natural hazard and conflict",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Statistical capacity building",
-   "ai_category": "other",
-   "usd": 11654,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-300358-413",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 11654
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-5986367",
    "title": "AI Apps Against Alzheimer in Central Europe (4ACEs) 22410426",
    "donor": "Hungary",
@@ -10174,25 +8931,6 @@
      "name": "Kenya",
      "iso3": "KEN",
      "usd": 10152
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-3-1-289152-37250",
-   "title": "Nairobi: Cyber data protection \u2013 a study on (In)security in Kenya's Cyber-Space integration of artificial intelligence",
-   "donor": "Ministry of Foreign Affairs, Denmark",
-   "recipient": "Kenya",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 10135,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-3-1-289152-37250",
-   "allocations": [
-    {
-     "name": "Kenya",
-     "iso3": "KEN",
-     "usd": 10135
     }
    ]
   },
@@ -11086,120 +9824,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 8
-    }
-   ]
-  },
-  {
-   "id": "XI-IATI-EC_INTPA-2025-PC-59629",
-   "title": "Capacity-building for cybersecurity and artificial intelligence",
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 0,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EC_INTPA-2025-PC-59629",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "XI-IATI-EC_INTPA-2026-PC-61204",
-   "title": "Activity under preparation The EU\u00bfs international partnerships on AI - Geopolitical Considerations",
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 0,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EC_INTPA-2026-PC-61204",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "GB-GOV-1-400191-402",
-   "title": "Programme Management Support for AI for Development: Responsible AI, Empowering People (\u2018AI4D\u2019)",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "capacity_building",
-   "usd": 0,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191-402",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "GB-GOV-1-400191-403",
-   "title": "'AI Accelerator' -Scaling -AI4D",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "other",
-   "usd": 0,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191-403",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "GB-GOV-1-400191",
-   "title": "AI for Development: Responsible AI, Empowering People (\u2018AI4D\u2019)",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "governance_policy",
-   "usd": 0,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "GB-GOV-1-400868",
-   "title": "AI for Development Science Breakthroughs",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "research",
-   "usd": 0,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400868",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
     }
    ]
   }
