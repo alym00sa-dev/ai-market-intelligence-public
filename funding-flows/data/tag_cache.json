@@ -5326,5 +5326,369 @@
  "CRS-2024-6246304": {
   "ai": true,
   "category": "education_skills"
+ },
+ "XM-DAC-301-2-109111-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-109574-904": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109574-905": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109617-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109617-002": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109641-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109641-002": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109641-003": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109641-004": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109670-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109675-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109675-002": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109699-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109700-001": {
+  "ai": true,
+  "category": "health_ai"
+ },
+ "XM-DAC-301-2-109702-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109702-002": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-109704-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109704-002": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109707-001": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-109707-002": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-109718-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-109832-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-109875-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-109875-002": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-109885-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110104-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110104-002": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110107-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110107-002": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110109-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110109-002": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110110-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110110-002": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110126-901": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110126-902": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110263-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110264-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110341-002": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110437-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110446-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110450-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110450-002": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110450-003": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110455-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110456-001": {
+  "ai": false,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110457-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110459-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110460-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110461-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110462-001": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110462-002": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110463-001": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110469-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110470-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110470-002": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110471-001": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "XM-DAC-301-2-110471-002": {
+  "ai": true,
+  "category": "education_skills"
+ },
+ "XM-DAC-301-2-110473-001": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110473-002": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110474-001": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110476-001": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110476-002": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110477-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110477-002": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110478-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110478-002": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110491-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110492-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110535-901": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-902": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-903": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-904": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-905": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-906": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-907": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-908": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-909": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-910": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-911": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110535-912": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110542-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110542-002": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110547-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110551-001": {
+  "ai": true,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110564-001": {
+  "ai": true,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110564-002": {
+  "ai": true,
+  "category": "other"
+ },
+ "XM-DAC-301-2-110580-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110580-002": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110586-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110612-001": {
+  "ai": false,
+  "category": ""
+ },
+ "XM-DAC-301-2-110612-002": {
+  "ai": false,
+  "category": ""
  }
 }
