@@ -5690,5 +5690,37 @@
  "XM-DAC-301-2-110612-002": {
   "ai": false,
   "category": ""
+ },
+ "XM-DAC-301-2-110694-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110694-002": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110699-001": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110699-002": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "XM-DAC-301-2-110730-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110732-001": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110732-002": {
+  "ai": true,
+  "category": "research"
+ },
+ "XM-DAC-301-2-110745-001": {
+  "ai": true,
+  "category": "infrastructure_compute"
  }
 }
