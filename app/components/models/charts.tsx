@@ -768,10 +768,10 @@ export function CostScatter({ models, inner, highlightIds, highlightColors, high
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">Capability vs. Cost</h3>
           <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
             {slmLlm
-              ? "Top 10 SLM (< 10B) and top 10 LLM (10B+ or undisclosed). Cost on X axis (log scale, blended per 1M tokens); Intelligence Index on Y axis. Hover a dot for details."
+              ? "Top 10 SLM (< 10B) and top 10 LLM (10B+ or undisclosed). Cost on X axis (log scale, blended per 1M tokens); Intelligence Index on Y axis. Source: Artificial Analysis Intelligence Index."
               : viewMode === "open-closed"
-              ? "Top 10 open-weight and top 10 closed models. Cost on X axis (log scale, blended per 1M tokens); Intelligence Index on Y axis. Hover a dot for details."
-              : "Top 30 models with pricing data, colored by company. Cost on X axis (log scale); Intelligence Index on Y axis. Hover a dot for details."
+              ? "Top 10 open-weight and top 10 closed models. Cost on X axis (log scale, blended per 1M tokens); Intelligence Index on Y axis. Source: Artificial Analysis Intelligence Index."
+              : "Top 30 models with pricing data, colored by company. Cost on X axis (log scale); Intelligence Index on Y axis. Source: Artificial Analysis Intelligence Index."
             }
           </p>
         </div>
@@ -982,10 +982,10 @@ export function SpeedVsIntelligence({ models, inner, highlightIds, highlightColo
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">Speed vs. Intelligence</h3>
           <p className="text-xs text-[var(--text-tertiary)] mt-0.5">
             {slmLlm
-              ? "Top 10 SLM (< 10B) and top 10 LLM (10B+ or undisclosed) by Intelligence Index. Output speed in tokens per second. Hover a dot for details."
+              ? "Top 10 SLM (< 10B) and top 10 LLM (10B+ or undisclosed) by Intelligence Index. Output speed in tokens per second. Source: Artificial Analysis Intelligence Index."
               : viewMode === "open-closed"
-              ? "Top 10 open-weight and top 10 closed models by Intelligence Index. Output speed in tokens per second. Hover a dot for details."
-              : "Top 30 models with speed data, colored by company. Hover a dot for details."
+              ? "Top 10 open-weight and top 10 closed models by Intelligence Index. Output speed in tokens per second. Source: Artificial Analysis Intelligence Index."
+              : "Top 30 models with speed data, colored by company. Source: Artificial Analysis Intelligence Index."
             }
           </p>
         </div>
