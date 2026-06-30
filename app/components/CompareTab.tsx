@@ -268,7 +268,7 @@ function ReleaseDots({ ent }: { ent: ResolvedEntity }) {
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">{truncate(ent.label, 22)} — Releases Over Time</h3>
-          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">Each dot is a model release; Y = {metricLabel} Index, X = release date. Hover a dot for details.</p>
+          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">Each dot is a model release; Y = {metricLabel} Index, X = release date. Source: Artificial Analysis Intelligence Index.</p>
         </div>
         <div className="flex gap-1 shrink-0">
           {REL_METRICS.map((o) => (

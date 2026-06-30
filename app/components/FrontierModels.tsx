@@ -563,7 +563,7 @@ function SlmCapabilityChart({ models }: { models: ModelRecord[] }) {
       <div className="flex items-start justify-between gap-4 mb-1">
         <div className="flex-1 min-w-0">
           <h3 className="text-sm font-semibold text-[var(--text-primary)]">Small Language Models (&lt; 10B parameters)</h3>
-          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">All {pts.length} sub-10B models: parameter count (X, log scale) vs. {metric.label} Index (Y). Hover a dot for details.</p>
+          <p className="text-xs text-[var(--text-tertiary)] mt-0.5">All {pts.length} sub-10B models: parameter count (X, log scale) vs. {metric.label} Index (Y). Source: Artificial Analysis Intelligence Index.</p>
         </div>
         <div className="flex gap-1 shrink-0 mt-0.5">
           {BAR_METRICS.map(m => (
