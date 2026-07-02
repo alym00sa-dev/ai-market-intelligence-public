@@ -5722,5 +5722,9 @@
  "XM-DAC-301-2-110745-001": {
   "ai": true,
   "category": "infrastructure_compute"
+ },
+ "XM-DAC-41302-PMR26-GLO381": {
+  "ai": false,
+  "category": "other"
  }
 }
