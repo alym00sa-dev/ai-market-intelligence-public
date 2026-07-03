@@ -5726,5 +5726,9 @@
  "XM-DAC-41302-PMR26-GLO381": {
   "ai": false,
   "category": "other"
+ },
+ "XI-IATI-EC_INTPA-2022-PC-13511": {
+  "ai": true,
+  "category": "governance_policy"
  }
 }

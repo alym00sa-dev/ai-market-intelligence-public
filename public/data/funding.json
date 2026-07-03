@@ -1,9 +1,9 @@
 {
- "built_at": 1782987334,
+ "built_at": 1783073412,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 533028294,
-  "activities": 585,
+  "usd": 570986295,
+  "activities": 581,
   "donors": 63,
   "recipients": 65,
   "year_min": 2023,
@@ -13,7 +13,7 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 325605919,
+   "usd": 364034381,
    "activities": 277
   },
   {
@@ -85,8 +85,8 @@
   {
    "name": "Rwanda",
    "iso3": "RWA",
-   "usd": 2773194,
-   "activities": 13
+   "usd": 2562853,
+   "activities": 11
   },
   {
    "name": "Senegal",
@@ -155,15 +155,15 @@
    "activities": 11
   },
   {
-   "name": "Ethiopia",
-   "iso3": "ETH",
-   "usd": 1126026,
-   "activities": 8
-  },
-  {
    "name": "Sri Lanka",
    "iso3": "LKA",
    "usd": 1062621,
+   "activities": 6
+  },
+  {
+   "name": "Ethiopia",
+   "iso3": "ETH",
+   "usd": 865906,
    "activities": 6
   },
   {
@@ -424,6 +424,11 @@
    "activities": 21
   },
   {
+   "donor": "European Commission - Directorate-General for International Partnerships",
+   "usd": 55919402,
+   "activities": 3
+  },
+  {
    "donor": "United Kingdom",
    "usd": 40479358,
    "activities": 79
@@ -449,19 +454,14 @@
    "activities": 3
   },
   {
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "usd": 17490940,
-   "activities": 3
-  },
-  {
    "donor": "Denmark",
    "usd": 16646570,
    "activities": 3
   },
   {
    "donor": "International Development Research Centre",
-   "usd": 11769444,
-   "activities": 52
+   "usd": 11298983,
+   "activities": 48
   },
   {
    "donor": "Korea",
@@ -727,7 +727,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 129071060
+   "usd": 167499522
   },
   {
    "code": "research",
@@ -751,7 +751,7 @@
   },
   {
    "code": "capacity_building",
-   "usd": 18307734
+   "usd": 17837273
   },
   {
    "code": "financial_inclusion",
@@ -769,15 +769,15 @@
  "by_year": [
   {
    "year": 2023,
-   "usd": 132633786
+   "usd": 155942247
   },
   {
    "year": 2024,
-   "usd": 353224748
+   "usd": 364024749
   },
   {
    "year": 2025,
-   "usd": 44830227
+   "usd": 48679766
   },
   {
    "year": 2026,
@@ -794,6 +794,11 @@
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
    "recipient": "Global / multi-country",
    "usd": 68391458
+  },
+  {
+   "donor": "European Commission - Directorate-General for International Partnerships",
+   "recipient": "Global / multi-country",
+   "usd": 55919402
   },
   {
    "donor": "Wellcome Trust",
@@ -824,11 +829,6 @@
    "donor": "EU Institutions",
    "recipient": "Global / multi-country",
    "usd": 17517349
-  },
-  {
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "recipient": "Global / multi-country",
-   "usd": 17490940
   },
   {
    "donor": "Gates Foundation",
@@ -1045,6 +1045,44 @@
    ]
   },
   {
+   "id": "XI-IATI-EC_INTPA-2021-ACT-62451",
+   "title": "Multilateralism and Digitalisation II",
+   "donor": "European Commission - Directorate-General for International Partnerships",
+   "recipient": "Global / multi-country",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 28290941,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EC_INTPA-2021-ACT-62451",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 28290941
+    }
+   ]
+  },
+  {
+   "id": "XI-IATI-EC_INTPA-2022-PC-13511",
+   "title": "Service Contract Knowledge Hub Digital",
+   "donor": "European Commission - Directorate-General for International Partnerships",
+   "recipient": "Global / multi-country",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 23308461,
+   "year": 2023,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EC_INTPA-2022-PC-13511",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 23308461
+    }
+   ]
+  },
+  {
    "id": "XI-IATI-EBRD-57066",
    "title": "Ukraine edtech Preply USD 20m",
    "donor": "European Bank for Reconstruction and Development",
@@ -1079,25 +1117,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 17516029
-    }
-   ]
-  },
-  {
-   "id": "XI-IATI-EC_INTPA-2021-ACT-62451",
-   "title": "Multilateralism and Digitalisation II",
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 17490940,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EC_INTPA-2021-ACT-62451",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 17490940
     }
    ]
   },
@@ -1326,6 +1345,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 4578261
+    }
+   ]
+  },
+  {
+   "id": "XI-IATI-EC_INTPA-2025-PC-59629",
+   "title": "Capacity-building for cybersecurity and artificial intelligence",
+   "donor": "European Commission - Directorate-General for International Partnerships",
+   "recipient": "Global / multi-country",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 4320000,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EC_INTPA-2025-PC-59629",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 4320000
     }
    ]
   },
@@ -4895,25 +4933,6 @@
    ]
   },
   {
-   "id": "XM-DAC-301-2-110699-001",
-   "title": "AI4D-FCDO labs: Ethiopia",
-   "donor": "International Development Research Centre",
-   "recipient": "Ethiopia",
-   "sector": "Research/scientific institutions",
-   "ai_category": "capacity_building",
-   "usd": 260120,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110699-001",
-   "allocations": [
-    {
-     "name": "Ethiopia",
-     "iso3": "ETH",
-     "usd": 260120
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6237202",
    "title": "Automated M&E of CV for RDTs: Gen AI vs. Deep Learning Models",
    "donor": "Gates Foundation",
@@ -5861,25 +5880,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 211536
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110694-001",
-   "title": "AI4D-FCDO Labs: Rwanda (University of Rwanda)",
-   "donor": "International Development Research Centre",
-   "recipient": "Rwanda",
-   "sector": "Research/scientific institutions",
-   "ai_category": "capacity_building",
-   "usd": 210341,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110694-001",
-   "allocations": [
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 210341
     }
    ]
   },
@@ -11875,44 +11875,6 @@
    ]
   },
   {
-   "id": "XI-IATI-EC_INTPA-2025-PC-59629",
-   "title": "Capacity-building for cybersecurity and artificial intelligence",
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 0,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EC_INTPA-2025-PC-59629",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "XI-IATI-EC_INTPA-2026-PC-61204",
-   "title": "Activity under preparation The EU\u00bfs international partnerships on AI - Geopolitical Considerations",
-   "donor": "European Commission - Directorate-General for International Partnerships",
-   "recipient": "Global / multi-country",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 0,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XI-IATI-EC_INTPA-2026-PC-61204",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
    "id": "XM-DAC-301-2-110462-001",
    "title": "AI4D-FCDO policy: Macro research scoping",
    "donor": "International Development Research Centre",
@@ -12079,44 +12041,6 @@
     {
      "name": "Global / multi-country",
      "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110694-002",
-   "title": "AI4D-FCDO Labs: Rwanda (University of Rwanda)",
-   "donor": "International Development Research Centre",
-   "recipient": "Rwanda",
-   "sector": "Research/scientific institutions",
-   "ai_category": "capacity_building",
-   "usd": 0,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110694-002",
-   "allocations": [
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110699-002",
-   "title": "AI4D-FCDO labs: Ethiopia",
-   "donor": "International Development Research Centre",
-   "recipient": "Ethiopia",
-   "sector": "Research/scientific institutions",
-   "ai_category": "capacity_building",
-   "usd": 0,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110699-002",
-   "allocations": [
-    {
-     "name": "Ethiopia",
-     "iso3": "ETH",
      "usd": 0
     }
    ]
