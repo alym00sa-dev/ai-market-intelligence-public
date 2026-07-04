@@ -5730,5 +5730,9 @@
  "XI-IATI-EC_INTPA-2022-PC-13511": {
   "ai": true,
   "category": "governance_policy"
+ },
+ "XM-DAC-47015-20406_Bilateral_Germany-MinistryofForeignAffairs_ICARDA": {
+  "ai": true,
+  "category": "agriculture_ai"
  }
 }
