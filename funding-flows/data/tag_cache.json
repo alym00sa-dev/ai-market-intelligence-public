@@ -5734,5 +5734,9 @@
  "XM-DAC-47015-20406_Bilateral_Germany-MinistryofForeignAffairs_ICARDA": {
   "ai": true,
   "category": "agriculture_ai"
+ },
+ "44000-P171892": {
+  "ai": false,
+  "category": "other"
  }
 }
