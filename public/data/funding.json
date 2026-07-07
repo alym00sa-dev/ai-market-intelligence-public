@@ -1,9 +1,9 @@
 {
- "built_at": 1783338157,
+ "built_at": 1783420237,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 569745164,
-  "activities": 576,
+  "usd": 570986295,
+  "activities": 581,
   "donors": 63,
   "recipients": 65,
   "year_min": 2023,
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 363783797,
-   "activities": 275
+   "usd": 364034381,
+   "activities": 277
   },
   {
    "name": "Argentina",
@@ -37,8 +37,8 @@
   {
    "name": "Kenya",
    "iso3": "KEN",
-   "usd": 29546363,
-   "activities": 34
+   "usd": 30033415,
+   "activities": 35
   },
   {
    "name": "South Africa",
@@ -91,8 +91,8 @@
   {
    "name": "Senegal",
    "iso3": "SEN",
-   "usd": 2186591,
-   "activities": 8
+   "usd": 2543615,
+   "activities": 9
   },
   {
    "name": "Bangladesh",
@@ -173,16 +173,16 @@
    "activities": 4
   },
   {
+   "name": "Ghana",
+   "iso3": "GHA",
+   "usd": 815385,
+   "activities": 6
+  },
+  {
    "name": "Tanzania",
    "iso3": "TZA",
    "usd": 680242,
    "activities": 7
-  },
-  {
-   "name": "Ghana",
-   "iso3": "GHA",
-   "usd": 668914,
-   "activities": 5
   },
   {
    "name": "C\u00f4te d'Ivoire",
@@ -460,8 +460,8 @@
   },
   {
    "donor": "International Development Research Centre",
-   "usd": 10057852,
-   "activities": 43
+   "usd": 11298983,
+   "activities": 48
   },
   {
    "donor": "Korea",
@@ -727,7 +727,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 166891914
+   "usd": 167499522
   },
   {
    "code": "research",
@@ -759,7 +759,7 @@
   },
   {
    "code": "other",
-   "usd": 14777908
+   "usd": 15411431
   },
   {
    "code": "infrastructure_compute",
@@ -773,15 +773,15 @@
   },
   {
    "year": 2024,
-   "usd": 363667725
+   "usd": 364024749
   },
   {
    "year": 2025,
-   "usd": 48429182
+   "usd": 48679766
   },
   {
    "year": 2026,
-   "usd": 1706010
+   "usd": 2339533
   }
  ],
  "flows": [
@@ -853,7 +853,7 @@
   {
    "donor": "International Development Research Centre",
    "recipient": "Global / multi-country",
-   "usd": 7032146
+   "usd": 7282730
   },
   {
    "donor": "Denmark",
@@ -3887,6 +3887,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110564-001",
+   "title": "AI4D Hub for AI and Disability Inclusion",
+   "donor": "International Development Research Centre",
+   "recipient": "Kenya",
+   "sector": "Research/scientific institutions",
+   "ai_category": "other",
+   "usd": 487052,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110564-001",
+   "allocations": [
+    {
+     "name": "Kenya",
+     "iso3": "KEN",
+     "usd": 487052
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6235216",
    "title": "HIVNext: Predictive Analytics & Novel Interventions for IIT and RTT (SA)",
    "donor": "Gates Foundation",
@@ -4378,6 +4397,25 @@
      "name": "South Africa",
      "iso3": "ZAF",
      "usd": 359109
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110586-001",
+   "title": "AI Living Lab for Innovative and Viable Ethical Policies and Systems (ALIVE Lab)",
+   "donor": "International Development Research Centre",
+   "recipient": "Senegal",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 357024,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110586-001",
+   "allocations": [
+    {
+     "name": "Senegal",
+     "iso3": "SEN",
+     "usd": 357024
     }
    ]
   },
@@ -5044,6 +5082,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 251004
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110580-002",
+   "title": "AI4D-FCDO-Asia scoping Study",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 250584,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110580-002",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 250584
     }
    ]
   },
@@ -6678,6 +6735,25 @@
      "name": "Uganda",
      "iso3": "UGA",
      "usd": 146990
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110564-002",
+   "title": "AI4D Hub for AI and Disability Inclusion",
+   "donor": "International Development Research Centre",
+   "recipient": "Ghana",
+   "sector": "Research/scientific institutions",
+   "ai_category": "other",
+   "usd": 146471,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110564-002",
+   "allocations": [
+    {
+     "name": "Ghana",
+     "iso3": "GHA",
+     "usd": 146471
     }
    ]
   },
@@ -11946,6 +12022,25 @@
     {
      "name": "Kenya",
      "iso3": "KEN",
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110580-001",
+   "title": "AI4D-FCDO-Asia scoping Study",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 0,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110580-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
      "usd": 0
     }
    ]
