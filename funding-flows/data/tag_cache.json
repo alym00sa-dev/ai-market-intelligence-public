@@ -5770,5 +5770,37 @@
  "XM-DAC-301-2-110853-001": {
   "ai": true,
   "category": "research"
+ },
+ "XM-DAC-301-2-110863-001": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "XM-DAC-301-2-110863-002": {
+  "ai": true,
+  "category": "infrastructure_compute"
+ },
+ "XM-DAC-301-2-110876-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110879-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110880-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110880-002": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110881-001": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "XM-DAC-301-2-110959-001": {
+  "ai": false,
+  "category": "other"
  }
 }

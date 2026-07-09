@@ -1,9 +1,9 @@
 {
- "built_at": 1783503061,
+ "built_at": 1783593007,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 581537269,
-  "activities": 597,
+  "usd": 585600390,
+  "activities": 604,
   "donors": 63,
   "recipients": 65,
   "year_min": 2023,
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 373850954,
-   "activities": 287
+   "usd": 377300279,
+   "activities": 290
   },
   {
    "name": "Argentina",
@@ -25,8 +25,8 @@
   {
    "name": "India",
    "iso3": "IND",
-   "usd": 31796620,
-   "activities": 38
+   "usd": 31879519,
+   "activities": 39
   },
   {
    "name": "Ukraine",
@@ -43,8 +43,8 @@
   {
    "name": "South Africa",
    "iso3": "ZAF",
-   "usd": 14600030,
-   "activities": 24
+   "usd": 15130927,
+   "activities": 27
   },
   {
    "name": "Turkey",
@@ -449,14 +449,14 @@
    "activities": 31
   },
   {
+   "donor": "International Development Research Centre",
+   "usd": 21290471,
+   "activities": 70
+  },
+  {
    "donor": "EU Institutions",
    "usd": 17517349,
    "activities": 3
-  },
-  {
-   "donor": "International Development Research Centre",
-   "usd": 17227350,
-   "activities": 63
   },
   {
    "donor": "Denmark",
@@ -727,7 +727,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 169578867
+   "usd": 171059670
   },
   {
    "code": "research",
@@ -758,12 +758,12 @@
    "usd": 16548269
   },
   {
-   "code": "other",
-   "usd": 15411431
+   "code": "infrastructure_compute",
+   "usd": 15605454
   },
   {
-   "code": "infrastructure_compute",
-   "usd": 13023136
+   "code": "other",
+   "usd": 15411431
   }
  ],
  "by_year": [
@@ -777,11 +777,11 @@
   },
   {
    "year": 2025,
-   "usd": 55341715
+   "usd": 56822518
   },
   {
    "year": 2026,
-   "usd": 6228558
+   "usd": 8810876
   }
  ],
  "flows": [
@@ -831,14 +831,14 @@
    "usd": 17517349
   },
   {
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "usd": 15926021
+  },
+  {
    "donor": "Gates Foundation",
    "recipient": "Kenya",
    "usd": 14654715
-  },
-  {
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "usd": 12476696
   },
   {
    "donor": "United States",
@@ -1953,6 +1953,25 @@
      "name": "Iraq",
      "iso3": null,
      "usd": 2100000
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110863-001",
+   "title": "Africa Compute Initiative \u2013 expanding African access to compute for AI research",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "infrastructure_compute",
+   "usd": 2005677,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110863-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 2005677
     }
    ]
   },
@@ -3184,6 +3203,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110876-001",
+   "title": "Evaluating artificial intelligence for development use cases",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 867007,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110876-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 867007
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6035840",
    "title": "Technical Assistance - King Hussein Cancer Center Artificial Intelligence Initiative, through Enterprise - United States Unknown",
    "donor": "United States",
@@ -3598,6 +3636,25 @@
      "name": "South Africa",
      "iso3": "ZAF",
      "usd": 598840
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110863-002",
+   "title": "Africa Compute Initiative \u2013 expanding African access to compute for AI research",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "infrastructure_compute",
+   "usd": 576641,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110863-002",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 576641
     }
    ]
   },
@@ -4359,6 +4416,25 @@
      "name": "Costa Rica",
      "iso3": null,
      "usd": 401899
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110880-001",
+   "title": "African Hub for AI Safety, Security and Peace",
+   "donor": "International Development Research Centre",
+   "recipient": "South Africa",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 400577,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110880-001",
+   "allocations": [
+    {
+     "name": "South Africa",
+     "iso3": "ZAF",
+     "usd": 400577
     }
    ]
   },
@@ -8189,6 +8265,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110881-001",
+   "title": "AI4D Partners Workshop alongside G20 in South Africa",
+   "donor": "International Development Research Centre",
+   "recipient": "South Africa",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 88074,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110881-001",
+   "allocations": [
+    {
+     "name": "South Africa",
+     "iso3": "ZAF",
+     "usd": 88074
+    }
+   ]
+  },
+  {
    "id": "XM-DAC-301-2-110535-909",
    "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
    "donor": "International Development Research Centre",
@@ -8318,6 +8413,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 83083
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110879-001",
+   "title": "AI and digital governance: A view from the Global South",
+   "donor": "International Development Research Centre",
+   "recipient": "India",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 82899,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110879-001",
+   "allocations": [
+    {
+     "name": "India",
+     "iso3": "IND",
+     "usd": 82899
     }
    ]
   },
@@ -9629,6 +9743,25 @@
      "name": "Kazakhstan",
      "iso3": null,
      "usd": 42910
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110880-002",
+   "title": "African Hub for AI Safety, Security and Peace",
+   "donor": "International Development Research Centre",
+   "recipient": "South Africa",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 42246,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110880-002",
+   "allocations": [
+    {
+     "name": "South Africa",
+     "iso3": "ZAF",
+     "usd": 42246
     }
    ]
   },
