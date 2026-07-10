@@ -5802,5 +5802,9 @@
  "XM-DAC-301-2-110959-001": {
   "ai": false,
   "category": "other"
+ },
+ "XM-DAC-47015-19451_Bilateral_Germany-MinistryofForeignAffairs_ICARDA": {
+  "ai": true,
+  "category": "agriculture_ai"
  }
 }
