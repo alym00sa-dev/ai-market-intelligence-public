@@ -5810,5 +5810,9 @@
  "XM-DAC-301-2-110959-002": {
   "ai": true,
   "category": "research"
+ },
+ "XM-DAC-47015-21356_Bilateral_Peru-MINAGRI-MinisteriodeAgriculturayRiegodelPeru_CIP": {
+  "ai": true,
+  "category": "agriculture_ai"
  }
 }
