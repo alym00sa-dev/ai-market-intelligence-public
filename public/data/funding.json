@@ -1,9 +1,9 @@
 {
- "built_at": 1784542715,
+ "built_at": 1784626414,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 585377850,
-  "activities": 602,
+  "usd": 585508170,
+  "activities": 604,
   "donors": 63,
   "recipients": 65,
   "year_min": 2023,
@@ -43,8 +43,8 @@
   {
    "name": "South Africa",
    "iso3": "ZAF",
-   "usd": 15000607,
-   "activities": 25
+   "usd": 15130927,
+   "activities": 27
   },
   {
    "name": "Turkey",
@@ -450,8 +450,8 @@
   },
   {
    "donor": "International Development Research Centre",
-   "usd": 21160151,
-   "activities": 68
+   "usd": 21290471,
+   "activities": 70
   },
   {
    "donor": "EU Institutions",
@@ -727,7 +727,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 170929350
+   "usd": 171059670
   },
   {
    "code": "research",
@@ -777,7 +777,7 @@
   },
   {
    "year": 2025,
-   "usd": 56692198
+   "usd": 56822518
   },
   {
    "year": 2026,
@@ -8265,6 +8265,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110881-001",
+   "title": "AI4D Partners Workshop alongside G20 in South Africa",
+   "donor": "International Development Research Centre",
+   "recipient": "South Africa",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 88074,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110881-001",
+   "allocations": [
+    {
+     "name": "South Africa",
+     "iso3": "ZAF",
+     "usd": 88074
+    }
+   ]
+  },
+  {
    "id": "XM-DAC-301-2-110535-909",
    "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
    "donor": "International Development Research Centre",
@@ -9724,6 +9743,25 @@
      "name": "Kazakhstan",
      "iso3": null,
      "usd": 42910
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110880-002",
+   "title": "African Hub for AI Safety, Security and Peace",
+   "donor": "International Development Research Centre",
+   "recipient": "South Africa",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 42246,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110880-002",
+   "allocations": [
+    {
+     "name": "South Africa",
+     "iso3": "ZAF",
+     "usd": 42246
     }
    ]
   },
