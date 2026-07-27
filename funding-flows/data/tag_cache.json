@@ -5814,5 +5814,9 @@
  "XM-DAC-47015-21356_Bilateral_Peru-MINAGRI-MinisteriodeAgriculturayRiegodelPeru_CIP": {
   "ai": true,
   "category": "agriculture_ai"
+ },
+ "XM-DAC-47015-20348_Bilateral_GoogleIrelandLtd_Bioversity": {
+  "ai": true,
+  "category": "agriculture_ai"
  }
 }
