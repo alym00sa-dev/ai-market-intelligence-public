@@ -8,11 +8,17 @@ on:
 permissions:
   contents: write
 
-jobs:
-  refresh:
-    runs-on: ubuntu-latest
-    timeout-minutes: 350
+concurrency:
+  group: refresh-hiring
+  cancel-in-progress: false
 
+jobs:
+  # ── Job A: scrape + classify + track changes → commit the DATA ──────────────
+  # This is what the dashboard tables and Databricks load need. Commits early so
+  # the fresh data lands even if the (separate) summary job later fails/times out.
+  data:
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
     steps:
       - name: Checkout repo
         uses: actions/checkout@v4
@@ -43,15 +49,45 @@ jobs:
       - name: Track weekly changes
         run: python frontier-labs-hiring/track_changes.py
 
-      - name: Generate company summaries + shift narrative
-        env:
-          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: python frontier-labs-hiring/run_summarizer.py
-
-      - name: Commit updated data
+      - name: Commit hiring data
         run: |
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/data/jobs.json public/data/job_ledger.json public/data/weekly_trends.json public/data/snapshots
           git diff --cached --quiet || git commit -m "chore: refresh hiring data [skip ci]"
+          git push
+
+  # ── Job B: company summaries + shift narratives → commit SUMMARIES ───────────
+  # Dashboard-only (not in the Delta tables). Runs after the data job, on its own
+  # 6h budget. Re-checks out to pick up Job A's fresh commit before summarizing.
+  summaries:
+    needs: data
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - name: Checkout repo (latest, incl. Job A's commit)
+        uses: actions/checkout@v4
+
+      - name: Pull latest (Job A commit)
+        run: git pull --ff-only origin ${{ github.ref_name }}
+
+      - name: Set up Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Install Python dependencies
+        run: pip install -r frontier-labs-hiring/requirements.txt
+
+      - name: Generate company summaries + shift narrative
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: python frontier-labs-hiring/run_summarizer.py
+
+      - name: Commit summaries
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/jobs.json
+          git diff --cached --quiet || git commit -m "chore: refresh hiring summaries [skip ci]"
           git push
