@@ -13,42 +13,57 @@ concurrency:
   cancel-in-progress: false
 
 jobs:
-  # ── Job A: scrape + classify + track changes → commit the DATA ──────────────
-  # This is what the dashboard tables and Databricks load need. Commits early so
-  # the fresh data lands even if the (separate) summary job later fails/times out.
-  data:
+  # ── Job A: scrape + base classify → commit jobs.json ────────────────────────
+  # The expensive browser scrape lives here and commits on its own, so if a later
+  # step hangs, a re-run of that step does NOT re-scrape.
+  scrape:
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
-      - name: Checkout repo
-        uses: actions/checkout@v4
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Install Python dependencies
         run: pip install -r frontier-labs-hiring/requirements.txt
-
       - name: Install Playwright browsers
         run: |
           playwright install chromium
           playwright install-deps chromium
-
       - name: Scrape + classify jobs
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python frontier-labs-hiring/scraper.py --no-summarize
+      - name: Commit scraped + classified jobs
+        run: |
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          git add public/data/jobs.json public/data/jobs_raw.json
+          git diff --cached --quiet || git commit -m "chore: refresh hiring scrape [skip ci]"
+          git push
 
+  # ── Job B: vertical/social classify + track changes → commit the DATA ───────
+  # This is where it previously hung. On its own 6h budget; re-runnable without
+  # re-scraping. Produces everything the dashboard tables and Databricks need.
+  classify:
+    needs: scrape
+    runs-on: ubuntu-latest
+    timeout-minutes: 360
+    steps:
+      - uses: actions/checkout@v4
+      - name: Pull latest (Job A commit)
+        run: git pull --ff-only origin ${{ github.ref_name }}
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install Python dependencies
+        run: pip install -r frontier-labs-hiring/requirements.txt
       - name: Classify verticals + social impact
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python frontier-labs-hiring/vertical_classifier.py
-
       - name: Track weekly changes
         run: python frontier-labs-hiring/track_changes.py
-
       - name: Commit hiring data
         run: |
           git config user.name "github-actions[bot]"
@@ -57,33 +72,26 @@ jobs:
           git diff --cached --quiet || git commit -m "chore: refresh hiring data [skip ci]"
           git push
 
-  # ── Job B: company summaries + shift narratives → commit SUMMARIES ───────────
-  # Dashboard-only (not in the Delta tables). Runs after the data job, on its own
-  # 6h budget. Re-checks out to pick up Job A's fresh commit before summarizing.
+  # ── Job C: company summaries + shift narratives → commit SUMMARIES ──────────
+  # Dashboard-only (not in the Delta tables). Its own 6h budget; if it times out,
+  # the data (Job B) already landed.
   summaries:
-    needs: data
+    needs: classify
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
-      - name: Checkout repo (latest, incl. Job A's commit)
-        uses: actions/checkout@v4
-
-      - name: Pull latest (Job A commit)
+      - uses: actions/checkout@v4
+      - name: Pull latest (Job B commit)
         run: git pull --ff-only origin ${{ github.ref_name }}
-
-      - name: Set up Python
-        uses: actions/setup-python@v5
+      - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
-
       - name: Install Python dependencies
         run: pip install -r frontier-labs-hiring/requirements.txt
-
       - name: Generate company summaries + shift narrative
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: python frontier-labs-hiring/run_summarizer.py
-
       - name: Commit summaries
         run: |
           git config user.name "github-actions[bot]"
