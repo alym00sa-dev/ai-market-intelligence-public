@@ -3,7 +3,12 @@ name: Refresh Hiring Data
 on:
   schedule:
     - cron: "0 6 * * 3"   # every Wednesday 6am UTC = Tuesday ~11pm PT
-  workflow_dispatch:        # manual trigger from GitHub UI
+  workflow_dispatch:
+    inputs:
+      run_scrape:
+        description: "Run the scrape job (uncheck to reuse the last committed scrape and only re-run classify + summaries)"
+        type: boolean
+        default: true
 
 permissions:
   contents: write
@@ -14,9 +19,10 @@ concurrency:
 
 jobs:
   # ── Job A: scrape + base classify → commit jobs.json ────────────────────────
-  # The expensive browser scrape lives here and commits on its own, so if a later
-  # step hangs, a re-run of that step does NOT re-scrape.
+  # Skippable via the run_scrape input, so a failed downstream step can be
+  # re-run WITHOUT re-scraping (it reuses the committed scrape).
   scrape:
+    if: ${{ github.event_name == 'schedule' || inputs.run_scrape }}
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
@@ -39,20 +45,25 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/data/jobs.json public/data/jobs_raw.json
-          git diff --cached --quiet || git commit -m "chore: refresh hiring scrape [skip ci]"
-          git push
+          git diff --cached --quiet && { echo "no changes"; exit 0; }
+          git commit -m "chore: refresh hiring scrape [skip ci]"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "${{ github.ref_name }}" && git push && exit 0
+            echo "push race, retry $i"; sleep 10
+          done
+          exit 1
 
   # ── Job B: vertical/social classify + track changes → commit the DATA ───────
-  # This is where it previously hung. On its own 6h budget; re-runnable without
-  # re-scraping. Produces everything the dashboard tables and Databricks need.
+  # Runs after scrape, OR when scrape was intentionally skipped (recovery).
   classify:
     needs: scrape
+    if: ${{ always() && needs.scrape.result != 'failure' && needs.scrape.result != 'cancelled' }}
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
-      - name: Pull latest (Job A commit)
-        run: git pull --ff-only origin ${{ github.ref_name }}
+      - name: Pull latest
+        run: git pull --ff-only origin "${{ github.ref_name }}"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -69,20 +80,24 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/data/jobs.json public/data/job_ledger.json public/data/weekly_trends.json public/data/snapshots
-          git diff --cached --quiet || git commit -m "chore: refresh hiring data [skip ci]"
-          git push
+          git diff --cached --quiet && { echo "no changes"; exit 0; }
+          git commit -m "chore: refresh hiring data [skip ci]"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "${{ github.ref_name }}" && git push && exit 0
+            echo "push race, retry $i"; sleep 10
+          done
+          exit 1
 
   # ── Job C: company summaries + shift narratives → commit SUMMARIES ──────────
-  # Dashboard-only (not in the Delta tables). Its own 6h budget; if it times out,
-  # the data (Job B) already landed.
   summaries:
     needs: classify
+    if: ${{ always() && needs.classify.result == 'success' }}
     runs-on: ubuntu-latest
     timeout-minutes: 360
     steps:
       - uses: actions/checkout@v4
-      - name: Pull latest (Job B commit)
-        run: git pull --ff-only origin ${{ github.ref_name }}
+      - name: Pull latest
+        run: git pull --ff-only origin "${{ github.ref_name }}"
       - uses: actions/setup-python@v5
         with:
           python-version: "3.11"
@@ -97,5 +112,10 @@ jobs:
           git config user.name "github-actions[bot]"
           git config user.email "github-actions[bot]@users.noreply.github.com"
           git add public/data/jobs.json
-          git diff --cached --quiet || git commit -m "chore: refresh hiring summaries [skip ci]"
-          git push
+          git diff --cached --quiet && { echo "no changes"; exit 0; }
+          git commit -m "chore: refresh hiring summaries [skip ci]"
+          for i in 1 2 3 4 5; do
+            git pull --rebase origin "${{ github.ref_name }}" && git push && exit 0
+            echo "push race, retry $i"; sleep 10
+          done
+          exit 1
