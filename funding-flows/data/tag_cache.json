@@ -5818,5 +5818,9 @@
  "XM-DAC-47015-20348_Bilateral_GoogleIrelandLtd_Bioversity": {
   "ai": true,
   "category": "agriculture_ai"
+ },
+ "XI-IATI-EBRD-57228": {
+  "ai": true,
+  "category": "infrastructure_compute"
  }
 }
