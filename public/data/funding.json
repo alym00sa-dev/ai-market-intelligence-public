@@ -1,9 +1,9 @@
 {
- "built_at": 1785836635,
+ "built_at": 1785922931,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 584473552,
-  "activities": 604,
+  "usd": 575905756,
+  "activities": 591,
   "donors": 63,
   "recipients": 66,
   "year_min": 2023,
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 373420953,
-   "activities": 289
+   "usd": 365591887,
+   "activities": 281
   },
   {
    "name": "Argentina",
@@ -25,8 +25,8 @@
   {
    "name": "India",
    "iso3": "IND",
-   "usd": 31879519,
-   "activities": 39
+   "usd": 31796620,
+   "activities": 38
   },
   {
    "name": "Ukraine",
@@ -43,8 +43,8 @@
   {
    "name": "South Africa",
    "iso3": "ZAF",
-   "usd": 15130927,
-   "activities": 27
+   "usd": 14475096,
+   "activities": 23
   },
   {
    "name": "Turkey",
@@ -455,11 +455,6 @@
    "activities": 31
   },
   {
-   "donor": "International Development Research Centre",
-   "usd": 21290471,
-   "activities": 70
-  },
-  {
    "donor": "EU Institutions",
    "usd": 17517349,
    "activities": 3
@@ -468,6 +463,11 @@
    "donor": "Denmark",
    "usd": 16646570,
    "activities": 3
+  },
+  {
+   "donor": "International Development Research Centre",
+   "usd": 12722675,
+   "activities": 57
   },
   {
    "donor": "Korea",
@@ -733,11 +733,11 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 171059670
+   "usd": 167638528
   },
   {
    "code": "research",
-   "usd": 103206390
+   "usd": 102499731
   },
   {
    "code": "health_ai",
@@ -752,20 +752,20 @@
    "usd": 45737684
   },
   {
-   "code": "capacity_building",
-   "usd": 20165411
-  },
-  {
    "code": "data_systems",
    "usd": 18876453
   },
   {
-   "code": "infrastructure_compute",
-   "usd": 18441836
+   "code": "capacity_building",
+   "usd": 18307734
   },
   {
    "code": "financial_inclusion",
    "usd": 16548269
+  },
+  {
+   "code": "infrastructure_compute",
+   "usd": 15859518
   },
   {
    "code": "other",
@@ -783,11 +783,11 @@
   },
   {
    "year": 2025,
-   "usd": 52943192
+   "usd": 50846739
   },
   {
    "year": 2026,
-   "usd": 11647258
+   "usd": 5175915
   }
  ],
  "flows": [
@@ -837,11 +837,6 @@
    "usd": 17517349
   },
   {
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "usd": 15926021
-  },
-  {
    "donor": "Gates Foundation",
    "recipient": "Kenya",
    "usd": 14654715
@@ -855,6 +850,11 @@
    "donor": "Denmark",
    "recipient": "Kenya",
    "usd": 10845517
+  },
+  {
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "usd": 8096955
   },
   {
    "donor": "Netherlands",
@@ -1963,25 +1963,6 @@
    ]
   },
   {
-   "id": "XM-DAC-301-2-110863-001",
-   "title": "Africa Compute Initiative \u2013 expanding African access to compute for AI research",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "infrastructure_compute",
-   "usd": 2005677,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110863-001",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 2005677
-    }
-   ]
-  },
-  {
    "id": "GB-GOV-1-300816-402",
    "title": "Nurture Zimbabwe: Neotree Technology Enabled Newborn Care and Research Project.",
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -2001,25 +1982,6 @@
    ]
   },
   {
-   "id": "XM-DAC-301-2-110850-001",
-   "title": "Asia AI4D Observatory: A policy and innovation network on responsible artificial intelligence",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "governance_policy",
-   "usd": 1940339,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110850-001",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 1940339
-    }
-   ]
-  },
-  {
    "id": "CRS-2023-5567944",
    "title": "NIHR Global Health Research Unit on Genomics and enabling data for Surveillance of Antimicrobial Resistance",
    "donor": "United Kingdom",
@@ -2035,25 +1997,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 1915985
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110851-001",
-   "title": "AI4D labs coordination hub for Asia",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "capacity_building",
-   "usd": 1857677,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110851-001",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 1857677
     }
    ]
   },
@@ -3209,25 +3152,6 @@
    ]
   },
   {
-   "id": "XM-DAC-301-2-110876-001",
-   "title": "Evaluating artificial intelligence for development use cases",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "governance_policy",
-   "usd": 867007,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110876-001",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 867007
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6035840",
    "title": "Technical Assistance - King Hussein Cancer Center Artificial Intelligence Initiative, through Enterprise - United States Unknown",
    "donor": "United States",
@@ -3642,25 +3566,6 @@
      "name": "South Africa",
      "iso3": "ZAF",
      "usd": 598840
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110863-002",
-   "title": "Africa Compute Initiative \u2013 expanding African access to compute for AI research",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "infrastructure_compute",
-   "usd": 576641,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110863-002",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 576641
     }
    ]
   },
@@ -4388,25 +4293,6 @@
    ]
   },
   {
-   "id": "XM-DAC-301-2-110842-001",
-   "title": "CIAIRN: Catalyzing inclusive AI research network",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "research",
-   "usd": 411237,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110842-001",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 411237
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6086763",
    "title": "Optimizing Planning in the Energy Sector through Data Analysis and Artificial Intelligence, Costa Rica",
    "donor": "Korea",
@@ -4422,25 +4308,6 @@
      "name": "Costa Rica",
      "iso3": null,
      "usd": 401899
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110880-001",
-   "title": "African Hub for AI Safety, Security and Peace",
-   "donor": "International Development Research Centre",
-   "recipient": "South Africa",
-   "sector": "Research/scientific institutions",
-   "ai_category": "governance_policy",
-   "usd": 400577,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110880-001",
-   "allocations": [
-    {
-     "name": "South Africa",
-     "iso3": "ZAF",
-     "usd": 400577
     }
    ]
   },
@@ -7334,25 +7201,6 @@
    ]
   },
   {
-   "id": "XM-DAC-301-2-110842-003",
-   "title": "CIAIRN: Catalyzing inclusive AI research network",
-   "donor": "International Development Research Centre",
-   "recipient": "South Africa",
-   "sector": "Research/scientific institutions",
-   "ai_category": "research",
-   "usd": 124934,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110842-003",
-   "allocations": [
-    {
-     "name": "South Africa",
-     "iso3": "ZAF",
-     "usd": 124934
-    }
-   ]
-  },
-  {
    "id": "GB-GOV-1-301049-424",
    "title": "AI Governance and Policy Capacity Convenings between UK and Kenya",
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -8157,25 +8005,6 @@
    ]
   },
   {
-   "id": "XM-DAC-301-2-110853-001",
-   "title": "Catalyzing Inclusive AI Research Network \u2014 South and Southeast Asia",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "research",
-   "usd": 91009,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110853-001",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 91009
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6232692",
    "title": "AI to Enhance the Quality of Pharmaceutical Submission Reviews at the EDA",
    "donor": "Gates Foundation",
@@ -8267,25 +8096,6 @@
      "name": "Sri Lanka",
      "iso3": "LKA",
      "usd": 88213
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110881-001",
-   "title": "AI4D Partners Workshop alongside G20 in South Africa",
-   "donor": "International Development Research Centre",
-   "recipient": "South Africa",
-   "sector": "Research/scientific institutions",
-   "ai_category": "governance_policy",
-   "usd": 88074,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110881-001",
-   "allocations": [
-    {
-     "name": "South Africa",
-     "iso3": "ZAF",
-     "usd": 88074
     }
    ]
   },
@@ -8419,25 +8229,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 83083
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110879-001",
-   "title": "AI and digital governance: A view from the Global South",
-   "donor": "International Development Research Centre",
-   "recipient": "India",
-   "sector": "Research/scientific institutions",
-   "ai_category": "governance_policy",
-   "usd": 82899,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110879-001",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 82899
     }
    ]
   },
@@ -8628,25 +8419,6 @@
      "name": "Vietnam",
      "iso3": "VNM",
      "usd": 79767
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110842-002",
-   "title": "CIAIRN: Catalyzing inclusive AI research network",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "research",
-   "usd": 79479,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110842-002",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 79479
     }
    ]
   },
@@ -9749,25 +9521,6 @@
      "name": "Kazakhstan",
      "iso3": null,
      "usd": 42910
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110880-002",
-   "title": "African Hub for AI Safety, Security and Peace",
-   "donor": "International Development Research Centre",
-   "recipient": "South Africa",
-   "sector": "Research/scientific institutions",
-   "ai_category": "governance_policy",
-   "usd": 42246,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110880-002",
-   "allocations": [
-    {
-     "name": "South Africa",
-     "iso3": "ZAF",
-     "usd": 42246
     }
    ]
   },
