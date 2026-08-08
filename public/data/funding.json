@@ -1,9 +1,9 @@
 {
- "built_at": 1786090790,
+ "built_at": 1786175664,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 574952525,
-  "activities": 586,
+  "usd": 580528363,
+  "activities": 592,
   "donors": 63,
   "recipients": 66,
   "year_min": 2023,
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 364777662,
-   "activities": 277
+   "usd": 370214494,
+   "activities": 282
   },
   {
    "name": "Argentina",
@@ -173,16 +173,16 @@
    "activities": 6
   },
   {
+   "name": "Ghana",
+   "iso3": "GHA",
+   "usd": 954391,
+   "activities": 7
+  },
+  {
    "name": "Egypt",
    "iso3": "EGY",
    "usd": 818738,
    "activities": 4
-  },
-  {
-   "name": "Ghana",
-   "iso3": "GHA",
-   "usd": 815385,
-   "activities": 6
   },
   {
    "name": "Tanzania",
@@ -416,8 +416,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 125260372,
-   "activities": 131
+   "usd": 129882979,
+   "activities": 132
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -466,8 +466,8 @@
   },
   {
    "donor": "International Development Research Centre",
-   "usd": 11769444,
-   "activities": 52
+   "usd": 12722675,
+   "activities": 57
   },
   {
    "donor": "Korea",
@@ -733,15 +733,15 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 167499522
+   "usd": 167638528
   },
   {
    "code": "research",
-   "usd": 101914056
+   "usd": 102499731
   },
   {
    "code": "health_ai",
-   "usd": 88962464
+   "usd": 93585071
   },
   {
    "code": "education_skills",
@@ -765,7 +765,7 @@
   },
   {
    "code": "infrastructure_compute",
-   "usd": 15630968
+   "usd": 15859518
   },
   {
    "code": "other",
@@ -783,7 +783,7 @@
   },
   {
    "year": 2025,
-   "usd": 49893508
+   "usd": 55469346
   },
   {
    "year": 2026,
@@ -794,7 +794,7 @@
   {
    "donor": "Gates Foundation",
    "recipient": "Global / multi-country",
-   "usd": 73105988
+   "usd": 77728595
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -852,14 +852,14 @@
    "usd": 10845517
   },
   {
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "usd": 8096955
+  },
+  {
    "donor": "Netherlands",
    "recipient": "Global / multi-country",
    "usd": 7804052
-  },
-  {
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "usd": 7282730
   },
   {
    "donor": "Denmark",
@@ -1332,6 +1332,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 5013300
+    }
+   ]
+  },
+  {
+   "id": "DAC-1601-INV-091193",
+   "title": "Safe Inference Algorithms for Drug Discovery",
+   "donor": "Gates Foundation",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "health_ai",
+   "usd": 4622607,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-091193",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 4622607
     }
    ]
   },
@@ -3931,6 +3950,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110732-001",
+   "title": "The Masakhane AI languages hub",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "research",
+   "usd": 484762,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110732-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 484762
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6235216",
    "title": "HIVNext: Predictive Analytics & Novel Interventions for IIT and RTT (SA)",
    "donor": "Gates Foundation",
@@ -5643,6 +5681,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110745-001",
+   "title": "Compute investment scoping study and workshop",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "infrastructure_compute",
+   "usd": 228550,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110745-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 228550
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-5972623",
    "title": "Creation of a network of data science laboratories for research and teaching in public universities in the interior of ParaguaY (ATY).",
    "donor": "Spain",
@@ -6897,6 +6954,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110730-001",
+   "title": "Scoping study, stakeholder mapping and regional consultation on the intersection of artificial intelligence and disability innovation in Africa",
+   "donor": "International Development Research Centre",
+   "recipient": "Ghana",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 139006,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110730-001",
+   "allocations": [
+    {
+     "name": "Ghana",
+     "iso3": "GHA",
+     "usd": 139006
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6088506",
    "title": "AI Data Labeling Training for Unemployed Youth in Tanzania",
    "donor": "Korea",
@@ -7501,6 +7577,25 @@
      "name": "Nigeria",
      "iso3": "NGA",
      "usd": 101429
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110839-001",
+   "title": "Mapping emerging technologies to advance inclusive sustainable development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "research",
+   "usd": 100913,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110839-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 100913
     }
    ]
   },
@@ -12142,6 +12237,25 @@
     {
      "name": "Ethiopia",
      "iso3": "ETH",
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110732-002",
+   "title": "The Masakhane AI languages hub",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "research",
+   "usd": 0,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110732-002",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
      "usd": 0
     }
    ]
