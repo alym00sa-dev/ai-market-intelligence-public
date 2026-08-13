@@ -5822,5 +5822,9 @@
  "XI-IATI-EBRD-57228": {
   "ai": true,
   "category": "infrastructure_compute"
+ },
+ "XM-DAC-47015-20361_Bilateral_Germany-GIZ-DeutscheGesellschaftfurInternationaleZusammenarbeitGmbH_ICARDA": {
+  "ai": true,
+  "category": "agriculture_ai"
  }
 }
