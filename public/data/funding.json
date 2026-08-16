@@ -1,9 +1,9 @@
 {
- "built_at": 1786779471,
+ "built_at": 1786865845,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 580939600,
-  "activities": 593,
+  "usd": 580528363,
+  "activities": 592,
   "donors": 63,
   "recipients": 66,
   "year_min": 2023,
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 370625731,
-   "activities": 283
+   "usd": 370214494,
+   "activities": 282
   },
   {
    "name": "Argentina",
@@ -466,8 +466,8 @@
   },
   {
    "donor": "International Development Research Centre",
-   "usd": 13133912,
-   "activities": 58
+   "usd": 12722675,
+   "activities": 57
   },
   {
    "donor": "Korea",
@@ -737,7 +737,7 @@
   },
   {
    "code": "research",
-   "usd": 102910968
+   "usd": 102499731
   },
   {
    "code": "health_ai",
@@ -783,7 +783,7 @@
   },
   {
    "year": 2025,
-   "usd": 55880583
+   "usd": 55469346
   },
   {
    "year": 2026,
@@ -854,7 +854,7 @@
   {
    "donor": "International Development Research Centre",
    "recipient": "Global / multi-country",
-   "usd": 8508192
+   "usd": 8096955
   },
   {
    "donor": "Netherlands",
@@ -4308,25 +4308,6 @@
      "name": "Egypt",
      "iso3": "EGY",
      "usd": 415790
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110842-001",
-   "title": "CIAIRN: Catalyzing inclusive AI research network",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "research",
-   "usd": 411237,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110842-001",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 411237
     }
    ]
   },
