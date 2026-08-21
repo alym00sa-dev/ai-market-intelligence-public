@@ -5826,5 +5826,9 @@
  "XM-DAC-47015-20361_Bilateral_Germany-GIZ-DeutscheGesellschaftfurInternationaleZusammenarbeitGmbH_ICARDA": {
   "ai": true,
   "category": "agriculture_ai"
+ },
+ "44000-P180059": {
+  "ai": false,
+  "category": "other"
  }
 }
