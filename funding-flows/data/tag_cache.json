@@ -5830,5 +5830,9 @@
  "44000-P180059": {
   "ai": false,
   "category": "other"
+ },
+ "XM-DAC-47015-18016_Bilateral_MississippiStateUniversity_CIAT": {
+  "ai": true,
+  "category": "agriculture_ai"
  }
 }
