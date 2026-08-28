@@ -1,9 +1,9 @@
 {
- "built_at": 1787854334,
+ "built_at": 1787945004,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 567963936,
-  "activities": 556,
+  "usd": 574482064,
+  "activities": 582,
   "donors": 63,
   "recipients": 66,
   "year_min": 2023,
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 360168230,
-   "activities": 258
+   "usd": 364777662,
+   "activities": 277
   },
   {
    "name": "Argentina",
@@ -37,14 +37,14 @@
   {
    "name": "Kenya",
    "iso3": "KEN",
-   "usd": 28987323,
-   "activities": 31
+   "usd": 30033415,
+   "activities": 35
   },
   {
    "name": "South Africa",
    "iso3": "ZAF",
-   "usd": 14115987,
-   "activities": 22
+   "usd": 14475096,
+   "activities": 23
   },
   {
    "name": "Turkey",
@@ -97,8 +97,8 @@
   {
    "name": "Senegal",
    "iso3": "SEN",
-   "usd": 2186591,
-   "activities": 8
+   "usd": 2543615,
+   "activities": 9
   },
   {
    "name": "Iraq",
@@ -179,16 +179,16 @@
    "activities": 4
   },
   {
+   "name": "Ghana",
+   "iso3": "GHA",
+   "usd": 815385,
+   "activities": 6
+  },
+  {
    "name": "Tanzania",
    "iso3": "TZA",
    "usd": 680242,
    "activities": 7
-  },
-  {
-   "name": "Ghana",
-   "iso3": "GHA",
-   "usd": 668914,
-   "activities": 5
   },
   {
    "name": "C\u00f4te d'Ivoire",
@@ -465,6 +465,11 @@
    "activities": 3
   },
   {
+   "donor": "International Development Research Centre",
+   "usd": 11298983,
+   "activities": 48
+  },
+  {
    "donor": "Korea",
    "usd": 9523067,
    "activities": 17
@@ -498,11 +503,6 @@
    "donor": "Norway",
    "usd": 5116422,
    "activities": 3
-  },
-  {
-   "donor": "International Development Research Centre",
-   "usd": 4780855,
-   "activities": 22
   },
   {
    "donor": "Good Ventures Foundation",
@@ -733,7 +733,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 162558249
+   "usd": 167499522
   },
   {
    "code": "research",
@@ -757,7 +757,7 @@
   },
   {
    "code": "capacity_building",
-   "usd": 17800034
+   "usd": 17837273
   },
   {
    "code": "financial_inclusion",
@@ -769,7 +769,7 @@
   },
   {
    "code": "other",
-   "usd": 13871815
+   "usd": 15411431
   }
  ],
  "by_year": [
@@ -779,15 +779,15 @@
   },
   {
    "year": 2024,
-   "usd": 360382604
+   "usd": 363932529
   },
   {
    "year": 2025,
-   "usd": 47088367
+   "usd": 49423047
   },
   {
    "year": 2026,
-   "usd": 4542392
+   "usd": 5175915
   }
  ],
  "flows": [
@@ -855,6 +855,11 @@
    "donor": "Netherlands",
    "recipient": "Global / multi-country",
    "usd": 7804052
+  },
+  {
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "usd": 7282730
   },
   {
    "donor": "Denmark",
@@ -940,11 +945,6 @@
    "donor": "UBS Optimus Foundation",
    "recipient": "India",
    "usd": 2766063
-  },
-  {
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "usd": 2673298
   },
   {
    "donor": "Gates Foundation",
@@ -3019,6 +3019,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110551-001",
+   "title": "Lab for the Ethics, Policy and Scaling of Responsible AI (LEPSAI)",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "other",
+   "usd": 906093,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110551-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 906093
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6038003",
    "title": "Testing an Artificial Intelligence-Enabled Agricultural Extension Chatbot",
    "donor": "United States",
@@ -3110,6 +3129,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 884362
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110547-001",
+   "title": "AI4D-FCDO policy: Global Index on Responsible AI",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 876855,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110547-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 876855
     }
    ]
   },
@@ -3399,6 +3437,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110491-001",
+   "title": "African Observatory on Responsible AI II",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 641766,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110491-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 641766
+    }
+   ]
+  },
+  {
    "id": "CRS-2023-5568981",
    "title": "Pi Ventures Fund II",
    "donor": "United Kingdom",
@@ -3627,6 +3684,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110542-001",
+   "title": "Championing responsible artificial intelligence policy in Africa \u2013 East African AI Policy Centre",
+   "donor": "International Development Research Centre",
+   "recipient": "Kenya",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 521801,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110542-001",
+   "allocations": [
+    {
+     "name": "Kenya",
+     "iso3": "KEN",
+     "usd": 521801
+    }
+   ]
+  },
+  {
    "id": "DAC-1601-INV-069370",
    "title": "Catalyzing the AI for Social Good Ecosystem in India",
    "donor": "Gates Foundation",
@@ -3832,6 +3908,25 @@
      "name": "Indonesia",
      "iso3": "IDN",
      "usd": 494854
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110564-001",
+   "title": "AI4D Hub for AI and Disability Inclusion",
+   "donor": "International Development Research Centre",
+   "recipient": "Kenya",
+   "sector": "Research/scientific institutions",
+   "ai_category": "other",
+   "usd": 487052,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110564-001",
+   "allocations": [
+    {
+     "name": "Kenya",
+     "iso3": "KEN",
+     "usd": 487052
     }
    ]
   },
@@ -4084,6 +4179,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110535-901",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 427047,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-901",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 427047
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6235215",
    "title": "Evaluation of LLMs in medical test prep and clinical performance",
    "donor": "Gates Foundation",
@@ -4293,6 +4407,44 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110477-002",
+   "title": "Enabling knowledge sharing for the Artificial Intelligence for Development Program",
+   "donor": "International Development Research Centre",
+   "recipient": "South Africa",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 359109,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110477-002",
+   "allocations": [
+    {
+     "name": "South Africa",
+     "iso3": "ZAF",
+     "usd": 359109
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110586-001",
+   "title": "AI Living Lab for Innovative and Viable Ethical Policies and Systems (ALIVE Lab)",
+   "donor": "International Development Research Centre",
+   "recipient": "Senegal",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 357024,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110586-001",
+   "allocations": [
+    {
+     "name": "Senegal",
+     "iso3": "SEN",
+     "usd": 357024
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6234498",
    "title": "Febrile surveillance using Audere AI RDT Reader",
    "donor": "Gates Foundation",
@@ -4403,6 +4555,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 322431
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110478-002",
+   "title": "Enabling monitoring and evaluation for the Artificial Intelligence for Development program",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 318004,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110478-002",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 318004
     }
    ]
   },
@@ -4940,6 +5111,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110580-002",
+   "title": "AI4D-FCDO-Asia scoping Study",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 250584,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110580-002",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 250584
+    }
+   ]
+  },
+  {
    "id": "CRS-2023-5782822",
    "title": "Strengthening capacities for the adoption and development of Artificial Intelligence technologies in LAC",
    "donor": "Inter-American Development Bank",
@@ -5278,6 +5468,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 238271
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110535-902",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 236569,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-902",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 236569
     }
    ]
   },
@@ -6080,6 +6289,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110535-907",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 170442,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-907",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 170442
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-5948565",
    "title": "UNHCR: Digital Protection - Strengthening Information Integrity on Digital Platforms.",
    "donor": "Switzerland",
@@ -6114,6 +6342,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 163934
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110535-911",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 163211,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-911",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 163211
     }
    ]
   },
@@ -6498,6 +6745,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110564-002",
+   "title": "AI4D Hub for AI and Disability Inclusion",
+   "donor": "International Development Research Centre",
+   "recipient": "Ghana",
+   "sector": "Research/scientific institutions",
+   "ai_category": "other",
+   "usd": 146471,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110564-002",
+   "allocations": [
+    {
+     "name": "Ghana",
+     "iso3": "GHA",
+     "usd": 146471
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-5881164",
    "title": "Smart management to mitigate climate change impacts on shrimp farming sustainability in Vietnam",
    "donor": "Belgium",
@@ -6551,6 +6817,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 143000
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110535-903",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 141175,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-903",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 141175
     }
    ]
   },
@@ -6916,6 +7201,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110535-906",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 116060,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-906",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 116060
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6235213",
    "title": "SAHPRA AI Proof of Concept and Planning Grant",
    "donor": "Gates Foundation",
@@ -7159,6 +7463,25 @@
      "name": "Nigeria",
      "iso3": "NGA",
      "usd": 101429
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110535-905",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 100789,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-905",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 100789
     }
    ]
   },
@@ -7663,6 +7986,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110535-909",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 87828,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-909",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 87828
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6137820",
    "title": "Tackling Corruption with Artificial Intelligence. Lessons from Peru",
    "donor": "Inter-American Development Bank",
@@ -7967,6 +8309,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110535-912",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 79455,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-912",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 79455
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-5998346",
    "title": "Global Index on Responsible Artificial Intelligence / Indice mondial sur l'intelligence artificielle responsable",
    "donor": "Canada",
@@ -8267,6 +8628,25 @@
      "name": "Brazil",
      "iso3": "BRA",
      "usd": 65000
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110535-904",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 64362,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-904",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 64362
     }
    ]
   },
@@ -9145,6 +9525,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110492-001",
+   "title": "Expert convening: Co-shaping an African language artificial intelligence hub",
+   "donor": "International Development Research Centre",
+   "recipient": "Kenya",
+   "sector": "Research/scientific institutions",
+   "ai_category": "capacity_building",
+   "usd": 37239,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110492-001",
+   "allocations": [
+    {
+     "name": "Kenya",
+     "iso3": "KEN",
+     "usd": 37239
+    }
+   ]
+  },
+  {
    "id": "NL-KVK-27378529-PST22ZA03",
    "title": "Digital Skills Training for South-African Women",
    "donor": "Netherlands Enterprise Agency",
@@ -9388,6 +9787,25 @@
      "name": "Pakistan",
      "iso3": "PAK",
      "usd": 30000
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110535-908",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 29192,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-908",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 29192
     }
    ]
   },
@@ -11568,6 +11986,82 @@
    "year": 2024,
    "source": "IATI",
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110476-002",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110478-001",
+   "title": "Enabling monitoring and evaluation for the Artificial Intelligence for Development program",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 0,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110478-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110535-910",
+   "title": "Artificial Intelligence for Development Africa, responsible AI, empowering people, capacity development",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 0,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110535-910",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110542-002",
+   "title": "Championing responsible artificial intelligence policy in Africa \u2013 East African AI Policy Centre",
+   "donor": "International Development Research Centre",
+   "recipient": "Kenya",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 0,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110542-002",
+   "allocations": [
+    {
+     "name": "Kenya",
+     "iso3": "KEN",
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110580-001",
+   "title": "AI4D-FCDO-Asia scoping Study",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 0,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110580-001",
    "allocations": [
     {
      "name": "Global / multi-country",
