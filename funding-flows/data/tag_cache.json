@@ -5834,5 +5834,9 @@
  "XM-DAC-47015-18016_Bilateral_MississippiStateUniversity_CIAT": {
   "ai": true,
   "category": "agriculture_ai"
+ },
+ "XM-DAC-47015-22585_Bilateral_India-DST-DepartmentofScienceandTechnology_ICRISAT": {
+  "ai": true,
+  "category": "agriculture_ai"
  }
 }
