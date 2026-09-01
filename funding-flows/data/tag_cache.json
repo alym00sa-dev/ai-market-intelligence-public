@@ -5838,5 +5838,9 @@
  "XM-DAC-47015-22585_Bilateral_India-DST-DepartmentofScienceandTechnology_ICRISAT": {
   "ai": true,
   "category": "agriculture_ai"
+ },
+ "KR-GOV-010-KR-GOV-051-2024070100870": {
+  "ai": true,
+  "category": "agriculture_ai"
  }
 }

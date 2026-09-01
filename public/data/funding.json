@@ -1,10 +1,10 @@
 {
- "built_at": 1788188413,
+ "built_at": 1788265867,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 573240933,
-  "activities": 577,
-  "donors": 63,
+  "usd": 571495107,
+  "activities": 576,
+  "donors": 64,
   "recipients": 66,
   "year_min": 2023,
   "year_max": 2026
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 364527078,
-   "activities": 275
+   "usd": 362744130,
+   "activities": 273
   },
   {
    "name": "Argentina",
@@ -139,8 +139,8 @@
   {
    "name": "Vietnam",
    "iso3": "VNM",
-   "usd": 1294529,
-   "activities": 12
+   "usd": 1331651,
+   "activities": 13
   },
   {
    "name": "Kyrgyzstan",
@@ -465,14 +465,14 @@
    "activities": 3
   },
   {
-   "donor": "International Development Research Centre",
-   "usd": 10057852,
-   "activities": 43
-  },
-  {
    "donor": "Korea",
    "usd": 9523067,
    "activities": 17
+  },
+  {
+   "donor": "International Development Research Centre",
+   "usd": 8274904,
+   "activities": 41
   },
   {
    "donor": "Netherlands",
@@ -670,6 +670,11 @@
    "activities": 3
   },
   {
+   "donor": "Office for Government Policy Coordination",
+   "usd": 37122,
+   "activities": 1
+  },
+  {
    "donor": "Netherlands Enterprise Agency",
    "usd": 35640,
    "activities": 1
@@ -733,7 +738,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 166891914
+   "usd": 166015059
   },
   {
    "code": "research",
@@ -749,7 +754,7 @@
   },
   {
    "code": "agriculture_ai",
-   "usd": 45737684
+   "usd": 45774806
   },
   {
    "code": "data_systems",
@@ -769,7 +774,7 @@
   },
   {
    "code": "other",
-   "usd": 14777908
+   "usd": 13871815
   }
  ],
  "by_year": [
@@ -779,11 +784,11 @@
   },
   {
    "year": 2024,
-   "usd": 363575505
+   "usd": 362706534
   },
   {
    "year": 2025,
-   "usd": 49172463
+   "usd": 48295608
   },
   {
    "year": 2026,
@@ -857,11 +862,6 @@
    "usd": 7804052
   },
   {
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "usd": 7032146
-  },
-  {
    "donor": "Denmark",
    "recipient": "Global / multi-country",
    "usd": 5801053
@@ -875,6 +875,11 @@
    "donor": "European Bank for Reconstruction and Development",
    "recipient": "Slovakia",
    "usd": 5400000
+  },
+  {
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "usd": 5249198
   },
   {
    "donor": "Germany",
@@ -3019,25 +3024,6 @@
    ]
   },
   {
-   "id": "XM-DAC-301-2-110551-001",
-   "title": "Lab for the Ethics, Policy and Scaling of Responsible AI (LEPSAI)",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "other",
-   "usd": 906093,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110551-001",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 906093
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6038003",
    "title": "Testing an Artificial Intelligence-Enabled Agricultural Extension Chatbot",
    "donor": "United States",
@@ -3129,25 +3115,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 884362
-    }
-   ]
-  },
-  {
-   "id": "XM-DAC-301-2-110547-001",
-   "title": "AI4D-FCDO policy: Global Index on Responsible AI",
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "sector": "Research/scientific institutions",
-   "ai_category": "governance_policy",
-   "usd": 876855,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110547-001",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 876855
     }
    ]
   },
@@ -9464,6 +9431,25 @@
      "name": "Kenya",
      "iso3": "KEN",
      "usd": 37239
+    }
+   ]
+  },
+  {
+   "id": "KR-GOV-010-KR-GOV-051-2024070100870",
+   "title": "Bio-capsules and AI solutions to improve Vietnamese livestock industry productivity(Seed1/2024-2026/300million)",
+   "donor": "Office for Government Policy Coordination",
+   "recipient": "Vietnam",
+   "sector": "Agricultural research",
+   "ai_category": "agriculture_ai",
+   "usd": 37122,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=KR-GOV-010-KR-GOV-051-2024070100870",
+   "allocations": [
+    {
+     "name": "Vietnam",
+     "iso3": "VNM",
+     "usd": 37122
     }
    ]
   },
