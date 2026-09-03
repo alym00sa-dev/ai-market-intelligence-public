@@ -1,9 +1,9 @@
 {
- "built_at": 1788350653,
+ "built_at": 1788437014,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 571495107,
-  "activities": 576,
+  "usd": 574989647,
+  "activities": 587,
   "donors": 64,
   "recipients": 66,
   "year_min": 2023,
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 362744130,
-   "activities": 273
+   "usd": 364777662,
+   "activities": 277
   },
   {
    "name": "Argentina",
@@ -37,8 +37,8 @@
   {
    "name": "Kenya",
    "iso3": "KEN",
-   "usd": 29546363,
-   "activities": 34
+   "usd": 30033415,
+   "activities": 35
   },
   {
    "name": "South Africa",
@@ -91,14 +91,14 @@
   {
    "name": "Rwanda",
    "iso3": "RWA",
-   "usd": 2562853,
-   "activities": 11
+   "usd": 2773194,
+   "activities": 13
   },
   {
    "name": "Senegal",
    "iso3": "SEN",
-   "usd": 2186591,
-   "activities": 8
+   "usd": 2543615,
+   "activities": 9
   },
   {
    "name": "Iraq",
@@ -161,15 +161,15 @@
    "activities": 11
   },
   {
+   "name": "Ethiopia",
+   "iso3": "ETH",
+   "usd": 1126026,
+   "activities": 8
+  },
+  {
    "name": "Sri Lanka",
    "iso3": "LKA",
    "usd": 1062621,
-   "activities": 6
-  },
-  {
-   "name": "Ethiopia",
-   "iso3": "ETH",
-   "usd": 865906,
    "activities": 6
   },
   {
@@ -179,16 +179,16 @@
    "activities": 4
   },
   {
+   "name": "Ghana",
+   "iso3": "GHA",
+   "usd": 815385,
+   "activities": 6
+  },
+  {
    "name": "Tanzania",
    "iso3": "TZA",
    "usd": 680242,
    "activities": 7
-  },
-  {
-   "name": "Ghana",
-   "iso3": "GHA",
-   "usd": 668914,
-   "activities": 5
   },
   {
    "name": "C\u00f4te d'Ivoire",
@@ -465,14 +465,14 @@
    "activities": 3
   },
   {
+   "donor": "International Development Research Centre",
+   "usd": 11769444,
+   "activities": 52
+  },
+  {
    "donor": "Korea",
    "usd": 9523067,
    "activities": 17
-  },
-  {
-   "donor": "International Development Research Centre",
-   "usd": 8274904,
-   "activities": 41
   },
   {
    "donor": "Netherlands",
@@ -738,7 +738,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 166015059
+   "usd": 167499522
   },
   {
    "code": "research",
@@ -762,7 +762,7 @@
   },
   {
    "code": "capacity_building",
-   "usd": 17837273
+   "usd": 18307734
   },
   {
    "code": "financial_inclusion",
@@ -774,7 +774,7 @@
   },
   {
    "code": "other",
-   "usd": 13871815
+   "usd": 15411431
   }
  ],
  "by_year": [
@@ -784,15 +784,15 @@
   },
   {
    "year": 2024,
-   "usd": 362706534
+   "usd": 363969651
   },
   {
    "year": 2025,
-   "usd": 48295608
+   "usd": 49893508
   },
   {
    "year": 2026,
-   "usd": 4542392
+   "usd": 5175915
   }
  ],
  "flows": [
@@ -862,6 +862,11 @@
    "usd": 7804052
   },
   {
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "usd": 7282730
+  },
+  {
    "donor": "Denmark",
    "recipient": "Global / multi-country",
    "usd": 5801053
@@ -875,11 +880,6 @@
    "donor": "European Bank for Reconstruction and Development",
    "recipient": "Slovakia",
    "usd": 5400000
-  },
-  {
-   "donor": "International Development Research Centre",
-   "recipient": "Global / multi-country",
-   "usd": 5249198
   },
   {
    "donor": "Germany",
@@ -3024,6 +3024,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110551-001",
+   "title": "Lab for the Ethics, Policy and Scaling of Responsible AI (LEPSAI)",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "other",
+   "usd": 906093,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110551-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 906093
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6038003",
    "title": "Testing an Artificial Intelligence-Enabled Agricultural Extension Chatbot",
    "donor": "United States",
@@ -3115,6 +3134,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 884362
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110547-001",
+   "title": "AI4D-FCDO policy: Global Index on Responsible AI",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 876855,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110547-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 876855
     }
    ]
   },
@@ -3879,6 +3917,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110564-001",
+   "title": "AI4D Hub for AI and Disability Inclusion",
+   "donor": "International Development Research Centre",
+   "recipient": "Kenya",
+   "sector": "Research/scientific institutions",
+   "ai_category": "other",
+   "usd": 487052,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110564-001",
+   "allocations": [
+    {
+     "name": "Kenya",
+     "iso3": "KEN",
+     "usd": 487052
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6235216",
    "title": "HIVNext: Predictive Analytics & Novel Interventions for IIT and RTT (SA)",
    "donor": "Gates Foundation",
@@ -4370,6 +4427,25 @@
      "name": "South Africa",
      "iso3": "ZAF",
      "usd": 359109
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110586-001",
+   "title": "AI Living Lab for Innovative and Viable Ethical Policies and Systems (ALIVE Lab)",
+   "donor": "International Development Research Centre",
+   "recipient": "Senegal",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 357024,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110586-001",
+   "allocations": [
+    {
+     "name": "Senegal",
+     "iso3": "SEN",
+     "usd": 357024
     }
    ]
   },
@@ -4887,6 +4963,25 @@
    ]
   },
   {
+   "id": "XM-DAC-301-2-110699-001",
+   "title": "AI4D-FCDO labs: Ethiopia",
+   "donor": "International Development Research Centre",
+   "recipient": "Ethiopia",
+   "sector": "Research/scientific institutions",
+   "ai_category": "capacity_building",
+   "usd": 260120,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110699-001",
+   "allocations": [
+    {
+     "name": "Ethiopia",
+     "iso3": "ETH",
+     "usd": 260120
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6237202",
    "title": "Automated M&E of CV for RDTs: Gen AI vs. Deep Learning Models",
    "donor": "Gates Foundation",
@@ -5036,6 +5131,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 251004
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110580-002",
+   "title": "AI4D-FCDO-Asia scoping Study",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 250584,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110580-002",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 250584
     }
    ]
   },
@@ -5815,6 +5929,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 211536
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110694-001",
+   "title": "AI4D-FCDO Labs: Rwanda (University of Rwanda)",
+   "donor": "International Development Research Centre",
+   "recipient": "Rwanda",
+   "sector": "Research/scientific institutions",
+   "ai_category": "capacity_building",
+   "usd": 210341,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110694-001",
+   "allocations": [
+    {
+     "name": "Rwanda",
+     "iso3": "RWA",
+     "usd": 210341
     }
    ]
   },
@@ -6651,6 +6784,25 @@
      "name": "Uganda",
      "iso3": "UGA",
      "usd": 146990
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110564-002",
+   "title": "AI4D Hub for AI and Disability Inclusion",
+   "donor": "International Development Research Centre",
+   "recipient": "Ghana",
+   "sector": "Research/scientific institutions",
+   "ai_category": "other",
+   "usd": 146471,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110564-002",
+   "allocations": [
+    {
+     "name": "Ghana",
+     "iso3": "GHA",
+     "usd": 146471
     }
    ]
   },
@@ -11957,6 +12109,63 @@
     {
      "name": "Kenya",
      "iso3": "KEN",
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110580-001",
+   "title": "AI4D-FCDO-Asia scoping Study",
+   "donor": "International Development Research Centre",
+   "recipient": "Global / multi-country",
+   "sector": "Research/scientific institutions",
+   "ai_category": "governance_policy",
+   "usd": 0,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110580-001",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110694-002",
+   "title": "AI4D-FCDO Labs: Rwanda (University of Rwanda)",
+   "donor": "International Development Research Centre",
+   "recipient": "Rwanda",
+   "sector": "Research/scientific institutions",
+   "ai_category": "capacity_building",
+   "usd": 0,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110694-002",
+   "allocations": [
+    {
+     "name": "Rwanda",
+     "iso3": "RWA",
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "XM-DAC-301-2-110699-002",
+   "title": "AI4D-FCDO labs: Ethiopia",
+   "donor": "International Development Research Centre",
+   "recipient": "Ethiopia",
+   "sector": "Research/scientific institutions",
+   "ai_category": "capacity_building",
+   "usd": 0,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-301-2-110699-002",
+   "allocations": [
+    {
+     "name": "Ethiopia",
+     "iso3": "ETH",
      "usd": 0
     }
    ]
