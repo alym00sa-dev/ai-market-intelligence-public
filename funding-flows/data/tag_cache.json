@@ -5842,5 +5842,21 @@
  "KR-GOV-010-KR-GOV-051-2024070100870": {
   "ai": true,
   "category": "agriculture_ai"
+ },
+ "SE-0-SE-6-18138-18138A0101": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "SE-0-SE-6-18138-18138A0102": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "SE-0-SE-6-18138-18138A0103": {
+  "ai": true,
+  "category": "capacity_building"
+ },
+ "SE-0-SE-6-18138": {
+  "ai": true,
+  "category": "capacity_building"
  }
 }
