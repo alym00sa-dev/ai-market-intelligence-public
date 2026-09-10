@@ -1,11 +1,11 @@
 {
- "built_at": 1788956170,
+ "built_at": 1789042226,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 568140281,
-  "activities": 540,
+  "usd": 563517674,
+  "activities": 539,
   "donors": 63,
-  "recipients": 66,
+  "recipients": 69,
   "year_min": 2023,
   "year_max": 2026
  },
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 362315853,
-   "activities": 250
+   "usd": 357494932,
+   "activities": 247
   },
   {
    "name": "Argentina",
@@ -55,14 +55,14 @@
   {
    "name": "Nigeria",
    "iso3": "NGA",
-   "usd": 6851734,
-   "activities": 16
+   "usd": 6871565,
+   "activities": 18
   },
   {
    "name": "Indonesia",
    "iso3": "IDN",
-   "usd": 5945523,
-   "activities": 7
+   "usd": 5965354,
+   "activities": 9
   },
   {
    "name": "Slovakia",
@@ -79,8 +79,8 @@
   {
    "name": "Philippines",
    "iso3": "PHL",
-   "usd": 4018655,
-   "activities": 3
+   "usd": 4038486,
+   "activities": 5
   },
   {
    "name": "PL",
@@ -95,16 +95,16 @@
    "activities": 11
   },
   {
+   "name": "Bangladesh",
+   "iso3": "BGD",
+   "usd": 2108838,
+   "activities": 8
+  },
+  {
    "name": "Iraq",
    "iso3": null,
    "usd": 2100000,
    "activities": 1
-  },
-  {
-   "name": "Bangladesh",
-   "iso3": "BGD",
-   "usd": 2089007,
-   "activities": 6
   },
   {
    "name": "Senegal",
@@ -139,20 +139,20 @@
   {
    "name": "Vietnam",
    "iso3": "VNM",
-   "usd": 1331651,
-   "activities": 13
+   "usd": 1351482,
+   "activities": 15
+  },
+  {
+   "name": "Colombia",
+   "iso3": "COL",
+   "usd": 1262783,
+   "activities": 11
   },
   {
    "name": "Kyrgyzstan",
    "iso3": null,
    "usd": 1246766,
    "activities": 1
-  },
-  {
-   "name": "Colombia",
-   "iso3": "COL",
-   "usd": 1242952,
-   "activities": 9
   },
   {
    "name": "Ethiopia",
@@ -191,16 +191,16 @@
    "activities": 4
   },
   {
+   "name": "Egypt",
+   "iso3": "EGY",
+   "usd": 546306,
+   "activities": 5
+  },
+  {
    "name": "Sri Lanka",
    "iso3": "LKA",
    "usd": 540071,
    "activities": 5
-  },
-  {
-   "name": "Egypt",
-   "iso3": "EGY",
-   "usd": 526475,
-   "activities": 3
   },
   {
    "name": "Tanzania",
@@ -359,6 +359,24 @@
    "activities": 1
   },
   {
+   "name": "MD",
+   "iso3": "MD",
+   "usd": 19831,
+   "activities": 2
+  },
+  {
+   "name": "Morocco",
+   "iso3": "MAR",
+   "usd": 19831,
+   "activities": 2
+  },
+  {
+   "name": "TH",
+   "iso3": "TH",
+   "usd": 19831,
+   "activities": 2
+  },
+  {
    "name": "Cameroon",
    "iso3": "CMR",
    "usd": 18569,
@@ -416,8 +434,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 129882979,
-   "activities": 132
+   "usd": 125260372,
+   "activities": 131
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -741,7 +759,7 @@
   },
   {
    "code": "health_ai",
-   "usd": 93585071
+   "usd": 88962464
   },
   {
    "code": "education_skills",
@@ -783,7 +801,7 @@
   },
   {
    "year": 2025,
-   "usd": 51119936
+   "usd": 46497329
   },
   {
    "year": 2026,
@@ -794,7 +812,7 @@
   {
    "donor": "Gates Foundation",
    "recipient": "Global / multi-country",
-   "usd": 77728595
+   "usd": 73105988
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -1332,25 +1350,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 5013300
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-091193",
-   "title": "Safe Inference Algorithms for Drug Discovery",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 4622607,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-091193",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 4622607
     }
    ]
   },
@@ -7070,7 +7069,7 @@
    "id": "SE-0-SE-6-18138-18138A0101",
    "title": "Sida Digital Partnership Week 2026 - Sida Digital Partnership Week 2026 EKONOMI",
    "donor": "Sweden",
-   "recipient": "Global / multi-country",
+   "recipient": "5 countries",
    "sector": "ICT",
    "ai_category": "capacity_building",
    "usd": 99157,
@@ -7079,9 +7078,29 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0101",
    "allocations": [
     {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 99157
+     "name": "Nigeria",
+     "iso3": "NGA",
+     "usd": 19831
+    },
+    {
+     "name": "MD",
+     "iso3": "MD",
+     "usd": 19831
+    },
+    {
+     "name": "Morocco",
+     "iso3": "MAR",
+     "usd": 19831
+    },
+    {
+     "name": "Egypt",
+     "iso3": "EGY",
+     "usd": 19831
+    },
+    {
+     "name": "Colombia",
+     "iso3": "COL",
+     "usd": 19831
     }
    ]
   },
@@ -7108,7 +7127,7 @@
    "id": "SE-0-SE-6-18138-18138A0103",
    "title": "Sida Digital Partnership Week 2026 - Sida Digital Partnership Week 2026 ASIEN",
    "donor": "Sweden",
-   "recipient": "Global / multi-country",
+   "recipient": "5 countries",
    "sector": "ICT",
    "ai_category": "capacity_building",
    "usd": 99157,
@@ -7117,9 +7136,29 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 99157
+     "name": "Bangladesh",
+     "iso3": "BGD",
+     "usd": 19831
+    },
+    {
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 19831
+    },
+    {
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 19831
+    },
+    {
+     "name": "TH",
+     "iso3": "TH",
+     "usd": 19831
+    },
+    {
+     "name": "Vietnam",
+     "iso3": "VNM",
+     "usd": 19831
     }
    ]
   },
@@ -11237,7 +11276,7 @@
    "id": "SE-0-SE-6-18138",
    "title": "Sida Digital Partnership Week 2026",
    "donor": "Sweden",
-   "recipient": "Ukraine",
+   "recipient": "11 countries",
    "sector": "ICT",
    "ai_category": "capacity_building",
    "usd": 0,
@@ -11246,8 +11285,58 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138",
    "allocations": [
     {
+     "name": "Vietnam",
+     "iso3": "VNM",
+     "usd": 0
+    },
+    {
      "name": "Ukraine",
      "iso3": "UKR",
+     "usd": 0
+    },
+    {
+     "name": "TH",
+     "iso3": "TH",
+     "usd": 0
+    },
+    {
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 0
+    },
+    {
+     "name": "Nigeria",
+     "iso3": "NGA",
+     "usd": 0
+    },
+    {
+     "name": "Morocco",
+     "iso3": "MAR",
+     "usd": 0
+    },
+    {
+     "name": "MD",
+     "iso3": "MD",
+     "usd": 0
+    },
+    {
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 0
+    },
+    {
+     "name": "Egypt",
+     "iso3": "EGY",
+     "usd": 0
+    },
+    {
+     "name": "Colombia",
+     "iso3": "COL",
+     "usd": 0
+    },
+    {
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 0
     }
    ]
