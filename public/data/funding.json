@@ -1,5 +1,5 @@
 {
- "built_at": 1789475726,
+ "built_at": 1789561940,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
   "usd": 563517674,
@@ -359,14 +359,14 @@
    "activities": 1
   },
   {
-   "name": "Morocco",
-   "iso3": "MAR",
+   "name": "MD",
+   "iso3": "MD",
    "usd": 19831,
    "activities": 2
   },
   {
-   "name": "MD",
-   "iso3": "MD",
+   "name": "Morocco",
+   "iso3": "MAR",
    "usd": 19831,
    "activities": 2
   },
@@ -7078,18 +7078,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0101",
    "allocations": [
     {
-     "name": "Colombia",
-     "iso3": "COL",
-     "usd": 19831
-    },
-    {
-     "name": "Egypt",
-     "iso3": "EGY",
-     "usd": 19831
-    },
-    {
-     "name": "Morocco",
-     "iso3": "MAR",
+     "name": "Nigeria",
+     "iso3": "NGA",
      "usd": 19831
     },
     {
@@ -7098,8 +7088,18 @@
      "usd": 19831
     },
     {
-     "name": "Nigeria",
-     "iso3": "NGA",
+     "name": "Morocco",
+     "iso3": "MAR",
+     "usd": 19831
+    },
+    {
+     "name": "Egypt",
+     "iso3": "EGY",
+     "usd": 19831
+    },
+    {
+     "name": "Colombia",
+     "iso3": "COL",
      "usd": 19831
     }
    ]
