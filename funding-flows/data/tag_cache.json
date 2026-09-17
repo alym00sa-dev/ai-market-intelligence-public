@@ -5858,5 +5858,9 @@
  "SE-0-SE-6-18138": {
   "ai": true,
   "category": "capacity_building"
+ },
+ "NL-KVK-83517626-TAST25S002": {
+  "ai": true,
+  "category": "infrastructure_compute"
  }
 }

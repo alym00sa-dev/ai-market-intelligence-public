@@ -1,10 +1,10 @@
 {
- "built_at": 1789561940,
+ "built_at": 1789648325,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
   "usd": 563517674,
-  "activities": 539,
-  "donors": 63,
+  "activities": 540,
+  "donors": 64,
   "recipients": 69,
   "year_min": 2023,
   "year_max": 2026
@@ -44,7 +44,7 @@
    "name": "South Africa",
    "iso3": "ZAF",
    "usd": 14115987,
-   "activities": 22
+   "activities": 23
   },
   {
    "name": "Turkey",
@@ -359,14 +359,14 @@
    "activities": 1
   },
   {
-   "name": "MD",
-   "iso3": "MD",
+   "name": "Morocco",
+   "iso3": "MAR",
    "usd": 19831,
    "activities": 2
   },
   {
-   "name": "Morocco",
-   "iso3": "MAR",
+   "name": "MD",
+   "iso3": "MD",
    "usd": 19831,
    "activities": 2
   },
@@ -746,6 +746,11 @@
    "donor": "United Nations Industrial Development Organization",
    "usd": 107,
    "activities": 2
+  },
+  {
+   "donor": "Invest International B.V.",
+   "usd": 0,
+   "activities": 1
   }
  ],
  "by_sector": [
@@ -7078,18 +7083,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0101",
    "allocations": [
     {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 19831
-    },
-    {
-     "name": "MD",
-     "iso3": "MD",
-     "usd": 19831
-    },
-    {
-     "name": "Morocco",
-     "iso3": "MAR",
+     "name": "Colombia",
+     "iso3": "COL",
      "usd": 19831
     },
     {
@@ -7098,8 +7093,18 @@
      "usd": 19831
     },
     {
-     "name": "Colombia",
-     "iso3": "COL",
+     "name": "Morocco",
+     "iso3": "MAR",
+     "usd": 19831
+    },
+    {
+     "name": "MD",
+     "iso3": "MD",
+     "usd": 19831
+    },
+    {
+     "name": "Nigeria",
+     "iso3": "NGA",
      "usd": 19831
     }
    ]
@@ -11337,6 +11342,25 @@
     {
      "name": "Vietnam",
      "iso3": "VNM",
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "NL-KVK-83517626-TAST25S002",
+   "title": "Data and Analytics Services",
+   "donor": "Invest International B.V.",
+   "recipient": "South Africa",
+   "sector": "ICT",
+   "ai_category": "infrastructure_compute",
+   "usd": 0,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=NL-KVK-83517626-TAST25S002",
+   "allocations": [
+    {
+     "name": "South Africa",
+     "iso3": "ZAF",
      "usd": 0
     }
    ]
