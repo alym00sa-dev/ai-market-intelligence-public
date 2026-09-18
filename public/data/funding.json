@@ -1,10 +1,10 @@
 {
- "built_at": 1789648325,
+ "built_at": 1789733430,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 563517674,
+  "usd": 568140281,
   "activities": 540,
-  "donors": 64,
+  "donors": 63,
   "recipients": 69,
   "year_min": 2023,
   "year_max": 2026
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 357494932,
-   "activities": 247
+   "usd": 362117539,
+   "activities": 248
   },
   {
    "name": "Argentina",
@@ -44,7 +44,7 @@
    "name": "South Africa",
    "iso3": "ZAF",
    "usd": 14115987,
-   "activities": 23
+   "activities": 22
   },
   {
    "name": "Turkey",
@@ -434,8 +434,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 125260372,
-   "activities": 131
+   "usd": 129882979,
+   "activities": 132
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -746,11 +746,6 @@
    "donor": "United Nations Industrial Development Organization",
    "usd": 107,
    "activities": 2
-  },
-  {
-   "donor": "Invest International B.V.",
-   "usd": 0,
-   "activities": 1
   }
  ],
  "by_sector": [
@@ -764,7 +759,7 @@
   },
   {
    "code": "health_ai",
-   "usd": 88962464
+   "usd": 93585071
   },
   {
    "code": "education_skills",
@@ -806,7 +801,7 @@
   },
   {
    "year": 2025,
-   "usd": 46497329
+   "usd": 51119936
   },
   {
    "year": 2026,
@@ -817,7 +812,7 @@
   {
    "donor": "Gates Foundation",
    "recipient": "Global / multi-country",
-   "usd": 73105988
+   "usd": 77728595
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -1355,6 +1350,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 5013300
+    }
+   ]
+  },
+  {
+   "id": "DAC-1601-INV-091193",
+   "title": "Safe Inference Algorithms for Drug Discovery",
+   "donor": "Gates Foundation",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "health_ai",
+   "usd": 4622607,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-091193",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 4622607
     }
    ]
   },
@@ -11342,25 +11356,6 @@
     {
      "name": "Vietnam",
      "iso3": "VNM",
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "NL-KVK-83517626-TAST25S002",
-   "title": "Data and Analytics Services",
-   "donor": "Invest International B.V.",
-   "recipient": "South Africa",
-   "sector": "ICT",
-   "ai_category": "infrastructure_compute",
-   "usd": 0,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=NL-KVK-83517626-TAST25S002",
-   "allocations": [
-    {
-     "name": "South Africa",
-     "iso3": "ZAF",
      "usd": 0
     }
    ]
