@@ -1,5 +1,5 @@
 {
- "built_at": 1789733430,
+ "built_at": 1789818795,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
   "usd": 568140281,
@@ -7155,18 +7155,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Vietnam",
-     "iso3": "VNM",
-     "usd": 19831
-    },
-    {
-     "name": "TH",
-     "iso3": "TH",
-     "usd": 19831
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 19831
     },
     {
@@ -7175,8 +7165,18 @@
      "usd": 19831
     },
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 19831
+    },
+    {
+     "name": "TH",
+     "iso3": "TH",
+     "usd": 19831
+    },
+    {
+     "name": "Vietnam",
+     "iso3": "VNM",
      "usd": 19831
     }
    ]
