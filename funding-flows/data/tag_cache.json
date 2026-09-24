@@ -5862,5 +5862,9 @@
  "NL-KVK-83517626-TAST25S002": {
   "ai": true,
   "category": "infrastructure_compute"
+ },
+ "XM-DAC-47015-21019_Bilateral_ComitatoInternazionaleperloSviluppodeiPopoli_Bioversity": {
+  "ai": false,
+  "category": "other"
  }
 }
