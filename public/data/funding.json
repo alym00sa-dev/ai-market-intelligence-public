@@ -1,5 +1,5 @@
 {
- "built_at": 1790253593,
+ "built_at": 1790340073,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
   "usd": 563517674,
@@ -7136,13 +7136,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
-     "usd": 19831
-    },
-    {
-     "name": "Indonesia",
-     "iso3": "IDN",
+     "name": "TH",
+     "iso3": "TH",
      "usd": 19831
     },
     {
@@ -7151,8 +7146,13 @@
      "usd": 19831
     },
     {
-     "name": "TH",
-     "iso3": "TH",
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 19831
+    },
+    {
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 19831
     },
     {
