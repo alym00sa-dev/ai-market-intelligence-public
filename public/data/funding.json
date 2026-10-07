@@ -1,10 +1,10 @@
 {
- "built_at": 1791295495,
+ "built_at": 1791382964,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 563467189,
-  "activities": 539,
-  "donors": 63,
+  "usd": 563367241,
+  "activities": 538,
+  "donors": 62,
   "recipients": 69,
   "year_min": 2023,
   "year_max": 2026
@@ -287,12 +287,6 @@
    "activities": 1
   },
   {
-   "name": "Cambodia",
-   "iso3": "KHM",
-   "usd": 129904,
-   "activities": 4
-  },
-  {
    "name": "Burkina Faso",
    "iso3": "BFA",
    "usd": 129552,
@@ -351,6 +345,12 @@
    "iso3": null,
    "usd": 30986,
    "activities": 1
+  },
+  {
+   "name": "Cambodia",
+   "iso3": "KHM",
+   "usd": 29956,
+   "activities": 3
   },
   {
    "name": "Dem. Rep. Congo",
@@ -653,11 +653,6 @@
    "activities": 2
   },
   {
-   "donor": "Food and Agriculture Organization (FAO)",
-   "usd": 99948,
-   "activities": 1
-  },
-  {
    "donor": "Qatar",
    "usd": 70459,
    "activities": 2
@@ -767,7 +762,7 @@
   },
   {
    "code": "agriculture_ai",
-   "usd": 45774806
+   "usd": 45674858
   },
   {
    "code": "data_systems",
@@ -801,7 +796,7 @@
   },
   {
    "year": 2025,
-   "usd": 46497329
+   "usd": 46397381
   },
   {
    "year": 2026,
@@ -7009,25 +7004,6 @@
    ]
   },
   {
-   "id": "XM-DAC-41301-754855",
-   "title": "TCPF: Machine learning for rice yield modelling",
-   "donor": "Food and Agriculture Organization (FAO)",
-   "recipient": "Cambodia",
-   "sector": "Statistical capacity building",
-   "ai_category": "agriculture_ai",
-   "usd": 99948,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=XM-DAC-41301-754855",
-   "allocations": [
-    {
-     "name": "Cambodia",
-     "iso3": "KHM",
-     "usd": 99948
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6236401",
    "title": "Accelerating Local AI Innovation with Ecosystem Development",
    "donor": "Gates Foundation",
@@ -7136,18 +7112,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
-     "usd": 19831
-    },
-    {
-     "name": "Indonesia",
-     "iso3": "IDN",
-     "usd": 19831
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
+     "name": "Vietnam",
+     "iso3": "VNM",
      "usd": 19831
     },
     {
@@ -7156,8 +7122,18 @@
      "usd": 19831
     },
     {
-     "name": "Vietnam",
-     "iso3": "VNM",
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 19831
+    },
+    {
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 19831
+    },
+    {
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 19831
     }
    ]
