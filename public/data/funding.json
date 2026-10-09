@@ -1,9 +1,9 @@
 {
- "built_at": 1791469844,
+ "built_at": 1791555428,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 563367241,
-  "activities": 538,
+  "usd": 567989848,
+  "activities": 539,
   "donors": 62,
   "recipients": 69,
   "year_min": 2023,
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 357494932,
-   "activities": 247
+   "usd": 362117539,
+   "activities": 248
   },
   {
    "name": "Argentina",
@@ -434,8 +434,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 125260372,
-   "activities": 131
+   "usd": 129882979,
+   "activities": 132
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -754,7 +754,7 @@
   },
   {
    "code": "health_ai",
-   "usd": 88962464
+   "usd": 93585071
   },
   {
    "code": "education_skills",
@@ -796,7 +796,7 @@
   },
   {
    "year": 2025,
-   "usd": 46397381
+   "usd": 51019988
   },
   {
    "year": 2026,
@@ -807,7 +807,7 @@
   {
    "donor": "Gates Foundation",
    "recipient": "Global / multi-country",
-   "usd": 73105988
+   "usd": 77728595
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -1345,6 +1345,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 5013300
+    }
+   ]
+  },
+  {
+   "id": "DAC-1601-INV-091193",
+   "title": "Safe Inference Algorithms for Drug Discovery",
+   "donor": "Gates Foundation",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "health_ai",
+   "usd": 4622607,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-091193",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 4622607
     }
    ]
   },
