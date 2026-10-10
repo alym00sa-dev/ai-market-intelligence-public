@@ -1,5 +1,5 @@
 {
- "built_at": 1791555428,
+ "built_at": 1791638995,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
   "usd": 567989848,
@@ -359,14 +359,14 @@
    "activities": 1
   },
   {
-   "name": "MD",
-   "iso3": "MD",
+   "name": "Morocco",
+   "iso3": "MAR",
    "usd": 19831,
    "activities": 2
   },
   {
-   "name": "Morocco",
-   "iso3": "MAR",
+   "name": "MD",
+   "iso3": "MD",
    "usd": 19831,
    "activities": 2
   },
@@ -7073,18 +7073,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0101",
    "allocations": [
     {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 19831
-    },
-    {
-     "name": "MD",
-     "iso3": "MD",
-     "usd": 19831
-    },
-    {
-     "name": "Morocco",
-     "iso3": "MAR",
+     "name": "Colombia",
+     "iso3": "COL",
      "usd": 19831
     },
     {
@@ -7093,8 +7083,18 @@
      "usd": 19831
     },
     {
-     "name": "Colombia",
-     "iso3": "COL",
+     "name": "Morocco",
+     "iso3": "MAR",
+     "usd": 19831
+    },
+    {
+     "name": "MD",
+     "iso3": "MD",
+     "usd": 19831
+    },
+    {
+     "name": "Nigeria",
+     "iso3": "NGA",
      "usd": 19831
     }
    ]
@@ -7131,18 +7131,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Vietnam",
-     "iso3": "VNM",
-     "usd": 19831
-    },
-    {
-     "name": "TH",
-     "iso3": "TH",
-     "usd": 19831
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 19831
     },
     {
@@ -7151,8 +7141,18 @@
      "usd": 19831
     },
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 19831
+    },
+    {
+     "name": "TH",
+     "iso3": "TH",
+     "usd": 19831
+    },
+    {
+     "name": "Vietnam",
+     "iso3": "VNM",
      "usd": 19831
     }
    ]
