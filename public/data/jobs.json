@@ -93,7 +93,429 @@
       }
     }
   },
-  "company_summaries": {},
+  "company_summaries": {
+    "Anthropic": {
+      "building": [
+        "Training infrastructure and compute is the single largest hiring concentration \u2014 42 roles spanning GPU performance, cluster scheduling, data center electrical/mechanical/cooling engineering, demand forecasting, and custom server manufacturing \u2014 an end-to-end physical compute buildout done in-house rather than leased from cloud providers.",
+        "Reinforcement learning is the dominant post-training method, with 19+ roles not confined to alignment tuning but extending into code generation, chip design automation, cybersecurity reasoning, and general autonomy \u2014 RL is being applied as a broad capability multiplier across distinct task domains.",
+        "Security hiring is unusually deep and layered \u2014 20 roles covering firmware boot-chain integrity, bare-metal attestation, OS runtime hardening, hardware platform security, GRC controls, and ML-based misuse detection \u2014 treating model weight protection and infrastructure defense as a first-class engineering surface, not a compliance afterthought.",
+        "Agents and tool use are being built along multiple simultaneous axes \u2014 computer use research and productization, MCP connectivity for external systems, web search stack (indexing, retrieval, ranking, serving), and knowledge architecture redesigned for LLM consumption \u2014 14+ roles constructing the scaffolding for Claude to act autonomously in real environments.",
+        "Product surface expansion is broad and domain-specific \u2014 30 roles across a cybersecurity vulnerability product, a scientific research workbench (Claude Science), an education lab, a life sciences drug discovery operation, and core consumer features like voice, memory, and billing \u2014 Claude is being shipped into specialized professional verticals, not just a general chatbot.",
+        "A small but distinct economics research function \u2014 three economist roles plus a policy fellowship \u2014 is building a proprietary \"Anthropic Economic Index\" to measure AI usage diffusion and economic impact globally, an in-house measurement capability with no obvious parallel at competing labs.",
+        "Interpretability and alignment research appear in a small cluster of dedicated roles focused on mechanistic understanding of transformer internals and steering model behavior, dwarfed by the infrastructure and product hiring around them."
+      ],
+      "selling": [
+        "Claude is sold through a partner-leveraged motion at scale: 10+ roles cultivate technical and commercial relationships with AWS, global/regional system integrators, and cloud resellers \u2014 an indirect channel apparatus built in-house rather than left to partner sales teams alone.",
+        "Applied AI Architects and Engineers are hired alongside Account Executives across nearly every segment, suggesting deal cycles are architected around hands-on integration work rather than demo-and-close selling.",
+        "APAC is staffed as a multi-country buildout, not a single-office outpost: dedicated roles target Japan, Korea, India, Southeast Asia, and ASEAN public sector across sales, solutions architecture, and channel partnerships \u2014 at least 8 distinct geo-specific hires span the region.",
+        "A \"Beneficial Deployments\" team of 5+ roles \u2014 spanning life sciences, lab automation, nonprofits, and an activation manager \u2014 operates as a distinct go-to-market motion selling Claude into mission-driven and scientific organizations, separate from commercial or public sector tracks.",
+        "National security is treated as a named vertical: a Public Sector Applied AI Architect and Applied AI Engineer both explicitly reference \"national security mission programs,\" while a separate ASEAN public sector AE targets foreign government agencies \u2014 defense and intelligence work is direct, not routed through integrators.",
+        "Startups get their own full-stack sales org \u2014 at least 6 roles including Account Executives, Applied AI Architects, and Applied AI Engineers dedicated to startups and AI-native companies \u2014 staffed with technical advisors focused on the Claude Developer Platform from early product through scale, a developer-adoption land-and-expand motion distinct from enterprise."
+      ],
+      "vertical_bullets": {
+        "health_rd": [
+          "A full wet-lab drug discovery operation is being built in-house: experimental biology, medicinal chemistry, computational biology, and a biotech operations lead are all being hired (6+ roles), an unusual vertical integration for an AI company rather than a partner-through model.",
+          "Seven sales, solutions architecture, and customer success roles span biopharma, providers, payors, and medtech across multiple geographies (DACH, South Korea, US), showing Claude is being commercialized across the entire healthcare and life sciences value chain simultaneously, not a single segment.",
+          "Biological safety is treated as a distinct discipline alongside life sciences acceleration: two dedicated safety research roles focus on evaluations, classifiers, and dataset curation to govern how Claude handles dangerous biological knowledge \u2014 a paired investment in capability and constraint that mirrors Anthropic's broader safety posture."
+        ],
+        "health_delivery": [
+          "All three roles focus on deploying Claude directly into healthcare organizations \u2014 spanning enterprise health systems, US public health nonprofits, and global health partners \u2014 showing a full-spectrum push across commercial, domestic public-sector, and international health delivery channels simultaneously.",
+          "Two of the three roles are partnership managers oriented toward nonprofits and mission-driven organizations rather than revenue-driven enterprise sales, an unusual weighting that prioritizes non-commercial health deployment alongside traditional hospital and payor sales."
+        ],
+        "agriculture": [],
+        "education": [
+          "Four of the six roles build developer-facing training and education infrastructure \u2014 a Developer Education Lead, Head of Technical Training, Lead Technical Instructor, and a Software Engineer for education delivery \u2014 an unusually deep in-house technical instruction stack rather than outsourced enablement.",
+          "A dedicated Education Labs team (Full Stack Engineer, Software Engineer) is building product-grade software for \"human capability development with AI,\" treating education not as a support function but as a standalone engineering surface using Claude as the delivery mechanism.",
+          "A single sales role (Research & Education Sales Lead) packages Claude access specifically for nonprofits, educational institutions, and research organizations through a named \"Beneficial Deployments\" program, suggesting a dedicated go-to-market motion for these segments."
+        ]
+      },
+      "social_impact_bullets": [
+        "Government sales and deployment dominate the set \u2014 over 20 roles span U.S. federal civilian agencies, DoD/IC, state and local governments, Canada, ASEAN, and DACH \u2014 making public-sector Claude adoption Anthropic's single largest social-impact hiring concentration by far.",
+        "A distinct Beneficial Deployments program (7 roles) builds dedicated engineering, architecture, sales, and partnership capacity for nonprofits, global health, life sciences, and educational institutions \u2014 an in-house technical team, not a grants desk or outsourced consultancy.",
+        "Policy and economic research form a standalone analytical layer \u2014 8 roles covering AI governance policy development, political research, data science for policymakers, state-level government affairs, and economic modeling via a proprietary Anthropic Economic Index \u2014 treating evidence production for regulators as a permanent function, not ad hoc support."
+      ],
+      "shift": [
+        "Strongest signal is a lean into developer platform (+4 net), with new architect and DevRel roles aimed at enterprise adoption across APAC and life sciences verticals.",
+        "Remaining theme swings (\u00b11 each) are too small and noisy to constitute a meaningful directional shift this week."
+      ]
+    },
+    "Google": {
+      "building": [
+        "Infrastructure and compute roles feature prominently across postings \u2014 spanning custom silicon architects, data center engineers, edge-AI SoC verification leads, and virtualization engineers \u2014 showing Google is building the full physical-to-software AI stack in-house.",
+        "Agents and tool-use represent a significant emerging capability investment, with hiring spread across agent governance, agent platforms on Vertex, agentic frameworks for cloud operations, forward-deployed agent engineers, and dedicated agent development managers.",
+        "Security and misuse prevention spans multiple dedicated roles \u2014 covering on-premises AI infrastructure security, generative AI ads safety, YouTube AI security product management, and Cloud AI safeguards engineering leadership.",
+        "Safety work splits into two distinct hiring tracks: 14 alignment and safety roles plus 10 evals/red-teaming roles sit alongside a separate AI Safety Protections team within Trust and Safety that explicitly names Gemini, Veo, Agents, and Robotics as protection targets \u2014 safety is organized around deployed product surfaces, not housed in a single research silo.",
+        "Custom edge-AI silicon receives unusual depth with 9+ dedicated roles just for SoC design verification, formal verification, and accelerator architecture for \"direct-to-consumer products\" \u2014 Google is building inference-optimized chips for on-device deployment, not only data-center-scale training accelerators.",
+        "AI safety and foundation-model protections appear as a distinct hiring focus across multiple roles, forming a dedicated operational capability within Trust and Safety rather than a research sideline.",
+        "Product and application layer hiring spans YouTube Shopping AI, Search Ads in AI experiences, localization for AI answers, Android XR compatibility, and AI surfaces front-end engineering \u2014 generative AI is being wired into existing revenue-generating products across multiple Google business units simultaneously."
+      ],
+      "selling": [
+        "Multiple AI Outcome Customer Engineer and Forward Deployed Engineer roles are designed to embed inside customer environments and ship production-grade agentic AI systems \u2014 a post-sales delivery motion owning business outcomes, not just deals.",
+        "More than a dozen AI Customer Engineer roles staff pre-sales and onboarding enablement across verticals (ITES, Public Sector, Digital Natives), pairing every sales specialist with a technical counterpart \u2014 integration-led selling where the engineer is the pitch.",
+        "Thai, Bahasa Indonesian, Japanese, Portuguese, and Mandarin language requirements appear across at least seven distinct roles, distributing AI delivery capacity into Southeast Asia, East Asia, and Latin America \u2014 not consolidating in English-speaking hubs.",
+        "A GTM Lead for AI Infrastructure explicitly sells TPUs and GPUs as a product line, citing Forrester leadership recognition in the description \u2014 Google is commercializing its custom silicon directly to customers, not just bundling it beneath cloud services.",
+        "AI Sales Specialist roles targeting ISV West and Startups/Scale-Ups (UK and Ireland) carve out dedicated coverage for software vendors and early-stage companies, separating them from general enterprise with segment-specific quota-carriers.",
+        "Two AI Solution Builder roles within Cloud Learning Services build production-grade agentic AI automations for internal operational workflows, not customer-facing delivery \u2014 Google is using its own AI sales enablement org as a live deployment surface for its own tools."
+      ],
+      "vertical_bullets": {
+        "health_rd": [
+          "Five of ten roles \u2014 three biologists and a computational biologist on the CBRNE team plus a research engineer \u2014 form a dedicated biosafety unit focused not on building health products but on preventing Gemini from enabling catastrophic biological, chemical, or nuclear harm.",
+          "Two roles pair a health data strategy lead with a senior ML engineer building large sensor foundation models on multimodal longitudinal health data, showing an end-to-end pipeline from health data curation through frontier model training being staffed in-house at DeepMind.",
+          "The health data lead role description references \"foundational data strategy for the financial sector\" while the title says health \u2014 a copy-paste discrepancy that signals this health-domain data function is being templated and scaled across multiple professional verticals simultaneously."
+        ],
+        "health_delivery": [
+          "Consumer health features dominate the hiring mix: 14 of 21 roles build first-party Google Health products spanning nutrition, fitness metrics, mental health, iOS apps, and wearable integration \u2014 an unusually broad clinical-to-engineering stack developed entirely in-house rather than through partners.",
+          "AI-generated health guidance in Search is treated as a standalone safety-critical workstream: a staff data scientist role owns evaluation frameworks and safety methodologies specifically for health answers, paired with a dedicated senior TPM coordinating cross-product health search \u2014 a two-role apparatus focused purely on measurement and risk, not feature building.",
+          "Google Cloud's healthcare go-to-market is sales- and post-sales-heavy with no new product engineering: all 4 Cloud-side roles (3 field sales, 1 customer engineer) sell existing platform capabilities to healthcare and life sciences buyers, with zero Cloud-native health product development roles in this batch."
+        ],
+        "agriculture": [
+          "Two roles\u2014one in DeepMind Sustainability, one in Earth AI\u2014focus on environmental and climate applications of AI, not on agriculture specifically. Neither posting mentions agriculture, farming, or food systems, so these roles provide no observable signal about agriculture-focused hiring at Google."
+        ],
+        "education": [
+          "A dedicated \"Learning Frontiers\" team (at least 2 roles \u2014 staff engineer and lead research data scientist) is building agentic, multimodal AI tutoring products grounded in learning science, designed to graduate into primary Google surfaces like Search and YouTube.",
+          "Education go-to-market is organized around AI-enabled transformation, not just device or software sales: across 6+ commercial roles spanning EMEA, Japan, North America, and Southeast Asia, the emphasis is on Gemini integration, agentic AI deployment, and government engagement rather than traditional Chromebook/Workspace distribution.",
+          "The public-sector education push pairs forward-deployed engineering with customer engineering (2 roles) to build and deploy production-grade autonomous AI agents specifically for R1/R2 universities \u2014 an unusual combination of hands-on-keyboard builders and sales engineers co-targeting the same higher-ed segment."
+        ]
+      },
+      "social_impact_bullets": [
+        "Numerous roles deploy Google Cloud AI directly into federal civilian, national security, state/local, and higher-education agencies, with dedicated forward-deployed engineers building production agentic workflows under data-sovereignty and compliance constraints.",
+        "DeepMind operates a small but striking cluster of roles \u2014 biosecurity research, energy-grid optimization, health impact portfolio leadership, sustainability program management \u2014 that pair frontier-AI research capacity with specific humanitarian and environmental problem domains, a combination housed inside one lab rather than distributed across product teams.",
+        "Google.org and Education together account for roughly a dozen roles spanning nonprofit data infrastructure, global cybersecurity grantmaking, community development, and government-level education transformation across EMEA, Southeast Asia, Japan, and North America, showing the social-impact hiring is geographically broad and operationally varied rather than concentrated in a single region or function."
+      ],
+      "shift": [
+        "Google is leaning heavily into training infra/compute (+26) and inference/serving (+10), while pulling back from product/app layer (\u221211) and agents/tool-use (\u22124).",
+        "Notable new signal in biosecurity/CBRN (+9 from zero baseline), though absolute numbers are small; the bulk of new openings are GTM/sales roles not captured by capability themes."
+      ]
+    },
+    "xAI": {
+      "building": [
+        "Physical compute infrastructure dominates the hiring profile \u2014 55 roles spanning electrical, mechanical, power generation, battery storage, cooling, fiber, and commissioning all at the Memphis Colossus facility \u2014 xAI is vertically integrating its own supercomputer buildout down to medium-voltage electricians and transmission engineers rather than leasing from cloud providers.",
+        "Post-training is the single largest AI-research hiring concentration, with 21 roles covering RLHF pipelines, RL training frameworks, and an unusually broad multilingual annotation effort across 15+ languages including Hausa, Khmer, and Yoruba \u2014 not just major-market languages but low-resource ones, signaling aggressive internationalization of Grok's instruction-following quality.",
+        "Product-layer hiring (18 roles) spans a standalone Grok chat app, dedicated iOS and Android native clients, a voice product, an image-generation app (Imagine), enterprise backend, and a public API \u2014 a full consumer-and-developer surface built in-house rather than relying on third-party distribution through X alone.",
+        "Image generation gets its own three-role vertical \u2014 separate model research, product engineering, and a dedicated safety role \u2014 treating Imagine as a distinct product line with bespoke content-moderation engineering rather than folding safety into a shared team.",
+        "Security hiring is broad and geographically distributed across 8 roles covering application security, bare-metal platform security, IAM, and infrastructure security engineers stationed in London and Tokyo \u2014 xAI is standing up a global security posture across multiple physical sites, not centralizing it at headquarters.",
+        "A single RL inference role explicitly focused on \"reasoning test-time compute\" sits alongside a separate RL training framework role \u2014 the hiring distinguishes between training-time and inference-time compute scaling for reasoning as parallel engineering problems, each staffed independently.",
+        "Human data infrastructure is treated as an engineering discipline, not just an ops function \u2014 a dedicated software engineer, a team lead building annotation pipeline systems, and a business operations analyst form a small but distinct tooling team (3 roles) that builds the collection platform the 19 AI Tutor annotators work on."
+      ],
+      "selling": [
+        "Grok is being sold across enterprise, SMB, and digital-native/e-commerce segments through dedicated account managers for each \u2014 three distinct roles carving the customer base, showing a structured multi-tier commercial motion, not a single generalist sales team.",
+        "Four roles \u2014 Client Partner, Senior Agency Development Manager, Client Partner Global Brands APAC, and GCR Agency Development Manager \u2014 build an ad-sales and agency channel around Grok, mirroring the motion of a media platform monetizing through brand advertising, not just SaaS subscriptions.",
+        "Two APAC-specific roles (Client Partner Global Brands APAC, Senior Agency Development Manager Global Brands APAC) staff a regional go-to-market for global brand advertising in Asia-Pacific \u2014 an early geographic expansion concentrated entirely on the ad/agency side, not API or enterprise compute.",
+        "A single Creator & Community Program Lead for Grok Imagine focuses on community and creator program marketing for AI image generation, suggesting a consumer-oriented growth motion distinct from API and enterprise account roles.",
+        "A Director of Yield Management sits alongside the sales org, optimizing pricing and inventory for AI model and compute services \u2014 suggesting Grok's commercial model may incorporate dynamic capacity selling beyond flat-rate licensing.",
+        "Two Starlink roles (Sr. Manager Commercial Sales for Starlink Mobile, Sr. Sales Manager Canada for Starlink Enterprise) are posted under xAI's hiring umbrella with identical SpaceX-origin descriptions, showing operational blurring between xAI and SpaceX go-to-market functions that extends beyond AI into satellite connectivity."
+      ],
+      "vertical_bullets": {
+        "health_rd": [],
+        "health_delivery": [],
+        "agriculture": [],
+        "education": []
+      },
+      "social_impact_bullets": [],
+      "shift": [
+        "Pulling back sharply from post-training/RL (\u22129 net), suggesting a completed hiring push or strategic deprioritization of that capability area this week.",
+        "Leaning into physical data-center infrastructure and power generation for the Colossus supercomputer, with most new openings centered on Memphis facilities, construction, and operations roles."
+      ]
+    },
+    "OpenAI": {
+      "building": [
+        "Training infrastructure and compute represents a major hiring concentration \u2014 roles span GPU fleet management, collective communication networking, power management, storage federation, and AI-native silicon development across the physical compute stack.",
+        "Agents and tool use show up not as a product team bolted on but as a cross-cutting research-and-infrastructure effort \u2014 numerous roles cover agentic post-training, multi-agent coordination, code execution environments, agent security frameworks, and dedicated agent infrastructure engineering \u2014 with the Codex Research description explicitly naming \"persistent, proactive intelligence\" as the target.",
+        "Security and misuse prevention is staffed almost as heavily as the entire product layer \u2014 33 roles including threat intelligence, agent-specific security controls, scaled abuse detection, youth well-being enforcement, biological/cyber/nation-state harm identification, and integrity foundations against financial fraud \u2014 an unusually broad surface for a company that is not itself a traditional trust-and-safety platform.",
+        "Robotics is an active in-house hardware-and-software program, not a partnership or research sideline \u2014 15 roles cover electrical hardware design, control systems, GPU inference optimization for embodied applications, prototyping lab work, and software for data collection across diverse robot platforms, all described under a team \"pushing towards AGI-level intelligence in dynamic, real-world settings.\"",
+        "Post-training and reinforcement learning are explicitly framed as the capability frontier, not just alignment tooling \u2014 multiple roles including dedicated RL/Reasoning researchers reference building o1 and o3 models, training next-generation reasoning agents, and improving pre-trained model behavior for ChatGPT and API.",
+        "Interpretability appears as a single dedicated role studying \"internal representations of deep learning models\" and engineering \"more understandable representations,\" standing apart from the numerous security, misuse, alignment, and safety roles.",
+        "OpenAI is building its own custom silicon and hardware systems end to end \u2014 roles like Product Manufacturing Engineer and Hardware Strategic Sourcing Manager for fiber optic interconnects reference \"AI-native silicon\" efforts including a program called Jalape\u00f1o, with the Accelerators engineer evaluating \"new compute platforms,\" showing in-house chip development is underway alongside infrastructure buildout."
+      ],
+      "selling": [
+        "Codex has its own dedicated applied AI engineering track across 6+ roles, pairing technical partners with customers specifically to embed coding tools into software development lifecycles \u2014 a standalone product motion, not a feature bundled into general enterprise sales.",
+        "Digital-native companies are carved out as a named segment with dedicated account directors, applied AI engineers, and an engineering manager across 8+ roles, separating them from traditional large enterprise \u2014 a distinct sales motion for tech-forward buyers who consume APIs differently.",
+        "Forward Deployed Engineering operates as a full in-house professional-services arm across 10+ roles spanning SF, NYC, Munich, and Tokyo, with dedicated deployment leads and a manager layer \u2014 custom production integration built internally rather than outsourced to systems integrators.",
+        "A single Solutions Engineer and a single Client Partner for Ads Solutions are the only advertising-specific hires in the dataset, suggesting OpenAI is building out a nascent ad platform sales motion with a minimal initial team.",
+        "Applied AI Architects carry named customer portfolios and own technical strategy end-to-end across 8+ roles, functioning as a pre-and-post-sales hybrid that designs, deploys, and manages accounts \u2014 a role type that collapses what most vendors split between sales engineering and customer success.",
+        "Support engineers are hired across San Francisco, Dublin, and Singapore in 6+ roles, each description specifying \"mission-critical solutions\" for both developers and enterprises \u2014 OpenAI is building a follow-the-sun technical support operation sized for production-grade SLAs, not consumer-tier help desks."
+      ],
+      "vertical_bullets": {
+        "health_rd": [
+          "A dedicated product called Rosalind Workbench is being built in-house with at least three roles (PM, engineering manager, software engineer) combining scientific tools with AI workflows \u2014 a named, standalone platform for life sciences researchers, not just API access.",
+          "The health vertical spans two distinct organizations: a Life Sciences team building Rosalind for drug/biological research and a separate Health team within \"Personal AGI\" focused on making medical intelligence accessible to patients and clinicians \u2014 an unusual split across both research-side and consumer-side AI health efforts visible in a single hiring cycle.",
+          "Three roles (Deployment Lead, Account Director, AI Support Engineer) form a full enterprise go-to-market stack specifically for life sciences customers, covering sales, deployment, and ongoing technical support \u2014 a complete commercialization layer already staffing up alongside the product engineering team."
+        ],
+        "health_delivery": [
+          "Three Forward Deployed Engineer roles in Seattle, NYC, and SF are deploying production AI into clinical, operational, and member-facing workflows \u2014 a geographically distributed field engineering footprint purpose-built for hands-on integration inside healthcare organizations.",
+          "The team spans the full delivery chain from enterprise sales (Account Director) through solution design (Applied AI Architect) to production deployment (three FDEs) and product engineering (two Software Engineers) \u2014 six of seven roles are technical, showing heavy in-house build and deploy capacity rather than partner-led implementation.",
+          "A dedicated Consumer Health software engineer is building health features directly into ChatGPT, distinct from the enterprise-facing healthcare roles \u2014 the team is simultaneously pursuing direct-to-consumer health AI and B2B clinical deployment as separate engineering tracks."
+        ],
+        "agriculture": [],
+        "education": [
+          "Six of nine roles are engineering, product, and design positions building educational features directly into ChatGPT \u2014 not a separate product but learning tools embedded in the core consumer app, spanning adaptive experiences, youth safety, and institutional deployments.",
+          "Three roles (Account Director, Applied AI Architect, Global Head of Education GTM) form a full go-to-market stack selling specifically to higher education institutions, K-12 districts, and governments \u2014 a dedicated sales and deployment operation unusually built out for a product team this size.",
+          "The Tech Lead Manager role explicitly names applied research on how AI affects learning outcomes, paired with the Product Manager for Learning focused on educational capabilities \u2014 embedding learning-science research directly into the product development cycle rather than treating it as a separate function."
+        ]
+      },
+      "social_impact_bullets": [
+        "Twenty-three of the 34 roles serve government and national security customers \u2014 spanning sales, engineering, delivery, cyber, and legal \u2014 constituting a full-stack, in-house government business unit rather than a liaison office or partnership desk.",
+        "Education and health roles (six combined) pair product engineers and applied researchers with go-to-market and institutional account leads, embedding OpenAI directly into universities, K-12 districts, and clinical settings as an integrated provider, not just an API vendor.",
+        "Accessibility, youth safety, and policy roles (four total) are built into product design and global affairs teams, meaning inclusive-design and governance standards are staffed as permanent internal functions alongside the revenue-facing government and education units."
+      ],
+      "shift": [
+        "Pulling back from training infra/compute (\u22125) and robotics/embodied (\u22123): the largest net declines, signaling reduced near-term investment in foundational training capacity and physical-world AI.",
+        "Leaning into product/app layer (+3) and agents/tool-use (+2): the strongest positive shifts, with new roles spanning ChatGPT features, enterprise delivery, and browser-use agent infrastructure."
+      ]
+    },
+    "Cohere": {
+      "building": [
+        "Agentic systems are the single most heavily staffed capability \u2014 10 roles spanning modeling (Agent Code, Agentic Environments), forward-deployed customer implementation across four geographies (Europe, Korea, UK Public Sector, NORAM), platform engineering management, and dedicated agent safety research, making this a full vertical, not a feature team.",
+        "Security is treated as a product surface, not just an infrastructure function \u2014 across 4+ roles, Cohere is building security-specific agents (Software Engineer, Security Agents), product security for the AI platform, and a dedicated safety-and-security researcher for agentic systems, an unusual combination that wires security into the model layer itself.",
+        "Post-training and RL are staffed as distinct, parallel efforts across 5 roles that separately cover reinforcement learning environments, RL generalization research, preference optimization, integration engineering, and dedicated post-training data infrastructure \u2014 each with its own pipeline, not a single monolithic RLHF team.",
+        "Data pipeline investment is unusually broad and domain-specific \u2014 6 roles cover web-scale data curation, synthetic data generation, engineering-domain annotation specialists, generalist annotation, foundational data engineering, and post-training data infrastructure, building the full data supply chain in-house rather than relying on vendor labeling.",
+        "Inference and model efficiency are staffed as a combined research-and-systems concern \u2014 5 roles pair infrastructure SREs and serving engineers with research scientists working on quantization, compression, and audio-specific inference optimization, treating cost-per-token as a first-class research problem alongside uptime.",
+        "Sovereign AI appears as a distinct deployment track with its own modeling role and a forward-deployed engineer \u2014 just two hires, but the existence of a dedicated MTS role for \"geopolitically isolated regions\" alongside a customer-facing counterpart signals a self-contained capability, not ad hoc consulting.",
+        "Pretraining research is concentrated in data selection and multilingual coverage rather than architecture \u2014 5 roles focus on pre-training data curation, web data modeling, multilingual capabilities, and core modeling, with no dedicated architecture-search or scaling-laws hire visible, weighting the research bench toward what goes into the model over how the model is structured."
+      ],
+      "selling": [
+        "Eight roles explicitly target government buyers \u2014 US civilian, federal defense/intelligence, SLED East and West, UK public sector, Germany public sector, France defense, and EMEA public sector leadership \u2014 staffing public sector as a standalone vertical with its own sales hierarchy, not a subset of enterprise.",
+        "Forward-deployed infrastructure engineers are placed in five specific markets (Middle East, South Korea, Singapore, UK public sector) alongside solutions architects and customer success managers in those same regions, embedding technical delivery capacity on the ground rather than supporting deals remotely from headquarters.",
+        "Japan gets both a dedicated account executive and a separate partner development manager; AWS gets its own partner development manager \u2014 suggesting channel and co-sell motions are being built market-by-market with named partners.",
+        "Energy/oil-and-gas and technology each get a named strategic account executive, while the META region and Nordics each get dedicated sales or solutions architecture coverage \u2014 Cohere is slicing its go-to-market by industry vertical and sub-region simultaneously, not choosing one axis over the other.",
+        "Three executive communications roles (executive producer, senior manager, product/technology comms manager) are embedded within this go-to-market hiring wave, signaling notable investment in leadership messaging and product narrative.",
+        "Every customer-facing description opens with \"security-first enterprise AI\" \u2014 across all 38 roles, the positioning is uniform, anchoring the entire sales motion on data security and deployment control rather than model benchmarks or cost."
+      ],
+      "vertical_bullets": {
+        "health_rd": [],
+        "health_delivery": [],
+        "agriculture": [],
+        "education": []
+      },
+      "social_impact_bullets": [
+        "Fourteen of the 16 roles sell, deploy, or manage AI products for government and public-sector buyers \u2014 not nonprofits, not underserved communities. The dominant thrust is commercial revenue from government customers across the US, UK, Canada, France, Germany, and the Middle East.",
+        "The public-sector push is unusually broad geographically and functionally: it spans sales executives, forward-deployed engineers, technical program managers, and customer success \u2014 suggesting a full go-to-market and delivery stack oriented around government accounts.",
+        "Three government affairs and public policy roles (US, Middle East, global compute/sovereign AI) sit alongside this sales apparatus, making regulatory access and policy advocacy a direct companion to revenue pursuit rather than a standalone civic function."
+      ],
+      "shift": [
+        "Cohere is leaning into post-training/RL (+2), the only theme with positive momentum this week, opening both a research and a data-infrastructure role in that area.",
+        "It is pulling back broadly across agents/tool-use, training infra, inference, pretraining, and evals (each \u22121 to \u22122), suggesting consolidation outside the post-training pipeline."
+      ]
+    },
+    "NVIDIA": {
+      "building": [
+        "Training infrastructure and compute represents a major share of open roles \u2014 spanning GPU architecture, ASIC design, NVLink connectivity, CUDA systems software, silicon validation, and datacenter firmware \u2014 reflecting deep vertical integration of the AI training stack.",
+        "Multiple postings target inference and serving work, with specific emphasis on RDMA-accelerated networking libraries, low-latency transport algorithms, and AI networking kernels for distributed AI inference acceleration.",
+        "A single role \u2014 Principal Architect for \"Space-1,\" described as NVIDIA's first orbital data center module \u2014 calls for end-to-end system software for a Vera Rubin\u2013class compute platform in low-Earth orbit for AI inference. This is not a research paper; it is a staffed product engineering position with a named program.",
+        "Security and hardening roles number around 38, but span an unusually broad surface: hardware threat modeling for advanced SoC packaging, secure boot firmware under extreme resource constraints, EDA cluster infrastructure security across multi-cloud, and RISC-V controller security verification \u2014 physical-layer through fleet-level, not just software guardrails.",
+        "Robotics and embodied AI carry 84 roles, and a Senior Manager posting explicitly targets agentic software systems that produce \"validated production-ready C/C++/Rust code\" for autonomous vehicles, medical robots, and humanoids \u2014 combining agent-based code generation with safety-critical certification, an unusual pairing built as a single team.",
+        "Post-training and model optimization surface in at least one dedicated role \u2014 a Senior Architect position tying post-training research directly to next-generation GPU architecture definition, embedding model-level tuning into silicon planning.",
+        "Developer platforms, data pipelines, and evaluation roles appear only sporadically across the postings, while infrastructure, firmware, and systems software positions dominate \u2014 NVIDIA is hiring overwhelmingly to build the substrate others will use."
+      ],
+      "selling": [
+        "Networking is staffed as a standalone sales and engineering vertical, not bundled into general compute: 8+ roles span segment sales for host networking (DPUs, SuperNICs), switch networking solution engineers, InfiniBand/NVLink support, and Ethernet AI infrastructure \u2014 a dedicated go-to-market for the fabric connecting GPU clusters, sold separately from the GPUs themselves.",
+        "Developer relations is deployed into narrow industrial and scientific verticals at unusual depth: individual manager-level hires target manufacturing agentic AI, telecom 6G/AI-RAN, higher-education research labs, and Chinese industrial optimization (cuOpt) \u2014 each a single role scoped to one community, not generalist evangelism.",
+        "Enterprise sales is organized by named industry segment, not geography alone: dedicated account managers exist for financial services/banking, energy and retail, government/smart spaces, and cloud service providers, with 6+ such roles \u2014 NVIDIA staffs sector-specific sellers who learn one buyer's language rather than covering territory generically.",
+        "Solutions architecture is the dominant technical GTM function, with 15+ roles spanning AI infrastructure readiness, OEM deployment, Oracle AI software integration, agentic AI, data science, DevOps, and MEP datacenter engineering \u2014 these are pre- and post-sale deployment engineers embedded in the selling motion, not a separate support org.",
+        "China gets its own business-development and developer-relations pipeline distinct from broader APAC: a BD intern role explicitly targets \"developers, researchers, startups, and industry leaders across China,\" and a cuOpt DevRel manager focuses on Chinese industrial and research sectors \u2014 two roles that isolate China as a separately staffed ecosystem play.",
+        "OEM field enablement is built in-house rather than left to partners: a dedicated manager designs training programs for HPE and HP Inc. sales teams to position NVIDIA GPU and AI infrastructure \u2014 NVIDIA is directly shaping how its OEM partners' own sellers talk about its products, a channel-control motion beyond typical co-selling."
+      ],
+      "vertical_bullets": {
+        "health_rd": [
+          "Four of six roles span the full arc from foundational research through inference infrastructure to go-to-market for AI-driven drug discovery and digital biology \u2014 an end-to-end productization pipeline, not just exploratory research.",
+          "Two dedicated developer relations roles target external healthcare and drug discovery communities specifically, an unusual density signaling active ecosystem-building around NVIDIA's own health AI platforms rather than general-purpose GPU sales."
+        ],
+        "health_delivery": [
+          "Five of seven roles are developer relations or enterprise account management positions spanning three continents (EMEA, APAC, DACH), showing health delivery GPU and AI sales structured as a global field operation, not a centralized product team.",
+          "Two roles explicitly focus on agentic and physical AI in healthcare \u2014 autonomous AI agents and robotics \u2014 paired together in a developer relations function, an unusual combination that treats embodied and software-agent AI as a single healthcare category.",
+          "A single dedicated role targets healthcare AI startups across APAC, functioning as ecosystem development rather than direct sales, indicating a distinct channel strategy to seed early-stage adoption separate from the enterprise account coverage seen elsewhere."
+        ],
+        "agriculture": [],
+        "education": [
+          "Seven solutions architect and developer relations roles concentrate on getting university researchers to adopt NVIDIA's AI platforms \u2014 not selling hardware, but driving hands-on technical adoption of software stacks like CUDA and open-source LLMs inside academic labs.",
+          "Three of the thirteen roles target multimodal and physical/robotics AI for higher education, an unusually specific concentration that pairs embodied AI with the university research setting rather than with industrial or commercial robotics customers.",
+          "Foundational AI models receive dedicated developer relations staffing (three roles), separate from the HPC and supercomputing track (which has its own account manager and solutions architect) \u2014 the education vertical is organized around two distinct technical communities, not treated as one."
+        ]
+      },
+      "social_impact_bullets": [
+        "Ten of fourteen roles target higher education, research institutions, and national labs \u2014 a density that makes universities NVIDIA's primary public-sector counterpart, served not through a single team but through dedicated solutions architects, account managers, and developer relations managers simultaneously.",
+        "The technical depth staffed for these academic partners is striking: solutions architects specializing in agentic AI, multimodal/physical AI, quantum computing, open-source LLMs, and HPC are all built in-house and pointed at researchers, not commercial customers \u2014 NVIDIA is embedding its own engineering capacity directly into the research pipeline.",
+        "Local and national government work accounts for just four roles, split between sales, smart-spaces marketing, agentic AI architecture, and a local-government solution architect \u2014 present but thin compared to the heavy university investment, and oriented toward AI deployment enablement rather than policy or civic-engagement functions."
+      ],
+      "shift": [
+        "NVIDIA is pulling back from training infra/compute (\u221217) and inference/serving (\u221211), its two largest capability areas, suggesting a consolidation or reprioritization cycle in core infrastructure hiring.",
+        "The clearest positive signal is a lean into robotics/embodied (+9) and developer platform (+5), though absolute numbers are modest \u2014 directional but not yet a dramatic pivot."
+      ]
+    },
+    "ByteDance": {
+      "building": [
+        "Agents and tool-use appear across a large share of postings \u2014 spanning Agent frameworks, MCP tool ecosystems, and multi-Agent orchestration in production products across e-commerce, livestream, HR, legal, finance, and merchant operations.",
+        "ByteDance is designing and fabricating its own AI accelerator chips end-to-end: 20+ roles span SoC architecture, ASIC RTL design, UVM verification, interconnect protocols, operator compilers, inference runtimes, BSP/firmware, and multi-card driver stacks \u2014 a full custom-silicon program with proprietary AI cores, not just software adaptation for third-party hardware.",
+        "AI Coding is treated as an internal productivity transformation, not a standalone product: 10+ roles across Douyin AI, AI Data, and AI Platform teams embed code generation, test assistance, code review, and \"Harness Engineering\" methodology directly into real development workflows, with dedicated evaluation product managers measuring agent effectiveness on actual frontend, backend, and client engineering tasks.",
+        "The AI Data & Safety team runs a factory-scale data production operation for foundation model training: 15+ roles build cross-modal data pipelines, synthetic data generation, human-AI collaborative annotation platforms, automated quality inspection, and data flywheels \u2014 staffed with product managers, data engineers, and operations specialists working alongside Seed researchers and external data vendors.",
+        "A distinct cluster of world-model roles \u2014 spanning application product, model training data, Agent/engineering, and embodied-AI directions \u2014 builds multimodal spatiotemporal datasets, teleoperation pipelines, Sim2Real strategies, and video generation data, tying world models simultaneously to content generation and to robotics training rather than treating them as separate efforts.",
+        "Enterprise AI is being deployed internally at organizational scale: 10+ roles across the corporate information systems group build AI Agents for finance, HR, procurement, and legal workflows, with a unified MCP/Skill/CLI tool platform, dedicated RAG knowledge systems, and separate evaluation product managers constructing benchmarks specifically for enterprise Agent accuracy and task completion.",
+        "A single AI for Science performance optimization role targets molecular force fields and protein cofolding models with CUDA, Triton, and compiler-level optimizations \u2014 a narrow but concrete investment in scientific computing that sits inside the Seed research group alongside the foundation model effort rather than in a separate applied-science division."
+      ],
+      "selling": [
+        "Volcano Ark MaaS is staffed as a standalone commercial platform with 6+ dedicated roles spanning solutions architects, vendor supply operations managers, and forward-deployed engineers \u2014 selling enterprise model inference, fine-tuning, and evaluation as a managed service to external customers, not just hosting internal Doubao models.",
+        "Feishu's go-to-market apparatus treats AI Agents as the central selling motion: 8+ roles across solution architects, content marketers, pre-sales consultants, and ecosystem ISV partner managers all explicitly build, demo, or sell Agent-based workflows \u2014 the commercialization push is Agent-first, not generic SaaS collaboration.",
+        "Telecom operators are carved out as a named vertical with a dedicated business development role selling AI subscription bundles \u2014 Token packages, Agent subscriptions, and compute resources \u2014 through China Mobile, China Telecom, and China Unicom's provincial branches, a carrier-channel distribution model distinct from direct enterprise sales.",
+        "A single AI for Science solutions engineer targets biotech and materials R&D buyers with molecular dynamics, quantum chemistry, and high-throughput experiment tooling \u2014 an unusually specialized scientific-computing SaaS offering sold alongside the broader cloud portfolio, not a generic horizontal play.",
+        "International sales for BytePlus AI cloud is built through a trainee-to-expat pipeline: 3+ roles cover growth marketing, sales training operations, and junior sales consultants explicitly groomed for overseas deployment, indicating a headquarters-seeded expansion motion rather than local-market hiring.",
+        "Douyin's internal product teams embed AI product managers directly into e-commerce transaction flows \u2014 5+ roles apply LLM and Agent capabilities to merchant-creator matching, intelligent customer service, search marketing, and ad frequency control, monetizing AI as an efficiency layer inside ByteDance's own commerce engine rather than selling it externally."
+      ],
+      "vertical_bullets": {
+        "health_rd": [
+          "Six of eight roles span a full AI-driven drug discovery and molecular science stack built in-house \u2014 from CADD/molecular dynamics and generative molecular design through automation engineering for pharma pipelines \u2014 an unusually vertically integrated effort for a consumer-internet company.",
+          "Three roles under the Xiaohe Health brand build a medical LLM product (\"\u5c0f\u8377AI\u533b\u751f\") end-to-end: multimodal pretraining, reinforcement learning, reliability/evidence frameworks, and medical data delivery \u2014 combining model training with a live consumer healthcare app already in market.",
+          "A dedicated solutions engineer role is commercializing the AI for Science platform as a SaaS product for external biotech and pharma customers, pairing it with a research scientist hiring in the same team \u2014 showing simultaneous investment in both R&D capability and revenue-generating product sales."
+        ],
+        "health_delivery": [
+          "Eleven of fifteen roles build a single consumer product \u2014 the \"\u5c0f\u8377AI\u533b\u751f\" app \u2014 spanning foundation-model post-training (SFT, RL, MOPD), agent reliability engineering, RAG knowledge systems, mobile clients, and medical evaluation pipelines, all developed in-house rather than wrapped around third-party models.",
+          "Two duplicate solution-architect roles sell Volcano Engine's medical AI to hospitals for clinical imaging diagnosis, EHR structuring, and intelligent triage, while a separate To-B strategy product manager packages Xiahe's own medical LLM for hospital customers \u2014 showing two parallel enterprise channels into the same buyer.",
+          "A dedicated medical-model training product manager owns SFT and RLHF alignment data pipelines, paired with a separate LLM evaluation/data engineer building automated benchmarking and a medical-aesthetics evaluation consultant defining compliance \"gold standard\" datasets \u2014 three distinct roles whose sole function is governing training-data quality and model safety, an unusual density of alignment-focused hiring for a single health product."
+        ],
+        "agriculture": [],
+        "education": [
+          "Two full product lines \u2014 Douban Aixue for China and Gauth for international markets \u2014 each carry their own product managers, subject researchers, and strategy PMs, showing a parallel dual-track education operation.",
+          "Roughly a third of all roles (11+) are subject-specific curriculum researchers and data annotators spanning math, physics, chemistry, biology, Chinese, English, and humanities, all focused on labeling answer correctness, defining \"ideal\" model outputs, and evaluating AIGC quality \u2014 an unusually heavy investment in human judgment infrastructure to train and benchmark education-specific LLMs.",
+          "Three Volcano Engine solution-architect roles and two enterprise sales roles target universities, vocational schools, and research labs with cloud and AI platforms, while a separate Lark sales role sells into education enterprises \u2014 a B2B education channel operating entirely outside the consumer tutoring products, monetizing ByteDance's infrastructure stack to institutional buyers."
+        ]
+      },
+      "social_impact_bullets": [
+        "All three roles sell or deploy Volcano Engine AI and cloud products into government agencies, universities, vocational schools, and national research laboratories \u2014 ByteDance is channeling its commercial AI platform directly into public-sector institutions, not building a dedicated nonprofit or civic-tech unit.",
+        "The government-facing role (1 of 3) goes beyond generic cloud sales: it requires on-site client fieldwork, scenario research, and custom AI Agent architecture design with tool calling \u2014 embedding product-development functions inside public-sector engagements rather than handing off packaged software.",
+        "Two of the three roles are enterprise sales positions targeting education and research, covering overlapping but distinct customer sets (universities, vocational schools, scientific labs), suggesting education-research may function as a significant vertical for Volcano Engine."
+      ],
+      "shift": [
+        "Pulling back hardest from training infra/compute (\u221277) and agents/tool-use (\u221231): heavy closures across both themes far outpace new openings, signaling consolidation after prior buildouts.",
+        "Marginal lean into alignment & safety (+3) and pretraining (+1): the only net-positive themes, though gains are tiny \u2014 too small to call a decisive pivot; overall signal is broad contraction, not reallocation."
+      ]
+    },
+    "Tencent": {
+      "building": [
+        "Agent/tool-use is the most prominent hiring theme, spanning dozens of roles across gaming NPCs, enterprise WeChat, securities, merchant operations, cloud servers, and internal DevOps, each building its own planning, memory, and orchestration stacks.",
+        "Tencent is building a full custom AI chip vertical in-house: 12+ roles span operator kernel optimization, compiler and runtime testing, inference/training framework development, and software ecosystem construction for proprietary silicon \u2014 a complete software stack effort, not just chip evaluation or procurement.",
+        "Inference and serving optimization significantly outweighs pretraining in role count, with dedicated work on edge inference latency, KVCache offloading, Serverless inference platforms, heterogeneous GPU/NPU scheduling, and model compression.",
+        "Game studios account for an outsized share of technically ambitious AI work: reinforcement learning for bot decision-making, controllable video generation with RL post-training, AI-native game engines with agentic capabilities, real-time NPC dialogue, and multimodal content understanding for game data \u2014 with numerous roles treating games as a primary research surface for frontier AI techniques.",
+        "Security and red-teaming roles explicitly target AI-native attack surfaces \u2014 prompt injection defense, Agent misuse, tool-call auditing, sandbox isolation, MCP/skills supply-chain risk, and automated vulnerability discovery via AI Agents \u2014 across 11+ roles, treating the Agent itself as both threat vector and offensive tool rather than only guarding traditional software.",
+        "Post-training and RL work (28 roles) is tightly coupled to product verticals \u2014 game NPC fine-tuning via DPO/GRPO, controllable video generation with RL, Agent quality evaluation flywheel loops, and reward-model-driven content moderation \u2014 rather than housed in a central alignment or research team, embedding RLHF-style iteration directly into shipping products.",
+        "Evaluation and benchmarking is being built as dedicated infrastructure, not a side task: 16+ roles design custom benchmarks (SWE-bench, AgentBench adaptations), automated eval pipelines, regression detection, A/B testing harnesses, and side-by-side comparison platforms specifically for Agent and LLM products like CodeBuddy and WorkBuddy, with engineers titled solely around evaluation work."
+      ],
+      "selling": [
+        "WorkBuddy and CodeBuddy \u2014 Tencent's AI office assistant and AI coding assistant \u2014 appear across 8+ distinct roles spanning pre-sales, private deployment, security architecture, and field engineering, each with dedicated solution architects and consultants. These are being sold as standalone enterprise products with their own GTM apparatus, not bundled cloud features.",
+        "Southeast Asia receives the densest geographic hiring concentration: 10+ roles name Thailand, Indonesia, Singapore, or Malaysia explicitly, covering solution architecture, strategic sales, and pre-sales across AI-native cloud and GenAI. Tencent Cloud is staffing country-level technical selling capacity in this region, not running it from a central hub.",
+        "Agentic AI channel ecosystem building is a standalone motion with at least 3 dedicated roles \u2014 channel growth managers tasked with recruiting AI Agent developers, model API aggregators, and distribution partners globally. Tencent is constructing a partner layer specifically for agent orchestration and MaaS, separate from its general cloud channel program.",
+        "Enterprise WeChat is being sold as an AI application platform, not just a messaging tool: 3+ roles focus on co-creating AI solutions with ecosystem partners, delivering intelligent tables, robots, and WorkBuddy integrations to mid-market customers, and designing replicable AI \"solution packages\" for batch conversion across industry cohorts.",
+        "Cultural tourism and retail each have dedicated vertical sales and consulting teams (4+ roles combined) pairing major-account sellers with AI digitalization consultants who engage C-level stakeholders on store operations, marketing automation, and outbound expansion \u2014 a consultative, industry-specific selling motion rather than horizontal cloud sales.",
+        "A senior strategic sales executive targets Singapore's public sector for generative AI and cloud, alongside a dedicated Hong Kong/Macau solutions architect building industry benchmark scenarios \u2014 Tencent is staffing named positions in markets outside mainland China."
+      ],
+      "vertical_bullets": {
+        "health_rd": [],
+        "health_delivery": [
+          "Three of four roles embed AI directly into clinical and health-management product design \u2014 UX for AI assistants, AI-driven clinical decision support, AI interactive workflows \u2014 showing AI is not a backend capability but the core surface being designed for end users.",
+          "A single dedicated overseas delivery manager role paired with a cloud architect targeting large pharmaceutical and medical-institution customers shows Tencent Cloud's healthcare solutions are being packaged for international markets with explicit HIPAA/GDPR compliance requirements, not just domestic deployment.",
+          "The two UX design roles split cleanly between B2B clinical products (hospital-facing decision support) and consumer-facing health management (mini-program AI assistant, insurance modules), indicating parallel product tracks serving both provider and patient sides of healthcare delivery from the same division."
+        ],
+        "agriculture": [],
+        "education": [
+          "Two roles span two entirely different education segments \u2014 a gig-economy job-matching platform applying AI to employment services, and a premium entrepreneurship curriculum program for founders \u2014 showing education efforts split between mass-market AI-powered platforms and elite cohort-based learning, an unusual pairing under one vertical."
+        ]
+      },
+      "social_impact_bullets": [
+        "Both roles center on navigating government and public-sector relationships around AI \u2014 one shaping global AI regulatory policy, the other selling generative-AI cloud services directly to Southeast Asian public-sector bodies. The beneficiary in each case is a state or regulatory institution, not a consumer.",
+        "Just two roles, but they pair an unusual combination: an international AI regulatory and public affairs function alongside a public-sector generative AI sales role in Southeast Asia, suggesting Tencent may be aligning policy engagement with commercial expansion."
+      ],
+      "shift": [
+        "Leaning into training infra/compute (+10) and agents/tool-use (+8): Tencent is aggressively building custom AI chip stacks and deploying agent frameworks across commerce, securities, and collaboration products.",
+        "Pulling back from multimodal (\u22124) and data pipeline (\u22124): Both saw net closures, suggesting de-prioritization or consolidation of earlier hiring pushes in these areas."
+      ]
+    },
+    "Amazon AGI": {
+      "building": [
+        "The single largest concentration of roles is product and application layer work spanning advertising, healthcare, life sciences, seller tools, Prime Video content creation, and fulfillment, meaning generative AI is being wired into virtually every Amazon business line simultaneously.",
+        "Agentic AI roles appear across AWS Bedrock AgentCore, Amazon Seller Assistant multi-agent systems, Ring home agentic AI, QuickSuite enterprise agents, and autonomous cloud-migration agents \u2014 treating agentic architecture as a horizontal capability rather than a single product.",
+        "AI security is staffed across multiple dedicated roles with workstreams for real-time agent behavioral monitoring, prompt injection detection, MCP server validation, and automated remediation \u2014 built specifically around agentic and generative AI failure modes.",
+        "Amazon is investing in robotics and embodied-AI roles spanning vision-language-action models for RIVR delivery robots, reinforcement-learning motor control for the Fauna program, and GO-AI operations scaling in fulfillment centers.",
+        "Edge AI is a distinct, recurring hiring pattern across at least three device families \u2014 Ring cameras, Blink cameras, and Alexa Echo devices \u2014 with roles spanning on-device model optimization, multimodal inference on constrained hardware, and computer vision, making on-device intelligence a parallel deployment target alongside cloud.",
+        "Alignment, interpretability, and safety as labeled disciplines account for fewer than ten roles total, while the responsible-AI headcount focuses on governance tooling, regulatory compliance tracking, and fairness auditing across thousands of existing AI systems \u2014 the investment is in operational compliance infrastructure, not in frontier alignment research.",
+        "Post-training and RL work (roughly 40 roles) includes an explicit \"RL Gyms\" effort under Frontier AI Assets to advance LLM capabilities, sitting alongside reinforcement learning for robotics motor control \u2014 RL investment splits between language-model capability improvement and physical-world control rather than concentrating on RLHF-style preference tuning alone."
+      ],
+      "selling": [
+        "Agentic AI is the single most concentrated product focus across 15+ specialist, solutions architect, and GTM roles \u2014 spanning Amazon Bedrock, AgentCore, and Amazon Connect \u2014 with dedicated partner, sales, and architecture hires all organized around autonomous agent systems as a distinct product category.",
+        "Amazon Connect's applied AI capability has its own layered GTM motion of 6+ roles combining executive AI strategists doing C-suite business development with dedicated solutions architects handling technical adoption \u2014 a full-stack sales team for one vertical product, not a shared resource pool.",
+        "Frontier AI startups are carved out as a named customer segment with dedicated account managers and solutions architects (5+ roles), separated from general startup coverage \u2014 treating foundation-model builders as a distinct, high-touch cohort rather than routing them through standard startup programs.",
+        "Japan gets its own AI Specialist Solution Architect hires with Japanese-language postings (2+ roles), while LATAM has dedicated Sr. AI Engineers and applied AI architects \u2014 geographic expansion of technical sales capacity into non-English markets staffed with in-region, language-native specialists.",
+        "Partner marketing and partner GTM specialists (4+ roles) are hired specifically to manage relationships with frontier model providers like Anthropic and OpenAI and to build co-sell motions around semantic data layers and agentic frameworks \u2014 the partner channel is structured around AI model vendors, not traditional system integrators.",
+        "Internal Amazon marketplace teams are hiring AI product managers (2+ roles) focused on seller recruitment, cross-border commerce, and delivery optimization \u2014 applying generative AI inward to Amazon's own retail and logistics operations, a separate motion from the customer-facing AWS sales organization."
+      ],
+      "vertical_bullets": {
+        "health_rd": [
+          "Fourteen of the 25 roles sit in AWS Applied AI Solutions or Professional Services explicitly building and delivering \"AI teammates\" and agentic AI systems for life sciences customers \u2014 clinical trial acceleration, drug discovery workflows, and enterprise HCLS transformation \u2014 making agentic AI the dominant product concept across the entire vertical.",
+          "A parallel Special Projects unit (2 roles) operates outside the AWS services org, building ML inference infrastructure and applied healthcare AI models for internal scientists to \"develop new products,\" indicating an in-house life sciences R&D effort distinct from the customer-facing AWS business.",
+          "Six go-to-market and account executive roles \u2014 spanning business development leads, ProServe account executives, and customer solutions managers \u2014 are dedicated solely to selling HCLS AI transformation programs, an unusually heavy sales-side investment that matches the builder headcount nearly one-for-one."
+        ],
+        "health_delivery": [
+          "AWS Applied AI Solutions accounts for roughly 20 of these roles \u2014 SDEs, applied scientists, principal PMs, and a dedicated go-to-market solutions architect \u2014 all building turnkey, end-to-end healthcare AI products on Amazon Connect, not just platform tooling but packaged vertical applications.",
+          "A parallel block of 15+ Professional Services delivery consultants and engagement managers, heavily concentrated on data platform architecture and AI-ready data pipelines for healthcare organizations, signals that customer data estates are the binding constraint to deploying the AI products the first group builds.",
+          "A single Sr. Principal Scientist role calls out building a \"domain-specific healthcare foundation model\" with \"high-reliability inference\" for clinical applications \u2014 the only foundation-model hire in the set, sitting inside Amazon Health rather than AWS, indicating an in-house clinical model effort separate from general-purpose AWS offerings."
+        ],
+        "agriculture": [
+          "A single Solutions Architect role pairs agriculture explicitly with AI and cloud services on the AWS sales side \u2014 the function is customer-facing solution selling, not internal product development, meaning AWS is actively pursuing external agriculture clients as a named vertical."
+        ],
+        "education": [
+          "AWS has built a dedicated EdTech ISV sales motion with 10+ account manager and business development roles spanning generative AI adoption, Bedrock platform sales, and regional strategy leads covering LATAM, APJ, and global markets \u2014 a full go-to-market apparatus, not exploratory headcount.",
+          "Three senior \"Head of Education Strategy\" and \"Research and AI Lead\" roles define where AWS invests across entire continental regions and set customer prioritization for higher education, research institutions, and ministries of education \u2014 executive-level market-shaping positions paired with the field sales team above.",
+          "A separate cluster of learning-experience and content-creation roles (6+) builds education products aimed at Amazon's own ecosystem \u2014 seller onboarding curricula, vendor education with explicitly \"AI-native\" learning embedded in platforms, and Amazon Ads certification courseware \u2014 distinct from the outward-facing AWS education business."
+        ]
+      },
+      "social_impact_bullets": [
+        "Across the large majority of listed roles, Amazon is selling AWS cloud and AI services to government agencies, public healthcare systems, and defense organizations \u2014 the \"social impact\" label here overwhelmingly describes government enterprise sales, not humanitarian or nonprofit work.",
+        "Education-sector roles (roughly 8\u201310) focus on higher-education institutional sales, EdTech partner growth, and research cloud adoption \u2014 framed as market strategy and revenue, with a single disability-hiring training program in Japan standing as the lone workforce-equity outlier.",
+        "Fewer than five roles across the entire set name nonprofits, NGOs, or underserved communities as a beneficiary at all, and none center on direct humanitarian aid or civic equity \u2014 the dominant thrust is commercializing AWS AI to public-sector buyers, not deploying technology for populations that lack market power."
+      ],
+      "shift": [
+        "Leaning into training infra/compute (+14 net), the strongest upward signal this week, alongside modest gains in security/misuse and inference/serving.",
+        "Pulling back from agents/tool-use (\u22128 net), the largest downward swing, despite continued high volume\u2014suggesting portfolio rebalancing rather than retreat."
+      ]
+    },
+    "Microsoft Research": {
+      "building": [
+        "Training infrastructure and compute represents a major hiring theme, with numerous roles spanning GPU kernel optimization, HPC cluster reliability, network performance for AI supercomputing, rack-scale architecture, and ML workflow orchestration.",
+        "Agentic AI is the clear application-layer concentration \u2014 13 roles across multiple teams build multi-step agent workflows, tool/API integration, memory and state management, multi-agent collaboration, and LLM orchestration, with nearly all descriptions specifying production deployment rather than research prototyping.",
+        "AI frameworks work is unusually deep and replicated \u2014 six dedicated roles (three Principal, three Senior) all own performance tooling, runtimes, and benchmarking systems for model deployment, an in-house investment in the full serving and developer-productivity stack that parallels but sits outside the inference-serving team itself.",
+        "Security and responsible AI hiring splits into two distinct tracks that never overlap: four roles focus on offensive model evaluations, exploit-development tasks, attack detection, and threat hunting infrastructure, while three separate Responsible AI roles build large-scale governance cloud services and RLHF fine-tuning \u2014 adversarial capability testing is staffed apart from safety mitigation.",
+        "Copilot product engineering is broadly distributed across surfaces \u2014 nine roles build Copilot experiences spanning Edge browser, Windows, Mac, mobile, M365 communications, and developer tools, each requiring end-to-end feature ownership across voice, vision, text, and action modalities, making Copilot a cross-platform integration effort rather than a single-product team.",
+        "Healthcare is a specific vertical with its own applied AI bench \u2014 two dedicated Member of Technical Staff roles design LLM evaluation systems, benchmarking, regression testing, and agentic workflows exclusively for the health domain, a domain-specialized evaluation function carved out from the general responsible-AI apparatus.",
+        "A single quantum engineering role sits among dozens of AI-focused postings, applying AI tools to topological physics and quantum device development \u2014 a residual research mandate inside a hiring wave otherwise organized around large-scale language model infrastructure and deployment."
+      ],
+      "selling": [
+        "Across 10+ roles, \"AI Business Process\" and \"AI Workforce\" specialists sell Copilot, Copilot Studio, Viva, and AI Agents directly to business decision makers \u2014 not IT buyers \u2014 making line-of-business transformation the core sales conversation, not infrastructure procurement.",
+        "Japan accounts for the densest single-country cluster: 7+ roles spanning enterprise AI workforce specialists, data/AI solution engineers for education, and a dedicated field integrated marketing lead, all with Japanese-language descriptions \u2014 a full-stack go-to-market built for one market, not a satellite office.",
+        "Solution engineers and cloud solution architects outnumber quota-carrying sellers roughly two-to-one across 30+ technical roles, each description emphasizing demos, PoCs, architecture design, and production deployment \u2014 the sales motion is hands-on technical proof, not pitch-deck persuasion.",
+        "German-, French-, Swedish-, and Dutch-speaking digital specialists fill at least five explicitly language-tagged roles selling AI Workforce and Cloud & AI to enterprise buyers in their home markets \u2014 a parallel, localized European field force operating alongside the Asia build.",
+        "A single \"Asia AI Token Ops Solution Architect\" role designs Azure AI Foundry architectures and leads TokenOps pilots across countries, combining consumption-economics evaluation with agentic AI and RAG orchestration \u2014 a novel, named sales motion appearing nowhere else in the dataset.",
+        "Dynamics 365, Power Platform, and Contact Center surface repeatedly inside \"AI Business Process\" role descriptions alongside Copilot and autonomous agents, bundled as one solution area sold by the same specialists \u2014 the go-to-market treats CRM/ERP and generative AI as a single offering, not adjacent product lines."
+      ],
+      "vertical_bullets": {
+        "health_rd": [],
+        "health_delivery": [
+          "Two of the three roles focus on building LLM evaluation and benchmarking systems for healthcare \u2014 internal regression testing for accuracy, safety, and utility \u2014 an unusual concentration on testing infrastructure rather than model development itself.",
+          "A single sales role pairs AI with \"business process\" transformation across multiple business units within large healthcare enterprises, combining consultative deal strategy with end-to-end digital transformation \u2014 bundling operational change with AI adoption rather than selling software alone."
+        ],
+        "agriculture": [],
+        "education": [
+          "Both roles are technical presales solution engineers\u2014not researchers or product builders\u2014meaning Microsoft is deploying dedicated sales-engineering capacity to architect and validate Azure solutions specifically for education customers, treating Education as a named vertical warranting its own specialist staff.",
+          "These two roles split Azure coverage for education along a data/AI versus infrastructure axis, suggesting a deliberate segmentation. Education customers are being offered the full cloud stack\u2014data governance, analytics, AI, networking, and hybrid infrastructure."
+        ]
+      },
+      "social_impact_bullets": [
+        "All six roles serve public-sector and education customers \u2014 government agencies, federal entities, state/local bodies, and schools \u2014 making the entire social-impact hiring footprint here a dedicated public-institution sales and architecture operation, not a research or philanthropy effort.",
+        "Four of the six roles are explicitly scoped to government (federal, state, local), with descriptions emphasizing compliance, sovereignty, security requirements, and customer advocacy feeding back to Microsoft leadership \u2014 a concentrated investment in embedding AI business-process tools inside government operations.",
+        "The two education-focused roles are technical solution engineers designing Azure data and infrastructure stacks for education customers, with the data role explicitly involving technical presales and architecture validation."
+      ],
+      "shift": [
+        "Pulling back heavily from training infra/compute (\u2212259), product/app layer (\u221266), and security/misuse (\u221259): massive closures across core infrastructure and safety roles dominate this week's signal.",
+        "Leaning modestly into agents/tool-use (+14 opened): the largest cluster of new openings centers on agentic AI solutions, though net change remains negative (\u221224) due to simultaneous closures."
+      ]
+    }
+  },
   "jobs": [
     {
       "id": "greenhouse-anthropic-4461450008",
