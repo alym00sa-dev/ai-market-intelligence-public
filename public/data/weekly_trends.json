@@ -23274,6 +23274,1483 @@
           }
         }
       }
+    },
+    {
+      "week": "2026-10-14",
+      "baseline": false,
+      "by_company": {
+        "Anthropic": {
+          "total": 650,
+          "new": 44,
+          "removed": 38,
+          "social_impact": 39,
+          "new_social_impact": 3,
+          "dist": {
+            "category": {
+              "sales_gtm": 200,
+              "engineering": 164,
+              "research": 51,
+              "operations": 235
+            },
+            "sub_area": {
+              "sales": 69,
+              "customer_success": 26,
+              "platform_infra": 60,
+              "business_development": 25,
+              "research": 51,
+              "marketing": 25,
+              "hr": 16,
+              "finance": 53,
+              "solutions": 58,
+              "facilities": 24,
+              "product_management": 19,
+              "legal": 19,
+              "program_management": 40,
+              "policy": 14,
+              "security": 43,
+              "trust_safety": 43,
+              "software_engineering": 58,
+              "hardware": 2,
+              "design": 5
+            },
+            "vertical": {
+              "health_rd": 19,
+              "education": 6,
+              "health_delivery": 3
+            },
+            "theme": {
+              "training_infra_compute": 72,
+              "alignment_safety": 5,
+              "post_training_rl": 20,
+              "developer_platform": 32,
+              "product_app_layer": 66,
+              "agents_tool_use": 19,
+              "reasoning": 3,
+              "evals_red_teaming": 6,
+              "data_pipeline": 5,
+              "security_misuse": 28,
+              "inference_serving": 19,
+              "interpretability": 3,
+              "biosecurity_cbrn": 8,
+              "foundation_pretraining": 7,
+              "multimodal": 1
+            }
+          },
+          "new_dist": {
+            "category": {
+              "sales_gtm": 16,
+              "research": 1,
+              "operations": 17,
+              "engineering": 10
+            },
+            "sub_area": {
+              "solutions": 6,
+              "research": 1,
+              "sales": 6,
+              "facilities": 1,
+              "finance": 6,
+              "software_engineering": 4,
+              "product_management": 4,
+              "marketing": 3,
+              "customer_success": 1,
+              "policy": 2,
+              "security": 5,
+              "design": 1,
+              "hr": 2,
+              "platform_infra": 2
+            },
+            "vertical": {
+              "health_rd": 2
+            },
+            "theme": {
+              "developer_platform": 5,
+              "product_app_layer": 6,
+              "reasoning": 1,
+              "training_infra_compute": 3,
+              "security_misuse": 1,
+              "alignment_safety": 1
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "engineering": 6,
+              "sales_gtm": 17,
+              "operations": 15
+            },
+            "sub_area": {
+              "software_engineering": 1,
+              "solutions": 7,
+              "business_development": 5,
+              "sales": 3,
+              "platform_infra": 3,
+              "security": 2,
+              "finance": 8,
+              "design": 1,
+              "facilities": 1,
+              "marketing": 2,
+              "trust_safety": 2,
+              "policy": 3
+            },
+            "vertical": {
+              "education": 1,
+              "health_rd": 1
+            },
+            "theme": {
+              "product_app_layer": 5,
+              "data_pipeline": 1,
+              "security_misuse": 2,
+              "developer_platform": 1,
+              "training_infra_compute": 2,
+              "post_training_rl": 1
+            }
+          }
+        },
+        "Google": {
+          "total": 2301,
+          "new": 619,
+          "removed": 437,
+          "social_impact": 44,
+          "new_social_impact": 11,
+          "dist": {
+            "category": {
+              "sales_gtm": 622,
+              "operations": 651,
+              "engineering": 922,
+              "research": 106
+            },
+            "sub_area": {
+              "solutions": 241,
+              "program_management": 282,
+              "sales": 270,
+              "software_engineering": 468,
+              "research": 106,
+              "hardware": 240,
+              "business_development": 41,
+              "platform_infra": 97,
+              "marketing": 37,
+              "trust_safety": 29,
+              "finance": 35,
+              "legal": 18,
+              "customer_success": 29,
+              "product_management": 94,
+              "design": 53,
+              "security": 48,
+              "facilities": 176,
+              "policy": 30,
+              "hr": 7
+            },
+            "vertical": {
+              "health_rd": 10,
+              "education": 30,
+              "agriculture": 2,
+              "health_delivery": 21
+            },
+            "theme": {
+              "agents_tool_use": 110,
+              "product_app_layer": 113,
+              "training_infra_compute": 352,
+              "alignment_safety": 22,
+              "developer_platform": 24,
+              "inference_serving": 31,
+              "multimodal": 26,
+              "robotics_embodied": 11,
+              "security_misuse": 65,
+              "data_pipeline": 20,
+              "evals_red_teaming": 13,
+              "biosecurity_cbrn": 11,
+              "foundation_pretraining": 11,
+              "reasoning": 1,
+              "post_training_rl": 4
+            }
+          },
+          "new_dist": {
+            "category": {
+              "sales_gtm": 157,
+              "research": 31,
+              "engineering": 248,
+              "operations": 183
+            },
+            "sub_area": {
+              "sales": 70,
+              "research": 31,
+              "solutions": 55,
+              "software_engineering": 136,
+              "hardware": 65,
+              "business_development": 7,
+              "platform_infra": 17,
+              "program_management": 79,
+              "finance": 10,
+              "legal": 7,
+              "security": 12,
+              "facilities": 54,
+              "product_management": 23,
+              "design": 17,
+              "trust_safety": 6,
+              "marketing": 12,
+              "policy": 5,
+              "hr": 2,
+              "customer_success": 11
+            },
+            "vertical": {
+              "health_rd": 5,
+              "health_delivery": 8,
+              "education": 5
+            },
+            "theme": {
+              "agents_tool_use": 16,
+              "product_app_layer": 29,
+              "training_infra_compute": 97,
+              "multimodal": 10,
+              "inference_serving": 13,
+              "security_misuse": 17,
+              "data_pipeline": 11,
+              "developer_platform": 7,
+              "alignment_safety": 9,
+              "biosecurity_cbrn": 9,
+              "foundation_pretraining": 7,
+              "reasoning": 1,
+              "robotics_embodied": 2,
+              "evals_red_teaming": 2
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "engineering": 192,
+              "sales_gtm": 110,
+              "operations": 112,
+              "research": 23
+            },
+            "sub_area": {
+              "software_engineering": 100,
+              "hardware": 51,
+              "solutions": 38,
+              "facilities": 29,
+              "platform_infra": 16,
+              "sales": 46,
+              "legal": 4,
+              "product_management": 23,
+              "business_development": 8,
+              "program_management": 39,
+              "marketing": 12,
+              "security": 9,
+              "research": 23,
+              "trust_safety": 7,
+              "design": 6,
+              "finance": 13,
+              "policy": 4,
+              "hr": 2,
+              "customer_success": 7
+            },
+            "vertical": {
+              "education": 3,
+              "health_rd": 1,
+              "agriculture": 1,
+              "health_delivery": 1
+            },
+            "theme": {
+              "agents_tool_use": 20,
+              "product_app_layer": 40,
+              "training_infra_compute": 71,
+              "developer_platform": 4,
+              "security_misuse": 13,
+              "multimodal": 10,
+              "foundation_pretraining": 3,
+              "robotics_embodied": 5,
+              "inference_serving": 3,
+              "evals_red_teaming": 4,
+              "alignment_safety": 4,
+              "data_pipeline": 4,
+              "reasoning": 1,
+              "post_training_rl": 2
+            }
+          }
+        },
+        "xAI": {
+          "total": 303,
+          "new": 15,
+          "removed": 19,
+          "social_impact": 0,
+          "new_social_impact": 0,
+          "dist": {
+            "category": {
+              "operations": 158,
+              "research": 21,
+              "engineering": 110,
+              "sales_gtm": 14
+            },
+            "sub_area": {
+              "hr": 6,
+              "research": 21,
+              "software_engineering": 36,
+              "security": 14,
+              "platform_infra": 57,
+              "facilities": 125,
+              "sales": 8,
+              "legal": 7,
+              "marketing": 3,
+              "program_management": 10,
+              "trust_safety": 10,
+              "business_development": 2,
+              "product_management": 3,
+              "solutions": 1
+            },
+            "vertical": {},
+            "theme": {
+              "post_training_rl": 21,
+              "security_misuse": 9,
+              "training_infra_compute": 87,
+              "inference_serving": 2,
+              "product_app_layer": 19,
+              "data_pipeline": 6,
+              "evals_red_teaming": 3,
+              "multimodal": 3,
+              "foundation_pretraining": 2,
+              "reasoning": 1,
+              "developer_platform": 1,
+              "alignment_safety": 1
+            }
+          },
+          "new_dist": {
+            "category": {
+              "engineering": 4,
+              "operations": 11
+            },
+            "sub_area": {
+              "platform_infra": 1,
+              "facilities": 5,
+              "software_engineering": 1,
+              "program_management": 3,
+              "hr": 1,
+              "security": 2,
+              "legal": 2
+            },
+            "vertical": {},
+            "theme": {
+              "training_infra_compute": 3,
+              "security_misuse": 1,
+              "data_pipeline": 1
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "research": 9,
+              "operations": 9,
+              "engineering": 1
+            },
+            "sub_area": {
+              "research": 9,
+              "hr": 3,
+              "facilities": 4,
+              "legal": 2,
+              "software_engineering": 1
+            },
+            "vertical": {},
+            "theme": {
+              "post_training_rl": 9,
+              "training_infra_compute": 2,
+              "data_pipeline": 1
+            }
+          }
+        },
+        "OpenAI": {
+          "total": 806,
+          "new": 33,
+          "removed": 56,
+          "social_impact": 34,
+          "new_social_impact": 2,
+          "dist": {
+            "category": {
+              "operations": 207,
+              "research": 52,
+              "engineering": 285,
+              "sales_gtm": 262
+            },
+            "sub_area": {
+              "program_management": 56,
+              "research": 51,
+              "software_engineering": 153,
+              "facilities": 32,
+              "security": 25,
+              "platform_infra": 54,
+              "marketing": 44,
+              "solutions": 104,
+              "customer_success": 43,
+              "hr": 21,
+              "finance": 43,
+              "product_management": 18,
+              "hardware": 36,
+              "sales": 59,
+              "trust_safety": 16,
+              "business_development": 20,
+              "legal": 11,
+              "policy": 13,
+              "design": 7
+            },
+            "vertical": {
+              "health_rd": 7,
+              "health_delivery": 7,
+              "education": 9
+            },
+            "theme": {
+              "training_infra_compute": 100,
+              "product_app_layer": 143,
+              "post_training_rl": 19,
+              "security_misuse": 37,
+              "data_pipeline": 16,
+              "agents_tool_use": 31,
+              "foundation_pretraining": 5,
+              "alignment_safety": 16,
+              "evals_red_teaming": 10,
+              "inference_serving": 24,
+              "robotics_embodied": 18,
+              "multimodal": 8,
+              "interpretability": 2,
+              "developer_platform": 7,
+              "reasoning": 2
+            }
+          },
+          "new_dist": {
+            "category": {
+              "operations": 9,
+              "sales_gtm": 17,
+              "engineering": 6,
+              "research": 1
+            },
+            "sub_area": {
+              "facilities": 3,
+              "sales": 8,
+              "software_engineering": 4,
+              "solutions": 3,
+              "finance": 3,
+              "marketing": 3,
+              "program_management": 1,
+              "business_development": 1,
+              "hr": 2,
+              "security": 1,
+              "product_management": 1,
+              "customer_success": 2,
+              "research": 1
+            },
+            "vertical": {
+              "education": 2
+            },
+            "theme": {
+              "product_app_layer": 7,
+              "post_training_rl": 1,
+              "data_pipeline": 1,
+              "security_misuse": 1,
+              "agents_tool_use": 2,
+              "training_infra_compute": 1,
+              "evals_red_teaming": 1
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "sales_gtm": 18,
+              "engineering": 10,
+              "operations": 28
+            },
+            "sub_area": {
+              "sales": 4,
+              "software_engineering": 2,
+              "finance": 4,
+              "hardware": 6,
+              "platform_infra": 1,
+              "program_management": 8,
+              "customer_success": 2,
+              "solutions": 4,
+              "trust_safety": 7,
+              "business_development": 4,
+              "marketing": 6,
+              "design": 2,
+              "policy": 1,
+              "hr": 1,
+              "legal": 1,
+              "product_management": 1,
+              "facilities": 2
+            },
+            "vertical": {},
+            "theme": {
+              "inference_serving": 2,
+              "training_infra_compute": 6,
+              "robotics_embodied": 3,
+              "product_app_layer": 4,
+              "developer_platform": 1,
+              "alignment_safety": 1
+            }
+          }
+        },
+        "Cohere": {
+          "total": 119,
+          "new": 6,
+          "removed": 15,
+          "social_impact": 16,
+          "new_social_impact": 0,
+          "dist": {
+            "category": {
+              "engineering": 36,
+              "research": 22,
+              "sales_gtm": 38,
+              "operations": 23
+            },
+            "sub_area": {
+              "software_engineering": 23,
+              "research": 22,
+              "program_management": 7,
+              "policy": 4,
+              "platform_infra": 7,
+              "solutions": 10,
+              "security": 4,
+              "sales": 17,
+              "product_management": 3,
+              "finance": 4,
+              "trust_safety": 1,
+              "marketing": 6,
+              "business_development": 6,
+              "customer_success": 2,
+              "facilities": 1,
+              "hr": 1,
+              "design": 1
+            },
+            "vertical": {},
+            "theme": {
+              "foundation_pretraining": 5,
+              "multimodal": 1,
+              "training_infra_compute": 5,
+              "product_app_layer": 7,
+              "post_training_rl": 5,
+              "evals_red_teaming": 4,
+              "agents_tool_use": 12,
+              "security_misuse": 4,
+              "inference_serving": 5,
+              "data_pipeline": 6,
+              "alignment_safety": 2,
+              "developer_platform": 2
+            }
+          },
+          "new_dist": {
+            "category": {
+              "operations": 3,
+              "research": 1,
+              "engineering": 2
+            },
+            "sub_area": {
+              "facilities": 1,
+              "research": 1,
+              "design": 1,
+              "software_engineering": 2,
+              "policy": 1
+            },
+            "vertical": {},
+            "theme": {
+              "post_training_rl": 2,
+              "product_app_layer": 1
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "engineering": 7,
+              "operations": 5,
+              "research": 1,
+              "sales_gtm": 2
+            },
+            "sub_area": {
+              "software_engineering": 6,
+              "platform_infra": 1,
+              "finance": 2,
+              "research": 1,
+              "legal": 1,
+              "business_development": 1,
+              "solutions": 1,
+              "facilities": 1,
+              "program_management": 1
+            },
+            "vertical": {},
+            "theme": {
+              "training_infra_compute": 2,
+              "agents_tool_use": 2,
+              "inference_serving": 1,
+              "product_app_layer": 2,
+              "foundation_pretraining": 1,
+              "evals_red_teaming": 1
+            }
+          }
+        },
+        "NVIDIA": {
+          "total": 1998,
+          "new": 203,
+          "removed": 275,
+          "social_impact": 14,
+          "new_social_impact": 2,
+          "dist": {
+            "category": {
+              "sales_gtm": 344,
+              "engineering": 1375,
+              "operations": 205,
+              "research": 74
+            },
+            "sub_area": {
+              "solutions": 181,
+              "platform_infra": 306,
+              "software_engineering": 468,
+              "hardware": 520,
+              "program_management": 108,
+              "facilities": 39,
+              "business_development": 30,
+              "security": 41,
+              "finance": 34,
+              "research": 74,
+              "product_management": 42,
+              "marketing": 66,
+              "sales": 60,
+              "legal": 7,
+              "hr": 8,
+              "customer_success": 8,
+              "trust_safety": 2,
+              "design": 2,
+              "policy": 2
+            },
+            "vertical": {
+              "health_rd": 6,
+              "education": 13,
+              "health_delivery": 7
+            },
+            "theme": {
+              "agents_tool_use": 54,
+              "inference_serving": 173,
+              "training_infra_compute": 872,
+              "security_misuse": 39,
+              "post_training_rl": 12,
+              "developer_platform": 30,
+              "evals_red_teaming": 8,
+              "multimodal": 24,
+              "data_pipeline": 13,
+              "robotics_embodied": 104,
+              "product_app_layer": 24,
+              "foundation_pretraining": 10,
+              "alignment_safety": 3
+            }
+          },
+          "new_dist": {
+            "category": {
+              "sales_gtm": 38,
+              "engineering": 135,
+              "operations": 19,
+              "research": 11
+            },
+            "sub_area": {
+              "solutions": 19,
+              "platform_infra": 23,
+              "software_engineering": 57,
+              "facilities": 4,
+              "business_development": 3,
+              "hardware": 45,
+              "security": 5,
+              "research": 11,
+              "product_management": 6,
+              "marketing": 7,
+              "sales": 6,
+              "program_management": 10,
+              "legal": 1,
+              "hr": 1,
+              "finance": 2,
+              "customer_success": 3
+            },
+            "vertical": {
+              "education": 1
+            },
+            "theme": {
+              "agents_tool_use": 11,
+              "inference_serving": 18,
+              "training_infra_compute": 80,
+              "security_misuse": 4,
+              "post_training_rl": 1,
+              "developer_platform": 6,
+              "data_pipeline": 2,
+              "robotics_embodied": 15,
+              "multimodal": 1,
+              "evals_red_teaming": 1
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "sales_gtm": 62,
+              "engineering": 168,
+              "operations": 40,
+              "research": 5
+            },
+            "sub_area": {
+              "solutions": 35,
+              "hardware": 57,
+              "software_engineering": 74,
+              "product_management": 4,
+              "facilities": 6,
+              "research": 5,
+              "program_management": 21,
+              "platform_infra": 29,
+              "finance": 6,
+              "security": 6,
+              "sales": 15,
+              "business_development": 6,
+              "marketing": 6,
+              "hr": 3,
+              "design": 1,
+              "legal": 1
+            },
+            "vertical": {
+              "agriculture": 1,
+              "education": 1
+            },
+            "theme": {
+              "training_infra_compute": 97,
+              "evals_red_teaming": 3,
+              "agents_tool_use": 10,
+              "inference_serving": 29,
+              "security_misuse": 4,
+              "robotics_embodied": 6,
+              "product_app_layer": 4,
+              "developer_platform": 1,
+              "multimodal": 2,
+              "data_pipeline": 1
+            }
+          }
+        },
+        "ByteDance": {
+          "total": 5132,
+          "new": 185,
+          "removed": 397,
+          "social_impact": 3,
+          "new_social_impact": 0,
+          "dist": {
+            "category": {
+              "engineering": 2471,
+              "operations": 1510,
+              "research": 766,
+              "sales_gtm": 385
+            },
+            "sub_area": {
+              "software_engineering": 1450,
+              "trust_safety": 188,
+              "platform_infra": 391,
+              "program_management": 587,
+              "hardware": 135,
+              "product_management": 830,
+              "facilities": 36,
+              "business_development": 61,
+              "research": 767,
+              "legal": 19,
+              "design": 148,
+              "solutions": 110,
+              "hr": 64,
+              "finance": 44,
+              "security": 73,
+              "marketing": 96,
+              "policy": 25,
+              "customer_success": 55,
+              "sales": 52,
+              "data_pipeline": 1
+            },
+            "vertical": {
+              "health_rd": 8,
+              "education": 36,
+              "health_delivery": 15
+            },
+            "theme": {
+              "product_app_layer": 697,
+              "evals_red_teaming": 207,
+              "inference_serving": 195,
+              "post_training_rl": 287,
+              "data_pipeline": 166,
+              "training_infra_compute": 428,
+              "agents_tool_use": 1043,
+              "multimodal": 291,
+              "robotics_embodied": 44,
+              "reasoning": 21,
+              "foundation_pretraining": 58,
+              "developer_platform": 31,
+              "security_misuse": 112,
+              "alignment_safety": 26,
+              "biosecurity_cbrn": 1
+            }
+          },
+          "new_dist": {
+            "category": {
+              "engineering": 87,
+              "operations": 76,
+              "sales_gtm": 14,
+              "research": 8
+            },
+            "sub_area": {
+              "software_engineering": 22,
+              "program_management": 33,
+              "product_management": 28,
+              "hardware": 46,
+              "trust_safety": 10,
+              "hr": 1,
+              "solutions": 4,
+              "marketing": 4,
+              "sales": 2,
+              "facilities": 8,
+              "platform_infra": 4,
+              "business_development": 1,
+              "research": 8,
+              "policy": 3,
+              "design": 6,
+              "finance": 2,
+              "security": 2,
+              "customer_success": 1
+            },
+            "vertical": {
+              "health_rd": 1
+            },
+            "theme": {
+              "training_infra_compute": 43,
+              "agents_tool_use": 19,
+              "data_pipeline": 3,
+              "evals_red_teaming": 5,
+              "inference_serving": 5,
+              "product_app_layer": 17,
+              "multimodal": 3,
+              "security_misuse": 3,
+              "alignment_safety": 3,
+              "developer_platform": 1,
+              "post_training_rl": 3,
+              "foundation_pretraining": 1
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "engineering": 233,
+              "operations": 116,
+              "research": 25,
+              "sales_gtm": 23
+            },
+            "sub_area": {
+              "hardware": 91,
+              "platform_infra": 43,
+              "program_management": 39,
+              "software_engineering": 71,
+              "product_management": 43,
+              "research": 25,
+              "business_development": 1,
+              "facilities": 1,
+              "solutions": 6,
+              "trust_safety": 24,
+              "design": 24,
+              "marketing": 15,
+              "customer_success": 6,
+              "sales": 2,
+              "hr": 1,
+              "finance": 3,
+              "security": 1,
+              "legal": 1
+            },
+            "vertical": {
+              "health_delivery": 6
+            },
+            "theme": {
+              "training_infra_compute": 120,
+              "inference_serving": 14,
+              "agents_tool_use": 50,
+              "evals_red_teaming": 16,
+              "post_training_rl": 10,
+              "product_app_layer": 45,
+              "developer_platform": 2,
+              "multimodal": 11,
+              "security_misuse": 4,
+              "data_pipeline": 8,
+              "robotics_embodied": 3,
+              "interpretability": 2
+            }
+          }
+        },
+        "Tencent": {
+          "total": 751,
+          "new": 77,
+          "removed": 67,
+          "social_impact": 2,
+          "new_social_impact": 1,
+          "dist": {
+            "category": {
+              "engineering": 354,
+              "operations": 228,
+              "research": 84,
+              "sales_gtm": 85
+            },
+            "sub_area": {
+              "platform_infra": 112,
+              "software_engineering": 188,
+              "product_management": 122,
+              "policy": 3,
+              "program_management": 60,
+              "marketing": 11,
+              "research": 84,
+              "solutions": 45,
+              "sales": 12,
+              "design": 60,
+              "business_development": 21,
+              "security": 11,
+              "hardware": 5,
+              "finance": 7,
+              "trust_safety": 3,
+              "facilities": 3,
+              "hr": 1,
+              "legal": 2,
+              "customer_success": 1
+            },
+            "vertical": {
+              "health_delivery": 4,
+              "education": 2
+            },
+            "theme": {
+              "training_infra_compute": 54,
+              "agents_tool_use": 130,
+              "product_app_layer": 71,
+              "multimodal": 33,
+              "data_pipeline": 23,
+              "evals_red_teaming": 19,
+              "foundation_pretraining": 8,
+              "inference_serving": 62,
+              "security_misuse": 14,
+              "reasoning": 3,
+              "post_training_rl": 30,
+              "interpretability": 1,
+              "developer_platform": 6,
+              "robotics_embodied": 3,
+              "alignment_safety": 2
+            }
+          },
+          "new_dist": {
+            "category": {
+              "engineering": 43,
+              "sales_gtm": 5,
+              "operations": 22,
+              "research": 7
+            },
+            "sub_area": {
+              "platform_infra": 15,
+              "sales": 2,
+              "product_management": 12,
+              "software_engineering": 21,
+              "program_management": 4,
+              "hardware": 3,
+              "research": 7,
+              "design": 6,
+              "business_development": 2,
+              "facilities": 2,
+              "security": 1,
+              "finance": 1,
+              "solutions": 1
+            },
+            "vertical": {
+              "health_delivery": 2,
+              "education": 1
+            },
+            "theme": {
+              "training_infra_compute": 12,
+              "agents_tool_use": 18,
+              "product_app_layer": 7,
+              "inference_serving": 6,
+              "post_training_rl": 3,
+              "evals_red_teaming": 2,
+              "security_misuse": 1,
+              "data_pipeline": 1,
+              "multimodal": 2,
+              "developer_platform": 1
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "operations": 24,
+              "engineering": 31,
+              "research": 4,
+              "sales_gtm": 8
+            },
+            "sub_area": {
+              "product_management": 20,
+              "software_engineering": 20,
+              "research": 4,
+              "program_management": 5,
+              "design": 6,
+              "solutions": 2,
+              "platform_infra": 3,
+              "sales": 1,
+              "marketing": 4,
+              "customer_success": 1,
+              "hr": 1
+            },
+            "vertical": {
+              "health_rd": 1
+            },
+            "theme": {
+              "product_app_layer": 9,
+              "post_training_rl": 4,
+              "multimodal": 6,
+              "data_pipeline": 5,
+              "agents_tool_use": 10,
+              "evals_red_teaming": 1,
+              "inference_serving": 6,
+              "training_infra_compute": 2
+            }
+          }
+        },
+        "Amazon AGI": {
+          "total": 6269,
+          "new": 689,
+          "removed": 680,
+          "social_impact": 116,
+          "new_social_impact": 15,
+          "dist": {
+            "category": {
+              "engineering": 1950,
+              "sales_gtm": 1708,
+              "research": 413,
+              "operations": 2198
+            },
+            "sub_area": {
+              "software_engineering": 1179,
+              "solutions": 898,
+              "business_development": 239,
+              "research": 413,
+              "product_management": 333,
+              "program_management": 1023,
+              "legal": 112,
+              "security": 139,
+              "marketing": 132,
+              "sales": 303,
+              "design": 153,
+              "trust_safety": 38,
+              "finance": 198,
+              "hr": 350,
+              "platform_infra": 182,
+              "hardware": 201,
+              "facilities": 225,
+              "customer_success": 130,
+              "policy": 14,
+              "data_pipeline": 7
+            },
+            "vertical": {
+              "health_delivery": 99,
+              "health_rd": 25,
+              "education": 119,
+              "agriculture": 2
+            },
+            "theme": {
+              "inference_serving": 132,
+              "agents_tool_use": 515,
+              "product_app_layer": 796,
+              "security_misuse": 211,
+              "training_infra_compute": 381,
+              "alignment_safety": 6,
+              "multimodal": 49,
+              "data_pipeline": 189,
+              "interpretability": 2,
+              "robotics_embodied": 164,
+              "developer_platform": 33,
+              "evals_red_teaming": 28,
+              "post_training_rl": 46,
+              "foundation_pretraining": 16,
+              "reasoning": 14
+            }
+          },
+          "new_dist": {
+            "category": {
+              "sales_gtm": 185,
+              "operations": 236,
+              "engineering": 236,
+              "research": 32
+            },
+            "sub_area": {
+              "solutions": 91,
+              "program_management": 116,
+              "design": 14,
+              "software_engineering": 148,
+              "research": 32,
+              "security": 7,
+              "platform_infra": 31,
+              "business_development": 26,
+              "trust_safety": 7,
+              "sales": 36,
+              "hardware": 15,
+              "hr": 38,
+              "product_management": 34,
+              "customer_success": 15,
+              "facilities": 16,
+              "legal": 14,
+              "marketing": 17,
+              "finance": 24,
+              "policy": 2,
+              "data_pipeline": 6
+            },
+            "vertical": {
+              "health_delivery": 14,
+              "health_rd": 4,
+              "education": 17
+            },
+            "theme": {
+              "agents_tool_use": 51,
+              "product_app_layer": 89,
+              "inference_serving": 16,
+              "robotics_embodied": 17,
+              "multimodal": 4,
+              "security_misuse": 19,
+              "training_infra_compute": 41,
+              "data_pipeline": 32,
+              "foundation_pretraining": 1,
+              "developer_platform": 6,
+              "evals_red_teaming": 4,
+              "post_training_rl": 4
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "sales_gtm": 209,
+              "operations": 231,
+              "research": 47,
+              "engineering": 193
+            },
+            "sub_area": {
+              "solutions": 93,
+              "design": 22,
+              "sales": 45,
+              "research": 47,
+              "software_engineering": 138,
+              "platform_infra": 14,
+              "business_development": 37,
+              "legal": 8,
+              "program_management": 96,
+              "finance": 18,
+              "product_management": 24,
+              "security": 6,
+              "marketing": 20,
+              "data_pipeline": 5,
+              "facilities": 38,
+              "hardware": 17,
+              "trust_safety": 1,
+              "customer_success": 14,
+              "hr": 36,
+              "policy": 1
+            },
+            "vertical": {
+              "health_delivery": 16,
+              "education": 11,
+              "health_rd": 3,
+              "agriculture": 2
+            },
+            "theme": {
+              "product_app_layer": 89,
+              "evals_red_teaming": 2,
+              "agents_tool_use": 59,
+              "post_training_rl": 5,
+              "data_pipeline": 33,
+              "training_infra_compute": 27,
+              "robotics_embodied": 18,
+              "alignment_safety": 1,
+              "security_misuse": 15,
+              "inference_serving": 13,
+              "developer_platform": 3,
+              "multimodal": 4,
+              "foundation_pretraining": 1
+            }
+          }
+        },
+        "Microsoft Research": {
+          "total": 210,
+          "new": 57,
+          "removed": 2015,
+          "social_impact": 6,
+          "new_social_impact": 1,
+          "dist": {
+            "category": {
+              "sales_gtm": 127,
+              "engineering": 54,
+              "operations": 22,
+              "research": 7
+            },
+            "sub_area": {
+              "sales": 32,
+              "software_engineering": 36,
+              "solutions": 80,
+              "program_management": 11,
+              "research": 7,
+              "trust_safety": 2,
+              "platform_infra": 9,
+              "finance": 1,
+              "marketing": 11,
+              "hr": 7,
+              "business_development": 4,
+              "product_management": 3,
+              "security": 4,
+              "facilities": 1,
+              "hardware": 2
+            },
+            "vertical": {
+              "health_delivery": 3,
+              "education": 2
+            },
+            "theme": {
+              "agents_tool_use": 37,
+              "product_app_layer": 15,
+              "training_infra_compute": 27,
+              "alignment_safety": 3,
+              "developer_platform": 1,
+              "evals_red_teaming": 2,
+              "inference_serving": 7,
+              "post_training_rl": 2,
+              "data_pipeline": 1,
+              "security_misuse": 5
+            }
+          },
+          "new_dist": {
+            "category": {
+              "sales_gtm": 37,
+              "operations": 5,
+              "engineering": 14,
+              "research": 1
+            },
+            "sub_area": {
+              "sales": 10,
+              "trust_safety": 1,
+              "solutions": 19,
+              "software_engineering": 10,
+              "platform_infra": 3,
+              "program_management": 3,
+              "marketing": 7,
+              "business_development": 1,
+              "research": 1,
+              "facilities": 1,
+              "product_management": 1
+            },
+            "vertical": {},
+            "theme": {
+              "alignment_safety": 2,
+              "agents_tool_use": 14,
+              "product_app_layer": 3,
+              "training_infra_compute": 6,
+              "inference_serving": 2,
+              "security_misuse": 1
+            }
+          },
+          "removed_dist": {
+            "category": {
+              "sales_gtm": 500,
+              "operations": 545,
+              "engineering": 608,
+              "other": 300,
+              "research": 62
+            },
+            "sub_area": {
+              "solutions": 259,
+              "business_development": 39,
+              "program_management": 161,
+              "security": 47,
+              "software_engineering": 362,
+              "unknown": 300,
+              "platform_infra": 35,
+              "research": 62,
+              "hardware": 116,
+              "facilities": 249,
+              "product_management": 73,
+              "sales": 110,
+              "customer_success": 72,
+              "hr": 23,
+              "finance": 27,
+              "legal": 17,
+              "design": 19,
+              "marketing": 34,
+              "policy": 10
+            },
+            "vertical": {
+              "education": 14,
+              "health_delivery": 9
+            },
+            "theme": {
+              "product_app_layer": 69,
+              "security_misuse": 60,
+              "agents_tool_use": 38,
+              "inference_serving": 17,
+              "training_infra_compute": 265,
+              "post_training_rl": 3,
+              "multimodal": 1,
+              "evals_red_teaming": 3,
+              "robotics_embodied": 1,
+              "foundation_pretraining": 5,
+              "data_pipeline": 9,
+              "developer_platform": 11,
+              "alignment_safety": 2,
+              "reasoning": 2
+            }
+          }
+        }
+      },
+      "totals": {
+        "total": 18539,
+        "new": 1928,
+        "removed": 3999,
+        "social_impact": 274,
+        "new_social_impact": 35,
+        "dist": {
+          "category": {
+            "sales_gtm": 3785,
+            "engineering": 7721,
+            "research": 1596,
+            "operations": 5437
+          },
+          "sub_area": {
+            "sales": 882,
+            "customer_success": 294,
+            "platform_infra": 1275,
+            "business_development": 449,
+            "research": 1596,
+            "marketing": 431,
+            "hr": 481,
+            "finance": 419,
+            "solutions": 1728,
+            "facilities": 662,
+            "product_management": 1467,
+            "legal": 195,
+            "program_management": 2184,
+            "policy": 105,
+            "security": 402,
+            "trust_safety": 332,
+            "software_engineering": 4059,
+            "hardware": 1141,
+            "design": 429,
+            "data_pipeline": 8
+          },
+          "vertical": {
+            "health_rd": 75,
+            "education": 217,
+            "health_delivery": 159,
+            "agriculture": 4
+          },
+          "theme": {
+            "training_infra_compute": 2378,
+            "alignment_safety": 86,
+            "post_training_rl": 446,
+            "developer_platform": 167,
+            "product_app_layer": 1951,
+            "agents_tool_use": 1951,
+            "reasoning": 45,
+            "evals_red_teaming": 300,
+            "data_pipeline": 445,
+            "security_misuse": 524,
+            "inference_serving": 650,
+            "interpretability": 8,
+            "biosecurity_cbrn": 20,
+            "foundation_pretraining": 122,
+            "multimodal": 436,
+            "robotics_embodied": 344
+          }
+        },
+        "new_dist": {
+          "category": {
+            "sales_gtm": 469,
+            "research": 93,
+            "operations": 581,
+            "engineering": 785
+          },
+          "sub_area": {
+            "solutions": 198,
+            "research": 93,
+            "sales": 140,
+            "facilities": 95,
+            "finance": 48,
+            "software_engineering": 405,
+            "product_management": 109,
+            "marketing": 53,
+            "customer_success": 33,
+            "policy": 13,
+            "security": 35,
+            "design": 45,
+            "hr": 47,
+            "platform_infra": 96,
+            "hardware": 174,
+            "business_development": 41,
+            "program_management": 249,
+            "legal": 24,
+            "trust_safety": 24,
+            "data_pipeline": 6
+          },
+          "vertical": {
+            "health_rd": 12,
+            "health_delivery": 24,
+            "education": 26
+          },
+          "theme": {
+            "developer_platform": 26,
+            "product_app_layer": 159,
+            "reasoning": 2,
+            "training_infra_compute": 286,
+            "security_misuse": 48,
+            "alignment_safety": 15,
+            "agents_tool_use": 131,
+            "multimodal": 20,
+            "inference_serving": 60,
+            "data_pipeline": 51,
+            "biosecurity_cbrn": 9,
+            "foundation_pretraining": 9,
+            "robotics_embodied": 34,
+            "evals_red_teaming": 15,
+            "post_training_rl": 14
+          }
+        },
+        "removed_dist": {
+          "category": {
+            "engineering": 1449,
+            "sales_gtm": 949,
+            "research": 176,
+            "operations": 1125,
+            "other": 300
+          },
+          "sub_area": {
+            "software_engineering": 775,
+            "solutions": 445,
+            "business_development": 101,
+            "sales": 226,
+            "platform_infra": 145,
+            "hardware": 338,
+            "research": 176,
+            "hr": 70,
+            "facilities": 331,
+            "finance": 81,
+            "program_management": 370,
+            "product_management": 188,
+            "design": 81,
+            "trust_safety": 41,
+            "marketing": 99,
+            "customer_success": 102,
+            "security": 71,
+            "legal": 35,
+            "data_pipeline": 5,
+            "unknown": 300,
+            "policy": 19
+          },
+          "vertical": {
+            "health_rd": 6,
+            "health_delivery": 32,
+            "education": 30,
+            "agriculture": 4
+          },
+          "theme": {
+            "product_app_layer": 267,
+            "data_pipeline": 62,
+            "agents_tool_use": 189,
+            "training_infra_compute": 594,
+            "post_training_rl": 34,
+            "inference_serving": 85,
+            "robotics_embodied": 36,
+            "evals_red_teaming": 30,
+            "multimodal": 34,
+            "developer_platform": 23,
+            "security_misuse": 98,
+            "interpretability": 2,
+            "alignment_safety": 8,
+            "foundation_pretraining": 10,
+            "reasoning": 3
+          }
+        }
+      }
     }
   ]
 }
