@@ -5866,5 +5866,9 @@
  "XM-DAC-47015-21019_Bilateral_ComitatoInternazionaleperloSviluppodeiPopoli_Bioversity": {
   "ai": false,
   "category": "other"
+ },
+ "XM-DAC-47015-18075_Bilateral_FONDATIONBOTNAR_IFPRI": {
+  "ai": true,
+  "category": "agriculture_ai"
  }
 }
