@@ -1,9 +1,9 @@
 {
- "built_at": 1793195773,
+ "built_at": 1793282570,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 527464450,
-  "activities": 537,
+  "usd": 527538020,
+  "activities": 540,
   "donors": 62,
   "recipients": 69,
   "year_min": 2023,
@@ -14,7 +14,7 @@
    "name": "Global / multi-country",
    "iso3": null,
    "usd": 357494932,
-   "activities": 247
+   "activities": 249
   },
   {
    "name": "Argentina",
@@ -37,8 +37,8 @@
   {
    "name": "South Africa",
    "iso3": "ZAF",
-   "usd": 14115987,
-   "activities": 22
+   "usd": 14202603,
+   "activities": 23
   },
   {
    "name": "Turkey",
@@ -157,7 +157,7 @@
   {
    "name": "Ghana",
    "iso3": "GHA",
-   "usd": 668914,
+   "usd": 655868,
    "activities": 5
   },
   {
@@ -439,8 +439,8 @@
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "usd": 70740926,
-   "activities": 12
+   "usd": 70814496,
+   "activities": 15
   },
   {
    "donor": "Wellcome Trust",
@@ -746,7 +746,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 160645883
+   "usd": 160732499
   },
   {
    "code": "research",
@@ -770,7 +770,7 @@
   },
   {
    "code": "capacity_building",
-   "usd": 16697483
+   "usd": 16684437
   },
   {
    "code": "financial_inclusion",
@@ -792,7 +792,7 @@
   },
   {
    "year": 2024,
-   "usd": 351601113
+   "usd": 351588067
   },
   {
    "year": 2025,
@@ -800,7 +800,7 @@
   },
   {
    "year": 2026,
-   "usd": 2003481
+   "usd": 2090097
   }
  ],
  "flows": [
@@ -5085,25 +5085,6 @@
    ]
   },
   {
-   "id": "GB-GOV-1-301049-415",
-   "title": "Partnership Fund: UK-Ghana ST&I Partnership: AI Strategy and Media Capacity Building Project",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Ghana",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 230305,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-301049-415",
-   "allocations": [
-    {
-     "name": "Ghana",
-     "iso3": "GHA",
-     "usd": 230305
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-5989560",
    "title": "Exploring AI solutions for economic policymaking in Africa \u2013 phase II / Exploration de solutions d'IA pour l'\u00e9laboration de politiques \u00e9conomiques en Afrique \u2013 phase II",
    "donor": "Canada",
@@ -5309,6 +5290,25 @@
      "name": "Colombia",
      "iso3": "COL",
      "usd": 220000
+    }
+   ]
+  },
+  {
+   "id": "GB-GOV-1-301049-415",
+   "title": "Partnership Fund: UK-Ghana ST&I Partnership: AI Strategy and Media Capacity Building Project",
+   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
+   "recipient": "Ghana",
+   "sector": "ICT",
+   "ai_category": "capacity_building",
+   "usd": 217259,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-301049-415",
+   "allocations": [
+    {
+     "name": "Ghana",
+     "iso3": "GHA",
+     "usd": 217259
     }
    ]
   },
@@ -7407,6 +7407,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 87258
+    }
+   ]
+  },
+  {
+   "id": "GB-GOV-1-400199-411",
+   "title": "Southern Africa Bilateral - Strengthening Cross-Regulatory Digital Governance in South Africa",
+   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
+   "recipient": "South Africa",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 86616,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400199-411",
+   "allocations": [
+    {
+     "name": "South Africa",
+     "iso3": "ZAF",
+     "usd": 86616
     }
    ]
   },
@@ -11242,6 +11261,25 @@
    ]
   },
   {
+   "id": "GB-GOV-1-400101-410",
+   "title": "Tier 2: SEA - UK-SEA AI Governance Network",
+   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
+   "recipient": "Global / multi-country",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 0,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400101-410",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 0
+    }
+   ]
+  },
+  {
    "id": "XI-IATI-EBRD-54767",
    "title": "VCIP-VD - Photoneo",
    "donor": "European Bank for Reconstruction and Development",
@@ -11294,6 +11332,25 @@
     {
      "name": "PL",
      "iso3": "PL",
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "GB-GOV-1-301542-407",
+   "title": "Collaborative strategic partnership with Wellcome Trust.",
+   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "other",
+   "usd": 0,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-301542-407",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
      "usd": 0
     }
    ]

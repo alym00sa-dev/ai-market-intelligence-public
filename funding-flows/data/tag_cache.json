@@ -5870,5 +5870,17 @@
  "XM-DAC-47015-18075_Bilateral_FONDATIONBOTNAR_IFPRI": {
   "ai": true,
   "category": "agriculture_ai"
+ },
+ "GB-GOV-1-400101-410": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "GB-GOV-1-400199-411": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "GB-GOV-1-301542-407": {
+  "ai": true,
+  "category": "other"
  }
 }
