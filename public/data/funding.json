@@ -1,8 +1,8 @@
 {
- "built_at": 1793453429,
+ "built_at": 1793542290,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 527538020,
+  "usd": 527538100,
   "activities": 540,
   "donors": 62,
   "recipients": 69,
@@ -37,7 +37,7 @@
   {
    "name": "South Africa",
    "iso3": "ZAF",
-   "usd": 14202603,
+   "usd": 14202683,
    "activities": 23
   },
   {
@@ -439,7 +439,7 @@
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "usd": 70814496,
+   "usd": 70814576,
    "activities": 15
   },
   {
@@ -746,7 +746,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 160732499
+   "usd": 160732579
   },
   {
    "code": "research",
@@ -800,7 +800,7 @@
   },
   {
    "year": 2026,
-   "usd": 2090097
+   "usd": 2090177
   }
  ],
  "flows": [
@@ -7417,7 +7417,7 @@
    "recipient": "South Africa",
    "sector": "ICT",
    "ai_category": "governance_policy",
-   "usd": 86616,
+   "usd": 86696,
    "year": 2026,
    "source": "IATI",
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400199-411",
@@ -7425,7 +7425,7 @@
     {
      "name": "South Africa",
      "iso3": "ZAF",
-     "usd": 86616
+     "usd": 86696
     }
    ]
   },
