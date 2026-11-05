@@ -5882,5 +5882,9 @@
  "GB-GOV-1-301542-407": {
   "ai": true,
   "category": "other"
+ },
+ "DE-1-201920107": {
+  "ai": false,
+  "category": "governance_policy"
  }
 }
