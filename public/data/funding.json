@@ -1,10 +1,10 @@
 {
- "built_at": 1794324635,
+ "built_at": 1794409264,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 527538100,
-  "activities": 540,
-  "donors": 62,
+  "usd": 529388733,
+  "activities": 541,
+  "donors": 63,
   "recipients": 69,
   "year_min": 2023,
   "year_max": 2026
@@ -41,6 +41,12 @@
    "activities": 23
   },
   {
+   "name": "Indonesia",
+   "iso3": "IDN",
+   "usd": 7815987,
+   "activities": 10
+  },
+  {
    "name": "Turkey",
    "iso3": null,
    "usd": 7736709,
@@ -51,12 +57,6 @@
    "iso3": "NGA",
    "usd": 6871565,
    "activities": 18
-  },
-  {
-   "name": "Indonesia",
-   "iso3": "IDN",
-   "usd": 5965354,
-   "activities": 9
   },
   {
    "name": "Zimbabwe",
@@ -538,6 +538,11 @@
    "activities": 4
   },
   {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "usd": 1850633,
+   "activities": 1
+  },
+  {
    "donor": "Open Society Foundations",
    "usd": 1735000,
    "activities": 7
@@ -766,7 +771,7 @@
   },
   {
    "code": "data_systems",
-   "usd": 18876453
+   "usd": 20727086
   },
   {
    "code": "capacity_building",
@@ -796,7 +801,7 @@
   },
   {
    "year": 2025,
-   "usd": 27787501
+   "usd": 29638134
   },
   {
    "year": 2026,
@@ -980,6 +985,11 @@
    "usd": 1873373
   },
   {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "Indonesia",
+   "usd": 1850633
+  },
+  {
    "donor": "Gates Foundation",
    "recipient": "Bangladesh",
    "usd": 1772660
@@ -998,11 +1008,6 @@
    "donor": "Wellcome Trust",
    "recipient": "Senegal",
    "usd": 1544186
-  },
-  {
-   "donor": "United States",
-   "recipient": "Malawi",
-   "usd": 1524967
   }
  ],
  "activities": [
@@ -1953,6 +1958,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 1854788
+    }
+   ]
+  },
+  {
+   "id": "41AAA-23316-005",
+   "title": "Support for the Data Insights for Social & Humanitarian Action Initiative (DISHA)",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "Indonesia",
+   "sector": "ICT",
+   "ai_category": "data_systems",
+   "usd": 1850633,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-23316-005",
+   "allocations": [
+    {
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 1850633
     }
    ]
   },
@@ -7036,18 +7060,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Vietnam",
-     "iso3": "VNM",
-     "usd": 19831
-    },
-    {
-     "name": "TH",
-     "iso3": "TH",
-     "usd": 19831
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 19831
     },
     {
@@ -7056,8 +7070,18 @@
      "usd": 19831
     },
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 19831
+    },
+    {
+     "name": "TH",
+     "iso3": "TH",
+     "usd": 19831
+    },
+    {
+     "name": "Vietnam",
+     "iso3": "VNM",
      "usd": 19831
     }
    ]
@@ -11356,25 +11380,6 @@
    ]
   },
   {
-   "id": "GB-GOV-1-400868",
-   "title": "AI for Development Science Breakthroughs",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "research",
-   "usd": 0,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400868",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
    "id": "GB-GOV-1-400191-402",
    "title": "Programme Management Support for AI for Development: Responsible AI, Empowering People (\u2018AI4D\u2019)",
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -11423,6 +11428,25 @@
    "year": 2024,
    "source": "IATI",
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "GB-GOV-1-400868",
+   "title": "AI for Development Science Breakthroughs",
+   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "research",
+   "usd": 0,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400868",
    "allocations": [
     {
      "name": "Global / multi-country",
