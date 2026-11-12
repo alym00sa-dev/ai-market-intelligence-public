@@ -5890,5 +5890,21 @@
  "41AAA-23316-005": {
   "ai": true,
   "category": "data_systems"
+ },
+ "41AAA-23073-004": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "41AAA-23073-002": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "41AAA-24382-007": {
+  "ai": true,
+  "category": "governance_policy"
+ },
+ "41AAA-23073-001": {
+  "ai": true,
+  "category": "governance_policy"
  }
 }
