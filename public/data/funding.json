@@ -1,11 +1,11 @@
 {
- "built_at": 1794498845,
+ "built_at": 1794582898,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 530100826,
-  "activities": 542,
+  "usd": 528293752,
+  "activities": 541,
   "donors": 63,
-  "recipients": 72,
+  "recipients": 73,
   "year_min": 2023,
   "year_max": 2026
  },
@@ -25,8 +25,8 @@
   {
    "name": "India",
    "iso3": "IND",
-   "usd": 30004906,
-   "activities": 37
+   "usd": 31796620,
+   "activities": 38
   },
   {
    "name": "Kenya",
@@ -69,12 +69,6 @@
    "iso3": "PHL",
    "usd": 4038486,
    "activities": 5
-  },
-  {
-   "name": "FI",
-   "iso3": "FI",
-   "usd": 3892526,
-   "activities": 1
   },
   {
    "name": "Rwanda",
@@ -215,16 +209,16 @@
    "activities": 6
   },
   {
+   "name": "US",
+   "iso3": "US",
+   "usd": 376374,
+   "activities": 1
+  },
+  {
    "name": "Peru",
    "iso3": "PER",
    "usd": 340983,
    "activities": 5
-  },
-  {
-   "name": "US",
-   "iso3": "US",
-   "usd": 335190,
-   "activities": 2
   },
   {
    "name": "Thailand",
@@ -257,6 +251,12 @@
    "activities": 1
   },
   {
+   "name": "DK",
+   "iso3": "DK",
+   "usd": 202263,
+   "activities": 1
+  },
+  {
    "name": "Malaysia",
    "iso3": null,
    "usd": 194243,
@@ -281,6 +281,12 @@
    "activities": 3
   },
   {
+   "name": "ES",
+   "iso3": "ES",
+   "usd": 151535,
+   "activities": 1
+  },
+  {
    "name": "Jamaica",
    "iso3": null,
    "usd": 130000,
@@ -291,12 +297,6 @@
    "iso3": "BFA",
    "usd": 129552,
    "activities": 1
-  },
-  {
-   "name": "CH",
-   "iso3": "CH",
-   "usd": 126724,
-   "activities": 2
   },
   {
    "name": "Georgia",
@@ -357,6 +357,12 @@
    "iso3": "KHM",
    "usd": 29956,
    "activities": 3
+  },
+  {
+   "name": "CH",
+   "iso3": "CH",
+   "usd": 25481,
+   "activities": 1
   },
   {
    "name": "Dem. Rep. Congo",
@@ -452,8 +458,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 123468658,
-   "activities": 130
+   "usd": 125260372,
+   "activities": 131
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -531,11 +537,6 @@
    "activities": 3
   },
   {
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "usd": 4354440,
-   "activities": 3
-  },
-  {
    "donor": "Good Ventures Foundation",
    "usd": 3308500,
    "activities": 3
@@ -584,6 +585,11 @@
    "donor": "Belgium",
    "usd": 767283,
    "activities": 7
+  },
+  {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "usd": 755652,
+   "activities": 1
   },
   {
    "donor": "UNDP",
@@ -769,7 +775,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 165087019
+   "usd": 161488231
   },
   {
    "code": "research",
@@ -792,12 +798,12 @@
    "usd": 18876453
   },
   {
-   "code": "financial_inclusion",
-   "usd": 16548269
+   "code": "capacity_building",
+   "usd": 16684437
   },
   {
-   "code": "capacity_building",
-   "usd": 14892723
+   "code": "financial_inclusion",
+   "usd": 16548269
   },
   {
    "code": "infrastructure_compute",
@@ -811,19 +817,19 @@
  "by_year": [
   {
    "year": 2023,
-   "usd": 149964881
+   "usd": 146072355
   },
   {
    "year": 2024,
-   "usd": 349796353
+   "usd": 351588067
   },
   {
    "year": 2025,
-   "usd": 27976484
+   "usd": 27787501
   },
   {
    "year": 2026,
-   "usd": 2363108
+   "usd": 2845829
   }
  ],
  "flows": [
@@ -860,7 +866,7 @@
   {
    "donor": "Gates Foundation",
    "recipient": "India",
-   "usd": 19317496
+   "usd": 21109210
   },
   {
    "donor": "EU Institutions",
@@ -931,11 +937,6 @@
    "donor": "Canada",
    "recipient": "Global / multi-country",
    "usd": 3927561
-  },
-  {
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "FI",
-   "usd": 3892526
   },
   {
    "donor": "Gates Foundation",
@@ -1026,6 +1027,11 @@
    "donor": "Wellcome Trust",
    "recipient": "Senegal",
    "usd": 1544186
+  },
+  {
+   "donor": "United States",
+   "recipient": "Malawi",
+   "usd": 1524967
   }
  ],
  "activities": [
@@ -1463,25 +1469,6 @@
      "name": "Philippines",
      "iso3": "PHL",
      "usd": 3931821
-    }
-   ]
-  },
-  {
-   "id": "41AAA-23073-002",
-   "title": "UN Futures Lab Global Hub",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "FI",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 3892526,
-   "year": 2023,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-23073-002",
-   "allocations": [
-    {
-     "name": "FI",
-     "iso3": "FI",
-     "usd": 3892526
     }
    ]
   },
@@ -2033,6 +2020,25 @@
      "name": "India",
      "iso3": "IND",
      "usd": 1808810
+    }
+   ]
+  },
+  {
+   "id": "DAC-1601-INV-078558",
+   "title": "Support for IndiaAI Mission",
+   "donor": "Gates Foundation",
+   "recipient": "India",
+   "sector": "ICT",
+   "ai_category": "capacity_building",
+   "usd": 1791714,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-078558",
+   "allocations": [
+    {
+     "name": "India",
+     "iso3": "IND",
+     "usd": 1791714
     }
    ]
   },
@@ -3146,6 +3152,40 @@
      "name": "Brazil",
      "iso3": "BRA",
      "usd": 758893
+    }
+   ]
+  },
+  {
+   "id": "41AAA-24382-005",
+   "title": "Support to Office of the UN SG\u2019s Special Envoy on Technology: AI Governance for Humanity Lab Initiative Operations",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "4 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 755652,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-005",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 376374
+    },
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 25481
+    },
+    {
+     "name": "ES",
+     "iso3": "ES",
+     "usd": 151535
+    },
+    {
+     "name": "DK",
+     "iso3": "DK",
+     "usd": 202263
     }
    ]
   },
@@ -4519,30 +4559,6 @@
    ]
   },
   {
-   "id": "41AAA-24382-007",
-   "title": "Support to Office of the UN SG\u2019s Special Envoy on Technology: AI Scientific Panel",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "2 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 272931,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-007",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 193132
-    },
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 79799
-    }
-   ]
-  },
-  {
    "id": "CRS-2023-5876038",
    "title": "RORI - AI personalised education",
    "donor": "German Postcode Lottery",
@@ -5641,30 +5657,6 @@
      "name": "Uganda",
      "iso3": "UGA",
      "usd": 190000
-    }
-   ]
-  },
-  {
-   "id": "41AAA-23073-004",
-   "title": "UN Futures Lab Network (UNU)",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "2 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 188983,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-23073-004",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 142058
-    },
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 46925
     }
    ]
   },
@@ -7107,18 +7099,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Vietnam",
-     "iso3": "VNM",
-     "usd": 19831
-    },
-    {
-     "name": "TH",
-     "iso3": "TH",
-     "usd": 19831
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 19831
     },
     {
@@ -7127,8 +7109,18 @@
      "usd": 19831
     },
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 19831
+    },
+    {
+     "name": "TH",
+     "iso3": "TH",
+     "usd": 19831
+    },
+    {
+     "name": "Vietnam",
+     "iso3": "VNM",
      "usd": 19831
     }
    ]
@@ -11427,6 +11419,25 @@
    ]
   },
   {
+   "id": "GB-GOV-1-400191",
+   "title": "AI for Development: Responsible AI, Empowering People (\u2018AI4D\u2019)",
+   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "governance_policy",
+   "usd": 0,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 0
+    }
+   ]
+  },
+  {
    "id": "GB-GOV-1-400191-402",
    "title": "Programme Management Support for AI for Development: Responsible AI, Empowering People (\u2018AI4D\u2019)",
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -11456,25 +11467,6 @@
    "year": 2025,
    "source": "IATI",
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191-403",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
-   "id": "GB-GOV-1-400191",
-   "title": "AI for Development: Responsible AI, Empowering People (\u2018AI4D\u2019)",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "governance_policy",
-   "usd": 0,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191",
    "allocations": [
     {
      "name": "Global / multi-country",
