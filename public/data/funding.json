@@ -1,11 +1,11 @@
 {
- "built_at": 1794582898,
+ "built_at": 1794664935,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 528293752,
-  "activities": 541,
+  "usd": 529661050,
+  "activities": 543,
   "donors": 63,
-  "recipients": 73,
+  "recipients": 71,
   "year_min": 2023,
   "year_max": 2026
  },
@@ -107,6 +107,12 @@
    "activities": 5
   },
   {
+   "name": "US",
+   "iso3": "US",
+   "usd": 1674507,
+   "activities": 3
+  },
+  {
    "name": "Kazakhstan",
    "iso3": null,
    "usd": 1645275,
@@ -191,6 +197,12 @@
    "activities": 5
   },
   {
+   "name": "CH",
+   "iso3": "CH",
+   "usd": 448443,
+   "activities": 2
+  },
+  {
    "name": "Tanzania",
    "iso3": "TZA",
    "usd": 448040,
@@ -207,12 +219,6 @@
    "iso3": "PAK",
    "usd": 377462,
    "activities": 6
-  },
-  {
-   "name": "US",
-   "iso3": "US",
-   "usd": 376374,
-   "activities": 1
   },
   {
    "name": "Peru",
@@ -251,12 +257,6 @@
    "activities": 1
   },
   {
-   "name": "DK",
-   "iso3": "DK",
-   "usd": 202263,
-   "activities": 1
-  },
-  {
    "name": "Malaysia",
    "iso3": null,
    "usd": 194243,
@@ -279,12 +279,6 @@
    "iso3": "LBN",
    "usd": 155473,
    "activities": 3
-  },
-  {
-   "name": "ES",
-   "iso3": "ES",
-   "usd": 151535,
-   "activities": 1
   },
   {
    "name": "Jamaica",
@@ -357,12 +351,6 @@
    "iso3": "KHM",
    "usd": 29956,
    "activities": 3
-  },
-  {
-   "name": "CH",
-   "iso3": "CH",
-   "usd": 25481,
-   "activities": 1
   },
   {
    "name": "Dem. Rep. Congo",
@@ -562,6 +550,11 @@
    "activities": 4
   },
   {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "usd": 2122950,
+   "activities": 3
+  },
+  {
    "donor": "Open Society Foundations",
    "usd": 1735000,
    "activities": 7
@@ -585,11 +578,6 @@
    "donor": "Belgium",
    "usd": 767283,
    "activities": 7
-  },
-  {
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "usd": 755652,
-   "activities": 1
   },
   {
    "donor": "UNDP",
@@ -775,7 +763,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 161488231
+   "usd": 162855529
   },
   {
    "code": "research",
@@ -821,15 +809,15 @@
   },
   {
    "year": 2024,
-   "usd": 351588067
+   "usd": 353003800
   },
   {
    "year": 2025,
-   "usd": 27787501
+   "usd": 28492320
   },
   {
    "year": 2026,
-   "usd": 2845829
+   "usd": 2092575
   }
  ],
  "flows": [
@@ -1019,6 +1007,11 @@
    "usd": 1730000
   },
   {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "US",
+   "usd": 1674507
+  },
+  {
    "donor": "Korea",
    "recipient": "Kazakhstan",
    "usd": 1602365
@@ -1027,11 +1020,6 @@
    "donor": "Wellcome Trust",
    "recipient": "Senegal",
    "usd": 1544186
-  },
-  {
-   "donor": "United States",
-   "recipient": "Malawi",
-   "usd": 1524967
   }
  ],
  "activities": [
@@ -2461,6 +2449,30 @@
    ]
   },
   {
+   "id": "41AAA-24382-002",
+   "title": "Support to Advisory Body on Artificial Intelligence for the Office of the UN Secretary General\u2019s Special Envoy on Technology",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "2 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 1415733,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-002",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 1134948
+    },
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 280785
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6236429",
    "title": "Leveraging LLMs To Scale and Optimize Digital Health Coaching",
    "donor": "Gates Foundation",
@@ -3156,40 +3168,6 @@
    ]
   },
   {
-   "id": "41AAA-24382-005",
-   "title": "Support to Office of the UN SG\u2019s Special Envoy on Technology: AI Governance for Humanity Lab Initiative Operations",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "4 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 755652,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-005",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 376374
-    },
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 25481
-    },
-    {
-     "name": "ES",
-     "iso3": "ES",
-     "usd": 151535
-    },
-    {
-     "name": "DK",
-     "iso3": "DK",
-     "usd": 202263
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6149492",
    "title": "Digital and Artificial Intelligence Solutions for the Agriculture, Natural Resources, and Rural Development Sector",
    "donor": "Asian Development Bank",
@@ -3262,6 +3240,30 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 730704
+    }
+   ]
+  },
+  {
+   "id": "41AAA-24382-004",
+   "title": "Global Cooperation on AI Governance",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "2 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 704819,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-004",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 537160
+    },
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 167659
     }
    ]
   },
@@ -10932,6 +10934,25 @@
    ]
   },
   {
+   "id": "41AAA-24382-008",
+   "title": "Support to Office of the UN SG\u2019s Special Envoy on Technology: the Global Dialogue on Artificial Intelligence Governance",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "US",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 2398,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-008",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 2398
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6231993",
    "title": "TA by partners - Regional_11th Meeting of the Steering Committee of the Arab Statistics Initiative (ARABSTAT)",
    "donor": "World Trade Organisation",
@@ -11419,25 +11440,6 @@
    ]
   },
   {
-   "id": "GB-GOV-1-400191",
-   "title": "AI for Development: Responsible AI, Empowering People (\u2018AI4D\u2019)",
-   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "governance_policy",
-   "usd": 0,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 0
-    }
-   ]
-  },
-  {
    "id": "GB-GOV-1-400191-402",
    "title": "Programme Management Support for AI for Development: Responsible AI, Empowering People (\u2018AI4D\u2019)",
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -11467,6 +11469,25 @@
    "year": 2025,
    "source": "IATI",
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191-403",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 0
+    }
+   ]
+  },
+  {
+   "id": "GB-GOV-1-400191",
+   "title": "AI for Development: Responsible AI, Empowering People (\u2018AI4D\u2019)",
+   "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "governance_policy",
+   "usd": 0,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-1-400191",
    "allocations": [
     {
      "name": "Global / multi-country",
