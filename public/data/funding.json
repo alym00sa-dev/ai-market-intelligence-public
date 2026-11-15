@@ -1,9 +1,9 @@
 {
- "built_at": 1794664935,
+ "built_at": 1794753506,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 529661050,
-  "activities": 543,
+  "usd": 528614034,
+  "activities": 541,
   "donors": 63,
   "recipients": 71,
   "year_min": 2023,
@@ -107,12 +107,6 @@
    "activities": 5
   },
   {
-   "name": "US",
-   "iso3": "US",
-   "usd": 1674507,
-   "activities": 3
-  },
-  {
    "name": "Kazakhstan",
    "iso3": null,
    "usd": 1645275,
@@ -155,6 +149,12 @@
    "activities": 6
   },
   {
+   "name": "US",
+   "iso3": "US",
+   "usd": 852545,
+   "activities": 1
+  },
+  {
    "name": "Uganda",
    "iso3": "UGA",
    "usd": 826206,
@@ -195,12 +195,6 @@
    "iso3": "LKA",
    "usd": 540071,
    "activities": 5
-  },
-  {
-   "name": "CH",
-   "iso3": "CH",
-   "usd": 448443,
-   "activities": 2
   },
   {
    "name": "Tanzania",
@@ -248,6 +242,12 @@
    "name": "Paraguay",
    "iso3": null,
    "usd": 226218,
+   "activities": 1
+  },
+  {
+   "name": "CH",
+   "iso3": "CH",
+   "usd": 223389,
    "activities": 1
   },
   {
@@ -550,11 +550,6 @@
    "activities": 4
   },
   {
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "usd": 2122950,
-   "activities": 3
-  },
-  {
    "donor": "Open Society Foundations",
    "usd": 1735000,
    "activities": 7
@@ -568,6 +563,11 @@
    "donor": "Asian Development Bank",
    "usd": 1090000,
    "activities": 4
+  },
+  {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "usd": 1075934,
+   "activities": 1
   },
   {
    "donor": "Sweden",
@@ -763,7 +763,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 162855529
+   "usd": 161808513
   },
   {
    "code": "research",
@@ -805,19 +805,19 @@
  "by_year": [
   {
    "year": 2023,
-   "usd": 146072355
+   "usd": 147148289
   },
   {
    "year": 2024,
-   "usd": 353003800
+   "usd": 351588067
   },
   {
    "year": 2025,
-   "usd": 28492320
+   "usd": 27787501
   },
   {
    "year": 2026,
-   "usd": 2092575
+   "usd": 2090177
   }
  ],
  "flows": [
@@ -1007,11 +1007,6 @@
    "usd": 1730000
   },
   {
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "US",
-   "usd": 1674507
-  },
-  {
    "donor": "Korea",
    "recipient": "Kazakhstan",
    "usd": 1602365
@@ -1020,6 +1015,11 @@
    "donor": "Wellcome Trust",
    "recipient": "Senegal",
    "usd": 1544186
+  },
+  {
+   "donor": "United States",
+   "recipient": "Malawi",
+   "usd": 1524967
   }
  ],
  "activities": [
@@ -2449,30 +2449,6 @@
    ]
   },
   {
-   "id": "41AAA-24382-002",
-   "title": "Support to Advisory Body on Artificial Intelligence for the Office of the UN Secretary General\u2019s Special Envoy on Technology",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "2 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 1415733,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-002",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 1134948
-    },
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 280785
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6236429",
    "title": "Leveraging LLMs To Scale and Optimize Digital Health Coaching",
    "donor": "Gates Foundation",
@@ -2682,6 +2658,30 @@
    ]
   },
   {
+   "id": "41AAA-24382-001",
+   "title": "Support to Advisory Body on Artificial Intelligence for the Office of the UN Secretary General\u2019s Special Envoy on Technology",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "2 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 1075934,
+   "year": 2023,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-001",
+   "allocations": [
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 223389
+    },
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 852545
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6236161",
    "title": "AI models for ultrasound in India",
    "donor": "Gates Foundation",
@@ -2751,29 +2751,9 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-081890",
    "allocations": [
     {
-     "name": "Zambia",
-     "iso3": "ZMB",
-     "usd": 36890
-    },
-    {
-     "name": "South Africa",
-     "iso3": "ZAF",
-     "usd": 73781
-    },
-    {
-     "name": "Senegal",
-     "iso3": "SEN",
-     "usd": 61484
-    },
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 233639
-    },
-    {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 135264
+     "name": "Ethiopia",
+     "iso3": "ETH",
+     "usd": 110671
     },
     {
      "name": "Kenya",
@@ -2781,9 +2761,29 @@
      "usd": 393496
     },
     {
-     "name": "Ethiopia",
-     "iso3": "ETH",
-     "usd": 110671
+     "name": "Nigeria",
+     "iso3": "NGA",
+     "usd": 135264
+    },
+    {
+     "name": "Rwanda",
+     "iso3": "RWA",
+     "usd": 233639
+    },
+    {
+     "name": "Senegal",
+     "iso3": "SEN",
+     "usd": 61484
+    },
+    {
+     "name": "South Africa",
+     "iso3": "ZAF",
+     "usd": 73781
+    },
+    {
+     "name": "Zambia",
+     "iso3": "ZMB",
+     "usd": 36890
     }
    ]
   },
@@ -3240,30 +3240,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 730704
-    }
-   ]
-  },
-  {
-   "id": "41AAA-24382-004",
-   "title": "Global Cooperation on AI Governance",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "2 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 704819,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-004",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 537160
-    },
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 167659
     }
    ]
   },
@@ -10930,25 +10906,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 2950
-    }
-   ]
-  },
-  {
-   "id": "41AAA-24382-008",
-   "title": "Support to Office of the UN SG\u2019s Special Envoy on Technology: the Global Dialogue on Artificial Intelligence Governance",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "US",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 2398,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-008",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 2398
     }
    ]
   },
