@@ -1,8 +1,8 @@
 {
- "built_at": 1794934130,
+ "built_at": 1795018812,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 527727083,
+  "usd": 528242919,
   "activities": 541,
   "donors": 63,
   "recipients": 71,
@@ -191,6 +191,12 @@
    "activities": 5
   },
   {
+   "name": "US",
+   "iso3": "US",
+   "usd": 537160,
+   "activities": 1
+  },
+  {
    "name": "Tanzania",
    "iso3": "TZA",
    "usd": 448040,
@@ -263,16 +269,16 @@
    "activities": 2
   },
   {
+   "name": "CH",
+   "iso3": "CH",
+   "usd": 167659,
+   "activities": 1
+  },
+  {
    "name": "Lebanon",
    "iso3": "LBN",
    "usd": 155473,
    "activities": 3
-  },
-  {
-   "name": "US",
-   "iso3": "US",
-   "usd": 142058,
-   "activities": 1
   },
   {
    "name": "Jamaica",
@@ -314,12 +320,6 @@
    "name": "Kosovo",
    "iso3": "XKX",
    "usd": 50000,
-   "activities": 1
-  },
-  {
-   "name": "CH",
-   "iso3": "CH",
-   "usd": 46925,
    "activities": 1
   },
   {
@@ -580,6 +580,11 @@
    "activities": 2
   },
   {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "usd": 704819,
+   "activities": 1
+  },
+  {
    "donor": "Australia Aid",
    "usd": 667046,
    "activities": 1
@@ -627,11 +632,6 @@
   {
    "donor": "Slovak Republic",
    "usd": 243343,
-   "activities": 1
-  },
-  {
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "usd": 188983,
    "activities": 1
   },
   {
@@ -763,7 +763,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 160921562
+   "usd": 161437398
   },
   {
    "code": "research",
@@ -813,7 +813,7 @@
   },
   {
    "year": 2025,
-   "usd": 27976484
+   "usd": 28492320
   },
   {
    "year": 2026,
@@ -2727,29 +2727,9 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-081890",
    "allocations": [
     {
-     "name": "Ethiopia",
-     "iso3": "ETH",
-     "usd": 110671
-    },
-    {
-     "name": "Kenya",
-     "iso3": "KEN",
-     "usd": 393496
-    },
-    {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 135264
-    },
-    {
-     "name": "Rwanda",
-     "iso3": "RWA",
-     "usd": 233639
-    },
-    {
-     "name": "Senegal",
-     "iso3": "SEN",
-     "usd": 61484
+     "name": "Zambia",
+     "iso3": "ZMB",
+     "usd": 36890
     },
     {
      "name": "South Africa",
@@ -2757,9 +2737,29 @@
      "usd": 73781
     },
     {
-     "name": "Zambia",
-     "iso3": "ZMB",
-     "usd": 36890
+     "name": "Senegal",
+     "iso3": "SEN",
+     "usd": 61484
+    },
+    {
+     "name": "Rwanda",
+     "iso3": "RWA",
+     "usd": 233639
+    },
+    {
+     "name": "Nigeria",
+     "iso3": "NGA",
+     "usd": 135264
+    },
+    {
+     "name": "Kenya",
+     "iso3": "KEN",
+     "usd": 393496
+    },
+    {
+     "name": "Ethiopia",
+     "iso3": "ETH",
+     "usd": 110671
     }
    ]
   },
@@ -3216,6 +3216,30 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 730704
+    }
+   ]
+  },
+  {
+   "id": "41AAA-24382-004",
+   "title": "Global Cooperation on AI Governance",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "2 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 704819,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-004",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 537160
+    },
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 167659
     }
    ]
   },
@@ -5611,30 +5635,6 @@
      "name": "Uganda",
      "iso3": "UGA",
      "usd": 190000
-    }
-   ]
-  },
-  {
-   "id": "41AAA-23073-004",
-   "title": "UN Futures Lab Network (UNU)",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "2 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 188983,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-23073-004",
-   "allocations": [
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 46925
-    },
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 142058
     }
    ]
   },
