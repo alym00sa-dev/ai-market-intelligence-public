@@ -1,11 +1,11 @@
 {
- "built_at": 1795018812,
+ "built_at": 1795105723,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 528242919,
-  "activities": 541,
+  "usd": 530856478,
+  "activities": 543,
   "donors": 63,
-  "recipients": 71,
+  "recipients": 74,
   "year_min": 2023,
   "year_max": 2026
  },
@@ -25,8 +25,8 @@
   {
    "name": "India",
    "iso3": "IND",
-   "usd": 31796620,
-   "activities": 38
+   "usd": 30004906,
+   "activities": 37
   },
   {
    "name": "Kenya",
@@ -69,6 +69,12 @@
    "iso3": "PHL",
    "usd": 4038486,
    "activities": 5
+  },
+  {
+   "name": "FI",
+   "iso3": "FI",
+   "usd": 3892526,
+   "activities": 1
   },
   {
    "name": "Rwanda",
@@ -155,6 +161,12 @@
    "activities": 7
   },
   {
+   "name": "US",
+   "iso3": "US",
+   "usd": 711563,
+   "activities": 3
+  },
+  {
    "name": "Ghana",
    "iso3": "GHA",
    "usd": 655868,
@@ -189,12 +201,6 @@
    "iso3": "LKA",
    "usd": 540071,
    "activities": 5
-  },
-  {
-   "name": "US",
-   "iso3": "US",
-   "usd": 537160,
-   "activities": 1
   },
   {
    "name": "Tanzania",
@@ -251,6 +257,12 @@
    "activities": 1
   },
   {
+   "name": "DK",
+   "iso3": "DK",
+   "usd": 202263,
+   "activities": 1
+  },
+  {
    "name": "Malaysia",
    "iso3": null,
    "usd": 194243,
@@ -269,16 +281,22 @@
    "activities": 2
   },
   {
-   "name": "CH",
-   "iso3": "CH",
-   "usd": 167659,
-   "activities": 1
-  },
-  {
    "name": "Lebanon",
    "iso3": "LBN",
    "usd": 155473,
    "activities": 3
+  },
+  {
+   "name": "CH",
+   "iso3": "CH",
+   "usd": 152205,
+   "activities": 3
+  },
+  {
+   "name": "ES",
+   "iso3": "ES",
+   "usd": 151535,
+   "activities": 1
   },
   {
    "name": "Jamaica",
@@ -446,8 +464,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 125260372,
-   "activities": 131
+   "usd": 123468658,
+   "activities": 130
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -525,6 +543,11 @@
    "activities": 3
   },
   {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "usd": 5110092,
+   "activities": 4
+  },
+  {
    "donor": "Good Ventures Foundation",
    "usd": 3308500,
    "activities": 3
@@ -578,11 +601,6 @@
    "donor": "UNDP",
    "usd": 732263,
    "activities": 2
-  },
-  {
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "usd": 704819,
-   "activities": 1
   },
   {
    "donor": "Australia Aid",
@@ -763,7 +781,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 161437398
+   "usd": 165842671
   },
   {
    "code": "research",
@@ -786,12 +804,12 @@
    "usd": 18876453
   },
   {
-   "code": "capacity_building",
-   "usd": 16684437
-  },
-  {
    "code": "financial_inclusion",
    "usd": 16548269
+  },
+  {
+   "code": "capacity_building",
+   "usd": 14892723
   },
   {
    "code": "infrastructure_compute",
@@ -805,19 +823,19 @@
  "by_year": [
   {
    "year": 2023,
-   "usd": 146072355
+   "usd": 149964881
   },
   {
    "year": 2024,
-   "usd": 351588067
+   "usd": 349796353
   },
   {
    "year": 2025,
-   "usd": 28492320
+   "usd": 27976484
   },
   {
    "year": 2026,
-   "usd": 2090177
+   "usd": 3118760
   }
  ],
  "flows": [
@@ -854,7 +872,7 @@
   {
    "donor": "Gates Foundation",
    "recipient": "India",
-   "usd": 21109210
+   "usd": 19317496
   },
   {
    "donor": "EU Institutions",
@@ -925,6 +943,11 @@
    "donor": "Canada",
    "recipient": "Global / multi-country",
    "usd": 3927561
+  },
+  {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "FI",
+   "usd": 3892526
   },
   {
    "donor": "Gates Foundation",
@@ -1015,11 +1038,6 @@
    "donor": "Wellcome Trust",
    "recipient": "Senegal",
    "usd": 1544186
-  },
-  {
-   "donor": "United States",
-   "recipient": "Malawi",
-   "usd": 1524967
   }
  ],
  "activities": [
@@ -1457,6 +1475,25 @@
      "name": "Philippines",
      "iso3": "PHL",
      "usd": 3931821
+    }
+   ]
+  },
+  {
+   "id": "41AAA-23073-002",
+   "title": "UN Futures Lab Global Hub",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "FI",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 3892526,
+   "year": 2023,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-23073-002",
+   "allocations": [
+    {
+     "name": "FI",
+     "iso3": "FI",
+     "usd": 3892526
     }
    ]
   },
@@ -2008,25 +2045,6 @@
      "name": "India",
      "iso3": "IND",
      "usd": 1808810
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-078558",
-   "title": "Support for IndiaAI Mission",
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 1791714,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-078558",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 1791714
     }
    ]
   },
@@ -3144,6 +3162,40 @@
    ]
   },
   {
+   "id": "41AAA-24382-005",
+   "title": "Support to Office of the UN SG\u2019s Special Envoy on Technology: AI Governance for Humanity Lab Initiative Operations",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "4 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 755652,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-005",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 376374
+    },
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 25481
+    },
+    {
+     "name": "ES",
+     "iso3": "ES",
+     "usd": 151535
+    },
+    {
+     "name": "DK",
+     "iso3": "DK",
+     "usd": 202263
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6149492",
    "title": "Digital and Artificial Intelligence Solutions for the Agriculture, Natural Resources, and Rural Development Sector",
    "donor": "Asian Development Bank",
@@ -3216,30 +3268,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 730704
-    }
-   ]
-  },
-  {
-   "id": "41AAA-24382-004",
-   "title": "Global Cooperation on AI Governance",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "2 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 704819,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-004",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 537160
-    },
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 167659
     }
    ]
   },
@@ -4537,6 +4565,30 @@
    ]
   },
   {
+   "id": "41AAA-24382-007",
+   "title": "Support to Office of the UN SG\u2019s Special Envoy on Technology: AI Scientific Panel",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "2 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 272931,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-007",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 193132
+    },
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 79799
+    }
+   ]
+  },
+  {
    "id": "CRS-2023-5876038",
    "title": "RORI - AI personalised education",
    "donor": "German Postcode Lottery",
@@ -5635,6 +5687,30 @@
      "name": "Uganda",
      "iso3": "UGA",
      "usd": 190000
+    }
+   ]
+  },
+  {
+   "id": "41AAA-23073-004",
+   "title": "UN Futures Lab Network (UNU)",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "2 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 188983,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-23073-004",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 142058
+    },
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 46925
     }
    ]
   },
