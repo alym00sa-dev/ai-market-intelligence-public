@@ -1,11 +1,11 @@
 {
- "built_at": 1795190424,
+ "built_at": 1795274011,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 526691021,
-  "activities": 541,
-  "donors": 63,
-  "recipients": 73,
+  "usd": 529451482,
+  "activities": 540,
+  "donors": 64,
+  "recipients": 71,
   "year_min": 2023,
   "year_max": 2026
  },
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 357494932,
-   "activities": 249
+   "usd": 354091593,
+   "activities": 246
   },
   {
    "name": "Argentina",
@@ -25,8 +25,8 @@
   {
    "name": "India",
    "iso3": "IND",
-   "usd": 30004906,
-   "activities": 37
+   "usd": 31796620,
+   "activities": 38
   },
   {
    "name": "Kenya",
@@ -41,6 +41,12 @@
    "activities": 23
   },
   {
+   "name": "Indonesia",
+   "iso3": "IDN",
+   "usd": 7815987,
+   "activities": 10
+  },
+  {
    "name": "Turkey",
    "iso3": null,
    "usd": 7736709,
@@ -53,12 +59,6 @@
    "activities": 18
   },
   {
-   "name": "Indonesia",
-   "iso3": "IDN",
-   "usd": 5965354,
-   "activities": 9
-  },
-  {
    "name": "Zimbabwe",
    "iso3": "ZWE",
    "usd": 4107988,
@@ -69,6 +69,12 @@
    "iso3": "PHL",
    "usd": 4038486,
    "activities": 5
+  },
+  {
+   "name": "Malawi",
+   "iso3": "MWI",
+   "usd": 3915121,
+   "activities": 3
   },
   {
    "name": "Rwanda",
@@ -113,12 +119,6 @@
    "activities": 3
   },
   {
-   "name": "Malawi",
-   "iso3": "MWI",
-   "usd": 1524967,
-   "activities": 2
-  },
-  {
    "name": "Brazil",
    "iso3": "BRA",
    "usd": 1443837,
@@ -147,6 +147,12 @@
    "iso3": "ETH",
    "usd": 865906,
    "activities": 6
+  },
+  {
+   "name": "US",
+   "iso3": "US",
+   "usd": 852545,
+   "activities": 1
   },
   {
    "name": "Uganda",
@@ -189,12 +195,6 @@
    "iso3": "LKA",
    "usd": 540071,
    "activities": 5
-  },
-  {
-   "name": "US",
-   "iso3": "US",
-   "usd": 518432,
-   "activities": 2
   },
   {
    "name": "Tanzania",
@@ -245,15 +245,15 @@
    "activities": 1
   },
   {
-   "name": "Nepal",
-   "iso3": "NPL",
-   "usd": 222004,
+   "name": "CH",
+   "iso3": "CH",
+   "usd": 223389,
    "activities": 1
   },
   {
-   "name": "DK",
-   "iso3": "DK",
-   "usd": 202263,
+   "name": "Nepal",
+   "iso3": "NPL",
+   "usd": 222004,
    "activities": 1
   },
   {
@@ -281,12 +281,6 @@
    "activities": 3
   },
   {
-   "name": "ES",
-   "iso3": "ES",
-   "usd": 151535,
-   "activities": 1
-  },
-  {
    "name": "Jamaica",
    "iso3": null,
    "usd": 130000,
@@ -303,12 +297,6 @@
    "iso3": null,
    "usd": 119999,
    "activities": 1
-  },
-  {
-   "name": "CH",
-   "iso3": "CH",
-   "usd": 72406,
-   "activities": 2
   },
   {
    "name": "Cuba",
@@ -458,8 +446,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 123468658,
-   "activities": 130
+   "usd": 121857033,
+   "activities": 128
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -542,6 +530,11 @@
    "activities": 3
   },
   {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "usd": 2926567,
+   "activities": 2
+  },
+  {
    "donor": "UBS Optimus Foundation",
    "usd": 2766063,
    "activities": 1
@@ -550,6 +543,11 @@
    "donor": "Ford Foundation",
    "usd": 2690000,
    "activities": 8
+  },
+  {
+   "donor": "UK - Department of Health and Social Care (DHSC)",
+   "usd": 2390154,
+   "activities": 1
   },
   {
    "donor": "U.S. Agency for International Development",
@@ -580,11 +578,6 @@
    "donor": "Sweden",
    "usd": 1007690,
    "activities": 6
-  },
-  {
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "usd": 944635,
-   "activities": 2
   },
   {
    "donor": "Belgium",
@@ -775,7 +768,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 161677214
+   "usd": 161808513
   },
   {
    "code": "research",
@@ -783,7 +776,7 @@
   },
   {
    "code": "health_ai",
-   "usd": 88962464
+   "usd": 87949279
   },
   {
    "code": "education_skills",
@@ -795,15 +788,15 @@
   },
   {
    "code": "data_systems",
-   "usd": 18876453
+   "usd": 20727086
+  },
+  {
+   "code": "capacity_building",
+   "usd": 16684437
   },
   {
    "code": "financial_inclusion",
    "usd": 16548269
-  },
-  {
-   "code": "capacity_building",
-   "usd": 14892723
   },
   {
    "code": "infrastructure_compute",
@@ -817,26 +810,26 @@
  "by_year": [
   {
    "year": 2023,
-   "usd": 146072355
+   "usd": 147148289
   },
   {
    "year": 2024,
-   "usd": 349796353
+   "usd": 353978221
   },
   {
    "year": 2025,
-   "usd": 27976484
+   "usd": 26234795
   },
   {
    "year": 2026,
-   "usd": 2845829
+   "usd": 2090177
   }
  ],
  "flows": [
   {
    "donor": "Gates Foundation",
    "recipient": "Global / multi-country",
-   "usd": 73105988
+   "usd": 69702649
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -866,7 +859,7 @@
   {
    "donor": "Gates Foundation",
    "recipient": "India",
-   "usd": 19317496
+   "usd": 21109210
   },
   {
    "donor": "EU Institutions",
@@ -974,6 +967,11 @@
    "usd": 2525064
   },
   {
+   "donor": "UK - Department of Health and Social Care (DHSC)",
+   "recipient": "Malawi",
+   "usd": 2390154
+  },
+  {
    "donor": "European Bank for Reconstruction and Development",
    "recipient": "Ukraine",
    "usd": 2254147
@@ -1009,6 +1007,11 @@
    "usd": 1873373
   },
   {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "Indonesia",
+   "usd": 1850633
+  },
+  {
    "donor": "Gates Foundation",
    "recipient": "Bangladesh",
    "usd": 1772660
@@ -1022,16 +1025,6 @@
    "donor": "Korea",
    "recipient": "Kazakhstan",
    "usd": 1602365
-  },
-  {
-   "donor": "Wellcome Trust",
-   "recipient": "Senegal",
-   "usd": 1544186
-  },
-  {
-   "donor": "United States",
-   "recipient": "Malawi",
-   "usd": 1524967
   }
  ],
  "activities": [
@@ -1834,6 +1827,25 @@
    ]
   },
   {
+   "id": "GB-GOV-10-RP_07_304311",
+   "title": "NIHR GHRP: Transforming diagnosis of tuberculosis through adaptive artificial intelligence imaging",
+   "donor": "UK - Department of Health and Social Care (DHSC)",
+   "recipient": "Malawi",
+   "sector": "Medical research",
+   "ai_category": "health_ai",
+   "usd": 2390154,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-10-RP_07_304311",
+   "allocations": [
+    {
+     "name": "Malawi",
+     "iso3": "MWI",
+     "usd": 2390154
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6236875",
    "title": "Vitafluence Vaccine Development AI - RNA layer",
    "donor": "Gates Foundation",
@@ -1986,6 +1998,25 @@
    ]
   },
   {
+   "id": "41AAA-23316-005",
+   "title": "Support for the Data Insights for Social & Humanitarian Action Initiative (DISHA)",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "Indonesia",
+   "sector": "ICT",
+   "ai_category": "data_systems",
+   "usd": 1850633,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-23316-005",
+   "allocations": [
+    {
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 1850633
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6235673",
    "title": "Supporting AI Assistant Tools for FLWs",
    "donor": "Gates Foundation",
@@ -2020,6 +2051,25 @@
      "name": "India",
      "iso3": "IND",
      "usd": 1808810
+    }
+   ]
+  },
+  {
+   "id": "DAC-1601-INV-078558",
+   "title": "Support for IndiaAI Mission",
+   "donor": "Gates Foundation",
+   "recipient": "India",
+   "sector": "ICT",
+   "ai_category": "capacity_building",
+   "usd": 1791714,
+   "year": 2024,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-078558",
+   "allocations": [
+    {
+     "name": "India",
+     "iso3": "IND",
+     "usd": 1791714
     }
    ]
   },
@@ -2096,25 +2146,6 @@
      "name": "Kenya",
      "iso3": "KEN",
      "usd": 1699480
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-096273",
-   "title": "AI-Enabled Platform MVP for Accelerating Equitable Drug Development",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 1677477,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-096273",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 1677477
     }
    ]
   },
@@ -2651,6 +2682,30 @@
    ]
   },
   {
+   "id": "41AAA-24382-001",
+   "title": "Support to Advisory Body on Artificial Intelligence for the Office of the UN Secretary General\u2019s Special Envoy on Technology",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "2 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 1075934,
+   "year": 2023,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-001",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 852545
+    },
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 223389
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6236161",
    "title": "AI models for ultrasound in India",
    "donor": "Gates Foundation",
@@ -2810,25 +2865,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 1000000
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-096757",
-   "title": "LMIC Clinical Vignettes to enable Agentic Benchmarking",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 995158,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-096757",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 995158
     }
    ]
   },
@@ -3137,40 +3173,6 @@
    ]
   },
   {
-   "id": "41AAA-24382-005",
-   "title": "Support to Office of the UN SG\u2019s Special Envoy on Technology: AI Governance for Humanity Lab Initiative Operations",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "4 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 755652,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-005",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 376374
-    },
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 25481
-    },
-    {
-     "name": "ES",
-     "iso3": "ES",
-     "usd": 151535
-    },
-    {
-     "name": "DK",
-     "iso3": "DK",
-     "usd": 202263
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6149492",
    "title": "Digital and Artificial Intelligence Solutions for the Agriculture, Natural Resources, and Rural Development Sector",
    "donor": "Asian Development Bank",
@@ -3224,25 +3226,6 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 744207
-    }
-   ]
-  },
-  {
-   "id": "DAC-1601-INV-094095",
-   "title": "Deep Learning for Multimodal Integration of Proteomics Datasets",
-   "donor": "Gates Foundation",
-   "recipient": "Global / multi-country",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 730704,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-094095",
-   "allocations": [
-    {
-     "name": "Global / multi-country",
-     "iso3": null,
-     "usd": 730704
     }
    ]
   },
@@ -5642,30 +5625,6 @@
    ]
   },
   {
-   "id": "41AAA-23073-004",
-   "title": "UN Futures Lab Network (UNU)",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "2 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 188983,
-   "year": 2025,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-23073-004",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 142058
-    },
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 46925
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6136980",
    "title": "AI-Tutoring Is All You Need: An RCT on the Educational Promises of Large Language Models",
    "donor": "Inter-American Development Bank",
@@ -7104,18 +7063,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
-     "usd": 19831
-    },
-    {
-     "name": "Indonesia",
-     "iso3": "IDN",
-     "usd": 19831
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
+     "name": "Vietnam",
+     "iso3": "VNM",
      "usd": 19831
     },
     {
@@ -7124,8 +7073,18 @@
      "usd": 19831
     },
     {
-     "name": "Vietnam",
-     "iso3": "VNM",
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 19831
+    },
+    {
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 19831
+    },
+    {
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 19831
     }
    ]

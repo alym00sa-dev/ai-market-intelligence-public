@@ -5926,5 +5926,9 @@
  "41AAA-24382-001": {
   "ai": true,
   "category": "governance_policy"
+ },
+ "GB-GOV-10-RP_07_304311": {
+  "ai": true,
+  "category": "health_ai"
  }
 }
