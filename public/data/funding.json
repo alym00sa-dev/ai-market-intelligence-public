@@ -1,10 +1,10 @@
 {
- "built_at": 1795274011,
+ "built_at": 1795360286,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 529451482,
-  "activities": 540,
-  "donors": 64,
+  "usd": 530464667,
+  "activities": 542,
+  "donors": 63,
   "recipients": 71,
   "year_min": 2023,
   "year_max": 2026
@@ -13,8 +13,8 @@
   {
    "name": "Global / multi-country",
    "iso3": null,
-   "usd": 354091593,
-   "activities": 246
+   "usd": 357494932,
+   "activities": 249
   },
   {
    "name": "Argentina",
@@ -71,12 +71,6 @@
    "activities": 5
   },
   {
-   "name": "Malawi",
-   "iso3": "MWI",
-   "usd": 3915121,
-   "activities": 3
-  },
-  {
    "name": "Rwanda",
    "iso3": "RWA",
    "usd": 2562853,
@@ -117,6 +111,12 @@
    "iso3": null,
    "usd": 1645275,
    "activities": 3
+  },
+  {
+   "name": "Malawi",
+   "iso3": "MWI",
+   "usd": 1524967,
+   "activities": 2
   },
   {
    "name": "Brazil",
@@ -446,8 +446,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 121857033,
-   "activities": 128
+   "usd": 125260372,
+   "activities": 131
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -543,11 +543,6 @@
    "donor": "Ford Foundation",
    "usd": 2690000,
    "activities": 8
-  },
-  {
-   "donor": "UK - Department of Health and Social Care (DHSC)",
-   "usd": 2390154,
-   "activities": 1
   },
   {
    "donor": "U.S. Agency for International Development",
@@ -776,7 +771,7 @@
   },
   {
    "code": "health_ai",
-   "usd": 87949279
+   "usd": 88962464
   },
   {
    "code": "education_skills",
@@ -814,11 +809,11 @@
   },
   {
    "year": 2024,
-   "usd": 353978221
+   "usd": 351588067
   },
   {
    "year": 2025,
-   "usd": 26234795
+   "usd": 29638134
   },
   {
    "year": 2026,
@@ -829,7 +824,7 @@
   {
    "donor": "Gates Foundation",
    "recipient": "Global / multi-country",
-   "usd": 69702649
+   "usd": 73105988
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -967,11 +962,6 @@
    "usd": 2525064
   },
   {
-   "donor": "UK - Department of Health and Social Care (DHSC)",
-   "recipient": "Malawi",
-   "usd": 2390154
-  },
-  {
    "donor": "European Bank for Reconstruction and Development",
    "recipient": "Ukraine",
    "usd": 2254147
@@ -1025,6 +1015,11 @@
    "donor": "Korea",
    "recipient": "Kazakhstan",
    "usd": 1602365
+  },
+  {
+   "donor": "Wellcome Trust",
+   "recipient": "Senegal",
+   "usd": 1544186
   }
  ],
  "activities": [
@@ -1827,25 +1822,6 @@
    ]
   },
   {
-   "id": "GB-GOV-10-RP_07_304311",
-   "title": "NIHR GHRP: Transforming diagnosis of tuberculosis through adaptive artificial intelligence imaging",
-   "donor": "UK - Department of Health and Social Care (DHSC)",
-   "recipient": "Malawi",
-   "sector": "Medical research",
-   "ai_category": "health_ai",
-   "usd": 2390154,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=GB-GOV-10-RP_07_304311",
-   "allocations": [
-    {
-     "name": "Malawi",
-     "iso3": "MWI",
-     "usd": 2390154
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6236875",
    "title": "Vitafluence Vaccine Development AI - RNA layer",
    "donor": "Gates Foundation",
@@ -2146,6 +2122,25 @@
      "name": "Kenya",
      "iso3": "KEN",
      "usd": 1699480
+    }
+   ]
+  },
+  {
+   "id": "DAC-1601-INV-096273",
+   "title": "AI-Enabled Platform MVP for Accelerating Equitable Drug Development",
+   "donor": "Gates Foundation",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "health_ai",
+   "usd": 1677477,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-096273",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 1677477
     }
    ]
   },
@@ -2869,6 +2864,25 @@
    ]
   },
   {
+   "id": "DAC-1601-INV-096757",
+   "title": "LMIC Clinical Vignettes to enable Agentic Benchmarking",
+   "donor": "Gates Foundation",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "health_ai",
+   "usd": 995158,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-096757",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 995158
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6232649",
    "title": "Data catalogue and marketplace for AI-ready training data",
    "donor": "Gates Foundation",
@@ -3226,6 +3240,25 @@
      "name": "Global / multi-country",
      "iso3": null,
      "usd": 744207
+    }
+   ]
+  },
+  {
+   "id": "DAC-1601-INV-094095",
+   "title": "Deep Learning for Multimodal Integration of Proteomics Datasets",
+   "donor": "Gates Foundation",
+   "recipient": "Global / multi-country",
+   "sector": "Medical research",
+   "ai_category": "health_ai",
+   "usd": 730704,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-094095",
+   "allocations": [
+    {
+     "name": "Global / multi-country",
+     "iso3": null,
+     "usd": 730704
     }
    ]
   },
@@ -7063,18 +7096,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Vietnam",
-     "iso3": "VNM",
-     "usd": 19831
-    },
-    {
-     "name": "TH",
-     "iso3": "TH",
-     "usd": 19831
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 19831
     },
     {
@@ -7083,8 +7106,18 @@
      "usd": 19831
     },
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 19831
+    },
+    {
+     "name": "TH",
+     "iso3": "TH",
+     "usd": 19831
+    },
+    {
+     "name": "Vietnam",
+     "iso3": "VNM",
      "usd": 19831
     }
    ]
