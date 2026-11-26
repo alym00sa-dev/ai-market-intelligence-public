@@ -1,9 +1,9 @@
 {
- "built_at": 1795629277,
+ "built_at": 1795714769,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
-  "usd": 528614034,
-  "activities": 541,
+  "usd": 525841256,
+  "activities": 540,
   "donors": 63,
   "recipients": 71,
   "year_min": 2023,
@@ -25,8 +25,8 @@
   {
    "name": "India",
    "iso3": "IND",
-   "usd": 31796620,
-   "activities": 38
+   "usd": 30004906,
+   "activities": 37
   },
   {
    "name": "Kenya",
@@ -55,7 +55,7 @@
   {
    "name": "Indonesia",
    "iso3": "IDN",
-   "usd": 5965354,
+   "usd": 5946532,
    "activities": 9
   },
   {
@@ -67,7 +67,7 @@
   {
    "name": "Philippines",
    "iso3": "PHL",
-   "usd": 4038486,
+   "usd": 4019664,
    "activities": 5
   },
   {
@@ -83,16 +83,16 @@
    "activities": 6
   },
   {
-   "name": "Bangladesh",
-   "iso3": "BGD",
-   "usd": 2108838,
-   "activities": 8
-  },
-  {
    "name": "Iraq",
    "iso3": null,
    "usd": 2100000,
    "activities": 1
+  },
+  {
+   "name": "Bangladesh",
+   "iso3": "BGD",
+   "usd": 2090016,
+   "activities": 8
   },
   {
    "name": "Senegal",
@@ -127,7 +127,7 @@
   {
    "name": "Vietnam",
    "iso3": "VNM",
-   "usd": 1351482,
+   "usd": 1332660,
    "activities": 15
   },
   {
@@ -147,12 +147,6 @@
    "iso3": "ETH",
    "usd": 865906,
    "activities": 6
-  },
-  {
-   "name": "US",
-   "iso3": "US",
-   "usd": 852545,
-   "activities": 1
   },
   {
    "name": "Uganda",
@@ -245,12 +239,6 @@
    "activities": 1
   },
   {
-   "name": "CH",
-   "iso3": "CH",
-   "usd": 223389,
-   "activities": 1
-  },
-  {
    "name": "Nepal",
    "iso3": "NPL",
    "usd": 222004,
@@ -279,6 +267,12 @@
    "iso3": "LBN",
    "usd": 155473,
    "activities": 3
+  },
+  {
+   "name": "US",
+   "iso3": "US",
+   "usd": 142058,
+   "activities": 1
   },
   {
    "name": "Jamaica",
@@ -320,6 +314,12 @@
    "name": "Kosovo",
    "iso3": "XKX",
    "usd": 50000,
+   "activities": 1
+  },
+  {
+   "name": "CH",
+   "iso3": "CH",
+   "usd": 46925,
    "activities": 1
   },
   {
@@ -367,12 +367,6 @@
   {
    "name": "MD",
    "iso3": "MD",
-   "usd": 19831,
-   "activities": 2
-  },
-  {
-   "name": "TH",
-   "iso3": "TH",
    "usd": 19831,
    "activities": 2
   },
@@ -425,6 +419,12 @@
    "activities": 1
   },
   {
+   "name": "TH",
+   "iso3": "TH",
+   "usd": 1009,
+   "activities": 2
+  },
+  {
    "name": "Tonga",
    "iso3": null,
    "usd": 522,
@@ -446,8 +446,8 @@
  "by_donor": [
   {
    "donor": "Gates Foundation",
-   "usd": 125260372,
-   "activities": 131
+   "usd": 123468658,
+   "activities": 130
   },
   {
    "donor": "UK - Foreign, Commonwealth Development Office (FCDO)",
@@ -565,13 +565,8 @@
    "activities": 4
   },
   {
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "usd": 1075934,
-   "activities": 1
-  },
-  {
    "donor": "Sweden",
-   "usd": 1007690,
+   "usd": 913577,
    "activities": 6
   },
   {
@@ -632,6 +627,11 @@
   {
    "donor": "Slovak Republic",
    "usd": 243343,
+   "activities": 1
+  },
+  {
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "usd": 188983,
    "activities": 1
   },
   {
@@ -763,7 +763,7 @@
  "by_sector": [
   {
    "code": "governance_policy",
-   "usd": 161808513
+   "usd": 160921562
   },
   {
    "code": "research",
@@ -786,12 +786,12 @@
    "usd": 18876453
   },
   {
-   "code": "capacity_building",
-   "usd": 16684437
-  },
-  {
    "code": "financial_inclusion",
    "usd": 16548269
+  },
+  {
+   "code": "capacity_building",
+   "usd": 14798610
   },
   {
    "code": "infrastructure_compute",
@@ -805,19 +805,19 @@
  "by_year": [
   {
    "year": 2023,
-   "usd": 147148289
+   "usd": 146072355
   },
   {
    "year": 2024,
-   "usd": 351588067
+   "usd": 349796353
   },
   {
    "year": 2025,
-   "usd": 27787501
+   "usd": 27976484
   },
   {
    "year": 2026,
-   "usd": 2090177
+   "usd": 1996064
   }
  ],
  "flows": [
@@ -854,7 +854,7 @@
   {
    "donor": "Gates Foundation",
    "recipient": "India",
-   "usd": 21109210
+   "usd": 19317496
   },
   {
    "donor": "EU Institutions",
@@ -2012,25 +2012,6 @@
    ]
   },
   {
-   "id": "DAC-1601-INV-078558",
-   "title": "Support for IndiaAI Mission",
-   "donor": "Gates Foundation",
-   "recipient": "India",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 1791714,
-   "year": 2024,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=DAC-1601-INV-078558",
-   "allocations": [
-    {
-     "name": "India",
-     "iso3": "IND",
-     "usd": 1791714
-    }
-   ]
-  },
-  {
    "id": "CRS-2024-6232997",
    "title": "RNA layer model development",
    "donor": "Gates Foundation",
@@ -2654,30 +2635,6 @@
      "name": "South Africa",
      "iso3": "ZAF",
      "usd": 1079530
-    }
-   ]
-  },
-  {
-   "id": "41AAA-24382-001",
-   "title": "Support to Advisory Body on Artificial Intelligence for the Office of the UN Secretary General\u2019s Special Envoy on Technology",
-   "donor": "United Nations Office for Project Services (UNOPS)",
-   "recipient": "2 countries",
-   "sector": "ICT",
-   "ai_category": "governance_policy",
-   "usd": 1075934,
-   "year": 2023,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-24382-001",
-   "allocations": [
-    {
-     "name": "US",
-     "iso3": "US",
-     "usd": 852545
-    },
-    {
-     "name": "CH",
-     "iso3": "CH",
-     "usd": 223389
     }
    ]
   },
@@ -5639,6 +5596,30 @@
    ]
   },
   {
+   "id": "41AAA-23073-004",
+   "title": "UN Futures Lab Network (UNU)",
+   "donor": "United Nations Office for Project Services (UNOPS)",
+   "recipient": "2 countries",
+   "sector": "ICT",
+   "ai_category": "governance_policy",
+   "usd": 188983,
+   "year": 2025,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=41AAA-23073-004",
+   "allocations": [
+    {
+     "name": "US",
+     "iso3": "US",
+     "usd": 142058
+    },
+    {
+     "name": "CH",
+     "iso3": "CH",
+     "usd": 46925
+    }
+   ]
+  },
+  {
    "id": "CRS-2024-6136980",
    "title": "AI-Tutoring Is All You Need: An RCT on the Educational Promises of Large Language Models",
    "donor": "Inter-American Development Bank",
@@ -7061,45 +7042,6 @@
      "name": "Ukraine",
      "iso3": "UKR",
      "usd": 99157
-    }
-   ]
-  },
-  {
-   "id": "SE-0-SE-6-18138-18138A0103",
-   "title": "Sida Digital Partnership Week 2026 - Sida Digital Partnership Week 2026 ASIEN",
-   "donor": "Sweden",
-   "recipient": "5 countries",
-   "sector": "ICT",
-   "ai_category": "capacity_building",
-   "usd": 99157,
-   "year": 2026,
-   "source": "IATI",
-   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
-   "allocations": [
-    {
-     "name": "Bangladesh",
-     "iso3": "BGD",
-     "usd": 19831
-    },
-    {
-     "name": "Vietnam",
-     "iso3": "VNM",
-     "usd": 19831
-    },
-    {
-     "name": "TH",
-     "iso3": "TH",
-     "usd": 19831
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
-     "usd": 19831
-    },
-    {
-     "name": "Indonesia",
-     "iso3": "IDN",
-     "usd": 19831
     }
    ]
   },
@@ -10716,6 +10658,45 @@
      "name": "Bangladesh",
      "iso3": "BGD",
      "usd": 5190
+    }
+   ]
+  },
+  {
+   "id": "SE-0-SE-6-18138-18138A0103",
+   "title": "Sida Digital Partnership Week 2026 - Sida Digital Partnership Week 2026 ASIEN",
+   "donor": "Sweden",
+   "recipient": "5 countries",
+   "sector": "ICT",
+   "ai_category": "capacity_building",
+   "usd": 5044,
+   "year": 2026,
+   "source": "IATI",
+   "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
+   "allocations": [
+    {
+     "name": "Bangladesh",
+     "iso3": "BGD",
+     "usd": 1009
+    },
+    {
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 1009
+    },
+    {
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 1009
+    },
+    {
+     "name": "TH",
+     "iso3": "TH",
+     "usd": 1009
+    },
+    {
+     "name": "Vietnam",
+     "iso3": "VNM",
+     "usd": 1009
     }
    ]
   },
