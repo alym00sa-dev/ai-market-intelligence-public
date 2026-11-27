@@ -1,5 +1,5 @@
 {
- "built_at": 1795714769,
+ "built_at": 1795800136,
  "source_note": "IATI (via d-portal, keyless). AI-tagged by Claude. Amounts converted EUR\u2192USD (~1.08). OECD CRS to follow.",
  "totals": {
   "usd": 525841256,
@@ -10674,18 +10674,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138-18138A0103",
    "allocations": [
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
-     "usd": 1009
-    },
-    {
-     "name": "Indonesia",
-     "iso3": "IDN",
-     "usd": 1009
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
+     "name": "Vietnam",
+     "iso3": "VNM",
      "usd": 1009
     },
     {
@@ -10694,8 +10684,18 @@
      "usd": 1009
     },
     {
-     "name": "Vietnam",
-     "iso3": "VNM",
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 1009
+    },
+    {
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 1009
+    },
+    {
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 1009
     }
    ]
@@ -11226,48 +11226,8 @@
    "url": "https://d-portal.org/ctrack.html?reporting_ref=#view=act&aid=SE-0-SE-6-18138",
    "allocations": [
     {
-     "name": "Bangladesh",
-     "iso3": "BGD",
-     "usd": 0
-    },
-    {
-     "name": "Colombia",
-     "iso3": "COL",
-     "usd": 0
-    },
-    {
-     "name": "Egypt",
-     "iso3": "EGY",
-     "usd": 0
-    },
-    {
-     "name": "Indonesia",
-     "iso3": "IDN",
-     "usd": 0
-    },
-    {
-     "name": "MD",
-     "iso3": "MD",
-     "usd": 0
-    },
-    {
-     "name": "Morocco",
-     "iso3": "MAR",
-     "usd": 0
-    },
-    {
-     "name": "Nigeria",
-     "iso3": "NGA",
-     "usd": 0
-    },
-    {
-     "name": "Philippines",
-     "iso3": "PHL",
-     "usd": 0
-    },
-    {
-     "name": "TH",
-     "iso3": "TH",
+     "name": "Vietnam",
+     "iso3": "VNM",
      "usd": 0
     },
     {
@@ -11276,8 +11236,48 @@
      "usd": 0
     },
     {
-     "name": "Vietnam",
-     "iso3": "VNM",
+     "name": "TH",
+     "iso3": "TH",
+     "usd": 0
+    },
+    {
+     "name": "Philippines",
+     "iso3": "PHL",
+     "usd": 0
+    },
+    {
+     "name": "Nigeria",
+     "iso3": "NGA",
+     "usd": 0
+    },
+    {
+     "name": "Morocco",
+     "iso3": "MAR",
+     "usd": 0
+    },
+    {
+     "name": "MD",
+     "iso3": "MD",
+     "usd": 0
+    },
+    {
+     "name": "Indonesia",
+     "iso3": "IDN",
+     "usd": 0
+    },
+    {
+     "name": "Egypt",
+     "iso3": "EGY",
+     "usd": 0
+    },
+    {
+     "name": "Colombia",
+     "iso3": "COL",
+     "usd": 0
+    },
+    {
+     "name": "Bangladesh",
+     "iso3": "BGD",
      "usd": 0
     }
    ]
